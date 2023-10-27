@@ -420,6 +420,146 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
+  // SignUp
+  {
+    'akmwhf3z': {
+      'en': 'VARIANT',
+      'th': '',
+    },
+    'lzb5hnes': {
+      'en': 'Create an account',
+      'th': '',
+    },
+    'h57a25e2': {
+      'en': 'Let\'s get started by filling out the form below.',
+      'th': '',
+    },
+    'o2skorir': {
+      'en': 'Email',
+      'th': '',
+    },
+    'msbxjglj': {
+      'en': 'Password',
+      'th': '',
+    },
+    's3r62ue3': {
+      'en': 'Confirm Password',
+      'th': '',
+    },
+    'i8pkgopg': {
+      'en': 'Create Account',
+      'th': '',
+    },
+    'h7a3ybyi': {
+      'en': 'OR',
+      'th': '',
+    },
+    'woklwxr3': {
+      'en': 'Continue with Google',
+      'th': '',
+    },
+    '620l1eao': {
+      'en': 'Continue with Apple',
+      'th': '',
+    },
+    'f31shtwn': {
+      'en': 'Already have an account? ',
+      'th': '',
+    },
+    'e0gdogdj': {
+      'en': ' Sign In here',
+      'th': '',
+    },
+    '3qmfld5n': {
+      'en': 'UserName',
+      'th': '',
+    },
+    'v4pg1fv1': {
+      'en': 'Overall',
+      'th': '',
+    },
+    'j04o22su': {
+      'en': '5',
+      'th': '',
+    },
+    'hwgzxixi': {
+      'en':
+          'Nice outdoor courts, solid concrete and good hoops for the neighborhood.',
+      'th': '',
+    },
+    '2fltscf1': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // SignIn
+  {
+    '0rj4ixdc': {
+      'en': 'VARIANT',
+      'th': '',
+    },
+    'd6a8025b': {
+      'en': 'Welcome Back',
+      'th': '',
+    },
+    'h1mpi506': {
+      'en': 'Let\'s get started by filling out the form below.',
+      'th': '',
+    },
+    '4hrn5g5q': {
+      'en': 'Email',
+      'th': '',
+    },
+    'b31bjsgb': {
+      'en': 'Password',
+      'th': '',
+    },
+    'yi9waw7l': {
+      'en': 'Sign In',
+      'th': '',
+    },
+    'fogz2nkx': {
+      'en': 'OR',
+      'th': '',
+    },
+    'ju0n3r2u': {
+      'en': 'Continue with Google',
+      'th': '',
+    },
+    'zn7z8v4p': {
+      'en': 'Continue with Apple',
+      'th': '',
+    },
+    '1kfbrpix': {
+      'en': 'Don\'t have an account? ',
+      'th': '',
+    },
+    'uprmopfk': {
+      'en': 'Sign Up here',
+      'th': '',
+    },
+    'x2u7rujy': {
+      'en': 'UserName',
+      'th': '',
+    },
+    'b50004gp': {
+      'en': 'Overall',
+      'th': '',
+    },
+    'rd6uxglt': {
+      'en': '5',
+      'th': '',
+    },
+    'bqqlcwkw': {
+      'en':
+          'Nice outdoor courts, solid concrete and good hoops for the neighborhood.',
+      'th': '',
+    },
+    '1q4h8ccw': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
   // deleteProgramBottomSheet
   {
     'garzgyg4': {
