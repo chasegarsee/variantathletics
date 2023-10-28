@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -191,21 +190,6 @@ class FFAppState extends ChangeNotifier {
     _playSound = _value;
     prefs.setBool('ff_playSound', _value);
   }
-
-  final _currentUserManager = StreamRequestManager<List<UsersRecord>>();
-  Stream<List<UsersRecord>> currentUser({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<List<UsersRecord>> Function() requestFn,
-  }) =>
-      _currentUserManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearCurrentUserCache() => _currentUserManager.clear();
-  void clearCurrentUserCacheKey(String? uniqueKey) =>
-      _currentUserManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

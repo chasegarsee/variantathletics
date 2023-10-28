@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -96,25 +95,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   ),
             ),
           ),
-          actions: [
-            Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed('profile');
-                },
-                child: Icon(
-                  Icons.person,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 32.0,
-                ),
-              ),
-            ),
-          ],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
