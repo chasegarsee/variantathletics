@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="variantExerciseLibrary"
+        android:label="Variant"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="variantexerciselibrary" android:host="variantexerciselibrary.com" />
+                <data android:scheme="variant" android:host="variant.com" />
             </intent-filter>
 
         </activity>

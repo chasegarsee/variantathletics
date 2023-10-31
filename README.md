@@ -1,4 +1,4 @@
-# variantExerciseLibrary
+# Variant
 
 A new Flutter project.
 
