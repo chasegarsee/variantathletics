@@ -8,6 +8,8 @@
 	<string>Variant</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<string>NSMicrophoneUsageDescription</string>
+	<key>This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use</key>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
