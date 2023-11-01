@@ -770,13 +770,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "variant",
+      "name": "variant_exercise_library",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-10-31T13:06:59.419571Z",
+  "generated": "2023-11-01T13:32:39.012206Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
