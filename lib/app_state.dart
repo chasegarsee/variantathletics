@@ -47,6 +47,17 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _playSound = prefs.getBool('ff_playSound') ?? _playSound;
     });
+    _safeInit(() {
+      _exercises = prefs.getStringList('ff_exercises')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _exercises;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -134,35 +145,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_banner', _value);
   }
 
-  List<dynamic> _exercises = [];
-  List<dynamic> get exercises => _exercises;
-  set exercises(List<dynamic> _value) {
-    _exercises = _value;
-  }
-
-  void addToExercises(dynamic _value) {
-    _exercises.add(_value);
-  }
-
-  void removeFromExercises(dynamic _value) {
-    _exercises.remove(_value);
-  }
-
-  void removeAtIndexFromExercises(int _index) {
-    _exercises.removeAt(_index);
-  }
-
-  void updateExercisesAtIndex(
-    int _index,
-    dynamic Function(dynamic) updateFn,
-  ) {
-    _exercises[_index] = updateFn(_exercises[_index]);
-  }
-
-  void insertAtIndexInExercises(int _index, dynamic _value) {
-    _exercises.insert(_index, _value);
-  }
-
   int _completed = 0;
   int get completed => _completed;
   set completed(int _value) {
@@ -189,6 +171,53 @@ class FFAppState extends ChangeNotifier {
   set playSound(bool _value) {
     _playSound = _value;
     prefs.setBool('ff_playSound', _value);
+  }
+
+  bool _isInitialLoad = true;
+  bool get isInitialLoad => _isInitialLoad;
+  set isInitialLoad(bool _value) {
+    _isInitialLoad = _value;
+  }
+
+  List<dynamic> _exercises = [];
+  List<dynamic> get exercises => _exercises;
+  set exercises(List<dynamic> _value) {
+    _exercises = _value;
+    prefs.setStringList(
+        'ff_exercises', _value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToExercises(dynamic _value) {
+    _exercises.add(_value);
+    prefs.setStringList(
+        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromExercises(dynamic _value) {
+    _exercises.remove(_value);
+    prefs.setStringList(
+        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromExercises(int _index) {
+    _exercises.removeAt(_index);
+    prefs.setStringList(
+        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateExercisesAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _exercises[_index] = updateFn(_exercises[_index]);
+    prefs.setStringList(
+        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInExercises(int _index, dynamic _value) {
+    _exercises.insert(_index, _value);
+    prefs.setStringList(
+        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
   }
 }
 

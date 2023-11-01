@@ -35,19 +35,30 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.exerciseList = await queryExercisesRecordOnce(
-        limit: 50,
-      );
-      FFAppState().update(() {
-        FFAppState().exercises = functions
-            .convertFBExerciseToJSON(_model.exerciseList?.toList())!
-            .toList()
-            .cast<dynamic>();
-      });
-      setState(() {
-        _model.filteredExercises =
-            FFAppState().exercises.toList().cast<dynamic>();
-      });
+      if (FFAppState().isInitialLoad) {
+        _model.exerciseList = await queryExercisesRecordOnce();
+        FFAppState().update(() {
+          FFAppState().exercises = functions
+              .convertFBExerciseToJSON(_model.exerciseList?.toList())!
+              .toList()
+              .cast<dynamic>();
+          FFAppState().isInitialLoad = false;
+        });
+        setState(() {
+          _model.filteredExercises =
+              FFAppState().exercises.toList().cast<dynamic>();
+        });
+      } else {
+        FFAppState().update(() {
+          FFAppState().exercises =
+              FFAppState().exercises.toList().cast<dynamic>();
+          FFAppState().isInitialLoad = false;
+        });
+        setState(() {
+          _model.filteredExercises =
+              FFAppState().exercises.toList().cast<dynamic>();
+        });
+      }
     });
   }
 
@@ -83,17 +94,23 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
-          title: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
-            child: Text(
-              FFLocalizations.of(context).getText(
-                'rvjg82nr' /* VARIANT */,
-              ),
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Jost',
-                    fontSize: 32.0,
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'rvjg82nr' /* VARIANT */,
                   ),
-            ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Jost',
+                        fontSize: 32.0,
+                      ),
+                ),
+              ),
+            ],
           ),
           actions: [],
           centerTitle: true,

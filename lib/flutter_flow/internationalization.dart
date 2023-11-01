@@ -313,8 +313,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Exercise Library',
       'th': '',
     },
-    'eo0tbowu': {
-      'en': 'Timer',
+    'yamg0oo6': {
+      'en': 'VARIANT',
       'th': '',
     },
     '2gueynm6': {

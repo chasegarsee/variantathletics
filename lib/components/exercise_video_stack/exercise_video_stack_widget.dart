@@ -167,21 +167,29 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                     10.0, 10.0, 10.0, 10.0),
                                             child: Stack(
                                               children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.00, -1.00),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 20.0),
-                                                    child: Text(
-                                                      pageViewExercisesRecord!
-                                                          .name,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.00, -1.00),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    50.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    20.0),
+                                                        child: Text(
+                                                          pageViewExercisesRecord!
+                                                              .name,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
@@ -191,60 +199,67 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                     .primaryBtnText,
                                                                 fontSize: 42.0,
                                                               ),
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(16.0, 115.0,
-                                                          0.0, 0.0),
-                                                  child: Builder(
-                                                    builder: (context) {
-                                                      final detail =
-                                                          pageViewExercisesRecord
-                                                                  ?.details
-                                                                  ?.toList() ??
-                                                              [];
-                                                      return ListView.builder(
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        scrollDirection:
-                                                            Axis.vertical,
-                                                        itemCount:
-                                                            detail.length,
-                                                        itemBuilder: (context,
-                                                            detailIndex) {
-                                                          final detailItem =
-                                                              detail[
-                                                                  detailIndex];
-                                                          return Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    0.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          final detail =
+                                                              pageViewExercisesRecord
+                                                                      ?.details
+                                                                      ?.toList() ??
+                                                                  [];
+                                                          return ListView
+                                                              .builder(
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            shrinkWrap: true,
+                                                            scrollDirection:
+                                                                Axis.vertical,
+                                                            itemCount:
+                                                                detail.length,
+                                                            itemBuilder: (context,
+                                                                detailIndex) {
+                                                              final detailItem =
+                                                                  detail[
+                                                                      detailIndex];
+                                                              return Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1.00,
+                                                                        0.00),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           10.0),
-                                                              child: Text(
-                                                                '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .start,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium,
-                                                              ),
-                                                            ),
+                                                                  child: Text(
+                                                                    '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
                                                           );
                                                         },
-                                                      );
-                                                    },
-                                                  ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -254,26 +269,35 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                     ],
                                   ),
                                 ),
-                                Align(
-                                  alignment: AlignmentDirectional(-0.85, -0.93),
-                                  child: FlutterFlowIconButton(
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    borderRadius: 20.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 40.0,
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).accent1,
-                                    icon: Icon(
-                                      Icons.chevron_left_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-0.85, -0.93),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .noColor,
+                                          borderRadius: 20.0,
+                                          borderWidth: 0.0,
+                                          buttonSize: 50.0,
+                                          fillColor: Color(0x7E000000),
+                                          icon: Icon(
+                                            Icons.chevron_left_outlined,
+                                            color: Colors.white,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            context.safePop();
+                                          },
+                                        ),
+                                      ),
                                     ),
-                                    onPressed: () async {
-                                      context.safePop();
-                                    },
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),

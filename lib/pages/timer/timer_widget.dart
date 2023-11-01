@@ -74,15 +74,21 @@ class _TimerWidgetState extends State<TimerWidget> {
         appBar: AppBar(
           backgroundColor: Color(0x00FFFFFF),
           automaticallyImplyLeading: false,
-          title: Text(
-            FFLocalizations.of(context).getText(
-              'eo0tbowu' /* Timer */,
-            ),
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Jost',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 22.0,
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                FFLocalizations.of(context).getText(
+                  'yamg0oo6' /* VARIANT */,
                 ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Jost',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 32.0,
+                    ),
+              ),
+            ],
           ),
           actions: [],
           centerTitle: false,
