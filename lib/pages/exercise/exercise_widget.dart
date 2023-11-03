@@ -67,6 +67,7 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               wrapWithModel(
                 model: _model.exerciseVideoStackModel,

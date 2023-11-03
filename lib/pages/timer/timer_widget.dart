@@ -80,7 +80,7 @@ class _TimerWidgetState extends State<TimerWidget> {
             children: [
               Text(
                 FFLocalizations.of(context).getText(
-                  'yamg0oo6' /* VARIANT */,
+                  'jc36azpj' /* VARIANT */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Jost',
@@ -189,27 +189,41 @@ class _TimerWidgetState extends State<TimerWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
-                                  child: FlutterFlowTimer(
-                                    initialTime: _model.timerMilliseconds2,
-                                    getDisplayTime: (value) =>
-                                        StopWatchTimer.getDisplayTime(value,
-                                            milliSecond: false),
-                                    controller: _model.timerController2,
-                                    updateStateInterval:
-                                        Duration(milliseconds: 1000),
-                                    onChanged:
-                                        (value, displayTime, shouldUpdate) {
-                                      _model.timerMilliseconds2 = value;
-                                      _model.timerValue2 = displayTime;
-                                      if (shouldUpdate) setState(() {});
-                                    },
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                          fontFamily: 'Jost',
-                                          fontSize: 20.0,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'oqqtirpo' /* Elapsed */,
                                         ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                      FlutterFlowTimer(
+                                        initialTime: _model.timerMilliseconds2,
+                                        getDisplayTime: (value) =>
+                                            StopWatchTimer.getDisplayTime(value,
+                                                milliSecond: false),
+                                        controller: _model.timerController2,
+                                        updateStateInterval:
+                                            Duration(milliseconds: 1000),
+                                        onChanged:
+                                            (value, displayTime, shouldUpdate) {
+                                          _model.timerMilliseconds2 = value;
+                                          _model.timerValue2 = displayTime;
+                                          if (shouldUpdate) setState(() {});
+                                        },
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Jost',
+                                              fontSize: 20.0,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Padding(
@@ -229,7 +243,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Jost',
-                                                fontSize: 16.0,
+                                                fontSize: 20.0,
                                               ),
                                         ),
                                       ),
@@ -239,7 +253,11 @@ class _TimerWidgetState extends State<TimerWidget> {
                                         child: Text(
                                           _model.completedIntervals.toString(),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                fontSize: 20.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -579,7 +597,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                                         icon: Icon(
                                           Icons.play_arrow_outlined,
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryText,
                                           size: 30.0,
                                         ),
                                         options: FFButtonOptions(
@@ -628,7 +646,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                                         icon: Icon(
                                           Icons.pause,
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryText,
                                           size: 24.0,
                                         ),
                                         options: FFButtonOptions(
@@ -716,83 +734,153 @@ class _TimerWidgetState extends State<TimerWidget> {
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
+                                    20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     if (FFAppState().playSound)
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 20.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 35.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                        icon: FaIcon(
-                                          FontAwesomeIcons.solidBell,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 16.0,
+                                      Material(
+                                        color: Colors.transparent,
+                                        elevation: 5.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
                                         ),
-                                        onPressed: () async {
-                                          setState(() {
-                                            FFAppState().playSound = false;
-                                          });
-                                        },
+                                        child: Container(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(50.0),
+                                          ),
+                                          child: Visibility(
+                                            visible: FFAppState().playSound,
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 50.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 50.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .success,
+                                              icon: FaIcon(
+                                                FontAwesomeIcons.solidBell,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 25.0,
+                                              ),
+                                              onPressed: () async {
+                                                setState(() {
+                                                  FFAppState().playSound =
+                                                      false;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     if (!FFAppState().playSound)
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 20.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 35.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                        icon: FaIcon(
-                                          FontAwesomeIcons.bellSlash,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 16.0,
+                                      Material(
+                                        color: Colors.transparent,
+                                        elevation: 5.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
                                         ),
-                                        onPressed: () async {
-                                          setState(() {
-                                            FFAppState().playSound = true;
-                                          });
-                                        },
+                                        child: Container(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(50.0),
+                                          ),
+                                          child: Visibility(
+                                            visible: !FFAppState().playSound,
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 50.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 50.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              icon: FaIcon(
+                                                FontAwesomeIcons.bellSlash,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () async {
+                                                setState(() {
+                                                  FFAppState().playSound = true;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 35.0,
-                                      fillColor:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      icon: Icon(
-                                        Icons.replay,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 16.0,
+                                    Material(
+                                      color: Colors.transparent,
+                                      elevation: 5.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
                                       ),
-                                      onPressed: () async {
-                                        setState(() {
-                                          _model.completedIntervals = 0;
-                                          _model.isCounting = false;
-                                          _model.currentInterval =
-                                              _model.workingInterval;
-                                        });
-                                        _model.timerController1.onStopTimer();
-                                        _model.timerController2.onStopTimer();
-                                        _model.timerController1.timer
-                                            .setPresetTime(
-                                          mSec: _model.workingInterval,
-                                          add: false,
-                                        );
-                                        _model.timerController1.onResetTimer();
+                                      child: Container(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                        ),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 50.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 50.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                          icon: Icon(
+                                            Icons.replay,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 16.0,
+                                          ),
+                                          onPressed: () async {
+                                            setState(() {
+                                              _model.completedIntervals = 0;
+                                              _model.isCounting = false;
+                                              _model.currentInterval =
+                                                  _model.workingInterval;
+                                            });
+                                            _model.timerController1
+                                                .onStopTimer();
+                                            _model.timerController2
+                                                .onStopTimer();
+                                            _model.timerController1.timer
+                                                .setPresetTime(
+                                              mSec: _model.workingInterval,
+                                              add: false,
+                                            );
+                                            _model.timerController1
+                                                .onResetTimer();
 
-                                        _model.timerController2.onResetTimer();
-                                      },
+                                            _model.timerController2
+                                                .onResetTimer();
+                                          },
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -804,7 +892,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.pushNamed('exerciseLibrary');
@@ -824,10 +912,9 @@ class _TimerWidgetState extends State<TimerWidget> {
                               .titleSmall
                               .override(
                                 fontFamily: 'Jost',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                color: FlutterFlowTheme.of(context).primaryText,
                               ),
-                          elevation: 3.0,
+                          elevation: 5.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,

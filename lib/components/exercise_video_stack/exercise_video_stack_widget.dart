@@ -56,6 +56,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
     return Align(
       alignment: AlignmentDirectional(0.00, 1.00),
       child: Container(
+        width: double.infinity,
         height: MediaQuery.sizeOf(context).height * 1.0,
         child: Stack(
           alignment: AlignmentDirectional(0.0, 0.0),
@@ -110,48 +111,36 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                               PageController(initialPage: 0),
                           scrollDirection: Axis.vertical,
                           children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 1.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: FlutterFlowVideoPlayer(
-                                    path:
-                                        '${FFAppState().exerciseBase}${pageViewExercisesRecord?.id}.MOV?alt=media',
-                                    videoType: VideoType.network,
+                            Container(
+                              width: double.infinity,
+                              child: Stack(
+                                children: [
+                                  Container(
                                     width: double.infinity,
-                                    autoPlay: true,
-                                    looping: true,
-                                    showControls: false,
-                                    allowFullScreen: true,
-                                    allowPlaybackSpeedMenu: false,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: FlutterFlowVideoPlayer(
+                                      path:
+                                          '${FFAppState().exerciseBase}${pageViewExercisesRecord?.id}.MOV?alt=media',
+                                      videoType: VideoType.network,
+                                      width: double.infinity,
+                                      autoPlay: true,
+                                      looping: true,
+                                      showControls: false,
+                                      allowFullScreen: true,
+                                      allowPlaybackSpeedMenu: false,
+                                    ),
                                   ),
-                                ),
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                1.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x00EE8B60),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.00, 0.00),
-                                        child: Container(
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   1.0,
@@ -159,147 +148,166 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                   .height *
                                               1.0,
                                           decoration: BoxDecoration(
-                                            color: Color(0x91000000),
+                                            color: Color(0x00EE8B60),
                                           ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
-                                            child: Stack(
-                                              children: [
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.00, -1.00),
-                                                      child: Padding(
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.00, 0.00),
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xE4000000),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 20.0, 20.0, 20.0),
+                                              child: Stack(
+                                                children: [
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.00, -1.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      50.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      20.0),
+                                                          child: Text(
+                                                            pageViewExercisesRecord!
+                                                                .name,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Jost',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBtnText,
+                                                                  fontSize:
+                                                                      42.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    50.0,
+                                                                    16.0,
                                                                     0.0,
                                                                     0.0,
-                                                                    20.0),
-                                                        child: Text(
-                                                          pageViewExercisesRecord!
-                                                              .name,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontSize: 42.0,
-                                                              ),
+                                                                    0.0),
+                                                        child: Builder(
+                                                          builder: (context) {
+                                                            final detail =
+                                                                pageViewExercisesRecord
+                                                                        ?.details
+                                                                        ?.toList() ??
+                                                                    [];
+                                                            return ListView
+                                                                .builder(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              shrinkWrap: true,
+                                                              scrollDirection:
+                                                                  Axis.vertical,
+                                                              itemCount:
+                                                                  detail.length,
+                                                              itemBuilder: (context,
+                                                                  detailIndex) {
+                                                                final detailItem =
+                                                                    detail[
+                                                                        detailIndex];
+                                                                return Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          -1.00,
+                                                                          0.00),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                    child: Text(
+                                                                      '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .start,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                          },
                                                         ),
                                                       ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Builder(
-                                                        builder: (context) {
-                                                          final detail =
-                                                              pageViewExercisesRecord
-                                                                      ?.details
-                                                                      ?.toList() ??
-                                                                  [];
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            shrinkWrap: true,
-                                                            scrollDirection:
-                                                                Axis.vertical,
-                                                            itemCount:
-                                                                detail.length,
-                                                            itemBuilder: (context,
-                                                                detailIndex) {
-                                                              final detailItem =
-                                                                  detail[
-                                                                      detailIndex];
-                                                              return Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1.00,
-                                                                        0.00),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0),
-                                                                  child: Text(
-                                                                    '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-0.85, -0.93),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .accent2,
+                                            borderRadius: 20.0,
+                                            borderWidth: 2.0,
+                                            buttonSize: 50.0,
+                                            fillColor: Color(0x7E000000),
+                                            icon: Icon(
+                                              Icons.chevron_left_outlined,
+                                              color: Colors.white,
+                                              size: 30.0,
+                                            ),
+                                            onPressed: () async {
+                                              context.safePop();
+                                            },
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-0.85, -0.93),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 0.0, 0.0),
-                                        child: FlutterFlowIconButton(
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .noColor,
-                                          borderRadius: 20.0,
-                                          borderWidth: 0.0,
-                                          buttonSize: 50.0,
-                                          fillColor: Color(0x7E000000),
-                                          icon: Icon(
-                                            Icons.chevron_left_outlined,
-                                            color: Colors.white,
-                                            size: 24.0,
-                                          ),
-                                          onPressed: () async {
-                                            context.safePop();
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),

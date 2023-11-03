@@ -193,6 +193,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // timer
   {
+    'oqqtirpo': {
+      'en': 'Elapsed',
+      'th': '',
+    },
     'cwfm3jpz': {
       'en': 'Sets',
       'th': '',
@@ -313,7 +317,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Exercise Library',
       'th': '',
     },
-    'yamg0oo6': {
+    'jc36azpj': {
       'en': 'VARIANT',
       'th': '',
     },

@@ -14,62 +14,18 @@
       },
       "oauth_client": [
         {
-          "client_id": "622115586603-h0tnf6ta55f4gt4rlvi68kqinbl846er.apps.googleusercontent.com",
+          "client_id": "622115586603-9ppnpe3eepanu5iofsgjj2n93vgkai5b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mycompany.iAmVariant",
-            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
-          }
-        },
-        {
-          "client_id": "622115586603-qfaus7q1ut4mqdevnk3pus63ltpt9k1a.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "622115586603-ffhu255kbd3otnqhsi46vn78tgrbkhqm.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "622115586603-1da7ubmkoe2cuf4f4dcengv25ukanuu7.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.mycompany.iAmVariant"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:622115586603:android:a23bca742429d5f4ed206e",
-        "android_client_info": {
-          "package_name": "com.mycompany.variant"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "622115586603-1j02nphjn9d0o1hhnngb0cn9pj0kqskh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mycompany.variant",
             "certificate_hash": "1aaa9e56d94dfe4798857b4d5cdaaee2933c7eae"
           }
         },
         {
-          "client_id": "622115586603-5m2iofve63tbdgp57ktigoojvnm2k6s6.apps.googleusercontent.com",
+          "client_id": "622115586603-h0tnf6ta55f4gt4rlvi68kqinbl846er.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.mycompany.variant",
+            "package_name": "com.mycompany.iAmVariant",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
         },
