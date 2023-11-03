@@ -8,6 +8,8 @@
 	<string>Variant</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -82,5 +84,9 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>
