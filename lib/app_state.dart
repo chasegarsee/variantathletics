@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -219,6 +220,21 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList(
         'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
   }
+
+  final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
+  Stream<List<ExercisesRecord>> exercise({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Stream<List<ExercisesRecord>> Function() requestFn,
+  }) =>
+      _exerciseManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearExerciseCache() => _exerciseManager.clear();
+  void clearExerciseCacheKey(String? uniqueKey) =>
+      _exerciseManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

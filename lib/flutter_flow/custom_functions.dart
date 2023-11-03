@@ -112,37 +112,25 @@ List<dynamic>? filterJson(
 }
 
 List<dynamic>? filterJsonCopy(
-  List<String>? tags,
-  String? value,
-  List<dynamic> data,
+  List<dynamic> exercises,
+  String tag,
 ) {
-  List<dynamic> filteredList = [];
+  tag = tag
+      .toLowerCase(); // Convert the tag to lowercase for case-insensitive comparison
+  List<dynamic> filteredExercises = [];
 
-  for (dynamic item in data) {
-    bool isMatch = false;
+  for (dynamic exercise in exercises) {
+    if (exercise['tags'] != null) {
+      List<String> exerciseTags = List<String>.from(exercise['tags']);
+      // Convert each tag in the exerciseTags array to lowercase for comparison
+      exerciseTags = exerciseTags.map((t) => t.toLowerCase()).toList();
 
-    for (String tag in tags!) {
-      List<String> fields = tag.split('.');
-      dynamic itemValue = item;
-
-      for (String f in fields) {
-        itemValue = itemValue[f];
-      }
-
-      if (itemValue is String && value is String) {
-        isMatch = itemValue.toLowerCase().contains(value.toLowerCase());
-      } else {
-        throw ArgumentError('Unsupported field type for "contains" operation');
-      }
-
-      if (isMatch) {
-        filteredList.add(item);
-        break; // Break the inner loop as soon as a match is found for any tag
+      if (exerciseTags.contains(tag)) {
+        filteredExercises.add(exercise);
       }
     }
   }
-
-  return filteredList;
+  return filteredExercises;
 }
 
 int? indexPlusOne(int index) {
@@ -159,4 +147,8 @@ bool? currentUserCompleted(
 bool areAllTrue(List<bool> values) {
   // Use the `every` function to check if all values are true
   return values.every((value) => value == true);
+}
+
+String capitalize(String exercise) {
+  return exercise[0].toUpperCase() + exercise.substring(1);
 }

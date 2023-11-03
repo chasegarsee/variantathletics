@@ -72,7 +72,7 @@ class _TimerWidgetState extends State<TimerWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0x00FFFFFF),
         appBar: AppBar(
-          backgroundColor: Color(0x00FFFFFF),
+          backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Row(
             mainAxisSize: MainAxisSize.max,
@@ -107,7 +107,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                   color: FlutterFlowTheme.of(context).primary,
                 ),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Align(
@@ -741,146 +741,78 @@ class _TimerWidgetState extends State<TimerWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     if (FFAppState().playSound)
-                                      Material(
-                                        color: Colors.transparent,
-                                        elevation: 5.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50.0),
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 50.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 50.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .success,
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.solidBell,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 25.0,
                                         ),
-                                        child: Container(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(50.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: FFAppState().playSound,
-                                            child: FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 50.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 50.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .success,
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.solidBell,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 25.0,
-                                              ),
-                                              onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().playSound =
-                                                      false;
-                                                });
-                                              },
-                                            ),
-                                          ),
-                                        ),
+                                        onPressed: () async {
+                                          setState(() {
+                                            FFAppState().playSound =
+                                                !FFAppState().playSound;
+                                          });
+                                        },
                                       ),
                                     if (!FFAppState().playSound)
-                                      Material(
-                                        color: Colors.transparent,
-                                        elevation: 5.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50.0),
-                                        ),
-                                        child: Container(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(50.0),
-                                          ),
-                                          child: Visibility(
-                                            visible: !FFAppState().playSound,
-                                            child: FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 50.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 50.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.bellSlash,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
-                                              ),
-                                              onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().playSound = true;
-                                                });
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      elevation: 5.0,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                      child: Container(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 50.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 50.0,
+                                        fillColor:
+                                            FlutterFlowTheme.of(context).error,
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.bellSlash,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(50.0),
+                                              .primaryText,
+                                          size: 20.0,
                                         ),
-                                        child: FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 50.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 50.0,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .error,
-                                          icon: Icon(
-                                            Icons.replay,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 16.0,
-                                          ),
-                                          onPressed: () async {
-                                            setState(() {
-                                              _model.completedIntervals = 0;
-                                              _model.isCounting = false;
-                                              _model.currentInterval =
-                                                  _model.workingInterval;
-                                            });
-                                            _model.timerController1
-                                                .onStopTimer();
-                                            _model.timerController2
-                                                .onStopTimer();
-                                            _model.timerController1.timer
-                                                .setPresetTime(
-                                              mSec: _model.workingInterval,
-                                              add: false,
-                                            );
-                                            _model.timerController1
-                                                .onResetTimer();
-
-                                            _model.timerController2
-                                                .onResetTimer();
-                                          },
-                                        ),
+                                        onPressed: () async {
+                                          setState(() {
+                                            FFAppState().playSound =
+                                                !FFAppState().playSound;
+                                          });
+                                        },
                                       ),
+                                    FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 50.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 50.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).error,
+                                      icon: Icon(
+                                        Icons.replay,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 20.0,
+                                      ),
+                                      onPressed: () async {
+                                        setState(() {
+                                          _model.completedIntervals = 0;
+                                          _model.isCounting = false;
+                                          _model.currentInterval =
+                                              _model.workingInterval;
+                                        });
+                                        _model.timerController1.onStopTimer();
+                                        _model.timerController2.onStopTimer();
+                                        _model.timerController1.timer
+                                            .setPresetTime(
+                                          mSec: _model.workingInterval,
+                                          add: false,
+                                        );
+                                        _model.timerController1.onResetTimer();
+
+                                        _model.timerController2.onResetTimer();
+                                      },
                                     ),
                                   ],
                                 ),

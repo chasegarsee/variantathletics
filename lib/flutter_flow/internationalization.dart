@@ -111,67 +111,67 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'VARIANT',
       'th': '',
     },
-    'ejd07cee': {
+    '7lqtxh5b': {
       'en': 'All Exercises',
       'th': '',
     },
-    'u9wjmho0': {
+    'lrfgewuu': {
       'en': 'All Exercises',
       'th': '',
     },
-    '44ij5tx8': {
+    '4ukyq9iy': {
       'en': 'Abs',
       'th': '',
     },
-    '3f4afs6a': {
+    't2al7jx7': {
       'en': 'Back',
       'th': '',
     },
-    '58goy4zg': {
+    'iuhonn55': {
       'en': 'Calves',
       'th': '',
     },
-    'zpg5stbe': {
+    '32qi5kdz': {
       'en': 'Chest',
       'th': '',
     },
-    'ggw0bng7': {
+    '3vxvvy6i': {
       'en': 'Forearms',
       'th': '',
     },
-    '145pd5mr': {
+    '4mz6lzbm': {
       'en': 'Glutes',
       'th': '',
     },
-    'lv7xy9kv': {
+    'b9r4gz4p': {
       'en': 'Hamstrings',
       'th': '',
     },
-    '8bwv5aab': {
+    'xo0oy3qa': {
       'en': 'Lower Back',
       'th': '',
     },
-    'byi6yjzv': {
+    'husp00m8': {
       'en': 'Quads',
       'th': '',
     },
-    '4w2g3ffe': {
+    'kf3wmhcs': {
       'en': 'Shoulders',
       'th': '',
     },
-    'q8yqmugf': {
+    'erzvebqr': {
       'en': 'Traps',
       'th': '',
     },
-    'udzwh0x4': {
+    'alwez0i5': {
       'en': 'Triceps',
       'th': '',
     },
-    '39l0b3ne': {
+    'r7x3za7i': {
       'en': 'Please select...',
       'th': '',
     },
-    'qr8kspru': {
+    'cj4l599l': {
       'en': 'Search for target muscle group',
       'th': '',
     },

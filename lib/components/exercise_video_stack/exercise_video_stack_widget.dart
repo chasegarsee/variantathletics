@@ -72,12 +72,16 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                 child: Align(
                   alignment: AlignmentDirectional(0.00, 0.00),
                   child: StreamBuilder<List<ExercisesRecord>>(
-                    stream: queryExercisesRecord(
-                      queryBuilder: (exercisesRecord) => exercisesRecord.where(
-                        'id',
-                        isEqualTo: widget.exerciseId,
+                    stream: FFAppState().exercise(
+                      uniqueQueryKey: widget.exerciseId,
+                      requestFn: () => queryExercisesRecord(
+                        queryBuilder: (exercisesRecord) =>
+                            exercisesRecord.where(
+                          'id',
+                          isEqualTo: widget.exerciseId,
+                        ),
+                        singleRecord: true,
                       ),
-                      singleRecord: true,
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -206,63 +210,70 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Builder(
-                                                          builder: (context) {
-                                                            final detail =
-                                                                pageViewExercisesRecord
-                                                                        ?.details
-                                                                        ?.toList() ??
-                                                                    [];
-                                                            return ListView
-                                                                .builder(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              shrinkWrap: true,
-                                                              scrollDirection:
-                                                                  Axis.vertical,
-                                                              itemCount:
-                                                                  detail.length,
-                                                              itemBuilder: (context,
-                                                                  detailIndex) {
-                                                                final detailItem =
-                                                                    detail[
-                                                                        detailIndex];
-                                                                return Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          -1.00,
-                                                                          0.00),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0),
-                                                                    child: Text(
-                                                                      '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium,
+                                                      Flexible(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Builder(
+                                                            builder: (context) {
+                                                              final detail =
+                                                                  pageViewExercisesRecord
+                                                                          ?.details
+                                                                          ?.toList() ??
+                                                                      [];
+                                                              return ListView
+                                                                  .builder(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                shrinkWrap:
+                                                                    true,
+                                                                scrollDirection:
+                                                                    Axis.vertical,
+                                                                itemCount:
+                                                                    detail
+                                                                        .length,
+                                                                itemBuilder:
+                                                                    (context,
+                                                                        detailIndex) {
+                                                                  final detailItem =
+                                                                      detail[
+                                                                          detailIndex];
+                                                                  return Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.00,
+                                                                            0.00),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0),
+                                                                      child:
+                                                                          Text(
+                                                                        '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
+                                                                        textAlign:
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Jost',
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            );
-                                                          },
+                                                                  );
+                                                                },
+                                                              );
+                                                            },
+                                                          ),
                                                         ),
                                                       ),
                                                     ],

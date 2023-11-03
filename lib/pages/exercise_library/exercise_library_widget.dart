@@ -134,48 +134,48 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             FormFieldController<String>(
                           _model.dropDownValue ??=
                               FFLocalizations.of(context).getText(
-                            'ejd07cee' /* All Exercises */,
+                            '7lqtxh5b' /* All Exercises */,
                           ),
                         ),
                         options: [
                           FFLocalizations.of(context).getText(
-                            'u9wjmho0' /* All Exercises */,
+                            'lrfgewuu' /* All Exercises */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '44ij5tx8' /* Abs */,
+                            '4ukyq9iy' /* Abs */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '3f4afs6a' /* Back */,
+                            't2al7jx7' /* Back */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '58goy4zg' /* Calves */,
+                            'iuhonn55' /* Calves */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'zpg5stbe' /* Chest */,
+                            '32qi5kdz' /* Chest */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'ggw0bng7' /* Forearms */,
+                            '3vxvvy6i' /* Forearms */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '145pd5mr' /* Glutes */,
+                            '4mz6lzbm' /* Glutes */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'lv7xy9kv' /* Hamstrings */,
+                            'b9r4gz4p' /* Hamstrings */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '8bwv5aab' /* Lower Back */,
+                            'xo0oy3qa' /* Lower Back */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'byi6yjzv' /* Quads */,
+                            'husp00m8' /* Quads */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '4w2g3ffe' /* Shoulders */,
+                            'kf3wmhcs' /* Shoulders */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'q8yqmugf' /* Traps */,
+                            'erzvebqr' /* Traps */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'udzwh0x4' /* Triceps */,
+                            'alwez0i5' /* Triceps */,
                           )
                         ],
                         onChanged: (val) async {
@@ -190,8 +190,9 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           } else {
                             setState(() {
                               _model.filteredExercises = functions
-                                  .filterJson('tag', _model.dropDownValue,
-                                      FFAppState().exercises.toList())!
+                                  .filterJsonCopy(
+                                      FFAppState().exercises.toList(),
+                                      _model.dropDownValue!)!
                                   .toList()
                                   .cast<dynamic>();
                             });
@@ -203,10 +204,10 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             FlutterFlowTheme.of(context).labelMedium,
                         textStyle: FlutterFlowTheme.of(context).bodyMedium,
                         hintText: FFLocalizations.of(context).getText(
-                          '39l0b3ne' /* Please select... */,
+                          'r7x3za7i' /* Please select... */,
                         ),
                         searchHintText: FFLocalizations.of(context).getText(
-                          'qr8kspru' /* Search for target muscle group */,
+                          'cj4l599l' /* Search for target muscle group */,
                         ),
                         icon: Icon(
                           Icons.keyboard_arrow_down_rounded,
@@ -350,8 +351,20 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                               .width *
                                                           1.0,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x7E000000),
+                                                        gradient:
+                                                            LinearGradient(
+                                                          colors: [
+                                                            Color(0x16000000),
+                                                            Color(0x7E000000)
+                                                          ],
+                                                          stops: [0.1, 0.3],
+                                                          begin:
+                                                              AlignmentDirectional(
+                                                                  1.0, 0.0),
+                                                          end:
+                                                              AlignmentDirectional(
+                                                                  -1.0, 0),
+                                                        ),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5.0),
@@ -418,47 +431,77 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              child: Material(
-                                                                color: Colors
+                                                              child: InkWell(
+                                                                splashColor: Colors
                                                                     .transparent,
-                                                                elevation: 3.0,
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              50.0),
-                                                                ),
-                                                                child:
-                                                                    Container(
-                                                                  width: 70.0,
-                                                                  height: 25.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent2,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  setState(() {
+                                                                    _model.dropDownValueController
+                                                                            ?.value =
+                                                                        functions
+                                                                            .capitalize(tagItem.toString());
+                                                                  });
+                                                                },
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation:
+                                                                      3.0,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             50.0),
                                                                   ),
-                                                                  child: Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
-                                                                    child: Text(
-                                                                      tagItem
-                                                                          .toString(),
-                                                                      style: FlutterFlowTheme.of(
+                                                                  child:
+                                                                      Container(
+                                                                    width: 70.0,
+                                                                    height:
+                                                                        25.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Jost',
-                                                                            color:
-                                                                                Colors.black,
-                                                                          ),
+                                                                          .accent2,
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          blurRadius:
+                                                                              4.0,
+                                                                          color:
+                                                                              Color(0x33000000),
+                                                                          offset: Offset(
+                                                                              0.0,
+                                                                              2.0),
+                                                                        )
+                                                                      ],
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              50.0),
+                                                                    ),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
+                                                                      child:
+                                                                          Text(
+                                                                        tagItem
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Jost',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                            ),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
