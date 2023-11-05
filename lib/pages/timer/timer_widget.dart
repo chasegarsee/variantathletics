@@ -307,20 +307,20 @@ class _TimerWidgetState extends State<TimerWidget> {
                                                     .workingIntervalValueController ??=
                                                 FormFieldController<int>(
                                               _model.workingIntervalValue ??=
-                                                  20999,
+                                                  20000,
                                             ),
                                             options: List<int>.from([
-                                              10999,
-                                              15999,
-                                              20999,
-                                              25999,
-                                              30999,
-                                              30999,
-                                              40999,
-                                              45999,
-                                              50999,
-                                              55999,
-                                              60999
+                                              10000,
+                                              15000,
+                                              20000,
+                                              25000,
+                                              30000,
+                                              30000,
+                                              40000,
+                                              45000,
+                                              50000,
+                                              55000,
+                                              60000
                                             ]),
                                             optionLabels: [
                                               FFLocalizations.of(context)
@@ -402,12 +402,12 @@ class _TimerWidgetState extends State<TimerWidget> {
                                               Icons.keyboard_arrow_down_rounded,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .primaryText,
                                               size: 24.0,
                                             ),
                                             fillColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                                    .primary,
                                             elevation: 2.0,
                                             borderColor:
                                                 FlutterFlowTheme.of(context)
@@ -547,12 +547,12 @@ class _TimerWidgetState extends State<TimerWidget> {
                                               Icons.keyboard_arrow_down_rounded,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .primaryText,
                                               size: 24.0,
                                             ),
                                             fillColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                                    .primary,
                                             elevation: 2.0,
                                             borderColor:
                                                 FlutterFlowTheme.of(context)

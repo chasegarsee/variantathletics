@@ -387,7 +387,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                         0.0,
                                                                         0.0),
                                                             color: Color(
-                                                                0x00FFFFFF),
+                                                                0x1939D2B8),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)

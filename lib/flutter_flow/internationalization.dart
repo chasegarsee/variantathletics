@@ -211,51 +211,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'uhgjokn5': {
       'en': '0:10',
-      'th': '',
+      'th': '0:10',
     },
     'cs9zcyre': {
       'en': '0:15',
-      'th': '',
+      'th': '0:15',
     },
     'wnoi0abl': {
       'en': '0:20',
-      'th': '',
+      'th': '0:20',
     },
     'bv5whw9a': {
       'en': '0:25',
-      'th': '',
+      'th': '0:25',
     },
     '5z7ufov8': {
       'en': '0:30',
-      'th': '',
+      'th': '0:30',
     },
     'dhg24t6h': {
       'en': '0:35',
-      'th': '',
+      'th': '0:35',
     },
     'ahpblc9b': {
       'en': '0:40',
-      'th': '',
+      'th': '0:40',
     },
     'nkv4nzmi': {
       'en': '0:45',
-      'th': '',
+      'th': '0:45',
     },
     '17x0elhu': {
       'en': '0:50',
-      'th': '',
+      'th': '0:50',
     },
     '1hr8d4wn': {
       'en': '0:55',
-      'th': '',
+      'th': '0:55',
     },
     '4omtlso0': {
       'en': '1:00',
-      'th': '',
+      'th': '1:00',
     },
     'jhthqy4p': {
       'en': 'Working Time',
-      'th': '',
+      'th': 'เวลาการออกกำลัง',
     },
     'mnvztsxt': {
       'en': 'Search for an item...',
@@ -271,55 +271,55 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'yjqd77tp': {
       'en': '0:05',
-      'th': '',
+      'th': '0:05',
     },
     'unrhcqna': {
       'en': '0:10',
-      'th': '',
+      'th': '0:10',
     },
     '0y81k3a1': {
       'en': '0:15',
-      'th': '',
+      'th': '0:15',
     },
     'q3mk9tin': {
       'en': '0:20',
-      'th': '',
+      'th': '0:20',
     },
     'dsh2ob8b': {
       'en': '0:25',
-      'th': '',
+      'th': '0:25',
     },
     'ovlfqsj2': {
       'en': '0:30',
-      'th': '',
+      'th': '0:30',
     },
     'alzu9twu': {
       'en': '0:35',
-      'th': '',
+      'th': '0:35',
     },
     'j5qbzxrm': {
       'en': '0:40',
-      'th': '',
+      'th': '0:40',
     },
     '7w7zkzq4': {
       'en': '0:45',
-      'th': '',
+      'th': '0:45',
     },
     '2p6tsv1j': {
       'en': '0:50',
-      'th': '',
+      'th': '0:50',
     },
     'r92yrir2': {
       'en': '0:55',
-      'th': '',
+      'th': '0:55',
     },
     '9zrg43kk': {
       'en': '1:00',
-      'th': '',
+      'th': '1:00',
     },
     '8ji21fpx': {
       'en': 'Rest Time',
-      'th': '',
+      'th': 'ช่วงพัก',
     },
     'gpeeo66v': {
       'en': 'Search for an item...',

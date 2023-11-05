@@ -38,6 +38,8 @@ class ExerciseLibraryModel extends FlutterFlowModel<ExerciseLibraryWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // Stores action output result for [Firestore Query - Query a collection] action in GridView widget.
+  List<ExercisesRecord>? exerciseListRefresh;
 
   /// Initialization and disposal methods.
 

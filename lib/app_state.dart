@@ -63,6 +63,9 @@ class FFAppState extends ChangeNotifier {
       _breakdownLanguage =
           prefs.getString('ff_breakdownLanguage') ?? _breakdownLanguage;
     });
+    _safeInit(() {
+      _isInitialLoad = prefs.getBool('ff_isInitialLoad') ?? _isInitialLoad;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -178,12 +181,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setBool('ff_playSound', _value);
   }
 
-  bool _isInitialLoad = true;
-  bool get isInitialLoad => _isInitialLoad;
-  set isInitialLoad(bool _value) {
-    _isInitialLoad = _value;
-  }
-
   List<dynamic> _exercises = [];
   List<dynamic> get exercises => _exercises;
   set exercises(List<dynamic> _value) {
@@ -230,6 +227,13 @@ class FFAppState extends ChangeNotifier {
   set breakdownLanguage(String _value) {
     _breakdownLanguage = _value;
     prefs.setString('ff_breakdownLanguage', _value);
+  }
+
+  bool _isInitialLoad = true;
+  bool get isInitialLoad => _isInitialLoad;
+  set isInitialLoad(bool _value) {
+    _isInitialLoad = _value;
+    prefs.setBool('ff_isInitialLoad', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
