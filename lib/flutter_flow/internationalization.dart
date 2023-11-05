@@ -117,55 +117,59 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'lrfgewuu': {
       'en': 'All Exercises',
-      'th': '',
+      'th': 'ทั้งหมด',
     },
     '4ukyq9iy': {
       'en': 'Abs',
-      'th': '',
+      'th': 'หน้าท้อง',
     },
     't2al7jx7': {
       'en': 'Back',
-      'th': '',
+      'th': 'หลัง',
     },
     'iuhonn55': {
       'en': 'Calves',
-      'th': '',
+      'th': 'น่อง',
     },
     '32qi5kdz': {
       'en': 'Chest',
-      'th': '',
+      'th': 'หน้าอก',
     },
     '3vxvvy6i': {
       'en': 'Forearms',
-      'th': '',
+      'th': 'ปลายแขน',
     },
     '4mz6lzbm': {
       'en': 'Glutes',
-      'th': '',
+      'th': 'ก้น',
     },
     'b9r4gz4p': {
       'en': 'Hamstrings',
-      'th': '',
+      'th': 'หลังขา',
     },
     'xo0oy3qa': {
       'en': 'Lower Back',
-      'th': '',
+      'th': 'หลังส่วนล่าง',
     },
     'husp00m8': {
       'en': 'Quads',
-      'th': '',
+      'th': 'หน้าขา',
     },
     'kf3wmhcs': {
       'en': 'Shoulders',
-      'th': '',
+      'th': 'ไหล่',
     },
     'erzvebqr': {
       'en': 'Traps',
-      'th': '',
+      'th': 'ไหล่บน',
     },
     'alwez0i5': {
       'en': 'Triceps',
-      'th': '',
+      'th': 'หลังแขน',
+    },
+    'le2bq9v5': {
+      'en': 'Biceps',
+      'th': 'หน้าแขน',
     },
     'r7x3za7i': {
       'en': 'Please select...',
@@ -195,57 +199,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'oqqtirpo': {
       'en': 'Elapsed',
-      'th': '',
+      'th': 'ผ่านไปแล้ว',
     },
     'cwfm3jpz': {
       'en': 'Sets',
-      'th': '',
+      'th': 'เซ็ต',
     },
     'kmnfcmrh': {
       'en': 'Working Interval',
-      'th': '',
+      'th': 'เวลาการออกกำลัง',
     },
-    'vnkpip5l': {
+    'uhgjokn5': {
       'en': '0:10',
       'th': '',
     },
-    'ogvpf1sh': {
+    'cs9zcyre': {
       'en': '0:15',
       'th': '',
     },
-    'uhgjokn5': {
+    'wnoi0abl': {
       'en': '0:20',
       'th': '',
     },
-    'cs9zcyre': {
+    'bv5whw9a': {
       'en': '0:25',
       'th': '',
     },
-    'wnoi0abl': {
+    '5z7ufov8': {
       'en': '0:30',
       'th': '',
     },
-    'bv5whw9a': {
+    'dhg24t6h': {
       'en': '0:35',
       'th': '',
     },
-    '5z7ufov8': {
+    'ahpblc9b': {
       'en': '0:40',
       'th': '',
     },
-    'dhg24t6h': {
+    'nkv4nzmi': {
       'en': '0:45',
       'th': '',
     },
-    'ahpblc9b': {
+    '17x0elhu': {
       'en': '0:50',
       'th': '',
     },
-    'nkv4nzmi': {
+    'zh108h1d': {
       'en': '0:55',
       'th': '',
     },
-    '17x0elhu': {
+    'x21k1nk2': {
       'en': '1:00',
       'th': '',
     },
@@ -259,49 +263,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'kb2s1ruc': {
       'en': 'Resting Interval',
-      'th': '',
+      'th': 'ช่วงพัก',
     },
     '1y90fhqr': {
-      'en': '0:10',
+      'en': '0:00',
       'th': '',
     },
     'yjqd77tp': {
-      'en': '0:15',
+      'en': '0:05',
       'th': '',
     },
     'unrhcqna': {
-      'en': '0:20',
+      'en': '0:10',
       'th': '',
     },
     '0y81k3a1': {
-      'en': '0:25',
+      'en': '0:15',
       'th': '',
     },
     'q3mk9tin': {
-      'en': '0:30',
+      'en': '0:20',
       'th': '',
     },
     'dsh2ob8b': {
-      'en': '0:35',
+      'en': '0:25',
       'th': '',
     },
     'ovlfqsj2': {
-      'en': '0:40',
+      'en': '0:30',
       'th': '',
     },
     'alzu9twu': {
-      'en': '0:45',
+      'en': '0:35',
       'th': '',
     },
     'j5qbzxrm': {
-      'en': '0:50',
+      'en': '0:40',
       'th': '',
     },
     '7w7zkzq4': {
-      'en': '0:55',
+      'en': '0:45',
       'th': '',
     },
     '2p6tsv1j': {
+      'en': '0:50',
+      'th': '',
+    },
+    'wk7c9ma4': {
+      'en': '0:55',
+      'th': '',
+    },
+    'o3ozi2is': {
       'en': '1:00',
       'th': '',
     },
@@ -315,7 +327,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'g8h1ojsm': {
       'en': 'Exercise Library',
-      'th': '',
+      'th': 'ท่าออกกำลังกาย',
     },
     'jc36azpj': {
       'en': 'VARIANT',
@@ -354,11 +366,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Miscellaneous
   {
     '0akax9ls': {
-      'en': '',
+      'en':
+          'This app does needs access to your camera, but does not collect video data. This is access is not used within the app, but belongs to a third party API in use',
       'th': '',
     },
     'xp08t648': {
-      'en': '',
+      'en':
+          'This app does needs access to your photos, but does not collect image data. This is access is not used within the app, but belongs to a third party API in use',
+      'th': '',
+    },
+    'rft65jhr': {
+      'en':
+          'This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use',
       'th': '',
     },
     '8hslyamu': {

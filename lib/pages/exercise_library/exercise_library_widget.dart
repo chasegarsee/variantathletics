@@ -36,6 +36,10 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.filteredExercises =
+            FFAppState().exercises.toList().cast<dynamic>();
+      });
       if (FFAppState().isInitialLoad) {
         _model.exerciseList = await queryExercisesRecordOnce();
         FFAppState().update(() {
@@ -132,12 +136,25 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       FlutterFlowDropDown<String>(
                         controller: _model.dropDownValueController ??=
                             FormFieldController<String>(
-                          _model.dropDownValue ??=
-                              FFLocalizations.of(context).getText(
-                            '7lqtxh5b' /* All Exercises */,
-                          ),
+                          _model.dropDownValue ??= 'All Exercises',
                         ),
-                        options: [
+                        options: List<String>.from([
+                          'All Exercises',
+                          'Abs',
+                          'Back',
+                          'Calves',
+                          'Chest',
+                          'Forearms',
+                          'Glues',
+                          'Hamstrings',
+                          'Lower Back',
+                          'Quads',
+                          'Shoulders',
+                          'Traps',
+                          'Triceps',
+                          'Biceps'
+                        ]),
+                        optionLabels: [
                           FFLocalizations.of(context).getText(
                             'lrfgewuu' /* All Exercises */,
                           ),
@@ -176,6 +193,9 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           ),
                           FFLocalizations.of(context).getText(
                             'alwez0i5' /* Triceps */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            'le2bq9v5' /* Biceps */,
                           )
                         ],
                         onChanged: (val) async {

@@ -59,6 +59,10 @@ class FFAppState extends ChangeNotifier {
           }).toList() ??
           _exercises;
     });
+    _safeInit(() {
+      _breakdownLanguage =
+          prefs.getString('ff_breakdownLanguage') ?? _breakdownLanguage;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -219,6 +223,13 @@ class FFAppState extends ChangeNotifier {
     _exercises.insert(_index, _value);
     prefs.setStringList(
         'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
+  }
+
+  String _breakdownLanguage = 'ไทย';
+  String get breakdownLanguage => _breakdownLanguage;
+  set breakdownLanguage(String _value) {
+    _breakdownLanguage = _value;
+    prefs.setString('ff_breakdownLanguage', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

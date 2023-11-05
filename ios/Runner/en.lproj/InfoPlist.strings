@@ -1,1 +1,1 @@
-
+NSMicrophoneUsageDescription = "This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use";

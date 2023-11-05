@@ -61,6 +61,11 @@ class ExercisesRecord extends FirestoreRecord {
   List<String> get details => _details ?? const [];
   bool hasDetails() => _details != null;
 
+  // "breakdown" field.
+  BreakdownStruct? _breakdown;
+  BreakdownStruct get breakdown => _breakdown ?? BreakdownStruct();
+  bool hasBreakdown() => _breakdown != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _videoId = snapshotData['videoId'] as String?;
@@ -71,6 +76,7 @@ class ExercisesRecord extends FirestoreRecord {
     _tags = getDataList(snapshotData['tags']);
     _id = snapshotData['id'] as String?;
     _details = getDataList(snapshotData['details']);
+    _breakdown = BreakdownStruct.maybeFromMap(snapshotData['breakdown']);
   }
 
   static CollectionReference get collection =>
@@ -115,6 +121,7 @@ Map<String, dynamic> createExercisesRecordData({
   String? tag,
   String? imageUrl,
   String? id,
+  BreakdownStruct? breakdown,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -125,8 +132,12 @@ Map<String, dynamic> createExercisesRecordData({
       'tag': tag,
       'imageUrl': imageUrl,
       'id': id,
+      'breakdown': BreakdownStruct().toMap(),
     }.withoutNulls,
   );
+
+  // Handle nested data for "breakdown" field.
+  addBreakdownStructData(firestoreData, breakdown, 'breakdown');
 
   return firestoreData;
 }
@@ -145,7 +156,8 @@ class ExercisesRecordDocumentEquality implements Equality<ExercisesRecord> {
         e1?.imageUrl == e2?.imageUrl &&
         listEquality.equals(e1?.tags, e2?.tags) &&
         e1?.id == e2?.id &&
-        listEquality.equals(e1?.details, e2?.details);
+        listEquality.equals(e1?.details, e2?.details) &&
+        e1?.breakdown == e2?.breakdown;
   }
 
   @override
@@ -158,7 +170,8 @@ class ExercisesRecordDocumentEquality implements Equality<ExercisesRecord> {
         e?.imageUrl,
         e?.tags,
         e?.id,
-        e?.details
+        e?.details,
+        e?.breakdown
       ]);
 
   @override

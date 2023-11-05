@@ -68,6 +68,7 @@ List<dynamic>? convertFBExerciseToJSON(List<ExercisesRecord>? exerciseDoc) {
   List<Map<String, dynamic>> exercisesJson = exerciseDoc.map((exercise) {
     return {
       'details': exercise.details,
+      'breakdown': exercise.breakdown,
       'id': exercise.id,
       'imageUrl': exercise.imageUrl,
       'name': exercise.name,

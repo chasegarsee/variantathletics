@@ -325,47 +325,47 @@ class _TimerWidgetState extends State<TimerWidget> {
                                             optionLabels: [
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'vnkpip5l' /* 0:10 */,
+                                                'uhgjokn5' /* 0:10 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'ogvpf1sh' /* 0:15 */,
+                                                'cs9zcyre' /* 0:15 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'uhgjokn5' /* 0:20 */,
+                                                'wnoi0abl' /* 0:20 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'cs9zcyre' /* 0:25 */,
+                                                'bv5whw9a' /* 0:25 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'wnoi0abl' /* 0:30 */,
+                                                '5z7ufov8' /* 0:30 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'bv5whw9a' /* 0:35 */,
+                                                'dhg24t6h' /* 0:35 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '5z7ufov8' /* 0:40 */,
+                                                'ahpblc9b' /* 0:40 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'dhg24t6h' /* 0:45 */,
+                                                'nkv4nzmi' /* 0:45 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'ahpblc9b' /* 0:50 */,
+                                                '17x0elhu' /* 0:50 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'nkv4nzmi' /* 0:55 */,
+                                                'zh108h1d' /* 0:55 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '17x0elhu' /* 1:00 */,
+                                                'x21k1nk2' /* 1:00 */,
                                               )
                                             ],
                                             onChanged: (val) async {
@@ -455,6 +455,8 @@ class _TimerWidgetState extends State<TimerWidget> {
                                                   40000,
                                             ),
                                             options: List<int>.from([
+                                              0000,
+                                              5000,
                                               10000,
                                               15000,
                                               20000,
@@ -470,47 +472,55 @@ class _TimerWidgetState extends State<TimerWidget> {
                                             optionLabels: [
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '1y90fhqr' /* 0:10 */,
+                                                '1y90fhqr' /* 0:00 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'yjqd77tp' /* 0:15 */,
+                                                'yjqd77tp' /* 0:05 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'unrhcqna' /* 0:20 */,
+                                                'unrhcqna' /* 0:10 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '0y81k3a1' /* 0:25 */,
+                                                '0y81k3a1' /* 0:15 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'q3mk9tin' /* 0:30 */,
+                                                'q3mk9tin' /* 0:20 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'dsh2ob8b' /* 0:35 */,
+                                                'dsh2ob8b' /* 0:25 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'ovlfqsj2' /* 0:40 */,
+                                                'ovlfqsj2' /* 0:30 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'alzu9twu' /* 0:45 */,
+                                                'alzu9twu' /* 0:35 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'j5qbzxrm' /* 0:50 */,
+                                                'j5qbzxrm' /* 0:40 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '7w7zkzq4' /* 0:55 */,
+                                                '7w7zkzq4' /* 0:45 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '2p6tsv1j' /* 1:00 */,
+                                                '2p6tsv1j' /* 0:50 */,
+                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'wk7c9ma4' /* 0:55 */,
+                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'o3ozi2is' /* 1:00 */,
                                               )
                                             ],
                                             onChanged: (val) async {
