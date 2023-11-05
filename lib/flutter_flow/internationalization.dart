@@ -172,16 +172,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'หน้าแขน',
     },
     'r7x3za7i': {
-      'en': 'Please select...',
-      'th': '',
+      'en': 'select a muscle group...',
+      'th': 'เลือกกลุ่มกล้าม...',
     },
     'cj4l599l': {
       'en': 'Search for target muscle group',
-      'th': '',
+      'th': 'ค้นหากลุ่มกล้าม',
     },
     'd2nwpzvd': {
       'en': 'Timer',
-      'th': '',
+      'th': 'จับเวลา',
     },
     '30zndnrx': {
       'en': 'library',
@@ -245,11 +245,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '0:50',
       'th': '',
     },
-    'zh108h1d': {
+    '1hr8d4wn': {
       'en': '0:55',
       'th': '',
     },
-    'x21k1nk2': {
+    '4omtlso0': {
       'en': '1:00',
       'th': '',
     },
@@ -309,11 +309,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '0:50',
       'th': '',
     },
-    'wk7c9ma4': {
+    'r92yrir2': {
       'en': '0:55',
       'th': '',
     },
-    'o3ozi2is': {
+    '9zrg43kk': {
       'en': '1:00',
       'th': '',
     },
@@ -323,6 +323,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gpeeo66v': {
       'en': 'Search for an item...',
+      'th': '',
+    },
+    'd77jisee': {
+      'en': '',
       'th': '',
     },
     'g8h1ojsm': {
@@ -375,7 +379,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'This app does needs access to your photos, but does not collect image data. This is access is not used within the app, but belongs to a third party API in use',
       'th': '',
     },
-    'rft65jhr': {
+    'qlooevri': {
       'en':
           'This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use',
       'th': '',

@@ -138,13 +138,6 @@ class _TimerWidgetState extends State<TimerWidget> {
                                 if (shouldUpdate) setState(() {});
                               },
                               onEnded: () async {
-                                setState(() {
-                                  _model.currentInterval =
-                                      _model.currentInterval ==
-                                              _model.workingInterval
-                                          ? _model.restingInterval
-                                          : _model.workingInterval;
-                                });
                                 if (FFAppState().playSound) {
                                   _model.soundPlayer ??= AudioPlayer();
                                   if (_model.soundPlayer!.playing) {
@@ -155,6 +148,13 @@ class _TimerWidgetState extends State<TimerWidget> {
                                       .setAsset('assets/audios/ding.mp3')
                                       .then((_) => _model.soundPlayer!.play());
                                 }
+                                setState(() {
+                                  _model.currentInterval =
+                                      _model.currentInterval ==
+                                              _model.workingInterval
+                                          ? _model.restingInterval
+                                          : _model.workingInterval;
+                                });
                                 if (_model.currentInterval ==
                                     _model.restingInterval) {
                                   setState(() {
@@ -307,20 +307,20 @@ class _TimerWidgetState extends State<TimerWidget> {
                                                     .workingIntervalValueController ??=
                                                 FormFieldController<int>(
                                               _model.workingIntervalValue ??=
-                                                  20000,
+                                                  20999,
                                             ),
                                             options: List<int>.from([
-                                              10000,
-                                              15000,
-                                              20000,
-                                              25000,
-                                              30000,
-                                              35000,
-                                              40000,
-                                              45000,
-                                              50000,
-                                              55000,
-                                              60000
+                                              10999,
+                                              15999,
+                                              20999,
+                                              25999,
+                                              30999,
+                                              30999,
+                                              40999,
+                                              45999,
+                                              50999,
+                                              55999,
+                                              60999
                                             ]),
                                             optionLabels: [
                                               FFLocalizations.of(context)
@@ -361,11 +361,11 @@ class _TimerWidgetState extends State<TimerWidget> {
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'zh108h1d' /* 0:55 */,
+                                                '1hr8d4wn' /* 0:55 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'x21k1nk2' /* 1:00 */,
+                                                '4omtlso0' /* 1:00 */,
                                               )
                                             ],
                                             onChanged: (val) async {
@@ -516,11 +516,11 @@ class _TimerWidgetState extends State<TimerWidget> {
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'wk7c9ma4' /* 0:55 */,
+                                                'r92yrir2' /* 0:55 */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'o3ozi2is' /* 1:00 */,
+                                                '9zrg43kk' /* 1:00 */,
                                               )
                                             ],
                                             onChanged: (val) async {
@@ -700,11 +700,14 @@ class _TimerWidgetState extends State<TimerWidget> {
                                             FFAppState().isTimerRunning = false;
                                           });
                                         },
-                                        text: '',
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'd77jisee' /*  */,
+                                        ),
                                         icon: FaIcon(
                                           FontAwesomeIcons.stop,
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryText,
                                           size: 24.0,
                                         ),
                                         options: FFButtonOptions(

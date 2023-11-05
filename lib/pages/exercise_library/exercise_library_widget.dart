@@ -145,7 +145,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           'Calves',
                           'Chest',
                           'Forearms',
-                          'Glues',
+                          'Glutes',
                           'Hamstrings',
                           'Lower Back',
                           'Quads',
@@ -224,7 +224,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             FlutterFlowTheme.of(context).labelMedium,
                         textStyle: FlutterFlowTheme.of(context).bodyMedium,
                         hintText: FFLocalizations.of(context).getText(
-                          'r7x3za7i' /* Please select... */,
+                          'r7x3za7i' /* select a muscle group... */,
                         ),
                         searchHintText: FFLocalizations.of(context).getText(
                           'cj4l599l' /* Search for target muscle group */,
