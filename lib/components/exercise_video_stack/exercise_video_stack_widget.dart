@@ -226,7 +226,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                             child: Builder(
                                                               builder:
                                                                   (context) {
-                                                                final detail =
+                                                                final enDetails =
                                                                     pageViewExercisesRecord
                                                                             ?.breakdown
                                                                             ?.en
@@ -242,14 +242,14 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                   scrollDirection:
                                                                       Axis.vertical,
                                                                   itemCount:
-                                                                      detail
+                                                                      enDetails
                                                                           .length,
                                                                   itemBuilder:
                                                                       (context,
-                                                                          detailIndex) {
-                                                                    final detailItem =
-                                                                        detail[
-                                                                            detailIndex];
+                                                                          enDetailsIndex) {
+                                                                    final enDetailsItem =
+                                                                        enDetails[
+                                                                            enDetailsIndex];
                                                                     return Align(
                                                                       alignment: AlignmentDirectional(
                                                                           -1.00,
@@ -263,7 +263,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                             10.0),
                                                                         child:
                                                                             Text(
-                                                                          '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
+                                                                          '${functions.indexPlusOne(enDetailsIndex).toString()}. ${enDetailsItem}',
                                                                           textAlign:
                                                                               TextAlign.start,
                                                                           style: FlutterFlowTheme.of(context)
@@ -296,7 +296,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                             child: Builder(
                                                               builder:
                                                                   (context) {
-                                                                final detail =
+                                                                final thDetails =
                                                                     pageViewExercisesRecord
                                                                             ?.breakdown
                                                                             ?.th
@@ -312,14 +312,14 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                   scrollDirection:
                                                                       Axis.vertical,
                                                                   itemCount:
-                                                                      detail
+                                                                      thDetails
                                                                           .length,
                                                                   itemBuilder:
                                                                       (context,
-                                                                          detailIndex) {
-                                                                    final detailItem =
-                                                                        detail[
-                                                                            detailIndex];
+                                                                          thDetailsIndex) {
+                                                                    final thDetailsItem =
+                                                                        thDetails[
+                                                                            thDetailsIndex];
                                                                     return Align(
                                                                       alignment: AlignmentDirectional(
                                                                           -1.00,
@@ -333,7 +333,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                             10.0),
                                                                         child:
                                                                             Text(
-                                                                          '${functions.indexPlusOne(detailIndex).toString()}. ${detailItem}',
+                                                                          '${functions.indexPlusOne(thDetailsIndex).toString()}. ${thDetailsItem}',
                                                                           textAlign:
                                                                               TextAlign.start,
                                                                           style: FlutterFlowTheme.of(context)

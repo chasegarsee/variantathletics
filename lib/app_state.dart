@@ -170,7 +170,7 @@ class FFAppState extends ChangeNotifier {
     prefs.setBool('ff_playSound', _value);
   }
 
-  String _breakdownLanguage = 'ไทย';
+  String _breakdownLanguage = 'th';
   String get breakdownLanguage => _breakdownLanguage;
   set breakdownLanguage(String _value) {
     _breakdownLanguage = _value;
