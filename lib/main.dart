@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
 
-    Future.delayed(Duration(milliseconds: 4000),
+    Future.delayed(Duration(milliseconds: 3000),
         () => setState(() => _appStateNotifier.stopShowingSplashImage()));
   }
 

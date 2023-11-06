@@ -18,6 +18,7 @@ class ExercisesStruct extends FFFirebaseStruct {
     String? name,
     List<String>? setArr,
     List<String>? usersCompleted,
+    BreakdownStruct? breakdown,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _exerciseId = exerciseId,
         _sets = sets,
@@ -27,6 +28,7 @@ class ExercisesStruct extends FFFirebaseStruct {
         _name = name,
         _setArr = setArr,
         _usersCompleted = usersCompleted,
+        _breakdown = breakdown,
         super(firestoreUtilData);
 
   // "exerciseId" field.
@@ -83,6 +85,14 @@ class ExercisesStruct extends FFFirebaseStruct {
       updateFn(_usersCompleted ??= []);
   bool hasUsersCompleted() => _usersCompleted != null;
 
+  // "breakdown" field.
+  BreakdownStruct? _breakdown;
+  BreakdownStruct get breakdown => _breakdown ?? BreakdownStruct();
+  set breakdown(BreakdownStruct? val) => _breakdown = val;
+  void updateBreakdown(Function(BreakdownStruct) updateFn) =>
+      updateFn(_breakdown ??= BreakdownStruct());
+  bool hasBreakdown() => _breakdown != null;
+
   static ExercisesStruct fromMap(Map<String, dynamic> data) => ExercisesStruct(
         exerciseId: data['exerciseId'] as String?,
         sets: castToType<int>(data['sets']),
@@ -92,6 +102,7 @@ class ExercisesStruct extends FFFirebaseStruct {
         name: data['name'] as String?,
         setArr: getDataList(data['setArr']),
         usersCompleted: getDataList(data['usersCompleted']),
+        breakdown: BreakdownStruct.maybeFromMap(data['breakdown']),
       );
 
   static ExercisesStruct? maybeFromMap(dynamic data) =>
@@ -106,6 +117,7 @@ class ExercisesStruct extends FFFirebaseStruct {
         'name': _name,
         'setArr': _setArr,
         'usersCompleted': _usersCompleted,
+        'breakdown': _breakdown?.toMap(),
       }.withoutNulls;
 
   @override
@@ -143,6 +155,10 @@ class ExercisesStruct extends FFFirebaseStruct {
           _usersCompleted,
           ParamType.String,
           true,
+        ),
+        'breakdown': serializeParam(
+          _breakdown,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -188,6 +204,12 @@ class ExercisesStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
+        breakdown: deserializeStructParam(
+          data['breakdown'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: BreakdownStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -204,7 +226,8 @@ class ExercisesStruct extends FFFirebaseStruct {
         exerciseImageUrl == other.exerciseImageUrl &&
         name == other.name &&
         listEquality.equals(setArr, other.setArr) &&
-        listEquality.equals(usersCompleted, other.usersCompleted);
+        listEquality.equals(usersCompleted, other.usersCompleted) &&
+        breakdown == other.breakdown;
   }
 
   @override
@@ -216,7 +239,8 @@ class ExercisesStruct extends FFFirebaseStruct {
         exerciseImageUrl,
         name,
         setArr,
-        usersCompleted
+        usersCompleted,
+        breakdown
       ]);
 }
 
@@ -227,6 +251,7 @@ ExercisesStruct createExercisesStruct({
   bool? isSuperSet,
   String? exerciseImageUrl,
   String? name,
+  BreakdownStruct? breakdown,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -239,6 +264,7 @@ ExercisesStruct createExercisesStruct({
       isSuperSet: isSuperSet,
       exerciseImageUrl: exerciseImageUrl,
       name: name,
+      breakdown: breakdown ?? (clearUnsetFields ? BreakdownStruct() : null),
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -293,6 +319,14 @@ Map<String, dynamic> getExercisesFirestoreData(
     return {};
   }
   final firestoreData = mapToFirestore(exercises.toMap());
+
+  // Handle nested data for "breakdown" field.
+  addBreakdownStructData(
+    firestoreData,
+    exercises.hasBreakdown() ? exercises.breakdown : null,
+    'breakdown',
+    forFieldValue,
+  );
 
   // Add any Firestore field values
   exercises.firestoreUtilData.fieldValues

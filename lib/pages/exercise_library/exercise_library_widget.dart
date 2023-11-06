@@ -36,12 +36,9 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.filteredExercises =
-            FFAppState().exercises.toList().cast<dynamic>();
-      });
-      if (FFAppState().isInitialLoad) {
+      if (FFAppState().exercises.length <= 0) {
         _model.exerciseList = await queryExercisesRecordOnce();
+        await Future.delayed(const Duration(milliseconds: 1000));
         FFAppState().update(() {
           FFAppState().exercises = functions
               .convertFBExerciseToJSON(_model.exerciseList?.toList())!

@@ -283,7 +283,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                         ),
                                                       if (FFAppState()
                                                               .breakdownLanguage ==
-                                                          'ไทย')
+                                                          'th')
                                                         Flexible(
                                                           child: Padding(
                                                             padding:
@@ -361,13 +361,16 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                               FFAppState()
                                                                       .breakdownLanguage =
                                                                   FFAppState().breakdownLanguage ==
-                                                                          'ไทย'
+                                                                          'th'
                                                                       ? 'en'
-                                                                      : 'ไทย';
+                                                                      : 'th';
                                                             });
                                                           },
                                                           text: FFAppState()
-                                                              .breakdownLanguage,
+                                                                      .breakdownLanguage ==
+                                                                  'en'
+                                                              ? 'en'
+                                                              : 'ไทย',
                                                           options:
                                                               FFButtonOptions(
                                                             width: 75.0,
