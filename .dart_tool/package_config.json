@@ -9,7 +9,7 @@
     },
     {
       "name": "archive",
-      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/archive-3.4.7",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/archive-3.4.8",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -561,7 +561,7 @@
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/sqflite_common-2.5.0",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/sqflite_common-2.5.0+1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -788,7 +788,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-06T15:33:41.079320Z",
+  "generated": "2023-11-06T17:46:08.012996Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
