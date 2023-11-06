@@ -9,7 +9,7 @@
     },
     {
       "name": "archive",
-      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/archive-3.4.6",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/archive-3.4.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -788,7 +788,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-03T16:43:30.189126Z",
+  "generated": "2023-11-06T15:33:41.079320Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
