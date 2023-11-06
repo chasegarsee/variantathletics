@@ -30,6 +30,8 @@ class ExerciseLibraryModel extends FlutterFlowModel<ExerciseLibraryWidget> {
   void updateFilteredExercisesAtIndex(int index, Function(dynamic) updateFn) =>
       filteredExercises[index] = updateFn(filteredExercises[index]);
 
+  String? status = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

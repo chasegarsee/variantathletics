@@ -49,17 +49,6 @@ class FFAppState extends ChangeNotifier {
       _playSound = prefs.getBool('ff_playSound') ?? _playSound;
     });
     _safeInit(() {
-      _exercises = prefs.getStringList('ff_exercises')?.map((x) {
-            try {
-              return jsonDecode(x);
-            } catch (e) {
-              print("Can't decode persisted json. Error: $e.");
-              return {};
-            }
-          }).toList() ??
-          _exercises;
-    });
-    _safeInit(() {
       _breakdownLanguage =
           prefs.getString('ff_breakdownLanguage') ?? _breakdownLanguage;
     });
@@ -181,47 +170,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setBool('ff_playSound', _value);
   }
 
-  List<dynamic> _exercises = [];
-  List<dynamic> get exercises => _exercises;
-  set exercises(List<dynamic> _value) {
-    _exercises = _value;
-    prefs.setStringList(
-        'ff_exercises', _value.map((x) => jsonEncode(x)).toList());
-  }
-
-  void addToExercises(dynamic _value) {
-    _exercises.add(_value);
-    prefs.setStringList(
-        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
-  }
-
-  void removeFromExercises(dynamic _value) {
-    _exercises.remove(_value);
-    prefs.setStringList(
-        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
-  }
-
-  void removeAtIndexFromExercises(int _index) {
-    _exercises.removeAt(_index);
-    prefs.setStringList(
-        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
-  }
-
-  void updateExercisesAtIndex(
-    int _index,
-    dynamic Function(dynamic) updateFn,
-  ) {
-    _exercises[_index] = updateFn(_exercises[_index]);
-    prefs.setStringList(
-        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
-  }
-
-  void insertAtIndexInExercises(int _index, dynamic _value) {
-    _exercises.insert(_index, _value);
-    prefs.setStringList(
-        'ff_exercises', _exercises.map((x) => jsonEncode(x)).toList());
-  }
-
   String _breakdownLanguage = 'ไทย';
   String get breakdownLanguage => _breakdownLanguage;
   set breakdownLanguage(String _value) {
@@ -234,6 +182,35 @@ class FFAppState extends ChangeNotifier {
   set isInitialLoad(bool _value) {
     _isInitialLoad = _value;
     prefs.setBool('ff_isInitialLoad', _value);
+  }
+
+  List<dynamic> _exercises = [];
+  List<dynamic> get exercises => _exercises;
+  set exercises(List<dynamic> _value) {
+    _exercises = _value;
+  }
+
+  void addToExercises(dynamic _value) {
+    _exercises.add(_value);
+  }
+
+  void removeFromExercises(dynamic _value) {
+    _exercises.remove(_value);
+  }
+
+  void removeAtIndexFromExercises(int _index) {
+    _exercises.removeAt(_index);
+  }
+
+  void updateExercisesAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _exercises[_index] = updateFn(_exercises[_index]);
+  }
+
+  void insertAtIndexInExercises(int _index, dynamic _value) {
+    _exercises.insert(_index, _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

@@ -38,7 +38,6 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (FFAppState().exercises.length <= 0) {
         _model.exerciseList = await queryExercisesRecordOnce();
-        await Future.delayed(const Duration(milliseconds: 1000));
         FFAppState().update(() {
           FFAppState().exercises = functions
               .convertFBExerciseToJSON(_model.exerciseList?.toList())!
@@ -50,6 +49,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           _model.filteredExercises =
               FFAppState().exercises.toList().cast<dynamic>();
         });
+        return;
       } else {
         FFAppState().update(() {
           FFAppState().exercises =
@@ -60,6 +60,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           _model.filteredExercises =
               FFAppState().exercises.toList().cast<dynamic>();
         });
+        return;
       }
     });
   }
