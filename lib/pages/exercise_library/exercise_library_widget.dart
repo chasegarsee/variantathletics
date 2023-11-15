@@ -1,9 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -99,7 +102,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           automaticallyImplyLeading: true,
           title: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Align(
                 alignment: AlignmentDirectional(0.00, 0.00),
@@ -115,7 +118,76 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
               ),
             ],
           ),
-          actions: [],
+          actions: [
+            FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 20.0,
+              borderWidth: 0.0,
+              buttonSize: 40.0,
+              icon: Icon(
+                Icons.person,
+                color: FlutterFlowTheme.of(context).accent2,
+                size: 25.0,
+              ),
+              onPressed: () async {
+                context.pushNamed('profile');
+              },
+            ),
+            Visibility(
+              visible: !FFAppState().isTimerRunning,
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 20.0,
+                borderWidth: 0.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.timer,
+                  color: FlutterFlowTheme.of(context).accent2,
+                  size: 25.0,
+                ),
+                onPressed: () async {
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false)) {
+                    context.pushNamed('timer');
+
+                    return;
+                  } else {
+                    setState(() {
+                      _model.showDialoge = true;
+                    });
+                    return;
+                  }
+                },
+              ),
+            ),
+            Visibility(
+              visible: !FFAppState().isTimerRunning,
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 20.0,
+                borderWidth: 0.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.library_books,
+                  color: FlutterFlowTheme.of(context).accent2,
+                  size: 25.0,
+                ),
+                onPressed: () async {
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false)) {
+                    context.pushNamed('program');
+
+                    return;
+                  } else {
+                    setState(() {
+                      _model.showDialoge = true;
+                    });
+                    return;
+                  }
+                },
+              ),
+            ),
+          ],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -570,40 +642,152 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                     ],
                   ),
                 ),
-                if (!FFAppState().isTimerRunning)
+                if (_model.showDialoge)
                   Align(
-                    alignment: AlignmentDirectional(-0.03, 0.99),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
-                      child: FFButtonWidget(
-                        onPressed: FFAppState().isTimerRunning
-                            ? null
-                            : () async {
-                                context.pushNamed('timer');
-                              },
-                        text: FFLocalizations.of(context).getText(
-                          'd2nwpzvd' /* Timer */,
+                    alignment: AlignmentDirectional(-0.00, -0.18),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 2.0,
+                          sigmaY: 2.0,
                         ),
-                        options: FFButtonOptions(
-                          width: MediaQuery.sizeOf(context).width * 0.5,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).accent2,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Jost',
-                                    color: Colors.white,
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: MediaQuery.sizeOf(context).height * 1.0,
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 20.0),
+                              child: Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 4.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 20.0, 20.0, 20.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Flexible(
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'rjfasw7r' /* Oops! */,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleLarge,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, -1.00),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  _model.showDialoge = false;
+                                                });
+                                              },
+                                              child: Icon(
+                                                Icons.close_sharp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                                size: 36.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 10.0, 10.0, 10.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'vf1zei5h' /* It looks like you dont have ac... */,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          setState(() {
+                                            _model.showDialoge = false;
+                                          });
+                                          await launchURL(
+                                              'https://iamvariant.com');
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          '90oxmmck' /* Get Access! */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  1.0,
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent2,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                                ),
+                              ),
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ),

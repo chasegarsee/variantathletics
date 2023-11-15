@@ -179,9 +179,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for target muscle group',
       'th': 'ค้นหากลุ่มกล้าม',
     },
-    'd2nwpzvd': {
-      'en': 'Timer',
-      'th': 'จับเวลา',
+    'rjfasw7r': {
+      'en': 'Oops!',
+      'th': 'อะโอห์',
+    },
+    'vf1zei5h': {
+      'en':
+          'It looks like you dont have access to this page. Click the button below to gain access!',
+      'th':
+          'ดูเหมือนว่าคุณจะไม่สามารถเข้าถึงหน้านี้ได้ คลิกปุ่มด้านล่างเพื่อเข้าใช้งาน!',
+    },
+    '90oxmmck': {
+      'en': 'Get Access!',
+      'th': 'ได้รับการเข้าถึง',
     },
     '30zndnrx': {
       'en': 'library',
@@ -333,6 +343,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Exercise Library',
       'th': 'ท่าออกกำลังกาย',
     },
+    'pmihhz0h': {
+      'en': 'Program',
+      'th': 'โปรแกรม',
+    },
     'jc36azpj': {
       'en': 'VARIANT',
       'th': '',
@@ -342,14 +356,151 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
-  // deleteProgramBottomSheet
+  // program
   {
-    'garzgyg4': {
-      'en': 'Delete Program',
+    '3scaqe2e': {
+      'en': 'Program',
       'th': '',
     },
-    'vz8off1a': {
-      'en': 'Cancel',
+    'xj8pase6': {
+      'en': 'Sets',
+      'th': 'เซ็ต',
+    },
+    'ed2bmguh': {
+      'en': 'Reps',
+      'th': 'เร็พ',
+    },
+    'f99yl0no': {
+      'en': 'tempo',
+      'th': '',
+    },
+    'ntm5c1n4': {
+      'en': 'Work Time',
+      'th': 'เวลาออกแรง',
+    },
+    '81yyycmt': {
+      'en': 'Rest Time',
+      'th': 'เวลาพัก',
+    },
+    'pus4pdls': {
+      'en': 'Select Workout To Begin',
+      'th': 'เลือกการออกกำลังกายเพื่อเริ่มต้น',
+    },
+    'di4t2jeu': {
+      'en': 'Complete Workout',
+      'th': 'เล่นเสร็จแล้ว',
+    },
+    's2xpl59s': {
+      'en': 'Loading...',
+      'th': '',
+    },
+    'vnvch7gg': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // signin
+  {
+    '6qbw7glm': {
+      'en': 'VARIANT',
+      'th': '',
+    },
+    'hek6bip9': {
+      'en': 'Sign In',
+      'th': 'เข้าสู่ระบบ',
+    },
+    'b8906kon': {
+      'en': 'Let\'s get started by filling out the form below.',
+      'th': 'เริ่มต้นด้วยการกรอกแบบฟอร์มด้านล่าง',
+    },
+    'u4uq9csb': {
+      'en': 'Email',
+      'th': 'อีเมล',
+    },
+    '3b9k8ylr': {
+      'en': 'Password',
+      'th': 'รหัสผ่าน',
+    },
+    'lpqe2uhr': {
+      'en': 'Sign In',
+      'th': 'เข้าสู่ระบบ',
+    },
+    'fenb4djh': {
+      'en': 'Don\'t have an account? ',
+      'th': '',
+    },
+    'z15uwdds': {
+      'en': ' Sign Up here',
+      'th': '',
+    },
+    '5ovtiq91': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // signup
+  {
+    'xdjla4c1': {
+      'en': 'VARIANT',
+      'th': '',
+    },
+    'jx46prko': {
+      'en': 'Sign Up',
+      'th': 'ลงชื่อ',
+    },
+    '90njkjzq': {
+      'en': 'Let\'s get started by filling out the form below.',
+      'th': 'เริ่มต้นด้วยการกรอกแบบฟอร์มด้านล่าง',
+    },
+    '30kf6clo': {
+      'en': 'Email',
+      'th': '',
+    },
+    'z36zvri6': {
+      'en': 'Password',
+      'th': 'รหัสผ่าน',
+    },
+    'zccbj3xo': {
+      'en': 'Confirm Password',
+      'th': 'ยืนยันรหัสผ่าน',
+    },
+    's14s2wyk': {
+      'en': 'Let\'s get started',
+      'th': 'มาเริ่มกันเลย',
+    },
+    '6v1li79d': {
+      'en': 'Already have an account? ',
+      'th': '',
+    },
+    'fxka3kf7': {
+      'en': 'Sign In here',
+      'th': '',
+    },
+    'cp9imxx4': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // profile
+  {
+    '606fkzz9': {
+      'en': 'Profile',
+      'th': 'โพรไฟล์',
+    },
+    '577yksax': {
+      'en': 'Switch to Dark Mode',
+      'th': '',
+    },
+    'zbmlau97': {
+      'en': 'Switch to Light Mode',
+      'th': '',
+    },
+    'h0v7c7oj': {
+      'en': 'Log Out',
+      'th': 'ออกจากระบบ',
+    },
+    '8g0phl9g': {
+      'en': '__',
       'th': '',
     },
   },
@@ -364,6 +515,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '0ongiyg0': {
       'en': 'reps',
+      'th': '',
+    },
+  },
+  // daysPlaceholder
+  {
+    '48otjann': {
+      'en': 'D-1',
+      'th': '',
+    },
+    'lz75stmz': {
+      'en': 'D-2',
+      'th': '',
+    },
+    '0i3waa86': {
+      'en': 'D-3',
+      'th': '',
+    },
+    'qspbidd5': {
+      'en': 'D-4',
+      'th': '',
+    },
+    'o09oktwo': {
+      'en': 'D-5',
+      'th': '',
+    },
+    'oasq6mrb': {
+      'en': 'D-6',
+      'th': '',
+    },
+    'vwg66sbq': {
+      'en': 'D-7',
       'th': '',
     },
   },

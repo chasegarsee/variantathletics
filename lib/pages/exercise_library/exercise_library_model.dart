@@ -1,9 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'exercise_library_widget.dart' show ExerciseLibraryWidget;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -31,6 +34,8 @@ class ExerciseLibraryModel extends FlutterFlowModel<ExerciseLibraryWidget> {
       filteredExercises[index] = updateFn(filteredExercises[index]);
 
   String? status = '';
+
+  bool showDialoge = false;
 
   ///  State fields for stateful widgets in this page.
 

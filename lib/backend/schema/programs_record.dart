@@ -16,67 +16,34 @@ class ProgramsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "createdAt" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  bool hasCreatedAt() => _createdAt != null;
-
-  // "description" field.
-  String? _description;
-  String get description => _description ?? '';
-  bool hasDescription() => _description != null;
-
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   bool hasName() => _name != null;
-
-  // "programPhotoUrl" field.
-  String? _programPhotoUrl;
-  String get programPhotoUrl => _programPhotoUrl ?? '';
-  bool hasProgramPhotoUrl() => _programPhotoUrl != null;
-
-  // "color" field.
-  String? _color;
-  String get color => _color ?? '';
-  bool hasColor() => _color != null;
-
-  // "photoBlurHash" field.
-  String? _photoBlurHash;
-  String get photoBlurHash => _photoBlurHash ?? '';
-  bool hasPhotoBlurHash() => _photoBlurHash != null;
-
-  // "length" field.
-  String? _length;
-  String get length => _length ?? '';
-  bool hasLength() => _length != null;
 
   // "isLive" field.
   bool? _isLive;
   bool get isLive => _isLive ?? false;
   bool hasIsLive() => _isLive != null;
 
-  // "isDailyWorkout" field.
-  bool? _isDailyWorkout;
-  bool get isDailyWorkout => _isDailyWorkout ?? false;
-  bool hasIsDailyWorkout() => _isDailyWorkout != null;
-
   // "id" field.
   String? _id;
   String get id => _id ?? '';
   bool hasId() => _id != null;
 
+  // "weeks" field.
+  List<WeeksStruct>? _weeks;
+  List<WeeksStruct> get weeks => _weeks ?? const [];
+  bool hasWeeks() => _weeks != null;
+
   void _initializeFields() {
-    _createdAt = snapshotData['createdAt'] as DateTime?;
-    _description = snapshotData['description'] as String?;
     _name = snapshotData['name'] as String?;
-    _programPhotoUrl = snapshotData['programPhotoUrl'] as String?;
-    _color = snapshotData['color'] as String?;
-    _photoBlurHash = snapshotData['photoBlurHash'] as String?;
-    _length = snapshotData['length'] as String?;
     _isLive = snapshotData['isLive'] as bool?;
-    _isDailyWorkout = snapshotData['isDailyWorkout'] as bool?;
     _id = snapshotData['id'] as String?;
+    _weeks = getStructList(
+      snapshotData['weeks'],
+      WeeksStruct.fromMap,
+    );
   }
 
   static CollectionReference get collection =>
@@ -114,28 +81,14 @@ class ProgramsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createProgramsRecordData({
-  DateTime? createdAt,
-  String? description,
   String? name,
-  String? programPhotoUrl,
-  String? color,
-  String? photoBlurHash,
-  String? length,
   bool? isLive,
-  bool? isDailyWorkout,
   String? id,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'createdAt': createdAt,
-      'description': description,
       'name': name,
-      'programPhotoUrl': programPhotoUrl,
-      'color': color,
-      'photoBlurHash': photoBlurHash,
-      'length': length,
       'isLive': isLive,
-      'isDailyWorkout': isDailyWorkout,
       'id': id,
     }.withoutNulls,
   );
@@ -148,31 +101,16 @@ class ProgramsRecordDocumentEquality implements Equality<ProgramsRecord> {
 
   @override
   bool equals(ProgramsRecord? e1, ProgramsRecord? e2) {
-    return e1?.createdAt == e2?.createdAt &&
-        e1?.description == e2?.description &&
-        e1?.name == e2?.name &&
-        e1?.programPhotoUrl == e2?.programPhotoUrl &&
-        e1?.color == e2?.color &&
-        e1?.photoBlurHash == e2?.photoBlurHash &&
-        e1?.length == e2?.length &&
+    const listEquality = ListEquality();
+    return e1?.name == e2?.name &&
         e1?.isLive == e2?.isLive &&
-        e1?.isDailyWorkout == e2?.isDailyWorkout &&
-        e1?.id == e2?.id;
+        e1?.id == e2?.id &&
+        listEquality.equals(e1?.weeks, e2?.weeks);
   }
 
   @override
-  int hash(ProgramsRecord? e) => const ListEquality().hash([
-        e?.createdAt,
-        e?.description,
-        e?.name,
-        e?.programPhotoUrl,
-        e?.color,
-        e?.photoBlurHash,
-        e?.length,
-        e?.isLive,
-        e?.isDailyWorkout,
-        e?.id
-      ]);
+  int hash(ProgramsRecord? e) =>
+      const ListEquality().hash([e?.name, e?.isLive, e?.id, e?.weeks]);
 
   @override
   bool isValidKey(Object? o) => o is ProgramsRecord;

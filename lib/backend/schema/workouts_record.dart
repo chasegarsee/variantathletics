@@ -31,11 +31,6 @@ class WorkoutsRecord extends FirestoreRecord {
   String get programId => _programId ?? '';
   bool hasProgramId() => _programId != null;
 
-  // "schedule" field.
-  ScheduleStruct? _schedule;
-  ScheduleStruct get schedule => _schedule ?? ScheduleStruct();
-  bool hasSchedule() => _schedule != null;
-
   // "workoutIndex" field.
   int? _workoutIndex;
   int get workoutIndex => _workoutIndex ?? 0;
@@ -70,7 +65,6 @@ class WorkoutsRecord extends FirestoreRecord {
     _description = snapshotData['description'] as String?;
     _name = snapshotData['name'] as String?;
     _programId = snapshotData['programId'] as String?;
-    _schedule = ScheduleStruct.maybeFromMap(snapshotData['schedule']);
     _workoutIndex = castToType<int>(snapshotData['workoutIndex']);
     _date = snapshotData['date'] as DateTime?;
     _isRestDay = snapshotData['isRestDay'] as bool?;
@@ -120,7 +114,6 @@ Map<String, dynamic> createWorkoutsRecordData({
   String? description,
   String? name,
   String? programId,
-  ScheduleStruct? schedule,
   int? workoutIndex,
   DateTime? date,
   bool? isRestDay,
@@ -131,16 +124,12 @@ Map<String, dynamic> createWorkoutsRecordData({
       'description': description,
       'name': name,
       'programId': programId,
-      'schedule': ScheduleStruct().toMap(),
       'workoutIndex': workoutIndex,
       'date': date,
       'isRestDay': isRestDay,
       'id': id,
     }.withoutNulls,
   );
-
-  // Handle nested data for "schedule" field.
-  addScheduleStructData(firestoreData, schedule, 'schedule');
 
   return firestoreData;
 }
@@ -154,7 +143,6 @@ class WorkoutsRecordDocumentEquality implements Equality<WorkoutsRecord> {
     return e1?.description == e2?.description &&
         e1?.name == e2?.name &&
         e1?.programId == e2?.programId &&
-        e1?.schedule == e2?.schedule &&
         e1?.workoutIndex == e2?.workoutIndex &&
         e1?.date == e2?.date &&
         e1?.isRestDay == e2?.isRestDay &&
@@ -168,7 +156,6 @@ class WorkoutsRecordDocumentEquality implements Equality<WorkoutsRecord> {
         e?.description,
         e?.name,
         e?.programId,
-        e?.schedule,
         e?.workoutIndex,
         e?.date,
         e?.isRestDay,

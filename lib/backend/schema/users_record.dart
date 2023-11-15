@@ -67,6 +67,11 @@ class UsersRecord extends FirestoreRecord {
       _completedWorkouts ?? const [];
   bool hasCompletedWorkouts() => _completedWorkouts != null;
 
+  // "isSubbed" field.
+  bool? _isSubbed;
+  bool get isSubbed => _isSubbed ?? false;
+  bool hasIsSubbed() => _isSubbed != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -84,6 +89,7 @@ class UsersRecord extends FirestoreRecord {
       snapshotData['completedWorkouts'],
       CompletedWorkoutsStruct.fromMap,
     );
+    _isSubbed = snapshotData['isSubbed'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -128,6 +134,7 @@ Map<String, dynamic> createUsersRecordData({
   String? phoneNumber,
   bool? isCoach,
   String? currentProgramId,
+  bool? isSubbed,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -139,6 +146,7 @@ Map<String, dynamic> createUsersRecordData({
       'phone_number': phoneNumber,
       'isCoach': isCoach,
       'currentProgramId': currentProgramId,
+      'isSubbed': isSubbed,
     }.withoutNulls,
   );
 
@@ -160,7 +168,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.isCoach == e2?.isCoach &&
         e1?.currentProgramId == e2?.currentProgramId &&
         listEquality.equals(e1?.exercises, e2?.exercises) &&
-        listEquality.equals(e1?.completedWorkouts, e2?.completedWorkouts);
+        listEquality.equals(e1?.completedWorkouts, e2?.completedWorkouts) &&
+        e1?.isSubbed == e2?.isSubbed;
   }
 
   @override
@@ -174,7 +183,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.isCoach,
         e?.currentProgramId,
         e?.exercises,
-        e?.completedWorkouts
+        e?.completedWorkouts,
+        e?.isSubbed
       ]);
 
   @override

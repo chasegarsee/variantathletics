@@ -10,60 +10,16 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class ProgramStruct extends FFFirebaseStruct {
   ProgramStruct({
-    String? color,
-    DateTime? createdAt,
-    String? description,
-    bool? isDailyWorkout,
-    bool? isLive,
-    String? length,
     String? id,
+    bool? isLive,
     String? name,
+    List<WeeksStruct>? weeks,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _color = color,
-        _createdAt = createdAt,
-        _description = description,
-        _isDailyWorkout = isDailyWorkout,
+  })  : _id = id,
         _isLive = isLive,
-        _length = length,
-        _id = id,
         _name = name,
+        _weeks = weeks,
         super(firestoreUtilData);
-
-  // "color" field.
-  String? _color;
-  String get color => _color ?? '';
-  set color(String? val) => _color = val;
-  bool hasColor() => _color != null;
-
-  // "createdAt" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  set createdAt(DateTime? val) => _createdAt = val;
-  bool hasCreatedAt() => _createdAt != null;
-
-  // "description" field.
-  String? _description;
-  String get description => _description ?? '';
-  set description(String? val) => _description = val;
-  bool hasDescription() => _description != null;
-
-  // "isDailyWorkout" field.
-  bool? _isDailyWorkout;
-  bool get isDailyWorkout => _isDailyWorkout ?? false;
-  set isDailyWorkout(bool? val) => _isDailyWorkout = val;
-  bool hasIsDailyWorkout() => _isDailyWorkout != null;
-
-  // "isLive" field.
-  bool? _isLive;
-  bool get isLive => _isLive ?? false;
-  set isLive(bool? val) => _isLive = val;
-  bool hasIsLive() => _isLive != null;
-
-  // "length" field.
-  String? _length;
-  String get length => _length ?? '';
-  set length(String? val) => _length = val;
-  bool hasLength() => _length != null;
 
   // "id" field.
   String? _id;
@@ -71,93 +27,72 @@ class ProgramStruct extends FFFirebaseStruct {
   set id(String? val) => _id = val;
   bool hasId() => _id != null;
 
+  // "isLive" field.
+  bool? _isLive;
+  bool get isLive => _isLive ?? false;
+  set isLive(bool? val) => _isLive = val;
+  bool hasIsLive() => _isLive != null;
+
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
 
+  // "weeks" field.
+  List<WeeksStruct>? _weeks;
+  List<WeeksStruct> get weeks => _weeks ?? const [];
+  set weeks(List<WeeksStruct>? val) => _weeks = val;
+  void updateWeeks(Function(List<WeeksStruct>) updateFn) =>
+      updateFn(_weeks ??= []);
+  bool hasWeeks() => _weeks != null;
+
   static ProgramStruct fromMap(Map<String, dynamic> data) => ProgramStruct(
-        color: data['color'] as String?,
-        createdAt: data['createdAt'] as DateTime?,
-        description: data['description'] as String?,
-        isDailyWorkout: data['isDailyWorkout'] as bool?,
-        isLive: data['isLive'] as bool?,
-        length: data['length'] as String?,
         id: data['id'] as String?,
+        isLive: data['isLive'] as bool?,
         name: data['name'] as String?,
+        weeks: getStructList(
+          data['weeks'],
+          WeeksStruct.fromMap,
+        ),
       );
 
   static ProgramStruct? maybeFromMap(dynamic data) =>
       data is Map<String, dynamic> ? ProgramStruct.fromMap(data) : null;
 
   Map<String, dynamic> toMap() => {
-        'color': _color,
-        'createdAt': _createdAt,
-        'description': _description,
-        'isDailyWorkout': _isDailyWorkout,
-        'isLive': _isLive,
-        'length': _length,
         'id': _id,
+        'isLive': _isLive,
         'name': _name,
+        'weeks': _weeks?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'color': serializeParam(
-          _color,
+        'id': serializeParam(
+          _id,
           ParamType.String,
-        ),
-        'createdAt': serializeParam(
-          _createdAt,
-          ParamType.DateTime,
-        ),
-        'description': serializeParam(
-          _description,
-          ParamType.String,
-        ),
-        'isDailyWorkout': serializeParam(
-          _isDailyWorkout,
-          ParamType.bool,
         ),
         'isLive': serializeParam(
           _isLive,
           ParamType.bool,
         ),
-        'length': serializeParam(
-          _length,
-          ParamType.String,
-        ),
-        'id': serializeParam(
-          _id,
-          ParamType.String,
-        ),
         'name': serializeParam(
           _name,
           ParamType.String,
+        ),
+        'weeks': serializeParam(
+          _weeks,
+          ParamType.DataStruct,
+          true,
         ),
       }.withoutNulls;
 
   static ProgramStruct fromSerializableMap(Map<String, dynamic> data) =>
       ProgramStruct(
-        color: deserializeParam(
-          data['color'],
+        id: deserializeParam(
+          data['id'],
           ParamType.String,
-          false,
-        ),
-        createdAt: deserializeParam(
-          data['createdAt'],
-          ParamType.DateTime,
-          false,
-        ),
-        description: deserializeParam(
-          data['description'],
-          ParamType.String,
-          false,
-        ),
-        isDailyWorkout: deserializeParam(
-          data['isDailyWorkout'],
-          ParamType.bool,
           false,
         ),
         isLive: deserializeParam(
@@ -165,20 +100,16 @@ class ProgramStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
-        length: deserializeParam(
-          data['length'],
-          ParamType.String,
-          false,
-        ),
-        id: deserializeParam(
-          data['id'],
-          ParamType.String,
-          false,
-        ),
         name: deserializeParam(
           data['name'],
           ParamType.String,
           false,
+        ),
+        weeks: deserializeStructParam<WeeksStruct>(
+          data['weeks'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: WeeksStruct.fromSerializableMap,
         ),
       );
 
@@ -187,38 +118,21 @@ class ProgramStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is ProgramStruct &&
-        color == other.color &&
-        createdAt == other.createdAt &&
-        description == other.description &&
-        isDailyWorkout == other.isDailyWorkout &&
-        isLive == other.isLive &&
-        length == other.length &&
         id == other.id &&
-        name == other.name;
+        isLive == other.isLive &&
+        name == other.name &&
+        listEquality.equals(weeks, other.weeks);
   }
 
   @override
-  int get hashCode => const ListEquality().hash([
-        color,
-        createdAt,
-        description,
-        isDailyWorkout,
-        isLive,
-        length,
-        id,
-        name
-      ]);
+  int get hashCode => const ListEquality().hash([id, isLive, name, weeks]);
 }
 
 ProgramStruct createProgramStruct({
-  String? color,
-  DateTime? createdAt,
-  String? description,
-  bool? isDailyWorkout,
-  bool? isLive,
-  String? length,
   String? id,
+  bool? isLive,
   String? name,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
@@ -226,13 +140,8 @@ ProgramStruct createProgramStruct({
   bool delete = false,
 }) =>
     ProgramStruct(
-      color: color,
-      createdAt: createdAt,
-      description: description,
-      isDailyWorkout: isDailyWorkout,
-      isLive: isLive,
-      length: length,
       id: id,
+      isLive: isLive,
       name: name,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,

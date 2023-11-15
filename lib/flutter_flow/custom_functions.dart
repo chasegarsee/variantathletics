@@ -11,6 +11,7 @@ import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
+import '/auth/firebase_auth/auth_util.dart';
 
 dynamic convertFBPUserToJSON(UsersRecord usersDoc) {
   return {
@@ -22,45 +23,13 @@ dynamic convertFBPUserToJSON(UsersRecord usersDoc) {
   };
 }
 
-List<dynamic>? convertFBProgramToJSONCopy(List<ProgramsRecord>? programsDoc) {
-  programsDoc ??= [];
-  List<Map<String, dynamic>> programsJson = programsDoc.map((program) {
-    return {
-      'color': program.color,
-      'createdAt': program.createdAt,
-      'description': program.description,
-      'id': program.id,
-      'isDailyWorkout': program.isDailyWorkout,
-      'isLive': program.isLive,
-      'length': program.length,
-      'programPhotoUrl': program.programPhotoUrl,
-      'name': program.name,
-    };
-  }).toList();
-
-  return programsJson;
-}
-
-List<dynamic>? convertFBWorkoutToJSON(List<WorkoutsRecord>? workoutDoc) {
-  workoutDoc ??= [];
-  List<Map<String, dynamic>> workoutsJson = workoutDoc.map((workout) {
-    return {
-      'date': workout.date,
-      'description': workout.description,
-      'exercises': workout.exercises,
-      'isRestDay': workout.isRestDay,
-      'name': workout.name,
-      'programId': workout.programId,
-      'schedule': workout.schedule,
-      'week': workout.schedule.week,
-      'day': workout.schedule.day,
-      'workoutIndex': workout.workoutIndex,
-      'id': workout.id,
-      'usersCompleted': workout.usersCompleted,
-    };
-  }).toList();
-
-  return workoutsJson;
+dynamic convertFBProgramToJSON(ProgramsRecord programsDoc) {
+  return {
+    'id': programsDoc.id,
+    'isLive': programsDoc.isLive,
+    'name': programsDoc.name,
+    'weeks': programsDoc.weeks,
+  };
 }
 
 List<dynamic>? convertFBExerciseToJSON(List<ExercisesRecord>? exerciseDoc) {
@@ -152,4 +121,40 @@ bool areAllTrue(List<bool> values) {
 
 String capitalize(String exercise) {
   return exercise[0].toUpperCase() + exercise.substring(1);
+}
+
+bool isWeekComplete(
+  int? weekNumber,
+  List<String>? completedDays,
+) {
+  // Check if weekNumber or completedDays is null
+  if (weekNumber == null || completedDays == null) {
+    return false;
+  }
+
+  int count = 0;
+
+  // Iterate through the list of strings
+  for (String day in completedDays) {
+    // Check if the string contains the pattern "w-{weekNumber}"
+    if (day.contains("w-$weekNumber")) {
+      count++;
+    }
+
+    // Return true if count reaches 7
+    if (count == 7) {
+      return true;
+    }
+  }
+
+  // Return false if the count does not reach 7
+  return false;
+}
+
+List<ProgramExercisesStruct> setExercises(WeeksStruct week) {
+  return week.days[0].exercises;
+}
+
+List<DaysStruct> setDays(List<WeeksStruct> weeks) {
+  return weeks[0].days;
 }

@@ -55,6 +55,80 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _isInitialLoad = prefs.getBool('ff_isInitialLoad') ?? _isInitialLoad;
     });
+    _safeInit(() {
+      _completedDays =
+          prefs.getStringList('ff_completedDays') ?? _completedDays;
+    });
+    _safeInit(() {
+      _completedWeeks =
+          prefs.getStringList('ff_completedWeeks')?.map(int.parse).toList() ??
+              _completedWeeks;
+    });
+    _safeInit(() {
+      _selectedWeek = prefs.getInt('ff_selectedWeek') ?? _selectedWeek;
+    });
+    _safeInit(() {
+      _days = prefs
+              .getStringList('ff_days')
+              ?.map((x) {
+                try {
+                  return DaysStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _days;
+    });
+    _safeInit(() {
+      _programExercises = prefs
+              .getStringList('ff_programExercises')
+              ?.map((x) {
+                try {
+                  return ProgramExercisesStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _programExercises;
+    });
+    _safeInit(() {
+      _selectedDayName =
+          prefs.getString('ff_selectedDayName') ?? _selectedDayName;
+    });
+    _safeInit(() {
+      _selectedDay = prefs.getInt('ff_selectedDay') ?? _selectedDay;
+    });
+    _safeInit(() {
+      _selectedDayId = prefs.getString('ff_selectedDayId') ?? _selectedDayId;
+    });
+    _safeInit(() {
+      _showAllWeeks = prefs.getBool('ff_showAllWeeks') ?? _showAllWeeks;
+    });
+    _safeInit(() {
+      _showAllDays = prefs.getBool('ff_showAllDays') ?? _showAllDays;
+    });
+    _safeInit(() {
+      _weeks = prefs
+              .getStringList('ff_weeks')
+              ?.map((x) {
+                try {
+                  return WeeksStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _weeks;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -211,6 +285,242 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInExercises(int _index, dynamic _value) {
     _exercises.insert(_index, _value);
+  }
+
+  dynamic _program;
+  dynamic get program => _program;
+  set program(dynamic _value) {
+    _program = _value;
+  }
+
+  List<String> _completedDays = [];
+  List<String> get completedDays => _completedDays;
+  set completedDays(List<String> _value) {
+    _completedDays = _value;
+    prefs.setStringList('ff_completedDays', _value);
+  }
+
+  void addToCompletedDays(String _value) {
+    _completedDays.add(_value);
+    prefs.setStringList('ff_completedDays', _completedDays);
+  }
+
+  void removeFromCompletedDays(String _value) {
+    _completedDays.remove(_value);
+    prefs.setStringList('ff_completedDays', _completedDays);
+  }
+
+  void removeAtIndexFromCompletedDays(int _index) {
+    _completedDays.removeAt(_index);
+    prefs.setStringList('ff_completedDays', _completedDays);
+  }
+
+  void updateCompletedDaysAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _completedDays[_index] = updateFn(_completedDays[_index]);
+    prefs.setStringList('ff_completedDays', _completedDays);
+  }
+
+  void insertAtIndexInCompletedDays(int _index, String _value) {
+    _completedDays.insert(_index, _value);
+    prefs.setStringList('ff_completedDays', _completedDays);
+  }
+
+  List<int> _completedWeeks = [];
+  List<int> get completedWeeks => _completedWeeks;
+  set completedWeeks(List<int> _value) {
+    _completedWeeks = _value;
+    prefs.setStringList(
+        'ff_completedWeeks', _value.map((x) => x.toString()).toList());
+  }
+
+  void addToCompletedWeeks(int _value) {
+    _completedWeeks.add(_value);
+    prefs.setStringList(
+        'ff_completedWeeks', _completedWeeks.map((x) => x.toString()).toList());
+  }
+
+  void removeFromCompletedWeeks(int _value) {
+    _completedWeeks.remove(_value);
+    prefs.setStringList(
+        'ff_completedWeeks', _completedWeeks.map((x) => x.toString()).toList());
+  }
+
+  void removeAtIndexFromCompletedWeeks(int _index) {
+    _completedWeeks.removeAt(_index);
+    prefs.setStringList(
+        'ff_completedWeeks', _completedWeeks.map((x) => x.toString()).toList());
+  }
+
+  void updateCompletedWeeksAtIndex(
+    int _index,
+    int Function(int) updateFn,
+  ) {
+    _completedWeeks[_index] = updateFn(_completedWeeks[_index]);
+    prefs.setStringList(
+        'ff_completedWeeks', _completedWeeks.map((x) => x.toString()).toList());
+  }
+
+  void insertAtIndexInCompletedWeeks(int _index, int _value) {
+    _completedWeeks.insert(_index, _value);
+    prefs.setStringList(
+        'ff_completedWeeks', _completedWeeks.map((x) => x.toString()).toList());
+  }
+
+  int _selectedWeek = 1;
+  int get selectedWeek => _selectedWeek;
+  set selectedWeek(int _value) {
+    _selectedWeek = _value;
+    prefs.setInt('ff_selectedWeek', _value);
+  }
+
+  List<DaysStruct> _days = [];
+  List<DaysStruct> get days => _days;
+  set days(List<DaysStruct> _value) {
+    _days = _value;
+    prefs.setStringList('ff_days', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToDays(DaysStruct _value) {
+    _days.add(_value);
+    prefs.setStringList('ff_days', _days.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromDays(DaysStruct _value) {
+    _days.remove(_value);
+    prefs.setStringList('ff_days', _days.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromDays(int _index) {
+    _days.removeAt(_index);
+    prefs.setStringList('ff_days', _days.map((x) => x.serialize()).toList());
+  }
+
+  void updateDaysAtIndex(
+    int _index,
+    DaysStruct Function(DaysStruct) updateFn,
+  ) {
+    _days[_index] = updateFn(_days[_index]);
+    prefs.setStringList('ff_days', _days.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInDays(int _index, DaysStruct _value) {
+    _days.insert(_index, _value);
+    prefs.setStringList('ff_days', _days.map((x) => x.serialize()).toList());
+  }
+
+  List<ProgramExercisesStruct> _programExercises = [];
+  List<ProgramExercisesStruct> get programExercises => _programExercises;
+  set programExercises(List<ProgramExercisesStruct> _value) {
+    _programExercises = _value;
+    prefs.setStringList(
+        'ff_programExercises', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToProgramExercises(ProgramExercisesStruct _value) {
+    _programExercises.add(_value);
+    prefs.setStringList('ff_programExercises',
+        _programExercises.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromProgramExercises(ProgramExercisesStruct _value) {
+    _programExercises.remove(_value);
+    prefs.setStringList('ff_programExercises',
+        _programExercises.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromProgramExercises(int _index) {
+    _programExercises.removeAt(_index);
+    prefs.setStringList('ff_programExercises',
+        _programExercises.map((x) => x.serialize()).toList());
+  }
+
+  void updateProgramExercisesAtIndex(
+    int _index,
+    ProgramExercisesStruct Function(ProgramExercisesStruct) updateFn,
+  ) {
+    _programExercises[_index] = updateFn(_programExercises[_index]);
+    prefs.setStringList('ff_programExercises',
+        _programExercises.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInProgramExercises(
+      int _index, ProgramExercisesStruct _value) {
+    _programExercises.insert(_index, _value);
+    prefs.setStringList('ff_programExercises',
+        _programExercises.map((x) => x.serialize()).toList());
+  }
+
+  String _selectedDayName = '';
+  String get selectedDayName => _selectedDayName;
+  set selectedDayName(String _value) {
+    _selectedDayName = _value;
+    prefs.setString('ff_selectedDayName', _value);
+  }
+
+  int _selectedDay = 1;
+  int get selectedDay => _selectedDay;
+  set selectedDay(int _value) {
+    _selectedDay = _value;
+    prefs.setInt('ff_selectedDay', _value);
+  }
+
+  String _selectedDayId = '';
+  String get selectedDayId => _selectedDayId;
+  set selectedDayId(String _value) {
+    _selectedDayId = _value;
+    prefs.setString('ff_selectedDayId', _value);
+  }
+
+  bool _showAllWeeks = true;
+  bool get showAllWeeks => _showAllWeeks;
+  set showAllWeeks(bool _value) {
+    _showAllWeeks = _value;
+    prefs.setBool('ff_showAllWeeks', _value);
+  }
+
+  bool _showAllDays = true;
+  bool get showAllDays => _showAllDays;
+  set showAllDays(bool _value) {
+    _showAllDays = _value;
+    prefs.setBool('ff_showAllDays', _value);
+  }
+
+  List<WeeksStruct> _weeks = [];
+  List<WeeksStruct> get weeks => _weeks;
+  set weeks(List<WeeksStruct> _value) {
+    _weeks = _value;
+    prefs.setStringList('ff_weeks', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToWeeks(WeeksStruct _value) {
+    _weeks.add(_value);
+    prefs.setStringList('ff_weeks', _weeks.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromWeeks(WeeksStruct _value) {
+    _weeks.remove(_value);
+    prefs.setStringList('ff_weeks', _weeks.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromWeeks(int _index) {
+    _weeks.removeAt(_index);
+    prefs.setStringList('ff_weeks', _weeks.map((x) => x.serialize()).toList());
+  }
+
+  void updateWeeksAtIndex(
+    int _index,
+    WeeksStruct Function(WeeksStruct) updateFn,
+  ) {
+    _weeks[_index] = updateFn(_weeks[_index]);
+    prefs.setStringList('ff_weeks', _weeks.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInWeeks(int _index, WeeksStruct _value) {
+    _weeks.insert(_index, _value);
+    prefs.setStringList('ff_weeks', _weeks.map((x) => x.serialize()).toList());
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
