@@ -72,6 +72,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
               _model.program!.weeks.first.days.first.id;
           FFAppState().weeks =
               _model.program!.weeks.toList().cast<WeeksStruct>();
+          FFAppState().currentProgram = _model.program!.name;
         });
         setState(() {
           _model.isLoading = false;
@@ -128,9 +129,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
             },
           ),
           title: Text(
-            FFLocalizations.of(context).getText(
-              '3scaqe2e' /* Program */,
-            ),
+            FFAppState().currentProgram,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Jost',
                   color: FlutterFlowTheme.of(context).primaryText,

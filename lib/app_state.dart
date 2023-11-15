@@ -129,6 +129,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _weeks;
     });
+    _safeInit(() {
+      _currentProgram = prefs.getString('ff_currentProgram') ?? _currentProgram;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -521,6 +524,13 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInWeeks(int _index, WeeksStruct _value) {
     _weeks.insert(_index, _value);
     prefs.setStringList('ff_weeks', _weeks.map((x) => x.serialize()).toList());
+  }
+
+  String _currentProgram = '';
+  String get currentProgram => _currentProgram;
+  set currentProgram(String _value) {
+    _currentProgram = _value;
+    prefs.setString('ff_currentProgram', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

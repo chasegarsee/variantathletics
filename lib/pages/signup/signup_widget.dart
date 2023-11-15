@@ -485,40 +485,50 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
-                                  child: RichText(
-                                    textScaleFactor:
-                                        MediaQuery.of(context).textScaleFactor,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '6v1li79d' /* Already have an account?  */,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('signin');
+                                    },
+                                    child: RichText(
+                                      textScaleFactor: MediaQuery.of(context)
+                                          .textScaleFactor,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              '6v1li79d' /* Already have an account?  */,
+                                            ),
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
                                           ),
-                                          style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'fxka3kf7' /* Sign In here */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent2,
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                        )
-                                      ],
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge,
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'fxka3kf7' /* Sign In here */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Jost',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent2,
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          )
+                                        ],
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge,
+                                      ),
                                     ),
                                   ),
                                 ),

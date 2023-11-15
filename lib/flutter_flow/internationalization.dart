@@ -358,10 +358,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // program
   {
-    '3scaqe2e': {
-      'en': 'Program',
-      'th': '',
-    },
     'xj8pase6': {
       'en': 'Sets',
       'th': 'เซ็ต',
@@ -427,11 +423,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fenb4djh': {
       'en': 'Don\'t have an account? ',
-      'th': '',
+      'th': 'ยังไม่มีบัญชี',
     },
     'z15uwdds': {
       'en': ' Sign Up here',
-      'th': '',
+      'th': 'ลงทะเบียนที่นี่',
     },
     '5ovtiq91': {
       'en': 'Home',
@@ -454,7 +450,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '30kf6clo': {
       'en': 'Email',
-      'th': '',
+      'th': 'อีเมล',
     },
     'z36zvri6': {
       'en': 'Password',
@@ -470,11 +466,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6v1li79d': {
       'en': 'Already have an account? ',
-      'th': '',
+      'th': 'มีบัญชีอยู่แล้ว',
     },
     'fxka3kf7': {
       'en': 'Sign In here',
-      'th': '',
+      'th': 'เข้าสู่ระบบที่นี่',
     },
     'cp9imxx4': {
       'en': 'Home',
@@ -483,17 +479,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // profile
   {
-    '606fkzz9': {
-      'en': 'Profile',
-      'th': 'โพรไฟล์',
-    },
     '577yksax': {
       'en': 'Switch to Dark Mode',
-      'th': '',
+      'th': 'สลับไปที่โหมดมืด',
     },
     'zbmlau97': {
       'en': 'Switch to Light Mode',
-      'th': '',
+      'th': 'สลับไปที่โหมดแสง',
     },
     'h0v7c7oj': {
       'en': 'Log Out',

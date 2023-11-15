@@ -57,12 +57,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         iconTheme:
             IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
         automaticallyImplyLeading: true,
-        title: Text(
-          FFLocalizations.of(context).getText(
-            '606fkzz9' /* Profile */,
-          ),
-          style: FlutterFlowTheme.of(context).displaySmall,
-        ),
         actions: [],
         centerTitle: false,
         elevation: 3.0,
@@ -343,6 +337,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           FFAppState().selectedWeek = 1;
                           FFAppState().completedDays = [];
                           FFAppState().completedWeeks = [];
+                          FFAppState().currentProgram = '';
                         });
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
