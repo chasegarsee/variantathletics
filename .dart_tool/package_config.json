@@ -452,6 +452,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "mask_text_input_formatter",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/mask_text_input_formatter-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/matcher-0.12.16",
       "packageUri": "lib/",
@@ -675,7 +681,7 @@
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/sqflite_common-2.5.0+1",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/sqflite_common-2.5.0+2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -902,7 +908,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-15T14:36:05.565962Z",
+  "generated": "2023-11-17T19:38:30.591377Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
