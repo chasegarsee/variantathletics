@@ -109,7 +109,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'rvjg82nr': {
       'en': 'VARIANT',
-      'th': '',
+      'th': 'VARIANT',
     },
     '7lqtxh5b': {
       'en': 'All Exercises',
@@ -347,9 +347,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Program',
       'th': 'โปรแกรม',
     },
-    'jc36azpj': {
+    'nrgtv1li': {
       'en': 'VARIANT',
-      'th': '',
+      'th': 'VARIANT',
     },
     '2gueynm6': {
       'en': 'Timer',
@@ -367,8 +367,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'เร็พ',
     },
     'f99yl0no': {
-      'en': 'tempo',
-      'th': '',
+      'en': 'Tempo',
+      'th': 'จังหวะ',
     },
     'ntm5c1n4': {
       'en': 'Work Time',
@@ -479,6 +479,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // profile
   {
+    'zv1aqkys': {
+      'en': 'VARIANT',
+      'th': 'VARIANT',
+    },
     '577yksax': {
       'en': 'Switch to Dark Mode',
       'th': 'สลับไปที่โหมดมืด',
@@ -487,12 +491,67 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Switch to Light Mode',
       'th': 'สลับไปที่โหมดแสง',
     },
+    '7hdbt159': {
+      'en': 'Switch to English',
+      'th': 'เปลี่ยนเป็นภาษาอังกฤษ',
+    },
+    'wzbbny6i': {
+      'en': 'EN',
+      'th': 'EN',
+    },
+    '5kkt05e5': {
+      'en': 'Switch to Thai',
+      'th': 'เปลี่ยนเป็นภาษาไทย',
+    },
+    'fn7670tz': {
+      'en': 'ไทย',
+      'th': 'ไทย',
+    },
+    '6fjbpfrq': {
+      'en': 'Nutrition Hub',
+      'th': 'ศูนย์โภชนาการ',
+    },
     'h0v7c7oj': {
       'en': 'Log Out',
       'th': 'ออกจากระบบ',
     },
     '8g0phl9g': {
       'en': '__',
+      'th': '',
+    },
+  },
+  // nutritionhub
+  {
+    'z5s1tjv4': {
+      'en': 'Your Macronutrients',
+      'th': 'สารอาหารของคุณ',
+    },
+    'ieuldi79': {
+      'en': 'Total Calories',
+      'th': 'แคลอรี่ทั้งหมด',
+    },
+    'mps0uype': {
+      'en': 'Based on your goal to ',
+      'th': 'ขึ้นอยู่กับเป้าหมายของคุณที่จะ ',
+    },
+    'awc78nrn': {
+      'en': 'Protein',
+      'th': 'โปรตีน',
+    },
+    't3o9w1tw': {
+      'en': 'Carbs',
+      'th': 'คาร์บ',
+    },
+    'zaetm41c': {
+      'en': 'Fat',
+      'th': 'ไขมัน',
+    },
+    'vxvik703': {
+      'en': 'Nutrition Hub',
+      'th': 'ศูนย์โภชนาการ',
+    },
+    '6oyi1h26': {
+      'en': 'Home',
       'th': '',
     },
   },
@@ -539,6 +598,137 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'vwg66sbq': {
       'en': 'D-7',
       'th': '',
+    },
+  },
+  // sizeDemographicsBottomSheet
+  {
+    'cr5tocc5': {
+      'en': 'Choose the options that best describe you',
+      'th': 'เลือกตัวเลือกที่ตรงกับตัวคุณมากที่สุด',
+    },
+    'ndtk6lna': {
+      'en': 'Height (cm)',
+      'th': 'ความสูง (ซ.ม.)',
+    },
+    'yq3kiaxw': {
+      'en': 'Required',
+      'th': '',
+    },
+    'ium1rkcz': {
+      'en': 'Please choose an option from the dropdown',
+      'th': '',
+    },
+    'mhiv0rrt': {
+      'en': 'Gender',
+      'th': 'เพศ',
+    },
+    'fcyscj1x': {
+      'en': 'Female',
+      'th': 'หญิง',
+    },
+    'c7puzize': {
+      'en': 'Male',
+      'th': 'ชาย',
+    },
+    'gdkeyh7b': {
+      'en': 'Choose gender',
+      'th': 'เลือกเพศ',
+    },
+    'y2riutc3': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
+    'ndsqz5nj': {
+      'en': 'Age',
+      'th': 'อายุ',
+    },
+    'eu6qqvsa': {
+      'en': 'Required',
+      'th': '',
+    },
+    'vgqjexjr': {
+      'en': 'minimum 10 y/o required',
+      'th': 'ขั้นต่ำ 10 ปี',
+    },
+    'r8ioqpwt': {
+      'en': 'Please choose an option from the dropdown',
+      'th': '',
+    },
+    '1ns8nopu': {
+      'en': 'Weekly activity level ',
+      'th': 'ระดับออกกำลังกาย/สัปดาห์',
+    },
+    'iht6od1b': {
+      'en': 'Sedentary (0 days/week)',
+      'th': 'ไม่มีการออกกำลังกาย',
+    },
+    'gqn1deyg': {
+      'en': 'Lightly active (1-2 days/week)',
+      'th': 'ออกกำลังกายเล็กน้อย',
+    },
+    '608ws76y': {
+      'en': 'Moderately active (3-5 days/week)',
+      'th': '',
+    },
+    'upx9kkkj': {
+      'en': 'Very active (6-7 days/week)',
+      'th': '',
+    },
+    '4a81b3y1': {
+      'en': 'Athlete (2x day)',
+      'th': '',
+    },
+    'rex7pwr2': {
+      'en': 'Choose level',
+      'th': 'เลือกระดับของคุณ',
+    },
+    '6dkx0l42': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
+    'q49qpty2': {
+      'en': 'Weight (kg)',
+      'th': 'น้ำหนัก (ค.ก.)',
+    },
+    '2tzzxxzw': {
+      'en': 'Rrequired',
+      'th': '',
+    },
+    '0tc39lg7': {
+      'en': 'Minimun 10 KG required',
+      'th': 'ขั้นต่ำ 10kg',
+    },
+    '4wufkurc': {
+      'en': 'Please choose an option from the dropdown',
+      'th': '',
+    },
+    '0mu1uerp': {
+      'en': 'Goal',
+      'th': 'เป้าหมาย',
+    },
+    'm37bilqf': {
+      'en': 'Cut',
+      'th': 'ลดไขมัน',
+    },
+    '2jfdjs0m': {
+      'en': 'Maintenance',
+      'th': 'บำรุงรักษา',
+    },
+    'nei0l69l': {
+      'en': 'Bulk',
+      'th': 'เพิ่มกล้ามเนื้อ',
+    },
+    'kq8l92x0': {
+      'en': 'Choose goal',
+      'th': 'เลือกเป้าหมาย',
+    },
+    'qksju9ly': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
+    '36r5kcg7': {
+      'en': 'Submit',
+      'th': 'ส่ง',
     },
   },
   // Miscellaneous

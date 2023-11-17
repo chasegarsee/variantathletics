@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -211,9 +210,10 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      if (FFAppState()
-                                                              .breakdownLanguage ==
-                                                          'en')
+                                                      if (FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode !=
+                                                          'th')
                                                         Flexible(
                                                           child: Padding(
                                                             padding:
@@ -281,8 +281,9 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                      if (FFAppState()
-                                                              .breakdownLanguage ==
+                                                      if (FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode ==
                                                           'th')
                                                         Flexible(
                                                           child: Padding(
@@ -351,72 +352,6 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                -1.00, 0.00),
-                                                        child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            setState(() {
-                                                              FFAppState()
-                                                                      .breakdownLanguage =
-                                                                  FFAppState().breakdownLanguage ==
-                                                                          'th'
-                                                                      ? 'en'
-                                                                      : 'th';
-                                                            });
-                                                          },
-                                                          text: FFAppState()
-                                                                      .breakdownLanguage ==
-                                                                  'en'
-                                                              ? 'en'
-                                                              : 'ไทย',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            width: 75.0,
-                                                            height: 75.0,
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            color: Color(
-                                                                0x1939D2B8),
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Jost',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          20.0,
-                                                                    ),
-                                                            elevation: 3.0,
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Color(
-                                                                  0x0039D2B8),
-                                                              width: 0.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
-                                                          ),
-                                                        ),
-                                                      ),
                                                     ],
                                                   ),
                                                 ],

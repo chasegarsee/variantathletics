@@ -132,6 +132,17 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _currentProgram = prefs.getString('ff_currentProgram') ?? _currentProgram;
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_macros')) {
+        try {
+          final serializedData = prefs.getString('ff_macros') ?? '{}';
+          _macros =
+              MacrosStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -531,6 +542,18 @@ class FFAppState extends ChangeNotifier {
   set currentProgram(String _value) {
     _currentProgram = _value;
     prefs.setString('ff_currentProgram', _value);
+  }
+
+  MacrosStruct _macros = MacrosStruct();
+  MacrosStruct get macros => _macros;
+  set macros(MacrosStruct _value) {
+    _macros = _value;
+    prefs.setString('ff_macros', _value.serialize());
+  }
+
+  void updateMacrosStruct(Function(MacrosStruct) updateFn) {
+    updateFn(_macros);
+    prefs.setString('ff_macros', _macros.serialize());
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

@@ -158,3 +158,76 @@ List<ProgramExercisesStruct> setExercises(WeeksStruct week) {
 List<DaysStruct> setDays(List<WeeksStruct> weeks) {
   return weeks[0].days;
 }
+
+MacrosStruct macroCalculator(
+  int age,
+  int weight,
+  int height,
+  int activityLevel,
+  int goal,
+  int gender,
+) {
+  // Calculate RMR using Mifflin-St Jeor Equation
+  int rmr =
+      ((10 * weight) + (6.25 * height) - (5 * age) + (gender == 1 ? 5 : -161))
+          .round();
+
+  // Activity factors
+  double activityMultiplier;
+  switch (activityLevel) {
+    case 1:
+      activityMultiplier = 1.2;
+      break;
+    case 2:
+      activityMultiplier = 1.375;
+      break;
+    case 3:
+      activityMultiplier = 1.55;
+      break;
+    case 4:
+      activityMultiplier = 1.725;
+      break;
+    case 5:
+      activityMultiplier = 1.9;
+      break;
+    default:
+      activityMultiplier = 1.2;
+  }
+
+  // Calculate total calories based on activity level and round to the nearest 10th
+  int totalCalories = ((rmr * activityMultiplier) / 10).round() * 10;
+
+  // Adjust total calories based on goal
+  switch (goal) {
+    case 1: // Fat loss: 20% deficit
+      totalCalories = (totalCalories * 0.8 / 10).round() * 10;
+      break;
+    case 3: // Bulking: 20% surplus
+      totalCalories = (totalCalories * 1.2 / 10).round() * 10;
+      break;
+    case 2: // Maintenance
+    default:
+      break;
+  }
+
+  // Calculate macronutrients
+  int protein = (totalCalories * 0.3 / 4).round(); // 4 calories per gram
+  int carbs = (totalCalories * 0.4 / 4).round(); // 4 calories per gram
+  int fat = (totalCalories * 0.3 / 9).round(); // 9 calories per gram
+
+  return MacrosStruct(
+    totalCalories: totalCalories,
+    protein: protein,
+    carbs: carbs,
+    fat: fat,
+  );
+}
+
+bool convertStringToInt(String text) {
+  bool isValid;
+  if (text == '') {
+    return false;
+  }
+  isValid = int.parse(text) >= 10;
+  return isValid;
+}

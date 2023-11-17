@@ -86,15 +86,17 @@ class _TimerWidgetState extends State<TimerWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                FFLocalizations.of(context).getText(
-                  'jc36azpj' /* VARIANT */,
+              Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'nrgtv1li' /* VARIANT */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Jost',
+                        fontSize: 32.0,
+                      ),
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Jost',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 32.0,
-                    ),
               ),
             ],
           ),
@@ -823,6 +825,9 @@ class _TimerWidgetState extends State<TimerWidget> {
                                           _model.currentInterval =
                                               _model.workingInterval;
                                         });
+                                        setState(() {
+                                          FFAppState().isTimerRunning = false;
+                                        });
                                         _model.timerController1.onStopTimer();
                                         _model.timerController2.onStopTimer();
                                         _model.timerController1.timer
@@ -849,7 +854,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
+                              0.0, 0.0, 0.0, 24.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               context.pushNamed('exerciseLibrary');
@@ -884,7 +889,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                         if (widget.isFromProgram)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 20.0),
+                                0.0, 0.0, 0.0, 24.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 context.pushNamed(

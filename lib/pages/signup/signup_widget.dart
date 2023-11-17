@@ -446,6 +446,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 .emailAddressController.text,
                                             createdTime: getCurrentTimestamp,
                                             isSubbed: false,
+                                            demographics:
+                                                createUserDemographicsStruct(
+                                              age: 0,
+                                              height: 0,
+                                              weight: 0,
+                                              gender: 0,
+                                              activityLevel: 0,
+                                              goal: 0,
+                                              clearUnsetFields: false,
+                                              create: true,
+                                            ),
                                           ));
 
                                       context.goNamedAuth(

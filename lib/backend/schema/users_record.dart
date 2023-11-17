@@ -72,6 +72,12 @@ class UsersRecord extends FirestoreRecord {
   bool get isSubbed => _isSubbed ?? false;
   bool hasIsSubbed() => _isSubbed != null;
 
+  // "demographics" field.
+  UserDemographicsStruct? _demographics;
+  UserDemographicsStruct get demographics =>
+      _demographics ?? UserDemographicsStruct();
+  bool hasDemographics() => _demographics != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -90,6 +96,8 @@ class UsersRecord extends FirestoreRecord {
       CompletedWorkoutsStruct.fromMap,
     );
     _isSubbed = snapshotData['isSubbed'] as bool?;
+    _demographics =
+        UserDemographicsStruct.maybeFromMap(snapshotData['demographics']);
   }
 
   static CollectionReference get collection =>
@@ -135,6 +143,7 @@ Map<String, dynamic> createUsersRecordData({
   bool? isCoach,
   String? currentProgramId,
   bool? isSubbed,
+  UserDemographicsStruct? demographics,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -147,8 +156,12 @@ Map<String, dynamic> createUsersRecordData({
       'isCoach': isCoach,
       'currentProgramId': currentProgramId,
       'isSubbed': isSubbed,
+      'demographics': UserDemographicsStruct().toMap(),
     }.withoutNulls,
   );
+
+  // Handle nested data for "demographics" field.
+  addUserDemographicsStructData(firestoreData, demographics, 'demographics');
 
   return firestoreData;
 }
@@ -169,7 +182,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.currentProgramId == e2?.currentProgramId &&
         listEquality.equals(e1?.exercises, e2?.exercises) &&
         listEquality.equals(e1?.completedWorkouts, e2?.completedWorkouts) &&
-        e1?.isSubbed == e2?.isSubbed;
+        e1?.isSubbed == e2?.isSubbed &&
+        e1?.demographics == e2?.demographics;
   }
 
   @override
@@ -184,7 +198,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.currentProgramId,
         e?.exercises,
         e?.completedWorkouts,
-        e?.isSubbed
+        e?.isSubbed,
+        e?.demographics
       ]);
 
   @override

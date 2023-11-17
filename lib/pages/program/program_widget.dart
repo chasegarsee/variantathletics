@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/days_placeholder_widget.dart';
+import '/components/days_placeholder/days_placeholder_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -206,7 +206,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    if (!_model.showAllWeeks)
+                                    if (!FFAppState().showAllWeeks)
                                       FlutterFlowIconButton(
                                         borderRadius: 20.0,
                                         borderWidth: 0.0,
@@ -219,7 +219,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         ),
                                         onPressed: () async {
                                           setState(() {
-                                            _model.showAllWeeks = true;
+                                            FFAppState().showAllWeeks = true;
                                           });
                                         },
                                       ),
@@ -241,7 +241,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 final weeksItem =
                                                     weeks[weeksIndex];
                                                 return Visibility(
-                                                  visible: _model
+                                                  visible: FFAppState()
                                                           .showAllWeeks ||
                                                       (weeksItem.weekNumber ==
                                                           FFAppState()
@@ -256,11 +256,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      setState(() {
-                                                        _model.showAllWeeks =
-                                                            !_model
-                                                                .showAllWeeks;
-                                                      });
                                                       setState(() {
                                                         FFAppState()
                                                                 .selectedWeek =
@@ -291,6 +286,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                 .selectedDayId =
                                                             weeksItem
                                                                 .days.first.id;
+                                                        FFAppState()
+                                                                .showAllWeeks =
+                                                            !FFAppState()
+                                                                .showAllWeeks;
                                                       });
                                                     },
                                                     child: Stack(
@@ -429,7 +428,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   day.length, (dayIndex) {
                                                 final dayItem = day[dayIndex];
                                                 return Visibility(
-                                                  visible: _model.showAllDays ||
+                                                  visible: FFAppState()
+                                                          .showAllDays ||
                                                       (FFAppState()
                                                               .selectedDay ==
                                                           dayItem.day),
@@ -443,10 +443,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      setState(() {
-                                                        _model.showAllDays =
-                                                            !_model.showAllDays;
-                                                      });
                                                       setState(() {
                                                         FFAppState()
                                                                 .programExercises =
@@ -463,6 +459,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         FFAppState()
                                                                 .selectedDayId =
                                                             dayItem.id;
+                                                        FFAppState()
+                                                                .showAllDays =
+                                                            !FFAppState()
+                                                                .showAllDays;
                                                       });
                                                     },
                                                     child: Stack(
@@ -577,7 +577,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         },
                                       ),
                                     ),
-                                    if (!_model.showAllDays)
+                                    if (!FFAppState().showAllDays)
                                       FlutterFlowIconButton(
                                         borderRadius: 20.0,
                                         borderWidth: 0.0,
@@ -590,7 +590,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         ),
                                         onPressed: () async {
                                           setState(() {
-                                            _model.showAllDays = true;
+                                            FFAppState().showAllDays = true;
                                           });
                                         },
                                       ),
@@ -673,12 +673,18 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                       child: Material(
                                         color: Colors.transparent,
                                         elevation: 3.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
                                         child: Container(
                                           width: double.infinity,
                                           height: 125.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .primary,
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -698,6 +704,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                 ),
                                                 child: InkWell(
                                                   splashColor:
@@ -740,6 +749,23 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               .height *
                                                           1.0,
                                                       fit: BoxFit.cover,
+                                                      errorBuilder: (context,
+                                                              error,
+                                                              stackTrace) =>
+                                                          Image.asset(
+                                                        'assets/images/error_image.png',
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                1.0,
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                1.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -897,7 +923,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'f99yl0no' /* tempo */,
+                                                                      'f99yl0no' /* Tempo */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1061,37 +1087,41 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                           !FFAppState()
                               .completedDays
                               .contains(FFAppState().selectedDayId))
-                        FFButtonWidget(
-                          onPressed: () async {
-                            setState(() {
-                              FFAppState().addToCompletedDays(
-                                  FFAppState().selectedDayId);
-                            });
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            'di4t2jeu' /* Complete Workout */,
-                          ),
-                          options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 0.5,
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).accent2,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Jost',
-                                  color: Colors.white,
-                                  fontSize: 22.0,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 24.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              setState(() {
+                                FFAppState().addToCompletedDays(
+                                    FFAppState().selectedDayId);
+                              });
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              'di4t2jeu' /* Complete Workout */,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            options: FFButtonOptions(
+                              width: MediaQuery.sizeOf(context).width * 0.5,
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).accent2,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    color: Colors.white,
+                                    fontSize: 22.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
                           ),
                         ),
                     ],

@@ -129,6 +129,7 @@ final parametersBuilderMap =
   'signin': ParameterData.none(),
   'signup': ParameterData.none(),
   'profile': ParameterData.none(),
+  'nutritionhub': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

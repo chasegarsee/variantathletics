@@ -398,32 +398,26 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                         },
                                         child: Stack(
                                           children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 500),
-                                                imageUrl:
-                                                    '${FFAppState().exerciseBase}${getJsonField(
-                                                  filteredExerciseItem,
-                                                  r'''$.id''',
-                                                ).toString()}.png?alt=media',
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        1.0,
-                                                fit: BoxFit.cover,
-                                                errorWidget: (context, error,
-                                                        stackTrace) =>
-                                                    Image.asset(
-                                                  'assets/images/error_image.png',
+                                            Hero(
+                                              tag:
+                                                  '${FFAppState().exerciseBase}${getJsonField(
+                                                filteredExerciseItem,
+                                                r'''$.id''',
+                                              ).toString()}.png?alt=media',
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
+                                                  imageUrl:
+                                                      '${FFAppState().exerciseBase}${getJsonField(
+                                                    filteredExerciseItem,
+                                                    r'''$.id''',
+                                                  ).toString()}.png?alt=media',
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -433,6 +427,20 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                               .height *
                                                           1.0,
                                                   fit: BoxFit.cover,
+                                                  errorWidget: (context, error,
+                                                          stackTrace) =>
+                                                      Image.asset(
+                                                    'assets/images/error_image.png',
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        1.0,
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        1.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -739,47 +747,52 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                               .bodyMedium,
                                         ),
                                       ),
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          setState(() {
-                                            _model.showDialoge = false;
-                                          });
-                                          await launchURL(
-                                              'https://iamvariant.com');
-                                        },
-                                        text:
-                                            FFLocalizations.of(context).getText(
-                                          '90oxmmck' /* Get Access! */,
-                                        ),
-                                        options: FFButtonOptions(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleSmall
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 24.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            setState(() {
+                                              _model.showDialoge = false;
+                                            });
+                                            await launchURL(
+                                                'https://iamvariant.com');
+                                          },
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            '90oxmmck' /* Get Access! */,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
+                                          options: FFButtonOptions(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: 40.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent2,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Jost',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
                                         ),
                                       ),
                                     ],

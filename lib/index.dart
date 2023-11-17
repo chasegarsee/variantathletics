@@ -7,3 +7,4 @@ export '/pages/program/program_widget.dart' show ProgramWidget;
 export '/pages/signin/signin_widget.dart' show SigninWidget;
 export '/pages/signup/signup_widget.dart' show SignupWidget;
 export '/pages/profile/profile_widget.dart' show ProfileWidget;
+export '/pages/nutritionhub/nutritionhub_widget.dart' show NutritionhubWidget;
