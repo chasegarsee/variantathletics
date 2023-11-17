@@ -248,13 +248,25 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                             if (currentUserDocument
                                                     ?.demographics?.goal ==
                                                 1) {
-                                              return 'lose fat';
+                                              return FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'lose fat',
+                                                thText: 'ลดไขมัน',
+                                              );
                                             } else if (currentUserDocument
                                                     ?.demographics?.goal ==
                                                 2) {
-                                              return 'maintain size';
+                                              return FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'maintain size',
+                                                thText: 'รักษาน้ำหนัก',
+                                              );
                                             } else {
-                                              return 'gain muscle';
+                                              return FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'gain muscle',
+                                                thText: 'เพิ่มกล้ามเนื้อ',
+                                              );
                                             }
                                           }(),
                                           style: TextStyle(
@@ -303,15 +315,35 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              Text(
-                                FFAppState().macros.protein.toString(),
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      color:
-                                          FlutterFlowTheme.of(context).accent2,
+                              RichText(
+                                textScaleFactor:
+                                    MediaQuery.of(context).textScaleFactor,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: FFAppState()
+                                          .macros
+                                          .protein
+                                          .toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        'wfn67djs' /* g */,
+                                      ),
+                                      style: TextStyle(),
+                                    )
+                                  ],
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ),
                             ],
                           ),
@@ -341,14 +373,33 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              Text(
-                                FFAppState().macros.carbs.toString(),
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      color: FlutterFlowTheme.of(context).error,
+                              RichText(
+                                textScaleFactor:
+                                    MediaQuery.of(context).textScaleFactor,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          FFAppState().macros.carbs.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            color: FlutterFlowTheme.of(context)
+                                                .warning,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        'qi0ki1kl' /* g */,
+                                      ),
+                                      style: TextStyle(),
+                                    )
+                                  ],
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ),
                             ],
                           ),
@@ -378,15 +429,32 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              Text(
-                                FFAppState().macros.fat.toString(),
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
+                              RichText(
+                                textScaleFactor:
+                                    MediaQuery.of(context).textScaleFactor,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: FFAppState().macros.fat.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            color: FlutterFlowTheme.of(context)
+                                                .success,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        'x9ikutfw' /* g */,
+                                      ),
+                                      style: TextStyle(),
+                                    )
+                                  ],
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ),
                             ],
                           ),

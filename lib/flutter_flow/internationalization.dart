@@ -538,13 +538,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Protein',
       'th': 'โปรตีน',
     },
+    'wfn67djs': {
+      'en': 'g',
+      'th': 'กรัม',
+    },
     't3o9w1tw': {
       'en': 'Carbs',
       'th': 'คาร์บ',
     },
+    'qi0ki1kl': {
+      'en': 'g',
+      'th': 'กรัม',
+    },
     'zaetm41c': {
       'en': 'Fat',
       'th': 'ไขมัน',
+    },
+    'x9ikutfw': {
+      'en': 'g',
+      'th': 'กรัม',
     },
     'vxvik703': {
       'en': 'Nutrition Hub',
@@ -668,15 +680,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '608ws76y': {
       'en': 'Moderately active (3-5 days/week)',
-      'th': '',
+      'th': 'ออกกำลังกาย 3-5x/สัปดาห์',
     },
     'upx9kkkj': {
       'en': 'Very active (6-7 days/week)',
-      'th': '',
+      'th': 'ออกกำลังกาย 6-7x/สัปดาห์',
     },
     '4a81b3y1': {
       'en': 'Athlete (2x day)',
-      'th': '',
+      'th': 'ออกกำลังกาย 2x/วัน',
     },
     'rex7pwr2': {
       'en': 'Choose level',
@@ -727,8 +739,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     '36r5kcg7': {
-      'en': 'Submit',
-      'th': 'ส่ง',
+      'en': 'Confirm',
+      'th': 'ยืนยัน',
     },
   },
   // Miscellaneous

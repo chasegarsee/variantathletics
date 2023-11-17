@@ -728,7 +728,7 @@ class _SizeDemographicsBottomSheetWidgetState
                         Navigator.pop(context);
                       },
                 text: FFLocalizations.of(context).getText(
-                  '36r5kcg7' /* Submit */,
+                  '36r5kcg7' /* Confirm */,
                 ),
                 options: FFButtonOptions(
                   width: MediaQuery.sizeOf(context).width * 0.5,
