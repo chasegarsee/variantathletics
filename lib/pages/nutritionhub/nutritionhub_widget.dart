@@ -90,7 +90,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
@@ -189,7 +189,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                     children: [
                       Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         elevation: 4.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -293,7 +293,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                     children: [
                       Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         elevation: 4.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -338,7 +338,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                       text: FFLocalizations.of(context).getText(
                                         'wfn67djs' /* g */,
                                       ),
-                                      style: TextStyle(),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontWeight: FontWeight.w100,
+                                      ),
                                     )
                                   ],
                                   style:
@@ -351,7 +355,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                       ),
                       Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         elevation: 4.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -394,7 +398,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                       text: FFLocalizations.of(context).getText(
                                         'qi0ki1kl' /* g */,
                                       ),
-                                      style: TextStyle(),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontWeight: FontWeight.w100,
+                                      ),
                                     )
                                   ],
                                   style:
@@ -407,7 +415,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                       ),
                       Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         elevation: 4.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -449,7 +457,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                       text: FFLocalizations.of(context).getText(
                                         'x9ikutfw' /* g */,
                                       ),
-                                      style: TextStyle(),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontWeight: FontWeight.w100,
+                                      ),
                                     )
                                   ],
                                   style:

@@ -398,26 +398,32 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                         },
                                         child: Stack(
                                           children: [
-                                            Hero(
-                                              tag:
-                                                  '${FFAppState().exerciseBase}${getJsonField(
-                                                filteredExerciseItem,
-                                                r'''$.id''',
-                                              ).toString()}.png?alt=media',
-                                              transitionOnUserGestures: true,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: CachedNetworkImage(
-                                                  fadeInDuration: Duration(
-                                                      milliseconds: 500),
-                                                  fadeOutDuration: Duration(
-                                                      milliseconds: 500),
-                                                  imageUrl:
-                                                      '${FFAppState().exerciseBase}${getJsonField(
-                                                    filteredExerciseItem,
-                                                    r'''$.id''',
-                                                  ).toString()}.png?alt=media',
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    Duration(milliseconds: 500),
+                                                fadeOutDuration:
+                                                    Duration(milliseconds: 500),
+                                                imageUrl:
+                                                    '${FFAppState().exerciseBase}${getJsonField(
+                                                  filteredExerciseItem,
+                                                  r'''$.id''',
+                                                ).toString()}.png?alt=media',
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        1.0,
+                                                fit: BoxFit.cover,
+                                                errorWidget: (context, error,
+                                                        stackTrace) =>
+                                                    Image.asset(
+                                                  'assets/images/error_image.png',
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -427,20 +433,6 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                               .height *
                                                           1.0,
                                                   fit: BoxFit.cover,
-                                                  errorWidget: (context, error,
-                                                          stackTrace) =>
-                                                      Image.asset(
-                                                    'assets/images/error_image.png',
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        1.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
                                                 ),
                                               ),
                                             ),

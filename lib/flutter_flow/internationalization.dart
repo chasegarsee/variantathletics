@@ -378,10 +378,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Rest Time',
       'th': 'เวลาพัก',
     },
-    'pus4pdls': {
-      'en': 'Select Workout To Begin',
-      'th': 'เลือกการออกกำลังกายเพื่อเริ่มต้น',
-    },
     'di4t2jeu': {
       'en': 'Complete Workout',
       'th': 'เล่นเสร็จแล้ว',

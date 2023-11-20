@@ -669,87 +669,106 @@ class _SizeDemographicsBottomSheetWidgetState
                             ),
                           ],
                         ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 24.0, 24.0, 24.0),
+                              child: FFButtonWidget(
+                                onPressed: (_model.genderValue == null) ||
+                                        (_model.activityLevelValue == null) ||
+                                        (_model.goalValue == null) ||
+                                        (functions.convertStringToInt(
+                                                _model.heightController.text) ==
+                                            false) ||
+                                        (functions.convertStringToInt(
+                                                _model.ageController.text) ==
+                                            false) ||
+                                        (functions.convertStringToInt(
+                                                _model.weightController.text) ==
+                                            false) ||
+                                        _model.isLoading
+                                    ? null
+                                    : () async {
+                                        setState(() {
+                                          _model.isLoading = true;
+                                        });
+                                        setState(() {
+                                          FFAppState().macros = functions
+                                              .macroCalculator(
+                                                  int.parse(_model
+                                                      .ageController.text),
+                                                  int.parse(_model
+                                                      .weightController.text),
+                                                  int.parse(_model
+                                                      .heightController.text),
+                                                  _model.activityLevelValue!,
+                                                  _model.goalValue!,
+                                                  _model.genderValue!);
+                                        });
+
+                                        await currentUserReference!
+                                            .update(createUsersRecordData(
+                                          demographics:
+                                              updateUserDemographicsStruct(
+                                            UserDemographicsStruct(
+                                              age: int.tryParse(
+                                                  _model.ageController.text),
+                                              height: int.tryParse(
+                                                  _model.heightController.text),
+                                              weight: int.tryParse(
+                                                  _model.weightController.text),
+                                              gender: _model.genderValue,
+                                              activityLevel:
+                                                  _model.activityLevelValue,
+                                              goal: _model.goalValue,
+                                            ),
+                                            clearUnsetFields: false,
+                                          ),
+                                        ));
+                                        setState(() {
+                                          _model.isLoading = false;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                text: FFLocalizations.of(context).getText(
+                                  '36r5kcg7' /* Confirm */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: MediaQuery.sizeOf(context).width * 0.5,
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Jost',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  disabledColor: Color(0x9D545454),
+                                  disabledTextColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
                 ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
-              child: FFButtonWidget(
-                onPressed: (_model.genderValue == null) ||
-                        (_model.activityLevelValue == null) ||
-                        (_model.goalValue == null) ||
-                        (functions.convertStringToInt(
-                                _model.heightController.text) ==
-                            false) ||
-                        (functions.convertStringToInt(
-                                _model.ageController.text) ==
-                            false) ||
-                        (functions.convertStringToInt(
-                                _model.weightController.text) ==
-                            false) ||
-                        _model.isLoading
-                    ? null
-                    : () async {
-                        setState(() {
-                          _model.isLoading = true;
-                        });
-                        setState(() {
-                          FFAppState().macros = functions.macroCalculator(
-                              int.parse(_model.ageController.text),
-                              int.parse(_model.weightController.text),
-                              int.parse(_model.heightController.text),
-                              _model.activityLevelValue!,
-                              _model.goalValue!,
-                              _model.genderValue!);
-                        });
-
-                        await currentUserReference!
-                            .update(createUsersRecordData(
-                          demographics: updateUserDemographicsStruct(
-                            UserDemographicsStruct(
-                              age: int.tryParse(_model.ageController.text),
-                              height:
-                                  int.tryParse(_model.heightController.text),
-                              weight:
-                                  int.tryParse(_model.weightController.text),
-                              gender: _model.genderValue,
-                              activityLevel: _model.activityLevelValue,
-                              goal: _model.goalValue,
-                            ),
-                            clearUnsetFields: false,
-                          ),
-                        ));
-                        setState(() {
-                          _model.isLoading = false;
-                        });
-                        Navigator.pop(context);
-                      },
-                text: FFLocalizations.of(context).getText(
-                  '36r5kcg7' /* Confirm */,
-                ),
-                options: FFButtonOptions(
-                  width: MediaQuery.sizeOf(context).width * 0.5,
-                  height: 40.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).accent2,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Jost',
-                        color: FlutterFlowTheme.of(context).primaryText,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
-                  disabledColor: Color(0x9D545454),
-                  disabledTextColor: FlutterFlowTheme.of(context).primaryText,
-                ),
               ),
             ),
           ],

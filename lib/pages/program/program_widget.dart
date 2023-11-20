@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -738,8 +739,13 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    child: Image.network(
-                                                      '${FFAppState().exerciseBase}${exerciseListItem.id}.png?alt=media',
+                                                    child: CachedNetworkImage(
+                                                      fadeInDuration: Duration(
+                                                          milliseconds: 500),
+                                                      fadeOutDuration: Duration(
+                                                          milliseconds: 500),
+                                                      imageUrl:
+                                                          '${FFAppState().exerciseBase}${exerciseListItem.id}.png?alt=media',
                                                       width: MediaQuery.sizeOf(
                                                                   context)
                                                               .width *
@@ -749,7 +755,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               .height *
                                                           1.0,
                                                       fit: BoxFit.cover,
-                                                      errorBuilder: (context,
+                                                      errorWidget: (context,
                                                               error,
                                                               stackTrace) =>
                                                           Image.asset(
@@ -1061,26 +1067,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                 );
                               },
                             ),
-                          ),
-                        ),
-                      if (FFAppState().programExercises.length <= 0)
-                        Flexible(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'pus4pdls' /* Select Workout To Begin */,
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       if ((FFAppState().programExercises.length >= 1) &&

@@ -203,7 +203,7 @@ MacrosStruct macroCalculator(
       totalCalories = (totalCalories * 0.8 / 10).round() * 10;
       break;
     case 3: // Bulking: 20% surplus
-      totalCalories = (totalCalories * 1.2 / 10).round() * 10;
+      totalCalories = (totalCalories * 1.1 / 10).round() * 10;
       break;
     case 2: // Maintenance
     default:
@@ -211,15 +211,22 @@ MacrosStruct macroCalculator(
   }
 
   // Calculate macronutrients
-  int protein = (totalCalories * 0.3 / 4).round(); // 4 calories per gram
-  int carbs = (totalCalories * 0.4 / 4).round(); // 4 calories per gram
-  int fat = (totalCalories * 0.3 / 9).round(); // 9 calories per gram
+  int proteinGrams =
+      (weight * 2.4).round(); // Protein in grams (body weight in kilos * 2)
+  int proteinCalories = proteinGrams * 4; // 4 calories per gram
+
+  int carbsCalories = (totalCalories * 0.4).round(); // 40% of total calories
+  int carbsGrams = (carbsCalories / 4).round(); // 4 calories per gram
+
+  // Remaining calories for fats
+  int remainingCalories = totalCalories - proteinCalories - carbsCalories;
+  int fatGrams = (remainingCalories / 9).round(); // 9 calories per gram
 
   return MacrosStruct(
     totalCalories: totalCalories,
-    protein: protein,
-    carbs: carbs,
-    fat: fat,
+    protein: proteinGrams,
+    carbs: carbsGrams,
+    fat: fatGrams,
   );
 }
 
