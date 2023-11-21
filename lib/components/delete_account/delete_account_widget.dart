@@ -251,6 +251,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                     await currentUserReference!.delete();
                                   }(),
                                 );
+                                await authManager.deleteUser(context);
                                 GoRouter.of(context).prepareAuthEvent();
                                 await authManager.signOut();
                                 GoRouter.of(context).clearRedirectLocation();
