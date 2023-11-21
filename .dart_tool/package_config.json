@@ -242,6 +242,24 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "firebase_remote_config",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/firebase_remote_config-4.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_remote_config_platform_interface",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/firebase_remote_config_platform_interface-1.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_remote_config_web",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/firebase_remote_config_web-1.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///Users/chasegarsee/Documents/development-resources/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -908,7 +926,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-17T19:38:30.591377Z",
+  "generated": "2023-11-21T15:03:32.241299Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
