@@ -138,6 +138,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'nutritionhub',
           path: '/nutritionhub',
           builder: (context, params) => NutritionhubWidget(),
+        ),
+        FFRoute(
+          name: 'info',
+          path: '/info',
+          builder: (context, params) => InfoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

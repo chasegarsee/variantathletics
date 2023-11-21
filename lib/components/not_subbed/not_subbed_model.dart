@@ -1,17 +1,14 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/schema/structs/index.dart';
-import '/components/not_subbed/not_subbed_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'profile_widget.dart' show ProfileWidget;
+import 'not_subbed_widget.dart' show NotSubbedWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ProfileModel extends FlutterFlowModel<ProfileWidget> {
+class NotSubbedModel extends FlutterFlowModel<NotSubbedWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

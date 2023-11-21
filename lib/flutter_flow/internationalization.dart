@@ -120,16 +120,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'ทั้งหมด',
     },
     '4ukyq9iy': {
-      'en': 'Abs',
-      'th': 'หน้าท้อง',
+      'en': 'Legs',
+      'th': 'ขาทั้งหมด',
     },
     't2al7jx7': {
       'en': 'Back',
       'th': 'หลัง',
     },
     'iuhonn55': {
-      'en': 'Calves',
-      'th': 'น่อง',
+      'en': 'Arms',
+      'th': 'แขนทั้งหมด',
     },
     '32qi5kdz': {
       'en': 'Chest',
@@ -170,6 +170,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'le2bq9v5': {
       'en': 'Biceps',
       'th': 'หน้าแขน',
+    },
+    'thqv0eis': {
+      'en': 'Abs',
+      'th': 'หน้าท้อง',
+    },
+    '4gppe0hd': {
+      'en': 'Calvs',
+      'th': 'น่อง',
     },
     'r7x3za7i': {
       'en': 'select a muscle group...',
@@ -563,6 +571,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
+  // info
+  {
+    'yy5hm7g3': {
+      'en': 'App Version:  ',
+      'th': 'แอปเวอร์ชัน: ',
+    },
+    '99450gjc': {
+      'en': 'How to delete your account?',
+      'th': 'วิธีการลบข้อมูล',
+    },
+    'fn2v0o01': {
+      'en': 'VARIANT',
+      'th': 'VARIANT',
+    },
+    '87igkgu5': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
   // kgInput
   {
     'nu1pw3mh': {
@@ -737,6 +764,63 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '36r5kcg7': {
       'en': 'Confirm',
       'th': 'ยืนยัน',
+    },
+  },
+  // deleteAccount
+  {
+    'h0y751d1': {
+      'en': 'Delete Account',
+      'th': 'ลบข้อมูล',
+    },
+    'os6fur3p': {
+      'en': 'Warning!',
+      'th': 'คำเตือน',
+    },
+    'lcg19z7f': {
+      'en': 'Deleting the account will lead to total loss of:',
+      'th': 'การลบข้อมูลจะนำไปสู่การสูญเสียทั้งหมด',
+    },
+    'hcbnhr3l': {
+      'en': 'workout history',
+      'th': 'ประวัติการออกกำลังกาย',
+    },
+    'lpy69hyo': {
+      'en': 'custom macros',
+      'th': 'สารอาหารหลักของคุณ',
+    },
+    'lyn02s9d': {
+      'en': 'personal data',
+      'th': 'ข้อมูลส่วนตัว',
+    },
+    'mi0f1d0f': {
+      'en':
+          'It will not be possible to recover the data after the account has been deleted!',
+      'th': 'จะไม่สามารถกู้คืนข้อมูลได้หลังจากที่ข้อมูลถูกลบไปแล้ว',
+    },
+    'fcmnki9c': {
+      'en': 'Delete',
+      'th': 'ลบ',
+    },
+    'z0fuwcrq': {
+      'en': 'Cancel',
+      'th': 'ยกเลิก',
+    },
+  },
+  // notSubbed
+  {
+    '20brzamz': {
+      'en': 'Oops!',
+      'th': 'อะโอห์',
+    },
+    'chswaljy': {
+      'en':
+          'It looks like you dont have access to this page. Click the button below to gain access, or click cancel to return',
+      'th':
+          'ดูเหมือนว่าคุณจะไม่สามารถเข้าถึงหน้านี้ได้ คลิกปุ่มด้านล่างเพื่อเข้าใช้งาน หรือคลิกยกเลิกเพื่อกลับ',
+    },
+    'rm193j6w': {
+      'en': 'Get Access!',
+      'th': 'ได้รับการเข้าถึง',
     },
   },
   // Miscellaneous

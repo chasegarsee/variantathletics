@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/not_subbed/not_subbed_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -608,7 +609,36 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.pushNamed('nutritionhub');
+                    if (valueOrDefault<bool>(
+                        currentUserDocument?.isSubbed, false)) {
+                      context.pushNamed(
+                        'nutritionhub',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                          ),
+                        },
+                      );
+
+                      return;
+                    } else {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        useSafeArea: true,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: Container(
+                              height: MediaQuery.sizeOf(context).height * 0.35,
+                              child: NotSubbedWidget(),
+                            ),
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
+                    }
                   },
                   child: Material(
                     color: Colors.transparent,
@@ -652,7 +682,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -689,10 +719,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color:
-                              Theme.of(context).brightness == Brightness.light
-                                  ? FlutterFlowTheme.of(context).accent1
-                                  : FlutterFlowTheme.of(context).accent2,
+                          color: FlutterFlowTheme.of(context).error,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodySmall
                               .override(
@@ -706,6 +733,32 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             color: Colors.transparent,
                             width: 1.0,
                           ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('info');
+                        },
+                        child: Icon(
+                          Icons.settings_outlined,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
                         ),
                       ),
                     ),

@@ -210,9 +210,9 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                         ),
                         options: List<String>.from([
                           'All Exercises',
-                          'Abs',
+                          'Legs',
                           'Back',
-                          'Calves',
+                          'Arms',
                           'Chest',
                           'Forearms',
                           'Glutes',
@@ -222,20 +222,22 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           'Shoulders',
                           'Traps',
                           'Triceps',
-                          'Biceps'
+                          'Biceps',
+                          'Abs',
+                          'Calves'
                         ]),
                         optionLabels: [
                           FFLocalizations.of(context).getText(
                             'lrfgewuu' /* All Exercises */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '4ukyq9iy' /* Abs */,
+                            '4ukyq9iy' /* Legs */,
                           ),
                           FFLocalizations.of(context).getText(
                             't2al7jx7' /* Back */,
                           ),
                           FFLocalizations.of(context).getText(
-                            'iuhonn55' /* Calves */,
+                            'iuhonn55' /* Arms */,
                           ),
                           FFLocalizations.of(context).getText(
                             '32qi5kdz' /* Chest */,
@@ -266,6 +268,12 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           ),
                           FFLocalizations.of(context).getText(
                             'le2bq9v5' /* Biceps */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            'thqv0eis' /* Abs */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            '4gppe0hd' /* Calvs */,
                           )
                         ],
                         onChanged: (val) async {
