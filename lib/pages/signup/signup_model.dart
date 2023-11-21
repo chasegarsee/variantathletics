@@ -20,6 +20,10 @@ class SignupModel extends FlutterFlowModel<SignupWidget> {
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  // State field(s) for displayName widget.
+  FocusNode? displayNameFocusNode;
+  TextEditingController? displayNameController;
+  String? Function(BuildContext, String?)? displayNameControllerValidator;
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordController;
@@ -42,6 +46,9 @@ class SignupModel extends FlutterFlowModel<SignupWidget> {
     unfocusNode.dispose();
     emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();
+
+    displayNameFocusNode?.dispose();
+    displayNameController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordController?.dispose();

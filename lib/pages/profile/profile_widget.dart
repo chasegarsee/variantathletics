@@ -139,6 +139,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    currentUserDisplayName,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
@@ -149,7 +156,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .override(
                                           fontFamily: 'Jost',
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                              .accent2,
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -676,6 +683,68 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 5.0,
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          24.0, 12.0, 24.0, 12.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              '80sul3wg' /* Leave comments after completin... */,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                          Theme(
+                            data: ThemeData(
+                              checkboxTheme: CheckboxThemeData(
+                                visualDensity: VisualDensity.compact,
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4.0),
+                                ),
+                              ),
+                              unselectedWidgetColor:
+                                  FlutterFlowTheme.of(context).accent2,
+                            ),
+                            child: Checkbox(
+                              value: _model.checkboxValue ??= false,
+                              onChanged: (newValue) async {
+                                setState(
+                                    () => _model.checkboxValue = newValue!);
+                                if (newValue!) {
+                                  setState(() {
+                                    FFAppState().leaveComments = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    FFAppState().leaveComments = false;
+                                  });
+                                }
+                              },
+                              activeColor: FlutterFlowTheme.of(context).accent2,
+                              checkColor:
+                                  FlutterFlowTheme.of(context).primaryBtnText,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           Column(
@@ -719,7 +788,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).error,
+                          color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodySmall
                               .override(
@@ -728,7 +797,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.normal,
                               ),
-                          elevation: 1.0,
+                          elevation: 5.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
@@ -746,7 +815,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,

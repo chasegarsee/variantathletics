@@ -2,6 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/days_placeholder/days_placeholder_widget.dart';
+import '/components/leave_workout_comment/leave_workout_comment_widget.dart';
+import '/components/workout_comments/workout_comments_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -604,34 +606,39 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          if (FFAppState()
-                              .completedDays
-                              .contains(FFAppState().selectedDayId))
-                            Align(
-                              alignment: AlignmentDirectional(-0.94, -0.73),
-                              child: FlutterFlowIconButton(
-                                borderColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                borderRadius: 20.0,
-                                borderWidth: 1.0,
-                                buttonSize: 40.0,
-                                fillColor: FlutterFlowTheme.of(context).accent2,
-                                icon: Icon(
-                                  Icons.restart_alt_sharp,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Container(
+                              width: 24.0,
+                              height: 24.0,
+                              decoration: BoxDecoration(),
+                              child: Visibility(
+                                visible: FFAppState()
+                                    .completedDays
+                                    .contains(FFAppState().selectedDayId),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    setState(() {
+                                      FFAppState().removeFromCompletedDays(
+                                          FFAppState().selectedDayId);
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.replay,
+                                    color: FlutterFlowTheme.of(context).accent2,
+                                    size: 24.0,
+                                  ),
                                 ),
-                                onPressed: () async {
-                                  setState(() {
-                                    FFAppState().removeFromCompletedDays(
-                                        FFAppState().selectedDayId);
-                                  });
-                                },
                               ),
                             ),
+                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 5.0, 10.0, 5.0, 10.0),
@@ -643,6 +650,52 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                     fontFamily: 'Jost',
                                     color: FlutterFlowTheme.of(context).accent2,
                                   ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 12.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  useSafeArea: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.5,
+                                          child: WorkoutCommentsWidget(
+                                            workoutId:
+                                                FFAppState().selectedDayId,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: Icon(
+                                Icons.comment_rounded,
+                                color: FlutterFlowTheme.of(context).accent2,
+                                size: 24.0,
+                              ),
                             ),
                           ),
                         ],
@@ -1082,6 +1135,40 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                 FFAppState().addToCompletedDays(
                                     FFAppState().selectedDayId);
                               });
+                              if (FFAppState().leaveComments) {
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  useSafeArea: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: Container(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.75,
+                                          child: LeaveWorkoutCommentWidget(
+                                            workoutId:
+                                                FFAppState().selectedDayId,
+                                            displayName: currentUserDisplayName,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              } else {
+                                return;
+                              }
                             },
                             text: FFLocalizations.of(context).getText(
                               'di4t2jeu' /* Complete Workout */,

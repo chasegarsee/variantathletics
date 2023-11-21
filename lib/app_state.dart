@@ -143,6 +143,9 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _leaveComments = prefs.getBool('ff_leaveComments') ?? _leaveComments;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -554,6 +557,13 @@ class FFAppState extends ChangeNotifier {
   void updateMacrosStruct(Function(MacrosStruct) updateFn) {
     updateFn(_macros);
     prefs.setString('ff_macros', _macros.serialize());
+  }
+
+  bool _leaveComments = false;
+  bool get leaveComments => _leaveComments;
+  set leaveComments(bool _value) {
+    _leaveComments = _value;
+    prefs.setBool('ff_leaveComments', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

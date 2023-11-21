@@ -1,22 +1,14 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/schema/structs/index.dart';
-import '/components/not_subbed/not_subbed_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'profile_widget.dart' show ProfileWidget;
+import 'no_comments_to_display_widget.dart' show NoCommentsToDisplayWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ProfileModel extends FlutterFlowModel<ProfileWidget> {
-  ///  State fields for stateful widgets in this page.
-
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue;
-
+class NoCommentsToDisplayModel
+    extends FlutterFlowModel<NoCommentsToDisplayWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

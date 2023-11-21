@@ -456,6 +456,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'th': 'อีเมล',
     },
+    'ieqemiz5': {
+      'en': 'Name',
+      'th': 'ชื่อ',
+    },
     'z36zvri6': {
       'en': 'Password',
       'th': 'รหัสผ่าน',
@@ -514,6 +518,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '6fjbpfrq': {
       'en': 'Nutrition Hub',
       'th': 'ศูนย์โภชนาการ',
+    },
+    '80sul3wg': {
+      'en': 'Leave comments after completing workouts',
+      'th': 'แสดงความคิดเห็นหลังออกกำลังกายเสร็จ',
     },
     'h0v7c7oj': {
       'en': 'Log Out',
@@ -821,6 +829,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rm193j6w': {
       'en': 'Get Access!',
       'th': 'ได้รับการเข้าถึง',
+    },
+  },
+  // workoutComments
+  {
+    '2lfemeqz': {
+      'en': ' ago',
+      'th': ' ที่แล้ว',
+    },
+  },
+  // leaveWorkoutComment
+  {
+    'rrn99ycn': {
+      'en': 'Tell me how it went!',
+      'th': 'บอกเชษฐ์ว่ามันเป็นยังไง',
+    },
+    'arzps6b4': {
+      'en': 'Leave a comment',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'h1ll29mw': {
+      'en': 'Start typing...',
+      'th': 'เริ่มพิมพ์',
+    },
+  },
+  // noCommentsToDisplay
+  {
+    '6qrsj6aw': {
+      'en': 'No comments to display',
+      'th': 'ไม่มีคอมเม้นท์ที่จะแสดง',
     },
   },
   // Miscellaneous
