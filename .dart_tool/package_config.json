@@ -308,8 +308,20 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "flutter_rating_bar",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/flutter_rating_bar-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "flutter_spinkit",
       "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/flutter_spinkit-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_staggered_grid_view",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -408,6 +420,12 @@
       "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/image-4.0.17",
       "packageUri": "lib/",
       "languageVersion": "2.15"
+    },
+    {
+      "name": "infinite_scroll_pagination",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/git/infinite_scroll_pagination-3d3ce8574b2d8ecc954915c57a5e626b8f1cb2d4/",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "intl",
@@ -686,6 +704,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "sliver_tools",
+      "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/sliver_tools-0.2.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///Users/chasegarsee/.pub-cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
@@ -926,7 +950,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-21T15:03:32.241299Z",
+  "generated": "2023-11-21T19:16:38.038875Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
