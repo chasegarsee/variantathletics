@@ -231,24 +231,30 @@ class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                              ),
-                                              TextSpan(
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '2lfemeqz' /*  ago */,
-                                                ),
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
                                         ),
+                                        if (dateTimeFormat(
+                                              'relative',
+                                              listViewWorkoutCommentsRecord
+                                                  .dateTime,
+                                              locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageShortCode ??
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ) !=
+                                            'now')
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '0oifm2tf' /*  ago */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
                                       ],
                                     ),
                                   ),

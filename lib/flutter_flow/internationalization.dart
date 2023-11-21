@@ -833,9 +833,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // workoutComments
   {
-    '2lfemeqz': {
+    '0oifm2tf': {
       'en': ' ago',
-      'th': ' ที่แล้ว',
+      'th': 'ที่แล้ว',
     },
   },
   // leaveWorkoutComment

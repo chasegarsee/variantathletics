@@ -720,7 +720,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   FlutterFlowTheme.of(context).accent2,
                             ),
                             child: Checkbox(
-                              value: _model.checkboxValue ??= false,
+                              value: _model.checkboxValue ??=
+                                  FFAppState().leaveComments,
                               onChanged: (newValue) async {
                                 setState(
                                     () => _model.checkboxValue = newValue!);
