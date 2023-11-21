@@ -46,6 +46,11 @@ class WorkoutCommentsRecord extends FirestoreRecord {
   String get workoutId => _workoutId ?? '';
   bool hasWorkoutId() => _workoutId != null;
 
+  // "programId" field.
+  String? _programId;
+  String get programId => _programId ?? '';
+  bool hasProgramId() => _programId != null;
+
   void _initializeFields() {
     _comment = snapshotData['comment'] as String?;
     _dateTime = snapshotData['dateTime'] as DateTime?;
@@ -53,6 +58,7 @@ class WorkoutCommentsRecord extends FirestoreRecord {
     _rating = castToType<int>(snapshotData['rating']);
     _uid = snapshotData['uid'] as String?;
     _workoutId = snapshotData['workoutId'] as String?;
+    _programId = snapshotData['programId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -96,6 +102,7 @@ Map<String, dynamic> createWorkoutCommentsRecordData({
   int? rating,
   String? uid,
   String? workoutId,
+  String? programId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -105,6 +112,7 @@ Map<String, dynamic> createWorkoutCommentsRecordData({
       'rating': rating,
       'uid': uid,
       'workoutId': workoutId,
+      'programId': programId,
     }.withoutNulls,
   );
 
@@ -122,12 +130,20 @@ class WorkoutCommentsRecordDocumentEquality
         e1?.name == e2?.name &&
         e1?.rating == e2?.rating &&
         e1?.uid == e2?.uid &&
-        e1?.workoutId == e2?.workoutId;
+        e1?.workoutId == e2?.workoutId &&
+        e1?.programId == e2?.programId;
   }
 
   @override
-  int hash(WorkoutCommentsRecord? e) => const ListEquality().hash(
-      [e?.comment, e?.dateTime, e?.name, e?.rating, e?.uid, e?.workoutId]);
+  int hash(WorkoutCommentsRecord? e) => const ListEquality().hash([
+        e?.comment,
+        e?.dateTime,
+        e?.name,
+        e?.rating,
+        e?.uid,
+        e?.workoutId,
+        e?.programId
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is WorkoutCommentsRecord;

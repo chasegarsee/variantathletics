@@ -76,6 +76,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
           FFAppState().weeks =
               _model.program!.weeks.toList().cast<WeeksStruct>();
           FFAppState().currentProgram = _model.program!.name;
+          FFAppState().currentProgramId = _model.program!.reference.id;
         });
         setState(() {
           _model.isLoading = false;

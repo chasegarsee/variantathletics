@@ -123,6 +123,10 @@ class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {
                             'workoutId',
                             isEqualTo: widget.workoutId,
                           )
+                          .where(
+                            'programId',
+                            isEqualTo: FFAppState().currentProgramId,
+                          )
                           .orderBy('dateTime', descending: true),
                     ),
                     padding: EdgeInsets.zero,

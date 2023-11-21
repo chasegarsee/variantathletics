@@ -146,6 +146,10 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _leaveComments = prefs.getBool('ff_leaveComments') ?? _leaveComments;
     });
+    _safeInit(() {
+      _currentProgramId =
+          prefs.getString('ff_currentProgramId') ?? _currentProgramId;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -559,11 +563,18 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_macros', _macros.serialize());
   }
 
-  bool _leaveComments = false;
+  bool _leaveComments = true;
   bool get leaveComments => _leaveComments;
   set leaveComments(bool _value) {
     _leaveComments = _value;
     prefs.setBool('ff_leaveComments', _value);
+  }
+
+  String _currentProgramId = '';
+  String get currentProgramId => _currentProgramId;
+  set currentProgramId(String _value) {
+    _currentProgramId = _value;
+    prefs.setString('ff_currentProgramId', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

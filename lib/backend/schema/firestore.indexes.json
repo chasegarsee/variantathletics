@@ -9,6 +9,10 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "programId",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "dateTime",
           "order": "DESCENDING"
         }

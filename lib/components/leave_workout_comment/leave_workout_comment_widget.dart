@@ -287,6 +287,8 @@ class _LeaveWorkoutCommentWidgetState extends State<LeaveWorkoutCommentWidget> {
                                               _model.ratingBarValue?.round(),
                                           uid: currentUserUid,
                                           workoutId: widget.workoutId,
+                                          programId:
+                                              FFAppState().currentProgramId,
                                         ));
                                     Navigator.pop(context);
                                   },
