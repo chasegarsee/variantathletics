@@ -1,9 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/stripe/payment_manager.dart';
 import '/components/not_subbed/not_subbed_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:aligned_tooltip/aligned_tooltip.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -745,6 +749,306 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     ),
                   ),
                 ),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  if (!valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false))
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            var _shouldSetState = false;
+                            final paymentResponse = await processStripePayment(
+                              context,
+                              amount: 197800,
+                              currency: 'thb',
+                              customerEmail: currentUserEmail,
+                              customerName: currentUserDisplayName,
+                              description: valueOrDefault<String>(
+                                FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Become a VARIANT. Lifetime membership',
+                                  thText: 'มาเป็น VARIANT สมาชิกตลอดชีพ',
+                                ),
+                                'Become a VARIANT. Lifetime membership',
+                              ),
+                              allowGooglePay: false,
+                              allowApplePay: false,
+                              buttonColor: FlutterFlowTheme.of(context).accent2,
+                              buttonTextColor: Colors.white,
+                            );
+                            if (paymentResponse.paymentId == null &&
+                                paymentResponse.errorMessage != null) {
+                              showSnackbar(
+                                context,
+                                'Error: ${paymentResponse.errorMessage}',
+                              );
+                            }
+                            _model.paymentId = paymentResponse.paymentId ?? '';
+
+                            _shouldSetState = true;
+                            if (_model.paymentId != null &&
+                                _model.paymentId != '') {
+                              await currentUserReference!
+                                  .update(createUsersRecordData(
+                                isSubbed: true,
+                              ));
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            } else {
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            }
+
+                            if (_shouldSetState) setState(() {});
+                          },
+                          child: Material(
+                            color: Colors.transparent,
+                            elevation: 5.0,
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 12.0, 24.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        '54snrqt4' /* Upgrade to become a VARIANT */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      child: Stack(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.95, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 6.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'qwu39kbf' /* PRO */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent1,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -0.85, 0.00),
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: 2.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                              ),
+                                              child: Container(
+                                                width: 36.0,
+                                                height: 36.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x430B0D0F),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                  shape: BoxShape.rectangle,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false))
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => Material(
+                          color: Colors.transparent,
+                          elevation: 5.0,
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: AlignedTooltip(
+                              content: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4.0, 4.0, 4.0, 4.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'r2etes77' /* Lifetime VARIANT. No Purchase ... */,
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyLarge,
+                                  )),
+                              offset: 4.0,
+                              preferredDirection: AxisDirection.down,
+                              borderRadius: BorderRadius.circular(8.0),
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 4.0,
+                              tailBaseWidth: 24.0,
+                              tailLength: 12.0,
+                              waitDuration: Duration(milliseconds: 100),
+                              showDuration: Duration(milliseconds: 1500),
+                              triggerMode: TooltipTriggerMode.tap,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 12.0, 24.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'tp6kfy1h' /* Account Status: VARIANT PRO */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      child: Stack(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -0.90, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6.0, 2.0, 0.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'n4vkcrs2' /* PRO */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent2,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.90, 0.00),
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: 2.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                              ),
+                                              child: Container(
+                                                width: 36.0,
+                                                height: 36.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x430B0D0F),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                  shape: BoxShape.rectangle,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ],
           ),

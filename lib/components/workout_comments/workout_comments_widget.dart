@@ -86,142 +86,149 @@ class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(1.00, -1.00),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(
-                            Icons.close_sharp,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 36.0,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(1.00, -1.00),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(
+                              Icons.close_sharp,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 36.0,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  PagedListView<DocumentSnapshot<Object?>?,
-                      WorkoutCommentsRecord>(
-                    pagingController: _model.setListViewController(
-                      WorkoutCommentsRecord.collection
-                          .where(
-                            'workoutId',
-                            isEqualTo: widget.workoutId,
-                          )
-                          .where(
-                            'programId',
-                            isEqualTo: FFAppState().currentProgramId,
-                          )
-                          .orderBy('dateTime', descending: true),
+                      ],
                     ),
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    reverse: false,
-                    scrollDirection: Axis.vertical,
-                    builderDelegate:
-                        PagedChildBuilderDelegate<WorkoutCommentsRecord>(
-                      // Customize what your widget looks like when it's loading the first page.
-                      firstPageProgressIndicatorBuilder: (_) => Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 50.0,
-                          ),
+                    Expanded(
+                      child: PagedListView<DocumentSnapshot<Object?>?,
+                          WorkoutCommentsRecord>(
+                        pagingController: _model.setListViewController(
+                          WorkoutCommentsRecord.collection
+                              .where(
+                                'workoutId',
+                                isEqualTo: widget.workoutId,
+                              )
+                              .where(
+                                'programId',
+                                isEqualTo: FFAppState().currentProgramId,
+                              )
+                              .orderBy('dateTime', descending: true),
                         ),
-                      ),
-                      // Customize what your widget looks like when it's loading another page.
-                      newPageProgressIndicatorBuilder: (_) => Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 50.0,
+                        padding: EdgeInsets.zero,
+                        reverse: false,
+                        scrollDirection: Axis.vertical,
+                        builderDelegate:
+                            PagedChildBuilderDelegate<WorkoutCommentsRecord>(
+                          // Customize what your widget looks like when it's loading the first page.
+                          firstPageProgressIndicatorBuilder: (_) => Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitRipple(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 50.0,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      noItemsFoundIndicatorBuilder: (_) =>
-                          NoCommentsToDisplayWidget(),
-                      itemBuilder: (context, _, listViewIndex) {
-                        final listViewWorkoutCommentsRecord = _model
-                            .listViewPagingController!.itemList![listViewIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 12.0),
-                          child: Container(
-                            decoration: BoxDecoration(),
-                            child: Padding(
+                          // Customize what your widget looks like when it's loading another page.
+                          newPageProgressIndicatorBuilder: (_) => Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitRipple(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 50.0,
+                              ),
+                            ),
+                          ),
+                          noItemsFoundIndicatorBuilder: (_) =>
+                              NoCommentsToDisplayWidget(),
+                          itemBuilder: (context, _, listViewIndex) {
+                            final listViewWorkoutCommentsRecord = _model
+                                .listViewPagingController!
+                                .itemList![listViewIndex];
+                            return Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 12.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 5.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          listViewWorkoutCommentsRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            Icons.circle_sharp,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent2,
-                                            size: 8.0,
-                                          ),
-                                        ),
-                                        RichText(
-                                          textScaleFactor:
-                                              MediaQuery.of(context)
-                                                  .textScaleFactor,
-                                          text: TextSpan(
-                                            children: [
-                                              TextSpan(
-                                                text: dateTimeFormat(
-                                                  'relative',
-                                                  listViewWorkoutCommentsRecord
-                                                      .dateTime!,
-                                                  locale: FFLocalizations.of(
-                                                              context)
-                                                          .languageShortCode ??
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .languageCode,
-                                                ),
-                                                style:
+                              child: Container(
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 5.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              listViewWorkoutCommentsRecord
+                                                  .name,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                Icons.circle_sharp,
+                                                color:
                                                     FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                                size: 8.0,
+                                              ),
+                                            ),
+                                            RichText(
+                                              textScaleFactor:
+                                                  MediaQuery.of(context)
+                                                      .textScaleFactor,
+                                              text: TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: dateTimeFormat(
+                                                      'relative',
+                                                      listViewWorkoutCommentsRecord
+                                                          .dateTime!,
+                                                      locale: FFLocalizations
+                                                                  .of(context)
+                                                              .languageShortCode ??
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Jost',
@@ -231,47 +238,53 @@ class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                              )
-                                            ],
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ),
-                                        if (dateTimeFormat(
-                                              'relative',
-                                              listViewWorkoutCommentsRecord
-                                                  .dateTime,
-                                              locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageShortCode ??
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ) !=
-                                            'now')
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              '0oifm2tf' /*  ago */,
+                                                  )
+                                                ],
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                      ],
-                                    ),
+                                            if (dateTimeFormat(
+                                                  'relative',
+                                                  listViewWorkoutCommentsRecord
+                                                      .dateTime,
+                                                  locale: FFLocalizations.of(
+                                                              context)
+                                                          .languageShortCode ??
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .languageCode,
+                                                ) !=
+                                                'now')
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '0oifm2tf' /*  ago */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                      Text(
+                                        listViewWorkoutCommentsRecord.comment,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    listViewWorkoutCommentsRecord.comment,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        );
-                      },
+                            );
+                          },
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

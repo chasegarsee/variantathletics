@@ -523,6 +523,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Leave comments after completing workouts',
       'th': 'แสดงความคิดเห็นหลังออกกำลังกายเสร็จ',
     },
+    '54snrqt4': {
+      'en': 'Upgrade to become a VARIANT',
+      'th': 'อัพเกรดเป็น VARIANT',
+    },
+    'qwu39kbf': {
+      'en': 'PRO',
+      'th': 'PRO',
+    },
+    'tp6kfy1h': {
+      'en': 'Account Status: VARIANT PRO',
+      'th': 'สถานะข้อมูล: VARIANT PRO',
+    },
+    'n4vkcrs2': {
+      'en': 'PRO',
+      'th': 'PRO',
+    },
+    'r2etes77': {
+      'en': 'Lifetime VARIANT. No Purchase Required',
+      'th': 'สมาชิกตลอดชีพ ไม่จำเป็นต้องซื้อต่อ',
+    },
     'h0v7c7oj': {
       'en': 'Log Out',
       'th': 'ออกจากระบบ',
