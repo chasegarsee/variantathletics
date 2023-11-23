@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -152,9 +153,12 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
                     return;
                   } else {
-                    setState(() {
-                      _model.showDialoge = true;
-                    });
+                    final isEntitled =
+                        await revenue_cat.isEntitled('all_access') ?? false;
+                    if (!isEntitled) {
+                      await revenue_cat.loadOfferings();
+                    }
+
                     return;
                   }
                 },
@@ -179,9 +183,12 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
                     return;
                   } else {
-                    setState(() {
-                      _model.showDialoge = true;
-                    });
+                    final isEntitled =
+                        await revenue_cat.isEntitled('all_access') ?? false;
+                    if (!isEntitled) {
+                      await revenue_cat.loadOfferings();
+                    }
+
                     return;
                   }
                 },

@@ -1,13 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/stripe/payment_manager.dart';
 import '/components/not_subbed/not_subbed_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -765,50 +763,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            var _shouldSetState = false;
-                            final paymentResponse = await processStripePayment(
-                              context,
-                              amount: 197800,
-                              currency: 'thb',
-                              customerEmail: currentUserEmail,
-                              customerName: currentUserDisplayName,
-                              description: valueOrDefault<String>(
-                                FFLocalizations.of(context).getVariableText(
-                                  enText:
-                                      'Become a VARIANT. Lifetime membership',
-                                  thText: 'มาเป็น VARIANT สมาชิกตลอดชีพ',
-                                ),
-                                'Become a VARIANT. Lifetime membership',
-                              ),
-                              allowGooglePay: false,
-                              allowApplePay: false,
-                              buttonColor: FlutterFlowTheme.of(context).accent2,
-                              buttonTextColor: Colors.white,
-                            );
-                            if (paymentResponse.paymentId == null &&
-                                paymentResponse.errorMessage != null) {
-                              showSnackbar(
-                                context,
-                                'Error: ${paymentResponse.errorMessage}',
-                              );
+                            final isEntitled =
+                                await revenue_cat.isEntitled('all_access') ??
+                                    false;
+                            if (!isEntitled) {
+                              await revenue_cat.loadOfferings();
                             }
-                            _model.paymentId = paymentResponse.paymentId ?? '';
-
-                            _shouldSetState = true;
-                            if (_model.paymentId != null &&
-                                _model.paymentId != '') {
-                              await currentUserReference!
-                                  .update(createUsersRecordData(
-                                isSubbed: true,
-                              ));
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            } else {
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            }
-
-                            if (_shouldSetState) setState(() {});
                           },
                           child: Material(
                             color: Colors.transparent,

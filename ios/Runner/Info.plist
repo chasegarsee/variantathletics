@@ -15,8 +15,6 @@
 	<key>CFBundleName</key>
 	<string>variantExerciseLibrary</string>
 	<key>CFBundlePackageType</key>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use</string>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
 	<array>
