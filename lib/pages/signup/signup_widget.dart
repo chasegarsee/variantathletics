@@ -33,10 +33,10 @@ class _SignupWidgetState extends State<SignupWidget> {
 
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
-
+    _model.emailAddressFocusNode!.addListener(() => setState(() {}));
     _model.displayNameController ??= TextEditingController();
     _model.displayNameFocusNode ??= FocusNode();
-
+    _model.displayNameFocusNode!.addListener(() => setState(() {}));
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
