@@ -114,7 +114,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'uuj1gyle' /* Rev Cat Paywall */,
+                        '5qnzqt83' /* Rev Cat Paywall */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
                     ),

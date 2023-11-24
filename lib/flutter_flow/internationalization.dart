@@ -882,7 +882,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // revCatPaywall
   {
-    'uuj1gyle': {
+    '5qnzqt83': {
       'en': 'Rev Cat Paywall',
       'th': '',
     },

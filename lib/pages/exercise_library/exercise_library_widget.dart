@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/rev_cat_paywall/rev_cat_paywall_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -147,19 +148,38 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  if (valueOrDefault<bool>(
-                      currentUserDocument?.isSubbed, false)) {
+                  final isEntitled =
+                      await revenue_cat.isEntitled('all_access') ?? false;
+                  if (!isEntitled) {
+                    await revenue_cat.loadOfferings();
+                  }
+
+                  if (isEntitled) {
                     context.pushNamed('timer');
-
-                    return;
                   } else {
-                    final isEntitled =
-                        await revenue_cat.isEntitled('all_access') ?? false;
-                    if (!isEntitled) {
-                      await revenue_cat.loadOfferings();
-                    }
-
-                    return;
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      context: context,
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () => _model.unfocusNode.canRequestFocus
+                              ? FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode)
+                              : FocusScope.of(context).unfocus(),
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: Container(
+                              height: 50.0,
+                              child: RevCatPaywallWidget(
+                                workoutId: '123',
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
                   }
                 },
               ),
