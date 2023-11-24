@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -152,148 +153,183 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 16.0),
-                                  child: Container(
-                                    width: 370.0,
-                                    child: TextFormField(
-                                      controller: _model.emailAddressController,
-                                      focusNode: _model.emailAddressFocusNode,
-                                      autofocus: true,
-                                      autofillHints: [AutofillHints.email],
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '30kf6clo' /* Email */,
+                                Form(
+                                  key: _model.formKey2,
+                                  autovalidateMode: AutovalidateMode.always,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
+                                    child: Container(
+                                      width: 370.0,
+                                      child: TextFormField(
+                                        controller:
+                                            _model.emailAddressController,
+                                        focusNode: _model.emailAddressFocusNode,
+                                        onChanged: (_) => EasyDebounce.debounce(
+                                          '_model.emailAddressController',
+                                          Duration(milliseconds: 500),
+                                          () => setState(() {}),
                                         ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Jost',
+                                        autofocus: true,
+                                        autofillHints: [AutofillHints.email],
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            '30kf6clo' /* Email */,
+                                          ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBackground,
+                                              width: 2.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            width: 2.0,
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                          filled: true,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
                                         ),
-                                        filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        validator: _model
+                                            .emailAddressControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                      keyboardType: TextInputType.emailAddress,
-                                      validator: _model
-                                          .emailAddressControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 16.0),
-                                  child: Container(
-                                    width: 370.0,
-                                    child: TextFormField(
-                                      controller: _model.displayNameController,
-                                      focusNode: _model.displayNameFocusNode,
-                                      autofocus: true,
-                                      autofillHints: [AutofillHints.email],
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'ieqemiz5' /* Name */,
+                                Form(
+                                  key: _model.formKey1,
+                                  autovalidateMode: AutovalidateMode.always,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
+                                    child: Container(
+                                      width: 370.0,
+                                      child: TextFormField(
+                                        controller:
+                                            _model.displayNameController,
+                                        focusNode: _model.displayNameFocusNode,
+                                        onChanged: (_) => EasyDebounce.debounce(
+                                          '_model.displayNameController',
+                                          Duration(milliseconds: 500),
+                                          () => setState(() {}),
                                         ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Jost',
+                                        autofillHints: [AutofillHints.name],
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'ieqemiz5' /* Display Name */,
+                                          ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBackground,
+                                              width: 2.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            width: 2.0,
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                          filled: true,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
                                         ),
-                                        filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        keyboardType: TextInputType.name,
+                                        validator: _model
+                                            .displayNameControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                      validator: _model
-                                          .displayNameControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -488,57 +524,77 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: FFButtonWidget(
-                                    onPressed: () async {
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      if (_model.passwordController.text !=
-                                          _model
-                                              .passwordConfirmController.text) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Passwords don\'t match!',
-                                            ),
-                                          ),
-                                        );
-                                        return;
-                                      }
+                                    onPressed: (_model.emailAddressController
+                                                        .text ==
+                                                    null ||
+                                                _model.emailAddressController
+                                                        .text ==
+                                                    '') ||
+                                            (_model.displayNameController
+                                                        .text ==
+                                                    null ||
+                                                _model.displayNameController
+                                                        .text ==
+                                                    '')
+                                        ? null
+                                        : () async {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            if (_model
+                                                    .passwordController.text !=
+                                                _model.passwordConfirmController
+                                                    .text) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Passwords don\'t match!',
+                                                  ),
+                                                ),
+                                              );
+                                              return;
+                                            }
 
-                                      final user = await authManager
-                                          .createAccountWithEmail(
-                                        context,
-                                        _model.emailAddressController.text,
-                                        _model.passwordController.text,
-                                      );
-                                      if (user == null) {
-                                        return;
-                                      }
+                                            final user = await authManager
+                                                .createAccountWithEmail(
+                                              context,
+                                              _model
+                                                  .emailAddressController.text,
+                                              _model.passwordController.text,
+                                            );
+                                            if (user == null) {
+                                              return;
+                                            }
 
-                                      await UsersRecord.collection
-                                          .doc(user.uid)
-                                          .update(createUsersRecordData(
-                                            email: _model
-                                                .emailAddressController.text,
-                                            createdTime: getCurrentTimestamp,
-                                            isSubbed: false,
-                                            demographics:
-                                                createUserDemographicsStruct(
-                                              age: 0,
-                                              height: 0,
-                                              weight: 0,
-                                              gender: 0,
-                                              activityLevel: 0,
-                                              goal: 0,
-                                              clearUnsetFields: false,
-                                              create: true,
-                                            ),
-                                            displayName: _model
-                                                .displayNameController.text,
-                                          ));
+                                            await UsersRecord.collection
+                                                .doc(user.uid)
+                                                .update(createUsersRecordData(
+                                                  email: _model
+                                                      .emailAddressController
+                                                      .text,
+                                                  createdTime:
+                                                      getCurrentTimestamp,
+                                                  isSubbed: false,
+                                                  demographics:
+                                                      createUserDemographicsStruct(
+                                                    age: 0,
+                                                    height: 0,
+                                                    weight: 0,
+                                                    gender: 0,
+                                                    activityLevel: 0,
+                                                    goal: 0,
+                                                    clearUnsetFields: false,
+                                                    create: true,
+                                                  ),
+                                                  displayName: _model
+                                                      .displayNameController
+                                                      .text,
+                                                ));
 
-                                      context.goNamedAuth(
-                                          'exerciseLibrary', context.mounted);
-                                    },
+                                            context.goNamedAuth(
+                                                'exerciseLibrary',
+                                                context.mounted);
+                                          },
                                     text: FFLocalizations.of(context).getText(
                                       's14s2wyk' /* Let's get started */,
                                     ),
@@ -565,6 +621,10 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(12.0),
+                                      disabledColor: Color(0x9D545454),
+                                      disabledTextColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
                                     ),
                                   ),
                                 ),

@@ -456,9 +456,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'th': 'อีเมล',
     },
+    'mcim9fbw': {
+      'en': 'Required',
+      'th': 'จำเป็น',
+    },
+    '3khun89n': {
+      'en': '',
+      'th': '',
+    },
+    'zj6raol5': {
+      'en': 'Please choose an option from the dropdown',
+      'th': '',
+    },
     'ieqemiz5': {
-      'en': 'Name',
-      'th': 'ชื่อ',
+      'en': 'Display Name',
+      'th': 'ชื่อเล่น',
+    },
+    'l4aozokw': {
+      'en': 'Required',
+      'th': 'จำเป็น',
+    },
+    'ect2zggz': {
+      'en': 'Please choose an option from the dropdown',
+      'th': '',
     },
     'z36zvri6': {
       'en': 'Password',

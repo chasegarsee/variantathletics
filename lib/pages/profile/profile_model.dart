@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/not_subbed/not_subbed_widget.dart';
 import '/components/rev_cat_paywall/rev_cat_paywall_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

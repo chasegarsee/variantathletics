@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'signup_widget.dart' show SignupWidget;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,14 +17,39 @@ class SignupModel extends FlutterFlowModel<SignupWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey2 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  String? _emailAddressControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'mcim9fbw' /* Required */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
+    return null;
+  }
+
   // State field(s) for displayName widget.
   FocusNode? displayNameFocusNode;
   TextEditingController? displayNameController;
   String? Function(BuildContext, String?)? displayNameControllerValidator;
+  String? _displayNameControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'l4aozokw' /* Required */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordController;
@@ -38,6 +64,8 @@ class SignupModel extends FlutterFlowModel<SignupWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    emailAddressControllerValidator = _emailAddressControllerValidator;
+    displayNameControllerValidator = _displayNameControllerValidator;
     passwordVisibility = false;
     passwordConfirmVisibility = false;
   }
