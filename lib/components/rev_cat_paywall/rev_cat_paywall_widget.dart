@@ -164,7 +164,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                         setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        'nbuwj0pp' /* Buy now */,
+                        '7nqjv7yo' /* Buy now */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,
@@ -186,7 +186,10 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    if (_model.purchaseResponse ?? true)
+                    if (valueOrDefault<bool>(
+                      _model.purchaseResponse,
+                      false,
+                    ))
                       Text(
                         _model.purchaseResponse!.toString(),
                         style: FlutterFlowTheme.of(context).bodyMedium,
