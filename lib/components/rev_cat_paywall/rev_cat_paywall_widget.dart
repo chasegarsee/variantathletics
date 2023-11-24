@@ -112,6 +112,29 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                       revenue_cat.offerings!.current!.identifier,
                       style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
+                    Text(
+                      revenue_cat.offerings!.current!.serverDescription,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    Text(
+                      revenue_cat.offerings!.current!
+                          .getPackage('Lifetime')!
+                          .storeProduct
+                          .identifier,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    Text(
+                      revenue_cat.offerings!.current!
+                          .getPackage('Lifetime')!
+                          .storeProduct
+                          .price
+                          .toString(),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [],
+                    ),
                   ],
                 ),
               ),
