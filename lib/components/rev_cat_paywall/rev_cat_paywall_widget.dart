@@ -1,7 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -11,7 +15,12 @@ import 'rev_cat_paywall_model.dart';
 export 'rev_cat_paywall_model.dart';
 
 class RevCatPaywallWidget extends StatefulWidget {
-  const RevCatPaywallWidget({Key? key}) : super(key: key);
+  const RevCatPaywallWidget({
+    Key? key,
+    this.navigateTo,
+  }) : super(key: key);
+
+  final String? navigateTo;
 
   @override
   _RevCatPaywallWidgetState createState() => _RevCatPaywallWidgetState();
@@ -158,13 +167,43 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        var _shouldSetState = false;
                         _model.purchaseResponse =
                             await revenue_cat.purchasePackage('\$rc_lifetime');
+                        _shouldSetState = true;
+                        if (_model.purchaseResponse!) {
+                          unawaited(
+                            () async {
+                              await currentUserReference!
+                                  .update(createUsersRecordData(
+                                isSubbed: true,
+                              ));
+                            }(),
+                          );
+                          Navigator.pop(context);
+                          if (widget.navigateTo == 'timer') {
+                            context.pushNamed('timer');
 
-                        setState(() {});
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          } else if (widget.navigateTo == 'program') {
+                            context.pushNamed('program');
+
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          } else {
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          }
+                        } else {
+                          if (_shouldSetState) setState(() {});
+                          return;
+                        }
+
+                        if (_shouldSetState) setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        '7nqjv7yo' /* Buy now */,
+                        '5bldqnsc' /* Buy now */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,
@@ -186,14 +225,6 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    if (valueOrDefault<bool>(
-                      _model.purchaseResponse,
-                      false,
-                    ))
-                      Text(
-                        _model.purchaseResponse!.toString(),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
                   ],
                 ),
               ),

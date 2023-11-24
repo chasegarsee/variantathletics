@@ -172,8 +172,10 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
                             child: Container(
-                              height: MediaQuery.sizeOf(context).height * 0.5,
-                              child: RevCatPaywallWidget(),
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              child: RevCatPaywallWidget(
+                                navigateTo: 'timer',
+                              ),
                             ),
                           ),
                         );
@@ -196,17 +198,49 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  if (valueOrDefault<bool>(
-                      currentUserDocument?.isSubbed, false)) {
-                    context.pushNamed('program');
+                  final isEntitled =
+                      await revenue_cat.isEntitled('all_access') ?? false;
+                  if (!isEntitled) {
+                    await revenue_cat.loadOfferings();
+                  }
+
+                  if (isEntitled) {
+                    context.pushNamed(
+                      'program',
+                      queryParameters: {
+                        'isFromTimer': serializeParam(
+                          false,
+                          ParamType.bool,
+                        ),
+                      }.withoutNulls,
+                    );
 
                     return;
                   } else {
-                    final isEntitled =
-                        await revenue_cat.isEntitled('all_access') ?? false;
-                    if (!isEntitled) {
-                      await revenue_cat.loadOfferings();
-                    }
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      useSafeArea: true,
+                      context: context,
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () => _model.unfocusNode.canRequestFocus
+                              ? FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode)
+                              : FocusScope.of(context).unfocus(),
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: Container(
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              child: RevCatPaywallWidget(
+                                navigateTo: 'program',
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
 
                     return;
                   }

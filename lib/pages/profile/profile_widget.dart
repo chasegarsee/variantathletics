@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/not_subbed/not_subbed_widget.dart';
+import '/components/rev_cat_paywall/rev_cat_paywall_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -769,6 +770,32 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             if (!isEntitled) {
                               await revenue_cat.loadOfferings();
                             }
+
+                            if (isEntitled) {
+                              return;
+                            }
+
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              useSafeArea: true,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: Container(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
+                                    child: RevCatPaywallWidget(
+                                      navigateTo: 'timer',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+
+                            return;
                           },
                           child: Material(
                             color: Colors.transparent,
