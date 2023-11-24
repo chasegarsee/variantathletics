@@ -155,7 +155,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 ),
                                 Form(
                                   key: _model.formKey2,
-                                  autovalidateMode: AutovalidateMode.disabled,
+                                  autovalidateMode: AutovalidateMode.always,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
@@ -246,7 +246,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 ),
                                 Form(
                                   key: _model.formKey1,
-                                  autovalidateMode: AutovalidateMode.disabled,
+                                  autovalidateMode: AutovalidateMode.always,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
