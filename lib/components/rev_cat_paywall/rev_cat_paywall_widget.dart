@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -9,12 +10,7 @@ import 'rev_cat_paywall_model.dart';
 export 'rev_cat_paywall_model.dart';
 
 class RevCatPaywallWidget extends StatefulWidget {
-  const RevCatPaywallWidget({
-    Key? key,
-    required this.workoutId,
-  }) : super(key: key);
-
-  final String? workoutId;
+  const RevCatPaywallWidget({Key? key}) : super(key: key);
 
   @override
   _RevCatPaywallWidgetState createState() => _RevCatPaywallWidgetState();
@@ -113,9 +109,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                       ],
                     ),
                     Text(
-                      FFLocalizations.of(context).getText(
-                        '5qnzqt83' /* Rev Cat Paywall */,
-                      ),
+                      revenue_cat.offerings!.current!.identifier,
                       style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                   ],

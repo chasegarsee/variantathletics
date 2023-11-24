@@ -880,13 +880,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'ไม่มีคอมเม้นท์ที่จะแสดง',
     },
   },
-  // revCatPaywall
-  {
-    '5qnzqt83': {
-      'en': 'Rev Cat Paywall',
-      'th': '',
-    },
-  },
   // Miscellaneous
   {
     '0akax9ls': {

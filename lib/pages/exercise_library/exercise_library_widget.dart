@@ -161,6 +161,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
                       enableDrag: false,
+                      useSafeArea: true,
                       context: context,
                       builder: (context) {
                         return GestureDetector(
@@ -171,10 +172,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
                             child: Container(
-                              height: 50.0,
-                              child: RevCatPaywallWidget(
-                                workoutId: '123',
-                              ),
+                              height: MediaQuery.sizeOf(context).height * 0.5,
+                              child: RevCatPaywallWidget(),
                             ),
                           ),
                         );
