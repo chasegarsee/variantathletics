@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
+import 'dart:ui';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
@@ -449,116 +450,154 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                         ],
                       ),
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Stack(
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 5.0),
-                          child: RichText(
-                            textScaleFactor:
-                                MediaQuery.of(context).textScaleFactor,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: FFLocalizations.of(context).getText(
-                                    '4a5xgdoq' /* Full access for just  */,
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.96),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0.0),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(
+                                sigmaX: 2.0,
+                                sigmaY: 2.0,
+                              ),
+                              child: Align(
+                                alignment: AlignmentDirectional(-1.00, 0.00),
+                                child: Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.899,
+                                  height: 29.0,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.transparent,
+                                        Color(0x25000000)
+                                      ],
+                                      stops: [0.0, 1.0],
+                                      begin: AlignmentDirectional(1.0, 0.0),
+                                      end: AlignmentDirectional(-1.0, 0),
+                                    ),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: RichText(
+                                textScaleFactor:
+                                    MediaQuery.of(context).textScaleFactor,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        '4a5xgdoq' /* Full access for just  */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    TextSpan(
+                                      text: valueOrDefault<String>(
+                                        revenue_cat
+                                            .offerings!
+                                            .current!
+                                            .availablePackages
+                                            .first
+                                            .storeProduct
+                                            .price
+                                            .toString(),
+                                        '-',
+                                      ),
+                                      style: TextStyle(),
+                                    )
+                                  ],
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Jost',
                                         color:
                                             FlutterFlowTheme.of(context).info,
-                                        fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                                TextSpan(
-                                  text: valueOrDefault<String>(
-                                    revenue_cat
-                                        .offerings!
-                                        .current!
-                                        .availablePackages
-                                        .first
-                                        .storeProduct
-                                        .price
-                                        .toString(),
-                                    '-',
-                                  ),
-                                  style: TextStyle(),
-                                )
-                              ],
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Jost',
-                                    color: FlutterFlowTheme.of(context).info,
-                                  ),
+                                textAlign: TextAlign.end,
+                              ),
                             ),
-                          ),
-                        ),
-                        FFButtonWidget(
-                          onPressed: () async {
-                            var _shouldSetState = false;
-                            _model.purchaseResponse = await revenue_cat
-                                .purchasePackage('\$rc_lifetime');
-                            _shouldSetState = true;
-                            if (_model.purchaseResponse!) {
-                              unawaited(
-                                () async {
-                                  await currentUserReference!
-                                      .update(createUsersRecordData(
-                                    isSubbed: true,
-                                  ));
-                                }(),
-                              );
-                              Navigator.pop(context);
-                              if (widget.navigateTo == 'timer') {
-                                context.pushNamed('timer');
+                            FFButtonWidget(
+                              onPressed: () async {
+                                var _shouldSetState = false;
+                                _model.purchaseResponse = await revenue_cat
+                                    .purchasePackage('\$rc_lifetime');
+                                _shouldSetState = true;
+                                if (_model.purchaseResponse!) {
+                                  unawaited(
+                                    () async {
+                                      await currentUserReference!
+                                          .update(createUsersRecordData(
+                                        isSubbed: true,
+                                      ));
+                                    }(),
+                                  );
+                                  Navigator.pop(context);
+                                  if (widget.navigateTo == 'timer') {
+                                    context.pushNamed('timer');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else if (widget.navigateTo == 'program') {
+                                    context.pushNamed('program');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else {
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                } else {
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
 
                                 if (_shouldSetState) setState(() {});
-                                return;
-                              } else if (widget.navigateTo == 'program') {
-                                context.pushNamed('program');
-
-                                if (_shouldSetState) setState(() {});
-                                return;
-                              } else {
-                                if (_shouldSetState) setState(() {});
-                                return;
-                              }
-                            } else {
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            }
-
-                            if (_shouldSetState) setState(() {});
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            'qscd8ud1' /* Become a VARIANT */,
-                          ),
-                          options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).accent2,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Jost',
-                                  color: Colors.white,
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'qscd8ud1' /* Become a VARIANT */,
+                              ),
+                              options: FFButtonOptions(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).accent2,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color: Colors.white,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
                                 ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
+                          ],
                         ),
                       ],
                     ),
