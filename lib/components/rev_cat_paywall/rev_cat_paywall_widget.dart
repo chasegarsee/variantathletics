@@ -127,10 +127,9 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        revenue_cat.offerings!.current!
-                            .getPackage('Lifetime')!
-                            .storeProduct
-                            .priceString,
+                        revenue_cat
+                            .offerings!.current!.lifetime!.storeProduct.price
+                            .toString(),
                         '-',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
