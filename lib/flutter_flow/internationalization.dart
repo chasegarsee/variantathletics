@@ -882,9 +882,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // revCatPaywall
   {
-    '5bldqnsc': {
-      'en': 'Buy now',
+    's79a6uqz': {
+      'en':
+          'Become a VARIANT and reach your goals with a proven and effective plan',
+      'th':
+          'เป็นผู้ VARIANT และบรรลุเป้าหมายด้วยแผนที่ได้รับการพิสูจน์แล้วและมีประสิทธิภาพ',
+    },
+    'wvfr82d3': {
+      'en': 'Purchase for lifetime access',
       'th': '',
+    },
+    '1i1a8uv0': {
+      'en': 'Unlimited access to app functionality',
+      'th': 'เข้าถึงฟังก์ชันการทำงานของแอปได้ไม่จำกัด',
+    },
+    'bz5sfcu5': {
+      'en': 'Unlimited access to VARIANT programs',
+      'th': 'เข้าถึงโปรแกรม VARIANT ได้ไม่จำกัด',
+    },
+    'w6r79tif': {
+      'en': 'Custom Macro Calculator',
+      'th': 'เครื่องคิดเลขธาตุอาหารหลักส่วนตัว',
+    },
+    '5nsu9132': {
+      'en': 'Exclusive Facebook Group',
+      'th': 'Facebook กลุ่มลับ',
+    },
+    'v040zuat': {
+      'en': 'Lifetime access to exercise library',
+      'th': 'สิทธิ์เข้าใช้ห้องสมุดออกกำลังกายได้ตลอดชีวิต',
+    },
+    'q7f9i6mw': {
+      'en': 'Calorie Counting Diet Guide 101',
+      'th': 'คู่มืออาหารนับแคลอรี่ 101',
+    },
+    'cxc6mdxu': {
+      'en': 'Science based training Methodology Guide',
+      'th': 'คู่มือวิธีการออกกำลังกายตามวิทยาศาสตร์',
+    },
+    '4a5xgdoq': {
+      'en': 'Full access for just ',
+      'th': 'ทุกคุณสมบัติในราคาเพียง',
+    },
+    'qscd8ud1': {
+      'en': 'Become a VARIANT',
+      'th': 'เข้าสู่ชุมชน VARIANT',
     },
   },
   // Miscellaneous

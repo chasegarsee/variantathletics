@@ -6,9 +6,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'rev_cat_paywall_model.dart';
@@ -52,29 +54,18 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Material(
-      color: Colors.transparent,
-      elevation: 5.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0.0),
-          bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(16.0),
-          topRight: Radius.circular(16.0),
-        ),
-      ),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0.0),
-            bottomRight: Radius.circular(0.0),
-            topLeft: Radius.circular(16.0),
-            topRight: Radius.circular(16.0),
+    return Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(0.0),
+          child: Image.asset(
+            'assets/images/Untitled_design_(20).png',
+            width: MediaQuery.sizeOf(context).width * 1.0,
+            height: MediaQuery.sizeOf(context).height * 1.0,
+            fit: BoxFit.cover,
           ),
         ),
-        child: Column(
+        Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
@@ -93,137 +84,483 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: AlignmentDirectional(1.00, -1.00),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              Navigator.pop(context);
-                            },
-                            child: Icon(
-                              Icons.close_sharp,
-                              color: FlutterFlowTheme.of(context).accent2,
-                              size: 36.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              's79a6uqz' /* Become a VARIANT and reach you... */,
                             ),
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).info,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'wvfr82d3' /* Purchase for lifetime access */,
+                            ),
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                         ),
                       ],
                     ),
-                    Text(
-                      valueOrDefault<String>(
-                        revenue_cat.offerings!.current!.identifier,
-                        '-',
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(150.0, 0.0, 0.0, 0.0),
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.trophy,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            '1i1a8uv0' /* Unlimited access to app functi... */,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.folder_copy,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'bz5sfcu5' /* Unlimited access to VARIANT pr... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.calculate,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'w6r79tif' /* Custom Macro Calculator */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.comments,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            '5nsu9132' /* Exclusive Facebook Group */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.video_collection,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'v040zuat' /* Lifetime access to exercise li... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.picture_as_pdf,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'q7f9i6mw' /* Calorie Counting Diet Guide 10... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.weightHanging,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'cxc6mdxu' /* Science based training Methodo... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
-                    Text(
-                      valueOrDefault<String>(
-                        revenue_cat.offerings!.current!.serverDescription,
-                        '-',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        revenue_cat.offerings!.current!.availablePackages.first
-                            .identifier,
-                        '-',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        revenue_cat.offerings!.current!.availablePackages.first
-                            .storeProduct.identifier,
-                        '-',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        revenue_cat.offerings!.current!.availablePackages.first
-                            .storeProduct.priceString,
-                        '-',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        revenue_cat.offerings!.current!.availablePackages.first
-                            .storeProduct.price
-                            .toString(),
-                        '-',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        _model.purchaseResponse =
-                            await revenue_cat.purchasePackage('\$rc_lifetime');
-                        _shouldSetState = true;
-                        if (_model.purchaseResponse!) {
-                          unawaited(
-                            () async {
-                              await currentUserReference!
-                                  .update(createUsersRecordData(
-                                isSubbed: true,
-                              ));
-                            }(),
-                          );
-                          Navigator.pop(context);
-                          if (widget.navigateTo == 'timer') {
-                            context.pushNamed('timer');
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: RichText(
+                            textScaleFactor:
+                                MediaQuery.of(context).textScaleFactor,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: FFLocalizations.of(context).getText(
+                                    '4a5xgdoq' /* Full access for just  */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Jost',
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                TextSpan(
+                                  text: valueOrDefault<String>(
+                                    revenue_cat
+                                        .offerings!
+                                        .current!
+                                        .availablePackages
+                                        .first
+                                        .storeProduct
+                                        .price
+                                        .toString(),
+                                    '-',
+                                  ),
+                                  style: TextStyle(),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context).info,
+                                  ),
+                            ),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () async {
+                            var _shouldSetState = false;
+                            _model.purchaseResponse = await revenue_cat
+                                .purchasePackage('\$rc_lifetime');
+                            _shouldSetState = true;
+                            if (_model.purchaseResponse!) {
+                              unawaited(
+                                () async {
+                                  await currentUserReference!
+                                      .update(createUsersRecordData(
+                                    isSubbed: true,
+                                  ));
+                                }(),
+                              );
+                              Navigator.pop(context);
+                              if (widget.navigateTo == 'timer') {
+                                context.pushNamed('timer');
+
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              } else if (widget.navigateTo == 'program') {
+                                context.pushNamed('program');
+
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              } else {
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
+                            } else {
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            }
 
                             if (_shouldSetState) setState(() {});
-                            return;
-                          } else if (widget.navigateTo == 'program') {
-                            context.pushNamed('program');
-
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          } else {
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-                        } else {
-                          if (_shouldSetState) setState(() {});
-                          return;
-                        }
-
-                        if (_shouldSetState) setState(() {});
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        '5bldqnsc' /* Buy now */,
-                      ),
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).accent2,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'qscd8ud1' /* Become a VARIANT */,
+                          ),
+                          options: FFButtonOptions(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).accent2,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
                                   fontFamily: 'Jost',
                                   color: Colors.white,
                                 ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                      ],
                     ),
                   ],
                 ),
@@ -231,7 +568,15 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
             ),
           ],
         ),
-      ),
+        Align(
+          alignment: AlignmentDirectional(0.96, -0.93),
+          child: Icon(
+            Icons.close,
+            color: FlutterFlowTheme.of(context).accent2,
+            size: 30.0,
+          ),
+        ),
+      ],
     );
   }
 }
