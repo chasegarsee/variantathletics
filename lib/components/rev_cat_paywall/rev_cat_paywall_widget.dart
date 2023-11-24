@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -154,6 +155,36 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                         '-',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        _model.purchaseResponse =
+                            await revenue_cat.purchasePackage('\$rc_lifetime');
+
+                        setState(() {});
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        'mktj5vh7' /* Buy now */,
+                      ),
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).accent2,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Jost',
+                                  color: Colors.white,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ],
                 ),
