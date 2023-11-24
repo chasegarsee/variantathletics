@@ -109,7 +109,10 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                       ],
                     ),
                     Text(
-                      revenue_cat.offerings!.current!.identifier,
+                      valueOrDefault<String>(
+                        revenue_cat.offerings!.current!.identifier,
+                        '-',
+                      ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                     Text(
