@@ -143,6 +143,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'info',
           path: '/info',
           builder: (context, params) => InfoWidget(),
+        ),
+        FFRoute(
+          name: 'knowledgeHub',
+          path: '/knowledgeHub',
+          builder: (context, params) => KnowledgeHubWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

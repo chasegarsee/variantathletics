@@ -131,6 +131,7 @@ final parametersBuilderMap =
   'profile': ParameterData.none(),
   'nutritionhub': ParameterData.none(),
   'info': ParameterData.none(),
+  'knowledgeHub': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

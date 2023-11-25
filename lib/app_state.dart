@@ -150,6 +150,9 @@ class FFAppState extends ChangeNotifier {
       _currentProgramId =
           prefs.getString('ff_currentProgramId') ?? _currentProgramId;
     });
+    _safeInit(() {
+      _pdfBase = prefs.getString('ff_pdfBase') ?? _pdfBase;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -575,6 +578,14 @@ class FFAppState extends ChangeNotifier {
   set currentProgramId(String _value) {
     _currentProgramId = _value;
     prefs.setString('ff_currentProgramId', _value);
+  }
+
+  String _pdfBase =
+      'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/pdf%2F';
+  String get pdfBase => _pdfBase;
+  set pdfBase(String _value) {
+    _pdfBase = _value;
+    prefs.setString('ff_pdfBase', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

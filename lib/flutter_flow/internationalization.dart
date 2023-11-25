@@ -539,6 +539,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Nutrition Hub',
       'th': 'ศูนย์โภชนาการ',
     },
+    'o4pthagk': {
+      'en': 'Knowlege Hub',
+      'th': 'ศูนย์โภชนาการ',
+    },
     '80sul3wg': {
       'en': 'Leave comments after completing workouts',
       'th': 'แสดงความคิดเห็นหลังออกกำลังกายเสร็จ',
@@ -634,6 +638,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'VARIANT',
     },
     '87igkgu5': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // knowledgeHub
+  {
+    'al57h8wp': {
+      'en': 'Page Title',
+      'th': '',
+    },
+    'rshvfyen': {
       'en': 'Home',
       'th': '',
     },
