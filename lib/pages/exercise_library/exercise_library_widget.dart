@@ -160,7 +160,6 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
-                      enableDrag: false,
                       useSafeArea: true,
                       context: context,
                       builder: (context) {
@@ -220,7 +219,6 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
-                      enableDrag: false,
                       useSafeArea: true,
                       context: context,
                       builder: (context) {

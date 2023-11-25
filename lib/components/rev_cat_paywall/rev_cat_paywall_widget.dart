@@ -624,10 +624,19 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
         ),
         Align(
           alignment: AlignmentDirectional(0.96, -0.93),
-          child: Icon(
-            Icons.close,
-            color: FlutterFlowTheme.of(context).accent2,
-            size: 30.0,
+          child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.close,
+              color: FlutterFlowTheme.of(context).accent2,
+              size: 30.0,
+            ),
           ),
         ),
       ],

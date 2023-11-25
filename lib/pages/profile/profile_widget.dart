@@ -632,7 +632,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
-                        enableDrag: false,
                         useSafeArea: true,
                         context: context,
                         builder: (context) {
@@ -779,7 +778,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
-                              enableDrag: false,
                               useSafeArea: true,
                               context: context,
                               builder: (context) {
