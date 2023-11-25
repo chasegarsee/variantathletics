@@ -644,11 +644,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // knowledgeHub
   {
-    'al57h8wp': {
-      'en': 'Page Title',
+    '30d1azpf': {
+      'en': 'Knowledge Hub',
+      'th': 'ศูนย์โภชนาการ',
+    },
+    'aip5pzdg': {
+      'en': 'Home',
       'th': '',
     },
-    'rshvfyen': {
+  },
+  // pdfPage
+  {
+    'yjbaunqk': {
+      'en': 'VARIANT',
+      'th': 'VARIANT',
+    },
+    '1tniq6qs': {
       'en': 'Home',
       'th': '',
     },

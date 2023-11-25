@@ -238,3 +238,20 @@ bool convertStringToInt(String text) {
   isValid = int.parse(text) >= 10;
   return isValid;
 }
+
+String formatPDFName(String pdfName) {
+  // Replace all underscores with spaces
+  String replacedString = pdfName.replaceAll('_', ' ');
+
+  // Split the string into words
+  List<String> words = replacedString.split(' ');
+
+  // Capitalize the first letter of each word
+  List<String> capitalizedWords = words.map((word) {
+    if (word.isEmpty) return word;
+    return word[0].toUpperCase() + word.substring(1).toLowerCase();
+  }).toList();
+
+  // Join the words back into a single string
+  return capitalizedWords.join(' ');
+}

@@ -132,6 +132,11 @@ final parametersBuilderMap =
   'nutritionhub': ParameterData.none(),
   'info': ParameterData.none(),
   'knowledgeHub': ParameterData.none(),
+  'pdfPage': (data) async => ParameterData(
+        allParams: {
+          'pdfUrl': getParameter<String>(data, 'pdfUrl'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

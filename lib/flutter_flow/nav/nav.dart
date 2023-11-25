@@ -148,6 +148,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'knowledgeHub',
           path: '/knowledgeHub',
           builder: (context, params) => KnowledgeHubWidget(),
+        ),
+        FFRoute(
+          name: 'pdfPage',
+          path: '/pdfPage',
+          builder: (context, params) => PdfPageWidget(
+            pdfUrl: params.getParam('pdfUrl', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

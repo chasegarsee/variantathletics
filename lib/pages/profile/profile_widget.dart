@@ -694,7 +694,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.pushNamed('knowledgeHub');
+                    context.pushNamed(
+                      'knowledgeHub',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                        ),
+                      },
+                    );
                   },
                   child: Material(
                     color: Colors.transparent,

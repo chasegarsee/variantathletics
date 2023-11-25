@@ -1,23 +1,17 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'knowledge_hub_widget.dart' show KnowledgeHubWidget;
-import 'package:cached_network_image/cached_network_image.dart';
+import 'pdf_page_widget.dart' show PdfPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class KnowledgeHubModel extends FlutterFlowModel<KnowledgeHubWidget> {
-  ///  Local state fields for this page.
-
-  String? selectedPDF =
-      'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/pdf%2Fen%2Fvariant_challenge_macro_counting_101.pdf?alt=media';
-
+class PdfPageModel extends FlutterFlowModel<PdfPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

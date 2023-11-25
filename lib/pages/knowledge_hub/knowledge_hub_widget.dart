@@ -1,9 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -107,7 +108,7 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'al57h8wp' /* Page Title */,
+                  '30d1azpf' /* Knowledge Hub */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Jost',
@@ -126,50 +127,159 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
                 children: [
                   Builder(
                     builder: (context) {
-                      final pdfNames =
+                      final pdf =
                           knowledgeHubPdfFileNamesRecord?.names?.toList() ?? [];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children:
-                            List.generate(pdfNames.length, (pdfNamesIndex) {
-                          final pdfNamesItem = pdfNames[pdfNamesIndex];
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: pdf.length,
+                        itemBuilder: (context, pdfIndex) {
+                          final pdfItem = pdf[pdfIndex];
                           return Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 20.0, 0.0),
+                                0.0, 5.0, 0.0, 5.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                setState(() {
-                                  _model.selectedPDF = pdfNamesItem;
-                                });
+                                context.pushNamed(
+                                  'pdfPage',
+                                  queryParameters: {
+                                    'pdfUrl': serializeParam(
+                                      pdfItem,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                    ),
+                                  },
+                                );
                               },
-                              child: Text(
-                                pdfNamesIndex.toString(),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 3.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.25,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                1.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: CachedNetworkImage(
+                                            fadeInDuration:
+                                                Duration(milliseconds: 500),
+                                            fadeOutDuration:
+                                                Duration(milliseconds: 500),
+                                            imageUrl:
+                                                '${FFAppState().pdfBase}${FFLocalizations.of(context).getVariableText(
+                                              enText: 'en',
+                                              thText: 'th',
+                                            )}%2F${pdfItem}.png?alt=media',
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                1.0,
+                                            fit: BoxFit.cover,
+                                            errorWidget:
+                                                (context, error, stackTrace) =>
+                                                    Image.asset(
+                                              'assets/images/error_image.png',
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  1.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.75,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                1.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.00, 0.00),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 12.0, 24.0, 12.0),
+                                                child: Text(
+                                                  functions
+                                                      .formatPDFName(pdfItem),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           );
-                        }),
+                        },
                       );
                     },
-                  ),
-                  FlutterFlowPdfViewer(
-                    networkPath:
-                        '${FFAppState().pdfBase}${FFLocalizations.of(context).languageCode}%2F${_model.selectedPDF}.pdf?alt=media',
-                    height: 495.0,
-                    horizontalScroll: false,
-                  ),
-                  SelectionArea(
-                      child: Text(
-                    '${FFAppState().pdfBase}${FFLocalizations.of(context).languageCode}%2F${_model.selectedPDF}.pdf?alt=media',
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                  )),
-                  Text(
-                    _model.selectedPDF!,
-                    style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                 ],
               ),

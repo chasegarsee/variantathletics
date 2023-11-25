@@ -10,3 +10,4 @@ export '/pages/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/nutritionhub/nutritionhub_widget.dart' show NutritionhubWidget;
 export '/pages/info/info_widget.dart' show InfoWidget;
 export '/pages/knowledge_hub/knowledge_hub_widget.dart' show KnowledgeHubWidget;
+export '/pages/pdf_page/pdf_page_widget.dart' show PdfPageWidget;
