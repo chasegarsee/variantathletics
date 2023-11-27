@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -159,203 +160,194 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                         Align(
                                           alignment:
                                               AlignmentDirectional(0.00, 0.00),
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                1.0,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xE4000000),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 20.0, 20.0, 20.0),
-                                              child: Stack(
-                                                children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: BackdropFilter(
+                                              filter: ImageFilter.blur(
+                                                sigmaX: 12.0,
+                                                sigmaY: 12.0,
+                                              ),
+                                              child: Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        1.0,
+                                                decoration: BoxDecoration(),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20.0, 20.0,
+                                                          20.0, 20.0),
+                                                  child: Stack(
                                                     children: [
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.00, -1.00),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      50.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      20.0),
-                                                          child: Text(
-                                                            pageViewExercisesRecord!
-                                                                .name,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Jost',
-                                                                  color: FlutterFlowTheme.of(
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    50.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      -1.00,
+                                                                      -1.00),
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        20.0),
+                                                                child: Text(
+                                                                  pageViewExercisesRecord!
+                                                                      .name,
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryBtnText,
-                                                                  fontSize:
-                                                                      30.0,
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Jost',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryBtnText,
+                                                                        fontSize:
+                                                                            30.0,
+                                                                      ),
                                                                 ),
-                                                          ),
+                                                              ),
+                                                            ),
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode !=
+                                                                'th')
+                                                              Flexible(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final enDetails =
+                                                                          pageViewExercisesRecord?.breakdown?.en?.toList() ??
+                                                                              [];
+                                                                      return ListView
+                                                                          .builder(
+                                                                        padding:
+                                                                            EdgeInsets.zero,
+                                                                        shrinkWrap:
+                                                                            true,
+                                                                        scrollDirection:
+                                                                            Axis.vertical,
+                                                                        itemCount:
+                                                                            enDetails.length,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                enDetailsIndex) {
+                                                                          final enDetailsItem =
+                                                                              enDetails[enDetailsIndex];
+                                                                          return Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(-1.00, 0.00),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                              child: Text(
+                                                                                '${functions.indexPlusOne(enDetailsIndex).toString()}. ${enDetailsItem}',
+                                                                                textAlign: TextAlign.start,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Jost',
+                                                                                      color: Colors.white,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'th')
+                                                              Flexible(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final thDetails =
+                                                                          pageViewExercisesRecord?.breakdown?.th?.toList() ??
+                                                                              [];
+                                                                      return ListView
+                                                                          .builder(
+                                                                        padding:
+                                                                            EdgeInsets.zero,
+                                                                        shrinkWrap:
+                                                                            true,
+                                                                        scrollDirection:
+                                                                            Axis.vertical,
+                                                                        itemCount:
+                                                                            thDetails.length,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                thDetailsIndex) {
+                                                                          final thDetailsItem =
+                                                                              thDetails[thDetailsIndex];
+                                                                          return Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(-1.00, 0.00),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                              child: Text(
+                                                                                '${functions.indexPlusOne(thDetailsIndex).toString()}. ${thDetailsItem}',
+                                                                                textAlign: TextAlign.start,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Jost',
+                                                                                      color: Colors.white,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                          ],
                                                         ),
                                                       ),
-                                                      if (FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode !=
-                                                          'th')
-                                                        Flexible(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final enDetails =
-                                                                    pageViewExercisesRecord
-                                                                            ?.breakdown
-                                                                            ?.en
-                                                                            ?.toList() ??
-                                                                        [];
-                                                                return ListView
-                                                                    .builder(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  scrollDirection:
-                                                                      Axis.vertical,
-                                                                  itemCount:
-                                                                      enDetails
-                                                                          .length,
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          enDetailsIndex) {
-                                                                    final enDetailsItem =
-                                                                        enDetails[
-                                                                            enDetailsIndex];
-                                                                    return Align(
-                                                                      alignment: AlignmentDirectional(
-                                                                          -1.00,
-                                                                          0.00),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0),
-                                                                        child:
-                                                                            Text(
-                                                                          '${functions.indexPlusOne(enDetailsIndex).toString()}. ${enDetailsItem}',
-                                                                          textAlign:
-                                                                              TextAlign.start,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Jost',
-                                                                                color: Colors.white,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      if (FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode ==
-                                                          'th')
-                                                        Flexible(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final thDetails =
-                                                                    pageViewExercisesRecord
-                                                                            ?.breakdown
-                                                                            ?.th
-                                                                            ?.toList() ??
-                                                                        [];
-                                                                return ListView
-                                                                    .builder(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  scrollDirection:
-                                                                      Axis.vertical,
-                                                                  itemCount:
-                                                                      thDetails
-                                                                          .length,
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          thDetailsIndex) {
-                                                                    final thDetailsItem =
-                                                                        thDetails[
-                                                                            thDetailsIndex];
-                                                                    return Align(
-                                                                      alignment: AlignmentDirectional(
-                                                                          -1.00,
-                                                                          0.00),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0),
-                                                                        child:
-                                                                            Text(
-                                                                          '${functions.indexPlusOne(thDetailsIndex).toString()}. ${thDetailsItem}',
-                                                                          textAlign:
-                                                                              TextAlign.start,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Jost',
-                                                                                color: Colors.white,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ),
                                                     ],
                                                   ),
-                                                ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -373,7 +365,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 24.0, 0.0, 24.0),
+                                                  12.0, 24.0, 12.0, 24.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -448,34 +440,40 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                   FFAppState()
                                                       .favorites
                                                       .toList()))
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .removeFromFavorites(
-                                                              FavoritesStruct(
-                                                        name:
-                                                            pageViewExercisesRecord
-                                                                ?.name,
-                                                        id: pageViewExercisesRecord
-                                                            ?.id,
-                                                      ));
-                                                    });
-                                                  },
-                                                  child: Icon(
-                                                    Icons.favorite_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent2,
-                                                    size: 50.0,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .removeFromFavorites(
+                                                                FavoritesStruct(
+                                                          name:
+                                                              pageViewExercisesRecord
+                                                                  ?.name,
+                                                          id: pageViewExercisesRecord
+                                                              ?.id,
+                                                        ));
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                      Icons.favorite_sharp,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent2,
+                                                      size: 50.0,
+                                                    ),
                                                   ),
                                                 ),
                                             ],
