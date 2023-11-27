@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -362,36 +363,126 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                       ],
                                     ),
                                   ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.85, -0.93),
-                                        child: Padding(
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent2,
-                                            borderRadius: 20.0,
-                                            borderWidth: 2.0,
-                                            buttonSize: 50.0,
-                                            fillColor: Color(0x7E000000),
-                                            icon: Icon(
-                                              Icons.chevron_left_outlined,
-                                              color: Colors.white,
-                                              size: 30.0,
-                                            ),
-                                            onPressed: () async {
-                                              context.safePop();
-                                            },
+                                                  0.0, 24.0, 0.0, 24.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -0.85, -0.93),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent2,
+                                                    borderRadius: 20.0,
+                                                    borderWidth: 2.0,
+                                                    buttonSize: 50.0,
+                                                    fillColor:
+                                                        Color(0x7E000000),
+                                                    icon: Icon(
+                                                      Icons
+                                                          .chevron_left_outlined,
+                                                      color: Colors.white,
+                                                      size: 30.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      context.safePop();
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                              if (!functions.isFavorite(
+                                                  pageViewExercisesRecord!.id,
+                                                  FFAppState()
+                                                      .favorites
+                                                      .toList()))
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .addToFavorites(
+                                                              FavoritesStruct(
+                                                        name:
+                                                            pageViewExercisesRecord
+                                                                ?.name,
+                                                        id: pageViewExercisesRecord
+                                                            ?.id,
+                                                      ));
+                                                    });
+                                                  },
+                                                  child: Icon(
+                                                    Icons.favorite_border,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent2,
+                                                    size: 50.0,
+                                                  ),
+                                                ),
+                                              if (functions.isFavorite(
+                                                  pageViewExercisesRecord!.id,
+                                                  FFAppState()
+                                                      .favorites
+                                                      .toList()))
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .removeFromFavorites(
+                                                              FavoritesStruct(
+                                                        name:
+                                                            pageViewExercisesRecord
+                                                                ?.name,
+                                                        id: pageViewExercisesRecord
+                                                            ?.id,
+                                                      ));
+                                                    });
+                                                  },
+                                                  child: Icon(
+                                                    Icons.favorite_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent2,
+                                                    size: 50.0,
+                                                  ),
+                                                ),
+                                            ],
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

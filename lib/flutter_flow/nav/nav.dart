@@ -155,6 +155,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PdfPageWidget(
             pdfUrl: params.getParam('pdfUrl', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'favorites',
+          path: '/favorites',
+          builder: (context, params) => FavoritesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

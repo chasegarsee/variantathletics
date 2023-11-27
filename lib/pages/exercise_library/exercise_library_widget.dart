@@ -460,6 +460,15 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                 ParamType.String,
                                               ),
                                             }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
                                           );
                                         },
                                         child: Stack(

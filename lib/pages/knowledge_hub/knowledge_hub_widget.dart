@@ -194,9 +194,7 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
                                                 1.0,
-                                            child: RevCatPaywallWidget(
-                                              navigateTo: 'knowledgeHub',
-                                            ),
+                                            child: RevCatPaywallWidget(),
                                           ),
                                         ),
                                       );

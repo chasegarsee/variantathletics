@@ -664,6 +664,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
+  // favorites
+  {
+    'q12egrw8': {
+      'en': 'Favorites',
+      'th': 'รายการโปรด',
+    },
+    '5ats97vf': {
+      'en': 'Add ',
+      'th': 'เพิ่ม',
+    },
+    'mr5niktv': {
+      'en': 'exercises ',
+      'th': 'แบบฝึกหัด',
+    },
+    'woiqumoz': {
+      'en': 'as favorites to populate list',
+      'th': 'เป็นรายการโปรดเพื่อเติมรายการ',
+    },
+    'jhvitjp9': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
   // kgInput
   {
     'nu1pw3mh': {

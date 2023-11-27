@@ -137,6 +137,7 @@ final parametersBuilderMap =
           'pdfUrl': getParameter<String>(data, 'pdfUrl'),
         },
       ),
+  'favorites': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

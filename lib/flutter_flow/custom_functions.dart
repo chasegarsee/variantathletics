@@ -255,3 +255,18 @@ String formatPDFName(String pdfName) {
   // Join the words back into a single string
   return capitalizedWords.join(' ');
 }
+
+bool isFavorite(
+  String exerciseId,
+  List<FavoritesStruct>? favorites,
+) {
+  if (favorites == null) {
+    return false;
+  }
+  for (var favorite in favorites) {
+    if (favorite.id == exerciseId) {
+      return true;
+    }
+  }
+  return false;
+}

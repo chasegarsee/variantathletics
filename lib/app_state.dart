@@ -153,6 +153,21 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _pdfBase = prefs.getString('ff_pdfBase') ?? _pdfBase;
     });
+    _safeInit(() {
+      _favorites = prefs
+              .getStringList('ff_favorites')
+              ?.map((x) {
+                try {
+                  return FavoritesStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _favorites;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -586,6 +601,47 @@ class FFAppState extends ChangeNotifier {
   set pdfBase(String _value) {
     _pdfBase = _value;
     prefs.setString('ff_pdfBase', _value);
+  }
+
+  List<FavoritesStruct> _favorites = [];
+  List<FavoritesStruct> get favorites => _favorites;
+  set favorites(List<FavoritesStruct> _value) {
+    _favorites = _value;
+    prefs.setStringList(
+        'ff_favorites', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToFavorites(FavoritesStruct _value) {
+    _favorites.add(_value);
+    prefs.setStringList(
+        'ff_favorites', _favorites.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromFavorites(FavoritesStruct _value) {
+    _favorites.remove(_value);
+    prefs.setStringList(
+        'ff_favorites', _favorites.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromFavorites(int _index) {
+    _favorites.removeAt(_index);
+    prefs.setStringList(
+        'ff_favorites', _favorites.map((x) => x.serialize()).toList());
+  }
+
+  void updateFavoritesAtIndex(
+    int _index,
+    FavoritesStruct Function(FavoritesStruct) updateFn,
+  ) {
+    _favorites[_index] = updateFn(_favorites[_index]);
+    prefs.setStringList(
+        'ff_favorites', _favorites.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInFavorites(int _index, FavoritesStruct _value) {
+    _favorites.insert(_index, _value);
+    prefs.setStringList(
+        'ff_favorites', _favorites.map((x) => x.serialize()).toList());
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
