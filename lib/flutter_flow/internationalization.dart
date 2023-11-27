@@ -670,18 +670,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Favorites',
       'th': 'รายการโปรด',
     },
-    '5ats97vf': {
-      'en': 'Add ',
-      'th': 'เพิ่ม',
-    },
-    'mr5niktv': {
-      'en': 'exercises ',
-      'th': 'แบบฝึกหัด',
-    },
-    'woiqumoz': {
-      'en': 'as favorites to populate list',
-      'th': 'เป็นรายการโปรดเพื่อเติมรายการ',
-    },
     'jhvitjp9': {
       'en': 'Home',
       'th': '',
@@ -996,6 +984,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'qscd8ud1': {
       'en': 'Become a VARIANT',
       'th': 'เข้าสู่ชุมชน VARIANT',
+    },
+  },
+  // emptyFavorites
+  {
+    't8fkforg': {
+      'en': 'Add ',
+      'th': 'เพิ่ม',
+    },
+    '6r2zmrik': {
+      'en': 'exercises ',
+      'th': 'แบบฝึกหัด',
+    },
+    'bw1x04z5': {
+      'en': 'as favorites to populate list',
+      'th': 'เป็นรายการโปรดเพื่อเติมรายการ',
     },
   },
   // Miscellaneous
