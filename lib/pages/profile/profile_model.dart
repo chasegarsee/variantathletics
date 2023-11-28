@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'profile_widget.dart' show ProfileWidget;
 import 'package:flutter/material.dart';

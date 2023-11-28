@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -540,22 +538,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                     '')
                                         ? null
                                         : () async {
-                                            var _shouldSetState = false;
-                                            Function() _navigate = () {};
-                                            _model.stripeCustomer =
-                                                await queryStripeCustomersRecordOnce(
-                                              queryBuilder:
-                                                  (stripeCustomersRecord) =>
-                                                      stripeCustomersRecord
-                                                          .where(
-                                                'email',
-                                                isEqualTo: _model
-                                                    .emailAddressController
-                                                    .text,
-                                              ),
-                                              singleRecord: true,
-                                            ).then((s) => s.firstOrNull);
-                                            _shouldSetState = true;
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
                                             if (_model
@@ -609,29 +591,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                       .text,
                                                 ));
 
-                                            _navigate = () =>
-                                                context.goNamedAuth(
-                                                    'exerciseLibrary',
-                                                    context.mounted);
-                                            if (_model.stripeCustomer?.email ==
-                                                _model.emailAddressController
-                                                    .text) {
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                isSubbed: true,
-                                              ));
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-
-                                            _navigate();
-                                            if (_shouldSetState)
-                                              setState(() {});
+                                            context.goNamedAuth(
+                                                'exerciseLibrary',
+                                                context.mounted);
                                           },
                                     text: FFLocalizations.of(context).getText(
                                       's14s2wyk' /* Let's get started */,

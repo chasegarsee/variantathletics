@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -147,8 +148,13 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  if (valueOrDefault<bool>(
-                      currentUserDocument?.isSubbed, false)) {
+                  final isEntitled =
+                      await revenue_cat.isEntitled('all_access') ?? false;
+                  if (!isEntitled) {
+                    await revenue_cat.loadOfferings();
+                  }
+
+                  if (isEntitled) {
                     context.pushNamed(
                       'timer',
                       queryParameters: {
@@ -161,31 +167,46 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
                     return;
                   } else {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      useSafeArea: true,
-                      context: context,
-                      builder: (context) {
-                        return GestureDetector(
-                          onTap: () => _model.unfocusNode.canRequestFocus
-                              ? FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode)
-                              : FocusScope.of(context).unfocus(),
-                          child: Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: Container(
-                              height: MediaQuery.sizeOf(context).height * 1.0,
-                              child: RevCatPaywallWidget(
-                                navigateTo: 'timer',
+                    if (valueOrDefault<bool>(
+                        currentUserDocument?.isSubbed, false)) {
+                      context.pushNamed(
+                        'timer',
+                        queryParameters: {
+                          'isFromProgram': serializeParam(
+                            false,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
+
+                      return;
+                    } else {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        useSafeArea: true,
+                        context: context,
+                        builder: (context) {
+                          return GestureDetector(
+                            onTap: () => _model.unfocusNode.canRequestFocus
+                                ? FocusScope.of(context)
+                                    .requestFocus(_model.unfocusNode)
+                                : FocusScope.of(context).unfocus(),
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: Container(
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                child: RevCatPaywallWidget(
+                                  navigateTo: 'timer',
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ).then((value) => safeSetState(() {}));
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
 
-                    return;
+                      return;
+                    }
                   }
                 },
               ),
@@ -203,8 +224,13 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  if (valueOrDefault<bool>(
-                      currentUserDocument?.isSubbed, false)) {
+                  final isEntitled =
+                      await revenue_cat.isEntitled('all_access') ?? false;
+                  if (!isEntitled) {
+                    await revenue_cat.loadOfferings();
+                  }
+
+                  if (isEntitled) {
                     context.pushNamed(
                       'program',
                       queryParameters: {
@@ -217,31 +243,46 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
                     return;
                   } else {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      useSafeArea: true,
-                      context: context,
-                      builder: (context) {
-                        return GestureDetector(
-                          onTap: () => _model.unfocusNode.canRequestFocus
-                              ? FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode)
-                              : FocusScope.of(context).unfocus(),
-                          child: Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: Container(
-                              height: MediaQuery.sizeOf(context).height * 1.0,
-                              child: RevCatPaywallWidget(
-                                navigateTo: 'program',
+                    if (valueOrDefault<bool>(
+                        currentUserDocument?.isSubbed, false)) {
+                      context.pushNamed(
+                        'program',
+                        queryParameters: {
+                          'isFromTimer': serializeParam(
+                            false,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
+
+                      return;
+                    } else {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        useSafeArea: true,
+                        context: context,
+                        builder: (context) {
+                          return GestureDetector(
+                            onTap: () => _model.unfocusNode.canRequestFocus
+                                ? FocusScope.of(context)
+                                    .requestFocus(_model.unfocusNode)
+                                : FocusScope.of(context).unfocus(),
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: Container(
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                child: RevCatPaywallWidget(
+                                  navigateTo: 'program',
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ).then((value) => safeSetState(() {}));
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
 
-                    return;
+                      return;
+                    }
                   }
                 },
               ),

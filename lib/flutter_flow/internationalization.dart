@@ -547,16 +547,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Leave comments after completing workouts',
       'th': 'แสดงความคิดเห็นหลังออกกำลังกายเสร็จ',
     },
-    '54snrqt4': {
-      'en': 'Upgrade to become a VARIANT',
-      'th': 'อัพเกรดเป็น VARIANT',
-    },
-    'qwu39kbf': {
-      'en': 'PRO',
-      'th': 'PRO',
-    },
     'tp6kfy1h': {
-      'en': 'Account Status: VARIANT PRO',
+      'en': 'Account Status: VARIANT LIFETIME',
       'th': 'สถานะข้อมูล: VARIANT PRO',
     },
     'n4vkcrs2': {
