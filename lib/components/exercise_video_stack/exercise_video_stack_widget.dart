@@ -405,34 +405,40 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                   FFAppState()
                                                       .favorites
                                                       .toList()))
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .addToFavorites(
-                                                              FavoritesStruct(
-                                                        name:
-                                                            pageViewExercisesRecord
-                                                                ?.name,
-                                                        id: pageViewExercisesRecord
-                                                            ?.id,
-                                                      ));
-                                                    });
-                                                  },
-                                                  child: Icon(
-                                                    Icons.favorite_border,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent2,
-                                                    size: 50.0,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .addToFavorites(
+                                                                FavoritesStruct(
+                                                          name:
+                                                              pageViewExercisesRecord
+                                                                  ?.name,
+                                                          id: pageViewExercisesRecord
+                                                              ?.id,
+                                                        ));
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                      Icons.favorite_border,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent2,
+                                                      size: 50.0,
+                                                    ),
                                                   ),
                                                 ),
                                               if (functions.isFavorite(
