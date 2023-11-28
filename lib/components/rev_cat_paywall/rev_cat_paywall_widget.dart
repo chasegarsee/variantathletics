@@ -634,18 +634,43 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await revenue_cat.restorePurchases();
-                                if (_model.purchaseResponse!) {
-                                  await currentUserReference!
-                                      .update(createUsersRecordData(
-                                    isSubbed: true,
-                                  ));
+                                final isEntitled = await revenue_cat
+                                        .isEntitled('all_access') ??
+                                    false;
+                                if (!isEntitled) {
+                                  await revenue_cat.loadOfferings();
+                                }
+
+                                if (isEntitled) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'Purchase restored',
+                                          thText: 'กู้คืนการซื้อแล้ว',
+                                        ),
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).success,
+                                    ),
+                                  );
                                   Navigator.pop(context);
                                   return;
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'It looks like you have never purchsed this offer.',
+                                        FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'No purchase history',
+                                          thText: ' ไม่มีประวัติการซื้อ',
+                                        ),
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
