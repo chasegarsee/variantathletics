@@ -542,6 +542,20 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         : () async {
                                             var _shouldSetState = false;
                                             Function() _navigate = () {};
+                                            _model.stripeCustomer =
+                                                await queryStripeCustomersRecordOnce(
+                                              queryBuilder:
+                                                  (stripeCustomersRecord) =>
+                                                      stripeCustomersRecord
+                                                          .where(
+                                                'email',
+                                                isEqualTo: _model
+                                                    .emailAddressController
+                                                    .text,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _shouldSetState = true;
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
                                             if (_model
@@ -599,20 +613,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 context.goNamedAuth(
                                                     'exerciseLibrary',
                                                     context.mounted);
-                                            _model.stripeCustomer =
-                                                await queryStripeCustomersRecordOnce(
-                                              queryBuilder:
-                                                  (stripeCustomersRecord) =>
-                                                      stripeCustomersRecord
-                                                          .where(
-                                                'email',
-                                                isEqualTo: _model
-                                                    .emailAddressController
-                                                    .text,
-                                              ),
-                                              singleRecord: true,
-                                            ).then((s) => s.firstOrNull);
-                                            _shouldSetState = true;
                                             if (_model.stripeCustomer?.email ==
                                                 _model.emailAddressController
                                                     .text) {
