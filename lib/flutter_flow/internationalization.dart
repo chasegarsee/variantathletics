@@ -985,6 +985,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Become a VARIANT',
       'th': 'เข้าสู่ชุมชน VARIANT',
     },
+    'b8h0n0y4': {
+      'en': 'Restore',
+      'th': 'คืนค่า',
+    },
   },
   // emptyFavorites
   {

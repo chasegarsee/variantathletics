@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -641,13 +640,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    final isEntitled =
-                        await revenue_cat.isEntitled('all_access') ?? false;
-                    if (!isEntitled) {
-                      await revenue_cat.loadOfferings();
-                    }
-
-                    if (isEntitled) {
+                    if (valueOrDefault<bool>(
+                        currentUserDocument?.isSubbed, false)) {
                       context.pushNamed('nutritionhub');
 
                       return;
@@ -841,14 +835,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            final isEntitled =
-                                await revenue_cat.isEntitled('all_access') ??
-                                    false;
-                            if (!isEntitled) {
-                              await revenue_cat.loadOfferings();
-                            }
-
-                            if (isEntitled) {
+                            if (valueOrDefault<bool>(
+                                currentUserDocument?.isSubbed, false)) {
                               return;
                             }
 

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/rev_cat_paywall/rev_cat_paywall_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -147,14 +147,8 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                final isEntitled = await revenue_cat
-                                        .isEntitled('all_access') ??
-                                    false;
-                                if (!isEntitled) {
-                                  await revenue_cat.loadOfferings();
-                                }
-
-                                if (isEntitled) {
+                                if (valueOrDefault<bool>(
+                                    currentUserDocument?.isSubbed, false)) {
                                   context.pushNamed(
                                     'pdfPage',
                                     queryParameters: {

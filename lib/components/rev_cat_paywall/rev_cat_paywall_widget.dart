@@ -616,6 +616,43 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                         ),
                       ],
                     ),
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(0.0),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                            sigmaX: 2.0,
+                            sigmaY: 2.0,
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await revenue_cat.restorePurchases();
+                              },
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'b8h0n0y4' /* Restore */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

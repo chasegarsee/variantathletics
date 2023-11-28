@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -148,14 +147,19 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  final isEntitled =
-                      await revenue_cat.isEntitled('all_access') ?? false;
-                  if (!isEntitled) {
-                    await revenue_cat.loadOfferings();
-                  }
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false)) {
+                    context.pushNamed(
+                      'timer',
+                      queryParameters: {
+                        'isFromProgram': serializeParam(
+                          false,
+                          ParamType.bool,
+                        ),
+                      }.withoutNulls,
+                    );
 
-                  if (isEntitled) {
-                    context.pushNamed('timer');
+                    return;
                   } else {
                     await showModalBottomSheet(
                       isScrollControlled: true,
@@ -180,6 +184,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                         );
                       },
                     ).then((value) => safeSetState(() {}));
+
+                    return;
                   }
                 },
               ),
@@ -197,13 +203,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  final isEntitled =
-                      await revenue_cat.isEntitled('all_access') ?? false;
-                  if (!isEntitled) {
-                    await revenue_cat.loadOfferings();
-                  }
-
-                  if (isEntitled) {
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false)) {
                     context.pushNamed(
                       'program',
                       queryParameters: {
