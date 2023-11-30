@@ -176,7 +176,8 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                           .toList()
                                           .cast<DaysStruct>();
                                       FFAppState().programExercises = functions
-                                          .setExercises(WeeksStruct())
+                                          .setExercises(listViewProgramsRecord
+                                              .weeks.first)
                                           .toList()
                                           .cast<ProgramExercisesStruct>();
                                       FFAppState().selectedDayName =
