@@ -467,6 +467,15 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
+                                        Text(
+                                          valueOrDefault<String>(
+                                            listViewProgramsRecord.liveDate
+                                                ?.toString(),
+                                            '-',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     );
                                   },
