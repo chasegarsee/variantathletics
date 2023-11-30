@@ -999,7 +999,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // selectProgram
   {
-    'ix72e2c8': {
+    'b5fgc941': {
       'en': 'COMING SOON',
       'th': '',
     },

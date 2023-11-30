@@ -319,6 +319,15 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                       'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
                                                                   fit: BoxFit
                                                                       .cover,
+                                                                  errorWidget: (context,
+                                                                          error,
+                                                                          stackTrace) =>
+                                                                      Image
+                                                                          .asset(
+                                                                    'assets/images/error_image.png',
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
@@ -339,8 +348,8 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                       child: BackdropFilter(
                                                         filter:
                                                             ImageFilter.blur(
-                                                          sigmaX: 5.0,
-                                                          sigmaY: 5.0,
+                                                          sigmaX: 3.0,
+                                                          sigmaY: 3.0,
                                                         ),
                                                         child: Container(
                                                           width: 100.0,
@@ -366,7 +375,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'ix72e2c8' /* COMING SOON */,
+                                                                  'b5fgc941' /* COMING SOON */,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
