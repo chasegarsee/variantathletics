@@ -115,6 +115,10 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                             ),
                           ),
                         ),
+                        Text(
+                          getCurrentTimestamp.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
                       ],
                     ),
                     Expanded(
@@ -453,6 +457,16 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                         .primaryText,
                                               ),
                                         ),
+                                        if (!listViewProgramsRecord.isLive &&
+                                            (listViewProgramsRecord.liveDate! <
+                                                getCurrentTimestamp))
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'o5li8lfr' /* Hello World */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
                                       ],
                                     );
                                   },

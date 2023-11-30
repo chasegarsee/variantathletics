@@ -36,6 +36,11 @@ class ProgramsRecord extends FirestoreRecord {
   List<WeeksStruct> get weeks => _weeks ?? const [];
   bool hasWeeks() => _weeks != null;
 
+  // "liveDate" field.
+  DateTime? _liveDate;
+  DateTime? get liveDate => _liveDate;
+  bool hasLiveDate() => _liveDate != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _isLive = snapshotData['isLive'] as bool?;
@@ -44,6 +49,7 @@ class ProgramsRecord extends FirestoreRecord {
       snapshotData['weeks'],
       WeeksStruct.fromMap,
     );
+    _liveDate = snapshotData['liveDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -84,12 +90,14 @@ Map<String, dynamic> createProgramsRecordData({
   String? name,
   bool? isLive,
   String? id,
+  DateTime? liveDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'isLive': isLive,
       'id': id,
+      'liveDate': liveDate,
     }.withoutNulls,
   );
 
@@ -105,12 +113,13 @@ class ProgramsRecordDocumentEquality implements Equality<ProgramsRecord> {
     return e1?.name == e2?.name &&
         e1?.isLive == e2?.isLive &&
         e1?.id == e2?.id &&
-        listEquality.equals(e1?.weeks, e2?.weeks);
+        listEquality.equals(e1?.weeks, e2?.weeks) &&
+        e1?.liveDate == e2?.liveDate;
   }
 
   @override
-  int hash(ProgramsRecord? e) =>
-      const ListEquality().hash([e?.name, e?.isLive, e?.id, e?.weeks]);
+  int hash(ProgramsRecord? e) => const ListEquality()
+      .hash([e?.name, e?.isLive, e?.id, e?.weeks, e?.liveDate]);
 
   @override
   bool isValidKey(Object? o) => o is ProgramsRecord;
