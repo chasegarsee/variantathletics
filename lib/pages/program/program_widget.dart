@@ -64,7 +64,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
                 child: Container(
-                  height: MediaQuery.sizeOf(context).height * 0.3,
+                  height: MediaQuery.sizeOf(context).height * 0.4,
                   child: SelectProgramWidget(),
                 ),
               ),
