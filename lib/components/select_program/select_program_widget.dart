@@ -148,7 +148,6 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                 }
                                 return ListView.separated(
                                   padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   itemCount: listViewProgramsRecordList.length,
                                   separatorBuilder: (_, __) =>
@@ -375,7 +374,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'b5fgc941' /* COMING SOON */,
+                                                                  'xyz0e2ce' /* COMING SOON */,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
