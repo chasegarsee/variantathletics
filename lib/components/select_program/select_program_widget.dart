@@ -458,7 +458,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                               ),
                                         ),
                                         if (!listViewProgramsRecord.isLive &&
-                                            (listViewProgramsRecord.liveDate! <
+                                            (listViewProgramsRecord.liveDate! >
                                                 getCurrentTimestamp))
                                           Text(
                                             FFLocalizations.of(context).getText(
