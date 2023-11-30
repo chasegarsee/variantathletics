@@ -658,6 +658,21 @@ class FFAppState extends ChangeNotifier {
   void clearExerciseCache() => _exerciseManager.clear();
   void clearExerciseCacheKey(String? uniqueKey) =>
       _exerciseManager.clearRequest(uniqueKey);
+
+  final _programsListManager = StreamRequestManager<List<ProgramsRecord>>();
+  Stream<List<ProgramsRecord>> programsList({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Stream<List<ProgramsRecord>> Function() requestFn,
+  }) =>
+      _programsListManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearProgramsListCache() => _programsListManager.clear();
+  void clearProgramsListCacheKey(String? uniqueKey) =>
+      _programsListManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

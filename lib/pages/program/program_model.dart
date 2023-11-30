@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/days_placeholder/days_placeholder_widget.dart';
 import '/components/leave_workout_comment/leave_workout_comment_widget.dart';
+import '/components/select_program/select_program_widget.dart';
 import '/components/workout_comments/workout_comments_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
