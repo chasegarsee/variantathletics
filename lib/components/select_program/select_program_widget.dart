@@ -124,13 +124,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                             alignment: AlignmentDirectional(0.00, 0.00),
                             child: StreamBuilder<List<ProgramsRecord>>(
                               stream: FFAppState().programsList(
-                                requestFn: () => queryProgramsRecord(
-                                  queryBuilder: (programsRecord) =>
-                                      programsRecord.where(
-                                    'isLive',
-                                    isEqualTo: true,
-                                  ),
-                                ),
+                                requestFn: () => queryProgramsRecord(),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -162,18 +156,16 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                     final listViewProgramsRecord =
                                         listViewProgramsRecordList[
                                             listViewIndex];
-                                    return Container(
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              1.0,
+                                    return Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Stack(
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 12.0),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.00, 0.00),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -268,56 +260,29 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                 }
                                               },
                                               child: Column(
-                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: [
-                                                  Builder(
-                                                    builder: (_) {
-                                                      final child = Container(
-                                                        width: 100.0,
-                                                        height: 100.0,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          fadeInDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          fadeOutDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          imageUrl:
-                                                              'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      );
-                                                      if (listViewProgramsRecord
-                                                              .isLive ==
-                                                          true) {
-                                                        return ClipRect(
-                                                          child: ImageFiltered(
-                                                            imageFilter:
-                                                                ImageFilter
-                                                                    .blur(
-                                                              sigmaX: 7.0,
-                                                              sigmaY: 7.0,
-                                                            ),
-                                                            child: child,
-                                                          ),
-                                                        );
-                                                      }
-                                                      return child;
-                                                    },
+                                                  Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    clipBehavior:
+                                                        Clip.antiAlias,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: CachedNetworkImage(
+                                                      fadeInDuration: Duration(
+                                                          milliseconds: 500),
+                                                      fadeOutDuration: Duration(
+                                                          milliseconds: 500),
+                                                      imageUrl:
+                                                          'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                   Text(
                                                     listViewProgramsRecord.name,
@@ -329,6 +294,43 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                               ),
                                             ),
                                           ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.00, -0.06),
+                                            child: ClipOval(
+                                              child: BackdropFilter(
+                                                filter: ImageFilter.blur(
+                                                  sigmaX: 5.0,
+                                                  sigmaY: 5.0,
+                                                ),
+                                                child: Container(
+                                                  width: 102.0,
+                                                  height: 102.0,
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 0.00),
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'ytt3jq1k' /* COMING SOON */,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                           if (listViewProgramsRecord.id ==
                                               valueOrDefault(
                                                   currentUserDocument
@@ -336,7 +338,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                   ''))
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -0.01, -0.63),
+                                                  0.06, -0.56),
                                               child: AuthUserStreamWidget(
                                                 builder: (context) => Container(
                                                   width: 30.0,
@@ -362,31 +364,6 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                          if (listViewProgramsRecord.isLive ==
-                                              false)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.04, -0.19),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'pms2j6r3' /* COMING SOON */,
-                                                ),
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Jost',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.w800,
-                                                        ),
                                               ),
                                             ),
                                         ],
