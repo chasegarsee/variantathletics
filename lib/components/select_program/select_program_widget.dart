@@ -120,247 +120,282 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                     Expanded(
                       child: Stack(
                         children: [
-                          StreamBuilder<List<ProgramsRecord>>(
-                            stream: FFAppState().programsList(
-                              requestFn: () => queryProgramsRecord(
-                                queryBuilder: (programsRecord) =>
-                                    programsRecord.where(
-                                  'isLive',
-                                  isEqualTo: true,
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: StreamBuilder<List<ProgramsRecord>>(
+                              stream: FFAppState().programsList(
+                                requestFn: () => queryProgramsRecord(
+                                  queryBuilder: (programsRecord) =>
+                                      programsRecord.where(
+                                    'isLive',
+                                    isEqualTo: true,
+                                  ),
                                 ),
                               ),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: SpinKitRipple(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 50.0,
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: SpinKitRipple(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 50.0,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }
-                              List<ProgramsRecord> listViewProgramsRecordList =
-                                  snapshot.data!;
-                              if (listViewProgramsRecordList.isEmpty) {
-                                return NoCommentsToDisplayWidget();
-                              }
-                              return ListView.separated(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: listViewProgramsRecordList.length,
-                                separatorBuilder: (_, __) =>
-                                    SizedBox(width: 12.0),
-                                itemBuilder: (context, listViewIndex) {
-                                  final listViewProgramsRecord =
-                                      listViewProgramsRecordList[listViewIndex];
-                                  return Stack(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 12.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            if (listViewProgramsRecord.id ==
-                                                valueOrDefault(
-                                                    currentUserDocument
-                                                        ?.currentProgramId,
-                                                    '')) {
-                                              Navigator.pop(context);
-                                              return;
-                                            } else {
-                                              if (listViewProgramsRecord
-                                                  .isLive) {
-                                                await currentUserReference!
-                                                    .update(
-                                                        createUsersRecordData(
-                                                  currentProgram:
-                                                      listViewProgramsRecord.id,
-                                                ));
-                                                _model.updatePage(() {
-                                                  FFAppState().selectedWeek =
-                                                      listViewProgramsRecord
-                                                          .weeks
-                                                          .first
-                                                          .weekNumber;
-                                                  FFAppState().days = functions
-                                                      .setDays(
+                                  );
+                                }
+                                List<ProgramsRecord>
+                                    listViewProgramsRecordList = snapshot.data!;
+                                if (listViewProgramsRecordList.isEmpty) {
+                                  return NoCommentsToDisplayWidget();
+                                }
+                                return ListView.separated(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: listViewProgramsRecordList.length,
+                                  separatorBuilder: (_, __) =>
+                                      SizedBox(width: 12.0),
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewProgramsRecord =
+                                        listViewProgramsRecordList[
+                                            listViewIndex];
+                                    return Container(
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              1.0,
+                                      child: Stack(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 12.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                if (listViewProgramsRecord.id ==
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.currentProgramId,
+                                                        '')) {
+                                                  Navigator.pop(context);
+                                                  return;
+                                                } else {
+                                                  if (listViewProgramsRecord
+                                                      .isLive) {
+                                                    await currentUserReference!
+                                                        .update(
+                                                            createUsersRecordData(
+                                                      currentProgram:
+                                                          listViewProgramsRecord
+                                                              .id,
+                                                    ));
+                                                    _model.updatePage(() {
+                                                      FFAppState()
+                                                              .selectedWeek =
                                                           listViewProgramsRecord
                                                               .weeks
-                                                              .toList())
-                                                      .toList()
-                                                      .cast<DaysStruct>();
-                                                  FFAppState()
-                                                          .programExercises =
-                                                      functions
-                                                          .setExercises(
+                                                              .first
+                                                              .weekNumber;
+                                                      FFAppState().days = functions
+                                                          .setDays(
                                                               listViewProgramsRecord
-                                                                  .weeks.first)
+                                                                  .weeks
+                                                                  .toList())
                                                           .toList()
-                                                          .cast<
-                                                              ProgramExercisesStruct>();
-                                                  FFAppState().selectedDayName =
-                                                      listViewProgramsRecord
-                                                          .weeks
-                                                          .first
-                                                          .days
-                                                          .first
-                                                          .name;
-                                                  FFAppState().selectedDay =
-                                                      listViewProgramsRecord
-                                                          .weeks
-                                                          .first
-                                                          .days
-                                                          .first
-                                                          .day;
-                                                  FFAppState().selectedDayId =
-                                                      listViewProgramsRecord
-                                                          .weeks
-                                                          .first
-                                                          .days
-                                                          .first
-                                                          .id;
-                                                  FFAppState().weeks =
-                                                      listViewProgramsRecord
-                                                          .weeks
-                                                          .toList()
-                                                          .cast<WeeksStruct>();
-                                                  FFAppState().currentProgram =
-                                                      listViewProgramsRecord
-                                                          .name;
-                                                  FFAppState()
-                                                          .currentProgramId =
-                                                      listViewProgramsRecord
-                                                          .reference.id;
-                                                });
-                                                Navigator.pop(context);
-                                                return;
-                                              } else {
-                                                return;
-                                              }
-                                            }
-                                          },
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Builder(
-                                                builder: (_) {
-                                                  final child = Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
-                                                          milliseconds: 500),
-                                                      fadeOutDuration: Duration(
-                                                          milliseconds: 500),
-                                                      imageUrl:
-                                                          'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  );
-                                                  if (listViewProgramsRecord
-                                                          .isLive ==
-                                                      false) {
-                                                    return ClipRect(
-                                                      child: ImageFiltered(
-                                                        imageFilter:
-                                                            ImageFilter.blur(
-                                                          sigmaX: 7.0,
-                                                          sigmaY: 7.0,
-                                                        ),
-                                                        child: child,
-                                                      ),
-                                                    );
+                                                          .cast<DaysStruct>();
+                                                      FFAppState()
+                                                              .programExercises =
+                                                          functions
+                                                              .setExercises(
+                                                                  listViewProgramsRecord
+                                                                      .weeks
+                                                                      .first)
+                                                              .toList()
+                                                              .cast<
+                                                                  ProgramExercisesStruct>();
+                                                      FFAppState()
+                                                              .selectedDayName =
+                                                          listViewProgramsRecord
+                                                              .weeks
+                                                              .first
+                                                              .days
+                                                              .first
+                                                              .name;
+                                                      FFAppState().selectedDay =
+                                                          listViewProgramsRecord
+                                                              .weeks
+                                                              .first
+                                                              .days
+                                                              .first
+                                                              .day;
+                                                      FFAppState()
+                                                              .selectedDayId =
+                                                          listViewProgramsRecord
+                                                              .weeks
+                                                              .first
+                                                              .days
+                                                              .first
+                                                              .id;
+                                                      FFAppState().weeks =
+                                                          listViewProgramsRecord
+                                                              .weeks
+                                                              .toList()
+                                                              .cast<
+                                                                  WeeksStruct>();
+                                                      FFAppState()
+                                                              .currentProgram =
+                                                          listViewProgramsRecord
+                                                              .name;
+                                                      FFAppState()
+                                                              .currentProgramId =
+                                                          listViewProgramsRecord
+                                                              .reference.id;
+                                                    });
+                                                    Navigator.pop(context);
+                                                    return;
+                                                  } else {
+                                                    return;
                                                   }
-                                                  return child;
-                                                },
-                                              ),
-                                              Text(
-                                                listViewProgramsRecord.name,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                                }
+                                              },
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Builder(
+                                                    builder: (_) {
+                                                      final child = Container(
+                                                        width: 100.0,
+                                                        height: 100.0,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                        ),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          fadeInDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          fadeOutDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          imageUrl:
+                                                              'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      );
+                                                      if (listViewProgramsRecord
+                                                              .isLive ==
+                                                          true) {
+                                                        return ClipRect(
+                                                          child: ImageFiltered(
+                                                            imageFilter:
+                                                                ImageFilter
+                                                                    .blur(
+                                                              sigmaX: 7.0,
+                                                              sigmaY: 7.0,
+                                                            ),
+                                                            child: child,
+                                                          ),
+                                                        );
+                                                      }
+                                                      return child;
+                                                    },
+                                                  ),
+                                                  Text(
+                                                    listViewProgramsRecord.name,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      if (listViewProgramsRecord.id ==
-                                          valueOrDefault(
-                                              currentUserDocument
-                                                  ?.currentProgram,
-                                              ''))
-                                        Align(
-                                          alignment: AlignmentDirectional(
-                                              -0.06, -0.60),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Container(
-                                              width: 30.0,
-                                              height: 30.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.00, 0.00),
-                                                child: FaIcon(
-                                                  FontAwesomeIcons.checkDouble,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  size: 20.0,
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.04, -0.19),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '1pyjy008' /* COMING SOON */,
-                                          ),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                fontSize: 12.0,
-                                                fontWeight: FontWeight.w800,
+                                          if (listViewProgramsRecord.id ==
+                                              valueOrDefault(
+                                                  currentUserDocument
+                                                      ?.currentProgram,
+                                                  ''))
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.01, -0.63),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => Container(
+                                                  width: 30.0,
+                                                  height: 30.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent1,
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 0.00),
+                                                    child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .checkDouble,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 20.0,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
-                                        ),
+                                            ),
+                                          if (listViewProgramsRecord.isLive ==
+                                              false)
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.04, -0.19),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'pms2j6r3' /* COMING SOON */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 12.0,
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                        ),
+                                              ),
+                                            ),
+                                        ],
                                       ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),
