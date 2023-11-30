@@ -205,24 +205,6 @@ class _InfoWidgetState extends State<InfoWidget> {
                           email: currentUserEmail,
                           context: context,
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              FFLocalizations.of(context).getVariableText(
-                                enText:
-                                    'Check your email for password reset instructions',
-                                thText:
-                                    'เช็คอีเมลของคุณเพื่อดูคำแนะนำในการรีเซ็ตรหัสผ่าน',
-                              ),
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                          ),
-                        );
                       },
                       child: Text(
                         FFLocalizations.of(context).getText(
