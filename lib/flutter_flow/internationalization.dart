@@ -1007,10 +1007,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'COMING SOON',
       'th': 'เร็วๆ นี้',
     },
-    'o5li8lfr': {
-      'en': 'Hello World',
-      'th': '',
-    },
     'eod9rf46': {
       'en':
           'Selecting a new program will result in all progress on your current program being lost. ',
