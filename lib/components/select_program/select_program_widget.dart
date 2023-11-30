@@ -270,7 +270,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                       if (listViewProgramsRecord.id ==
                                           valueOrDefault(
                                               currentUserDocument
-                                                  ?.currentProgramId,
+                                                  ?.currentProgram,
                                               ''))
                                         Align(
                                           alignment: AlignmentDirectional(
