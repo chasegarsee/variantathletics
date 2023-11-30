@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/no_comments_to_display/no_comments_to_display_widget.dart';
-import '/components/program_countdown_timer_widget.dart';
+import '/components/program_countdown/program_countdown_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -454,16 +454,13 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                         .primaryText,
                                               ),
                                         ),
-                                        if (!listViewProgramsRecord.isLive &&
-                                            (listViewProgramsRecord.liveDate! >
-                                                getCurrentTimestamp))
-                                          ProgramCountdownTimerWidget(
-                                            key: Key(
-                                                'Keyrkc_${listViewIndex}_of_${listViewProgramsRecordList.length}'),
-                                            currentTime: getCurrentTimestamp,
-                                            liveDate: listViewProgramsRecord
-                                                .liveDate!,
-                                          ),
+                                        ProgramCountdownWidget(
+                                          key: Key(
+                                              'Keya68_${listViewIndex}_of_${listViewProgramsRecordList.length}'),
+                                          currentTime: getCurrentTimestamp,
+                                          liveDate:
+                                              listViewProgramsRecord.liveDate!,
+                                        ),
                                       ],
                                     );
                                   },

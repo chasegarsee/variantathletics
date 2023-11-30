@@ -271,3 +271,41 @@ bool isFavorite(
   }
   return false;
 }
+
+String programCountdown(
+  DateTime currentTime,
+  DateTime liveDate,
+) {
+  if (currentTime.isAfter(liveDate)) {
+    return "0w:0d:0h:0m:0s";
+  }
+
+  Duration timeDifference = liveDate.difference(currentTime);
+
+  int weeks = timeDifference.inDays ~/ 7;
+  int days = timeDifference.inDays % 7;
+  int hours = timeDifference.inHours % 24;
+  int minutes = timeDifference.inMinutes % 60;
+  int seconds = timeDifference.inSeconds % 60;
+
+  List<String> timeParts = [];
+
+  if (weeks > 0) {
+    timeParts.add("${weeks}w");
+  }
+  if (days > 0) {
+    timeParts.add("${days}d");
+  }
+  if (hours > 0) {
+    timeParts.add("${hours}h");
+  }
+  if (minutes > 0) {
+    timeParts.add("${minutes}m");
+  }
+  if (seconds > 0) {
+    timeParts.add("${seconds}s");
+  }
+
+  String formattedTime = timeParts.join(":");
+  return formattedTime;
+}
