@@ -46,7 +46,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if ((valueOrDefault(currentUserDocument?.currentProgram, '') == null ||
-              valueOrDefault(currentUserDocument?.currentProgram, '') == '') &&
+              valueOrDefault(currentUserDocument?.currentProgram, '') == '') ||
           (FFAppState().currentProgram == null ||
               FFAppState().currentProgram == '')) {
         await showModalBottomSheet(

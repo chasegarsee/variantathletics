@@ -997,6 +997,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'เป็นรายการโปรดเพื่อเติมรายการ',
     },
   },
+  // selectProgram
+  {
+    'eod9rf46': {
+      'en':
+          'Selecting a new program will result in all progress on your current program being lost. ',
+      'th':
+          'การเลือกโปรแกรมใหม่จะส่งผลให้ความคืบหน้าทั้งหมดของโปรแกรมปัจจุบันของคุณหายไป ',
+    },
+    'ej86wcg2': {
+      'en': 'This cannot be undone',
+      'th': 'สิ่งนี้ไม่สามารถยกเลิกได้',
+    },
+  },
   // Miscellaneous
   {
     '0akax9ls': {
