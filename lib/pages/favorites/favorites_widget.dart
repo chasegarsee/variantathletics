@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/components/empty_favorites/empty_favorites_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

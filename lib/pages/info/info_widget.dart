@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/delete_account/delete_account_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -190,29 +191,38 @@ class _InfoWidgetState extends State<InfoWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          useSafeArea: true,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => _model.unfocusNode.canRequestFocus
-                                  ? FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode)
-                                  : FocusScope.of(context).unfocus(),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.5,
-                                  child: DeleteAccountWidget(),
-                                ),
+                        if (currentUserEmail.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Email required!',
                               ),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
+                            ),
+                          );
+                          return;
+                        }
+                        await authManager.resetPassword(
+                          email: currentUserEmail,
+                          context: context,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              FFLocalizations.of(context).getVariableText(
+                                enText:
+                                    'Check your email for password reset instructions',
+                                thText:
+                                    'เช็คอีเมลของคุณเพื่อดูคำแนะนำในการรีเซ็ตรหัสผ่าน',
+                              ),
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                          ),
+                        );
                       },
                       child: Text(
                         FFLocalizations.of(context).getText(
