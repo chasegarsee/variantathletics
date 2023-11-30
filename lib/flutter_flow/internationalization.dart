@@ -625,6 +625,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'How to delete your account?',
       'th': 'วิธีการลบข้อมูล',
     },
+    '219d9vcd': {
+      'en': 'Change password',
+      'th': 'เปลี่ยนรหัสผ่าน',
+    },
     'fn2v0o01': {
       'en': 'VARIANT',
       'th': 'VARIANT',

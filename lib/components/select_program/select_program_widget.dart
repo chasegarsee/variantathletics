@@ -148,6 +148,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                 }
                                 return ListView.separated(
                                   padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   itemCount: listViewProgramsRecordList.length,
                                   separatorBuilder: (_, __) =>
@@ -274,6 +275,12 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                     .completedDays = [];
                                                                 FFAppState()
                                                                     .completedWeeks = [];
+                                                                FFAppState()
+                                                                        .showAllWeeks =
+                                                                    false;
+                                                                FFAppState()
+                                                                        .showAllDays =
+                                                                    false;
                                                               });
                                                               Navigator.pop(
                                                                   context);
