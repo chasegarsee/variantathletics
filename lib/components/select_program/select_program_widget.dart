@@ -270,6 +270,10 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                     listViewProgramsRecord
                                                                         .reference
                                                                         .id;
+                                                                FFAppState()
+                                                                    .completedDays = [];
+                                                                FFAppState()
+                                                                    .completedWeeks = [];
                                                               });
                                                               Navigator.pop(
                                                                   context);

@@ -1157,10 +1157,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                             ),
                           ),
                         ),
-                      if ((FFAppState().programExercises.length >= 1) &&
-                          !FFAppState()
-                              .completedDays
-                              .contains(FFAppState().selectedDayId))
+                      if (!FFAppState()
+                          .completedDays
+                          .contains(FFAppState().selectedDayId))
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 24.0, 24.0, 24.0),
