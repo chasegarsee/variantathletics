@@ -1,5 +1,4 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/days_placeholder/days_placeholder_widget.dart';
 import '/components/leave_workout_comment/leave_workout_comment_widget.dart';
@@ -11,8 +10,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -48,40 +45,33 @@ class _ProgramWidgetState extends State<ProgramWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().programExercises.length <= 0) {
-        setState(() {
-          _model.isLoading = true;
-        });
-        _model.program = await queryProgramsRecordOnce(
-          queryBuilder: (programsRecord) => programsRecord.where(
-            'isLive',
-            isEqualTo: true,
-          ),
-          singleRecord: true,
-        ).then((s) => s.firstOrNull);
-        setState(() {
-          FFAppState().selectedWeek = _model.program!.weeks.first.weekNumber;
-          FFAppState().days = functions
-              .setDays(_model.program!.weeks.toList())
-              .toList()
-              .cast<DaysStruct>();
-          FFAppState().programExercises = functions
-              .setExercises(_model.program!.weeks.first)
-              .toList()
-              .cast<ProgramExercisesStruct>();
-          FFAppState().selectedDayName =
-              _model.program!.weeks.first.days.first.name;
-          FFAppState().selectedDay = _model.program!.weeks.first.days.first.day;
-          FFAppState().selectedDayId =
-              _model.program!.weeks.first.days.first.id;
-          FFAppState().weeks =
-              _model.program!.weeks.toList().cast<WeeksStruct>();
-          FFAppState().currentProgram = _model.program!.name;
-          FFAppState().currentProgramId = _model.program!.reference.id;
-        });
-        setState(() {
-          _model.isLoading = false;
-        });
+      if ((valueOrDefault(currentUserDocument?.currentProgram, '') == null ||
+              valueOrDefault(currentUserDocument?.currentProgram, '') == '') &&
+          (FFAppState().currentProgram == null ||
+              FFAppState().currentProgram == '')) {
+        await showModalBottomSheet(
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          isDismissible: false,
+          enableDrag: false,
+          useSafeArea: true,
+          context: context,
+          builder: (context) {
+            return GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: Padding(
+                padding: MediaQuery.viewInsetsOf(context),
+                child: Container(
+                  height: MediaQuery.sizeOf(context).height * 0.3,
+                  child: SelectProgramWidget(),
+                ),
+              ),
+            );
+          },
+        ).then((value) => safeSetState(() {}));
+
         return;
       } else {
         return;
@@ -168,7 +158,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
                               child: Container(
-                                height: MediaQuery.sizeOf(context).height * 0.5,
+                                height: MediaQuery.sizeOf(context).height * 0.3,
                                 child: SelectProgramWidget(),
                               ),
                             ),

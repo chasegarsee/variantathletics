@@ -20,6 +20,7 @@ class UserStruct extends FFFirebaseStruct {
     String? favoriteCoach,
     String? currentProgramId,
     bool? isSubbed,
+    String? currentProgram,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _coachUid = coachUid,
         _createdTime = createdTime,
@@ -31,6 +32,7 @@ class UserStruct extends FFFirebaseStruct {
         _favoriteCoach = favoriteCoach,
         _currentProgramId = currentProgramId,
         _isSubbed = isSubbed,
+        _currentProgram = currentProgram,
         super(firestoreUtilData);
 
   // "coachUid" field.
@@ -95,6 +97,12 @@ class UserStruct extends FFFirebaseStruct {
   set isSubbed(bool? val) => _isSubbed = val;
   bool hasIsSubbed() => _isSubbed != null;
 
+  // "currentProgram" field.
+  String? _currentProgram;
+  String get currentProgram => _currentProgram ?? '';
+  set currentProgram(String? val) => _currentProgram = val;
+  bool hasCurrentProgram() => _currentProgram != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
         coachUid: data['coachUid'] as String?,
         createdTime: data['created_time'] as DateTime?,
@@ -106,6 +114,7 @@ class UserStruct extends FFFirebaseStruct {
         favoriteCoach: data['favoriteCoach'] as String?,
         currentProgramId: data['currentProgramId'] as String?,
         isSubbed: data['isSubbed'] as bool?,
+        currentProgram: data['currentProgram'] as String?,
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -122,6 +131,7 @@ class UserStruct extends FFFirebaseStruct {
         'favoriteCoach': _favoriteCoach,
         'currentProgramId': _currentProgramId,
         'isSubbed': _isSubbed,
+        'currentProgram': _currentProgram,
       }.withoutNulls;
 
   @override
@@ -166,6 +176,10 @@ class UserStruct extends FFFirebaseStruct {
         'isSubbed': serializeParam(
           _isSubbed,
           ParamType.bool,
+        ),
+        'currentProgram': serializeParam(
+          _currentProgram,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -221,6 +235,11 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        currentProgram: deserializeParam(
+          data['currentProgram'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -239,7 +258,8 @@ class UserStruct extends FFFirebaseStruct {
         listEquality.equals(completedWorkouts, other.completedWorkouts) &&
         favoriteCoach == other.favoriteCoach &&
         currentProgramId == other.currentProgramId &&
-        isSubbed == other.isSubbed;
+        isSubbed == other.isSubbed &&
+        currentProgram == other.currentProgram;
   }
 
   @override
@@ -253,7 +273,8 @@ class UserStruct extends FFFirebaseStruct {
         completedWorkouts,
         favoriteCoach,
         currentProgramId,
-        isSubbed
+        isSubbed,
+        currentProgram
       ]);
 }
 
@@ -267,6 +288,7 @@ UserStruct createUserStruct({
   String? favoriteCoach,
   String? currentProgramId,
   bool? isSubbed,
+  String? currentProgram,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -282,6 +304,7 @@ UserStruct createUserStruct({
       favoriteCoach: favoriteCoach,
       currentProgramId: currentProgramId,
       isSubbed: isSubbed,
+      currentProgram: currentProgram,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

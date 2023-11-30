@@ -20,6 +20,7 @@ dynamic convertFBPUserToJSON(UsersRecord usersDoc) {
     'email': usersDoc.email,
     'isCoach': usersDoc.isCoach,
     'uid': usersDoc.uid,
+    'currentProgram': usersDoc.currentProgram,
   };
 }
 

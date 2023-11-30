@@ -1,8 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/no_comments_to_display/no_comments_to_display_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -152,41 +156,84 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                               return Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
-                                child: Container(
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 12.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await currentUserReference!
+                                        .update(createUsersRecordData(
+                                      currentProgram: listViewProgramsRecord.id,
+                                    ));
+                                    setState(() {
+                                      FFAppState().selectedWeek =
+                                          listViewProgramsRecord
+                                              .weeks.first.weekNumber;
+                                      FFAppState().days = functions
+                                          .setDays(listViewProgramsRecord.weeks
+                                              .toList())
+                                          .toList()
+                                          .cast<DaysStruct>();
+                                      FFAppState().programExercises = functions
+                                          .setExercises(WeeksStruct())
+                                          .toList()
+                                          .cast<ProgramExercisesStruct>();
+                                      FFAppState().selectedDayName =
+                                          listViewProgramsRecord
+                                              .weeks.first.days.first.name;
+                                      FFAppState().selectedDay =
+                                          listViewProgramsRecord
+                                              .weeks.first.days.first.day;
+                                      FFAppState().selectedDayId =
+                                          listViewProgramsRecord
+                                              .weeks.first.days.first.id;
+                                      FFAppState().weeks =
+                                          listViewProgramsRecord.weeks
+                                              .toList()
+                                              .cast<WeeksStruct>();
+                                      FFAppState().currentProgram =
+                                          listViewProgramsRecord.name;
+                                      FFAppState().currentProgramId =
+                                          listViewProgramsRecord.reference.id;
+                                    });
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 12.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 100.0,
+                                            height: 100.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 500),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 500),
+                                              imageUrl:
+                                                  'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
-                                          child: CachedNetworkImage(
-                                            fadeInDuration:
-                                                Duration(milliseconds: 500),
-                                            fadeOutDuration:
-                                                Duration(milliseconds: 500),
-                                            imageUrl:
-                                                'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
-                                            fit: BoxFit.cover,
+                                          Text(
+                                            listViewProgramsRecord.name,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
                                           ),
-                                        ),
-                                        Text(
-                                          listViewProgramsRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
