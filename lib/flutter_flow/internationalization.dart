@@ -999,6 +999,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // selectProgram
   {
+    'hxz6ychh': {
+      'en': 'COMING SOON',
+      'th': '',
+    },
     'eod9rf46': {
       'en':
           'Selecting a new program will result in all progress on your current program being lost. ',

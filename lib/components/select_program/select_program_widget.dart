@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/components/no_comments_to_display/no_comments_to_display_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -177,51 +178,75 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                               Navigator.pop(context);
                                               return;
                                             } else {
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                currentProgram:
-                                                    listViewProgramsRecord.id,
-                                              ));
-                                              _model.updatePage(() {
-                                                FFAppState().selectedWeek =
-                                                    listViewProgramsRecord
-                                                        .weeks.first.weekNumber;
-                                                FFAppState().days = functions
-                                                    .setDays(
-                                                        listViewProgramsRecord
-                                                            .weeks
-                                                            .toList())
-                                                    .toList()
-                                                    .cast<DaysStruct>();
-                                                FFAppState().programExercises =
-                                                    functions
-                                                        .setExercises(
-                                                            listViewProgramsRecord
-                                                                .weeks.first)
-                                                        .toList()
-                                                        .cast<
-                                                            ProgramExercisesStruct>();
-                                                FFAppState().selectedDayName =
-                                                    listViewProgramsRecord.weeks
-                                                        .first.days.first.name;
-                                                FFAppState().selectedDay =
-                                                    listViewProgramsRecord.weeks
-                                                        .first.days.first.day;
-                                                FFAppState().selectedDayId =
-                                                    listViewProgramsRecord.weeks
-                                                        .first.days.first.id;
-                                                FFAppState().weeks =
-                                                    listViewProgramsRecord.weeks
-                                                        .toList()
-                                                        .cast<WeeksStruct>();
-                                                FFAppState().currentProgram =
-                                                    listViewProgramsRecord.name;
-                                                FFAppState().currentProgramId =
-                                                    listViewProgramsRecord
-                                                        .reference.id;
-                                              });
-                                              Navigator.pop(context);
-                                              return;
+                                              if (listViewProgramsRecord
+                                                  .isLive) {
+                                                await currentUserReference!
+                                                    .update(
+                                                        createUsersRecordData(
+                                                  currentProgram:
+                                                      listViewProgramsRecord.id,
+                                                ));
+                                                _model.updatePage(() {
+                                                  FFAppState().selectedWeek =
+                                                      listViewProgramsRecord
+                                                          .weeks
+                                                          .first
+                                                          .weekNumber;
+                                                  FFAppState().days = functions
+                                                      .setDays(
+                                                          listViewProgramsRecord
+                                                              .weeks
+                                                              .toList())
+                                                      .toList()
+                                                      .cast<DaysStruct>();
+                                                  FFAppState()
+                                                          .programExercises =
+                                                      functions
+                                                          .setExercises(
+                                                              listViewProgramsRecord
+                                                                  .weeks.first)
+                                                          .toList()
+                                                          .cast<
+                                                              ProgramExercisesStruct>();
+                                                  FFAppState().selectedDayName =
+                                                      listViewProgramsRecord
+                                                          .weeks
+                                                          .first
+                                                          .days
+                                                          .first
+                                                          .name;
+                                                  FFAppState().selectedDay =
+                                                      listViewProgramsRecord
+                                                          .weeks
+                                                          .first
+                                                          .days
+                                                          .first
+                                                          .day;
+                                                  FFAppState().selectedDayId =
+                                                      listViewProgramsRecord
+                                                          .weeks
+                                                          .first
+                                                          .days
+                                                          .first
+                                                          .id;
+                                                  FFAppState().weeks =
+                                                      listViewProgramsRecord
+                                                          .weeks
+                                                          .toList()
+                                                          .cast<WeeksStruct>();
+                                                  FFAppState().currentProgram =
+                                                      listViewProgramsRecord
+                                                          .name;
+                                                  FFAppState()
+                                                          .currentProgramId =
+                                                      listViewProgramsRecord
+                                                          .reference.id;
+                                                });
+                                                Navigator.pop(context);
+                                                return;
+                                              } else {
+                                                return;
+                                              }
                                             }
                                           },
                                           child: Container(
@@ -237,22 +262,63 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: [
-                                                  Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
-                                                          milliseconds: 500),
-                                                      fadeOutDuration: Duration(
-                                                          milliseconds: 500),
-                                                      imageUrl:
-                                                          'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
-                                                      fit: BoxFit.cover,
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    elevation: 3.0,
+                                                    shape: const CircleBorder(),
+                                                    child: Container(
+                                                      width: 100.0,
+                                                      height: 100.0,
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Builder(
+                                                        builder: (_) {
+                                                          final child =
+                                                              Container(
+                                                            width: 100.0,
+                                                            height: 100.0,
+                                                            clipBehavior:
+                                                                Clip.antiAlias,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child:
+                                                                CachedNetworkImage(
+                                                              fadeInDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          500),
+                                                              fadeOutDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          500),
+                                                              imageUrl:
+                                                                  'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          );
+                                                          if (listViewProgramsRecord
+                                                                  .isLive ==
+                                                              false) {
+                                                            return ClipRect(
+                                                              child:
+                                                                  ImageFiltered(
+                                                                imageFilter:
+                                                                    ImageFilter
+                                                                        .blur(
+                                                                  sigmaX: 7.0,
+                                                                  sigmaY: 7.0,
+                                                                ),
+                                                                child: child,
+                                                              ),
+                                                            );
+                                                          }
+                                                          return child;
+                                                        },
+                                                      ),
                                                     ),
                                                   ),
                                                   Text(
@@ -299,6 +365,26 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                             ),
                                           ),
                                         ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-0.04, -0.19),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'hxz6ychh' /* COMING SOON */,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 12.0,
+                                                fontWeight: FontWeight.w800,
+                                              ),
+                                        ),
+                                      ),
                                     ],
                                   );
                                 },
