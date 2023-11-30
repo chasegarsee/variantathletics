@@ -166,7 +166,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                         .update(createUsersRecordData(
                                       currentProgram: listViewProgramsRecord.id,
                                     ));
-                                    setState(() {
+                                    _model.updatePage(() {
                                       FFAppState().selectedWeek =
                                           listViewProgramsRecord
                                               .weeks.first.weekNumber;
@@ -197,6 +197,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                       FFAppState().currentProgramId =
                                           listViewProgramsRecord.reference.id;
                                     });
+                                    Navigator.pop(context);
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(),
