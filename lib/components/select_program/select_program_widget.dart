@@ -366,7 +366,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'art3ulmk' /* COMING SOON */,
+                                                                  'ix72e2c8' /* COMING SOON */,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
