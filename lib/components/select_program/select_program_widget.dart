@@ -115,10 +115,6 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                             ),
                           ),
                         ),
-                        Text(
-                          getCurrentTimestamp.toString(),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
                       ],
                     ),
                     Expanded(
@@ -473,39 +469,41 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          RichText(
-                            textScaleFactor:
-                                MediaQuery.of(context).textScaleFactor,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: FFLocalizations.of(context).getText(
-                                    'eod9rf46' /* Selecting a new program will r... */,
+                          if (FFAppState().currentProgram != null &&
+                              FFAppState().currentProgram != '')
+                            RichText(
+                              textScaleFactor:
+                                  MediaQuery.of(context).textScaleFactor,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: FFLocalizations.of(context).getText(
+                                      'eod9rf46' /* Selecting a new program will r... */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Jost',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
-                                TextSpan(
-                                  text: FFLocalizations.of(context).getText(
-                                    'ej86wcg2' /* This cannot be undone */,
-                                  ),
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12.0,
-                                  ),
-                                )
-                              ],
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                                  TextSpan(
+                                    text: FFLocalizations.of(context).getText(
+                                      'ej86wcg2' /* This cannot be undone */,
+                                    ),
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12.0,
+                                    ),
+                                  )
+                                ],
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ),
