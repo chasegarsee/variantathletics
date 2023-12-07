@@ -367,7 +367,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 24.0, 12.0, 24.0),
+                                                  12.0, 24.0, 12.0, 50.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment:
