@@ -751,7 +751,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                             ),
                             Container(
                               width: double.infinity,
-                              height: 50.0,
+                              height: 60.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).primary,
                               ),
