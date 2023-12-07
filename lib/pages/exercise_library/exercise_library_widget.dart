@@ -373,7 +373,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             'thqv0eis' /* Abs */,
                           ),
                           FFLocalizations.of(context).getText(
-                            '4gppe0hd' /* Calvs */,
+                            '4gppe0hd' /* Calves */,
                           )
                         ],
                         onChanged: (val) async {

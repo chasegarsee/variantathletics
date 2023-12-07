@@ -176,7 +176,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'หน้าท้อง',
     },
     '4gppe0hd': {
-      'en': 'Calvs',
+      'en': 'Calves',
       'th': 'น่อง',
     },
     'r7x3za7i': {
@@ -625,6 +625,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'How to delete your account?',
       'th': 'วิธีการลบข้อมูล',
     },
+    'zspi0vg7': {
+      'en': 'Have questions about your account?',
+      'th': 'มีคำถามเกี่ยวกับสมาชิกของคุณ?',
+    },
+    'yawlzy9p': {
+      'en': 'Email team@iamvariant.io with any questions',
+      'th': 'ส่งอีเมลไปที่ team@iamvariant.io หากมีคำถาม',
+    },
     '219d9vcd': {
       'en': 'Change password',
       'th': 'เปลี่ยนรหัสผ่าน',
@@ -942,8 +950,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'เป็นผู้ VARIANT และบรรลุเป้าหมายด้วยแผนที่ได้รับการพิสูจน์แล้วและมีประสิทธิภาพ',
     },
     'wvfr82d3': {
-      'en': 'Purchase for lifetime access',
-      'th': '',
+      'en': 'Purchase for 1 YEAR access',
+      'th': 'ซื้อเพื่อการเข้าถึง 1 ปี',
     },
     '1i1a8uv0': {
       'en': 'Unlimited access to app functionality',
@@ -970,7 +978,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'คู่มืออาหารนับแคลอรี่ 101',
     },
     'cxc6mdxu': {
-      'en': 'Science based training Methodology Guide',
+      'en': 'Body Recomposition Methodology Blueprint',
       'th': 'คู่มือวิธีการออกกำลังกายตามวิทยาศาสตร์',
     },
     '4a5xgdoq': {

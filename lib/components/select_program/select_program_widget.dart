@@ -115,6 +115,10 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                             ),
                           ),
                         ),
+                        Text(
+                          getCurrentTimestamp.toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
                       ],
                     ),
                     Expanded(

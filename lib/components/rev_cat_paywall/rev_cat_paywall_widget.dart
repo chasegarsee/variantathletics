@@ -115,7 +115,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                               0.0, 0.0, 0.0, 5.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'wvfr82d3' /* Purchase for lifetime access */,
+                              'wvfr82d3' /* Purchase for 1 YEAR access */,
                             ),
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
@@ -427,7 +427,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'cxc6mdxu' /* Science based training Methodo... */,
+                                            'cxc6mdxu' /* Body Recomposition Methodology... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge

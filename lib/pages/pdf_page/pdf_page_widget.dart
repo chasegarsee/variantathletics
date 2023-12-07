@@ -112,7 +112,7 @@ class _PdfPageWidgetState extends State<PdfPageWidget> {
                   thText: 'th',
                 )}%2F${widget.pdfUrl}.pdf?alt=media',
                 width: MediaQuery.sizeOf(context).width * 1.0,
-                height: 500.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
                 horizontalScroll: false,
               ),
             ],
