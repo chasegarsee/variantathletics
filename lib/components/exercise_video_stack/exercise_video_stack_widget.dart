@@ -111,7 +111,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                               : null;
                       return Container(
                         width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
+                        height: double.infinity,
                         child: PageView(
                           controller: _model.pageViewController ??=
                               PageController(initialPage: 0),
