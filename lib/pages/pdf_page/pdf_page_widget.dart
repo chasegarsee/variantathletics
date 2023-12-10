@@ -105,15 +105,20 @@ class _PdfPageWidgetState extends State<PdfPageWidget> {
                   style: FlutterFlowTheme.of(context).titleLarge,
                 ),
               ),
-              FlutterFlowPdfViewer(
-                networkPath:
-                    '${FFAppState().pdfBase}${FFLocalizations.of(context).getVariableText(
-                  enText: 'en',
-                  thText: 'th',
-                )}%2F${widget.pdfUrl}.pdf?alt=media',
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                horizontalScroll: false,
+              Expanded(
+                child: Align(
+                  alignment: AlignmentDirectional(0.00, 0.00),
+                  child: FlutterFlowPdfViewer(
+                    networkPath:
+                        '${FFAppState().pdfBase}${FFLocalizations.of(context).getVariableText(
+                      enText: 'en',
+                      thText: 'th',
+                    )}%2F${widget.pdfUrl}.pdf?alt=media',
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    horizontalScroll: false,
+                  ),
+                ),
               ),
             ],
           ),
