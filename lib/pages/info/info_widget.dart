@@ -1,17 +1,14 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/components/delete_account/delete_account_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'info_model.dart';
 export 'info_model.dart';
 
@@ -187,61 +184,23 @@ class _InfoWidgetState extends State<InfoWidget> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    AlignedTooltip(
-                      content: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              4.0, 4.0, 4.0, 4.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'yawlzy9p' /* If you have purchase or subscr... */,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyLarge,
-                          )),
-                      offset: 4.0,
-                      preferredDirection: AxisDirection.down,
-                      borderRadius: BorderRadius.circular(8.0),
-                      backgroundColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 4.0,
-                      tailBaseWidth: 24.0,
-                      tailLength: 12.0,
-                      waitDuration: Duration(milliseconds: 100),
-                      showDuration: Duration(milliseconds: 1500),
-                      triggerMode: TooltipTriggerMode.tap,
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await launchUrl(Uri(
-                              scheme: 'mailto',
-                              path: currentUserEmail,
-                              query: {
-                                'subject':
-                                    FFLocalizations.of(context).getVariableText(
-                                  enText:
-                                      'Variant Athletics: Account Information',
-                                  thText: 'ข้อมูลบัญชีผู้ใช้',
-                                ),
-                                'body':
-                                    'https://billing.stripe.com/p/login/fZe01WcxD6F8fVS144',
-                              }
-                                  .entries
-                                  .map((MapEntry<String, String> e) =>
-                                      '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                  .join('&')));
-                        },
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'zspi0vg7' /* Have questions about your acco... */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Jost',
-                                    decoration: TextDecoration.underline,
-                                  ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await launchURL(
+                            'https://billing.stripe.com/p/login/fZe01WcxD6F8fVS144');
+                      },
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'zspi0vg7' /* Have questions about your acco... */,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Jost',
+                              decoration: TextDecoration.underline,
+                            ),
                       ),
                     ),
                   ],

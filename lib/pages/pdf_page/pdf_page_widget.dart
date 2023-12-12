@@ -80,13 +80,11 @@ class _PdfPageWidgetState extends State<PdfPageWidget> {
             },
           ),
           title: Text(
-            FFLocalizations.of(context).getText(
-              'yjbaunqk' /* VARIANT */,
-            ),
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
+            functions.formatPDFName(widget.pdfUrl!),
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Jost',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 22.0,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: [],
@@ -98,13 +96,6 @@ class _PdfPageWidgetState extends State<PdfPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-                child: Text(
-                  functions.formatPDFName(widget.pdfUrl!),
-                  style: FlutterFlowTheme.of(context).titleLarge,
-                ),
-              ),
               Expanded(
                 child: Align(
                   alignment: AlignmentDirectional(0.00, 0.00),

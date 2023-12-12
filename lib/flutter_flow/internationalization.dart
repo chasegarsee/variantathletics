@@ -629,12 +629,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Have questions about your account or subscription?',
       'th': 'มีคำถามเกี่ยวกับสมาชิกของคุณ?',
     },
-    'yawlzy9p': {
-      'en':
-          'If you have purchase or subscription history, we have just sent you and email containing those details.',
-      'th':
-          'หากคุณมีประวัติการซื้อหรือการสมัครสมาชิก, เราได้ส่งอีเมลที่มีรายละเอียดเหล่านั้นไปให้คุณแล้ว',
-    },
     '219d9vcd': {
       'en': 'Change password',
       'th': 'เปลี่ยนรหัสผ่าน',
@@ -661,10 +655,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // pdfPage
   {
-    'yjbaunqk': {
-      'en': 'VARIANT',
-      'th': 'VARIANT',
-    },
     '1tniq6qs': {
       'en': 'Home',
       'th': '',
