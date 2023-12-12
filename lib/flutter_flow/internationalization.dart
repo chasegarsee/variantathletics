@@ -626,12 +626,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'วิธีการลบข้อมูล',
     },
     'zspi0vg7': {
-      'en': 'Have questions about your account?',
+      'en': 'Have questions about your account or subscription?',
       'th': 'มีคำถามเกี่ยวกับสมาชิกของคุณ?',
     },
     'yawlzy9p': {
-      'en': 'Email team@iamvariant.io with any questions',
-      'th': 'ส่งอีเมลไปที่ team@iamvariant.io หากมีคำถาม',
+      'en':
+          'If you have purchase or subscription history, we have just sent you and email containing those details.',
+      'th':
+          'หากคุณมีประวัติการซื้อหรือการสมัครสมาชิก, เราได้ส่งอีเมลที่มีรายละเอียดเหล่านั้นไปให้คุณแล้ว',
     },
     '219d9vcd': {
       'en': 'Change password',

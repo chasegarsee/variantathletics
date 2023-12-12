@@ -510,16 +510,12 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                           ),
                                     ),
                                     TextSpan(
-                                      text: valueOrDefault<String>(
-                                        revenue_cat
-                                            .offerings!
-                                            .current!
-                                            .availablePackages
-                                            .first
-                                            .storeProduct
-                                            .price
-                                            .toString(),
-                                        '-',
+                                      text: FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            getRemoteConfigString('appPriceEN'),
+                                        thText:
+                                            getRemoteConfigString('appPriceTH'),
                                       ),
                                       style: TextStyle(),
                                     )

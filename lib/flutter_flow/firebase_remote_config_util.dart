@@ -7,6 +7,8 @@ Future initializeFirebaseRemoteConfig() async {
   ));
   await FirebaseRemoteConfig.instance.setDefaults(const {
     'appVersion': '',
+    'appPriceTH': '฿1,970',
+    'appPriceEN': '\$49.99',
   });
   await FirebaseRemoteConfig.instance.fetchAndActivate();
 }

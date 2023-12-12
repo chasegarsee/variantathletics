@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/delete_account/delete_account_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'info_model.dart';
 export 'info_model.dart';
 
@@ -191,7 +193,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                               4.0, 4.0, 4.0, 4.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'yawlzy9p' /* Email team@iamvariant.io with ... */,
+                              'yawlzy9p' /* If you have purchase or subscr... */,
                             ),
                             style: FlutterFlowTheme.of(context).bodyLarge,
                           )),
@@ -206,14 +208,40 @@ class _InfoWidgetState extends State<InfoWidget> {
                       waitDuration: Duration(milliseconds: 100),
                       showDuration: Duration(milliseconds: 1500),
                       triggerMode: TooltipTriggerMode.tap,
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'zspi0vg7' /* Have questions about your acco... */,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await launchUrl(Uri(
+                              scheme: 'mailto',
+                              path: currentUserEmail,
+                              query: {
+                                'subject':
+                                    FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Variant Athletics: Account Information',
+                                  thText: 'ข้อมูลบัญชีผู้ใช้',
+                                ),
+                                'body':
+                                    'https://billing.stripe.com/p/login/fZe01WcxD6F8fVS144',
+                              }
+                                  .entries
+                                  .map((MapEntry<String, String> e) =>
+                                      '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                  .join('&')));
+                        },
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'zspi0vg7' /* Have questions about your acco... */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Jost',
+                                    decoration: TextDecoration.underline,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Jost',
-                              decoration: TextDecoration.underline,
-                            ),
                       ),
                     ),
                   ],
