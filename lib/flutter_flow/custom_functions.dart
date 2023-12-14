@@ -279,5 +279,5 @@ bool isDateWithinLastSevenDays(
   // Calculate the difference in days between the two dates
   Duration difference = currentTime.difference(date);
   // Check if the difference is less than or equal to 7 days
-  return difference.inDays <= 7;
+  return difference.inDays <= 6;
 }
