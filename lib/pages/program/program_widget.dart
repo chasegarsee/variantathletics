@@ -247,6 +247,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   if (!FFAppState().isDaily)
                                     Align(
