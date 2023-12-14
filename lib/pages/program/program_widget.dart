@@ -72,8 +72,14 @@ class _ProgramWidgetState extends State<ProgramWidget> {
           },
         ).then((value) => safeSetState(() {}));
 
+        setState(() {
+          FFAppState().isDailySelectedDay = getCurrentTimestamp;
+        });
         return;
       } else {
+        setState(() {
+          FFAppState().isDailySelectedDay = getCurrentTimestamp;
+        });
         return;
       }
     });
