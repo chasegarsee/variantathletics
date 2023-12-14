@@ -289,9 +289,18 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                   FFAppState()
                                                                           .showAllDays =
                                                                       true;
+                                                                  FFAppState()
+                                                                          .isDailySelectedDay =
+                                                                      dateTimeFromSecondsSinceEpoch(
+                                                                          getCurrentTimestamp
+                                                                              .secondsSinceEpoch);
                                                                 });
                                                               } else {
-                                                                setState(() {});
+                                                                setState(() {
+                                                                  FFAppState()
+                                                                          .showAllDays =
+                                                                      false;
+                                                                });
                                                               }
 
                                                               Navigator.pop(

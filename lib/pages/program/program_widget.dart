@@ -740,9 +740,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                         .selectedDayId =
                                                                     dayItem.id;
                                                                 FFAppState()
-                                                                        .showAllDays =
-                                                                    !FFAppState()
-                                                                        .showAllDays;
+                                                                        .isDailySelectedDay =
+                                                                    dayItem
+                                                                        .date;
                                                               });
                                                             },
                                                             child: Stack(
@@ -779,7 +779,16 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                             50.0,
                                                                         decoration:
                                                                             BoxDecoration(
-                                                                          color: dayItem.day == FFAppState().selectedDay
+                                                                          color: dateTimeFormat(
+                                                                                    'Md',
+                                                                                    dayItem.date,
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ) ==
+                                                                                  dateTimeFormat(
+                                                                                    'Md',
+                                                                                    FFAppState().isDailySelectedDay,
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  )
                                                                               ? FlutterFlowTheme.of(context).accent2
                                                                               : FlutterFlowTheme.of(context).primary,
                                                                           borderRadius:
