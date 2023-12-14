@@ -279,13 +279,21 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                         .showAllWeeks =
                                                                     false;
                                                                 FFAppState()
-                                                                        .showAllDays =
-                                                                    false;
-                                                                FFAppState()
                                                                         .isDaily =
                                                                     listViewProgramsRecord
                                                                         .isDaily;
                                                               });
+                                                              if (listViewProgramsRecord
+                                                                  .isDaily) {
+                                                                setState(() {
+                                                                  FFAppState()
+                                                                          .showAllDays =
+                                                                      true;
+                                                                });
+                                                              } else {
+                                                                setState(() {});
+                                                              }
+
                                                               Navigator.pop(
                                                                   context);
                                                               return;
