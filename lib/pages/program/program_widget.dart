@@ -696,6 +696,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                           .isDateWithinLastSevenDays(
                                                               e.date!,
                                                               getCurrentTimestamp))
+                                                      .toList()
+                                                      .take(7)
                                                       .toList();
                                                   if (day.isEmpty) {
                                                     return DaysPlaceholderWidget();
