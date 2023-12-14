@@ -541,7 +541,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'o4pthagk': {
       'en': 'Knowlege Hub',
-      'th': 'ศูนย์โภชนาการ',
+      'th': 'ศูนย์ความรู้',
     },
     '80sul3wg': {
       'en': 'Leave comments after completing workouts',

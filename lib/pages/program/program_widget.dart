@@ -236,405 +236,624 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                 )
                               ],
                             ),
-                            child: Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    if (!FFAppState().showAllWeeks)
-                                      FlutterFlowIconButton(
-                                        borderRadius: 20.0,
-                                        borderWidth: 0.0,
-                                        buttonSize: 40.0,
-                                        icon: Icon(
-                                          Icons.keyboard_double_arrow_left,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          size: 20.0,
-                                        ),
-                                        onPressed: () async {
-                                          setState(() {
-                                            FFAppState().showAllWeeks = true;
-                                          });
-                                        },
-                                      ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 0.0, 0.0),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final weeks =
-                                              FFAppState().weeks.toList();
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: List.generate(
-                                                  weeks.length, (weeksIndex) {
-                                                final weeksItem =
-                                                    weeks[weeksIndex];
-                                                return Visibility(
-                                                  visible: FFAppState()
-                                                          .showAllWeeks ||
-                                                      (weeksItem.weekNumber ==
-                                                          FFAppState()
-                                                              .selectedWeek),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .selectedWeek =
-                                                            weeksItem
-                                                                .weekNumber;
-                                                        FFAppState().days =
-                                                            weeksItem.days
-                                                                .toList()
-                                                                .cast<
-                                                                    DaysStruct>();
-                                                        FFAppState()
-                                                                .programExercises =
-                                                            functions
-                                                                .setExercises(
-                                                                    weeksItem)
-                                                                .toList()
-                                                                .cast<
-                                                                    ProgramExercisesStruct>();
-                                                        FFAppState()
-                                                                .selectedDayName =
-                                                            weeksItem.days.first
-                                                                .name;
-                                                        FFAppState()
-                                                                .selectedDay =
-                                                            weeksItem
-                                                                .days.first.day;
-                                                        FFAppState()
-                                                                .selectedDayId =
-                                                            weeksItem
-                                                                .days.first.id;
-                                                        FFAppState()
-                                                                .showAllWeeks =
-                                                            !FFAppState()
-                                                                .showAllWeeks;
-                                                      });
-                                                    },
-                                                    child: Stack(
-                                                      children: [
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.00, 0.00),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        0.0,
-                                                                        5.0,
-                                                                        0.0),
-                                                            child: Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              elevation: 3.0,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                              ),
-                                                              child: Container(
-                                                                width: 30.0,
-                                                                height: 50.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: weeksItem
-                                                                              .weekNumber ==
-                                                                          FFAppState()
-                                                                              .selectedWeek
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent2
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                ),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
-                                                                  child: Text(
-                                                                    'W-${weeksItem.weekNumber.toString()}',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        if (functions
-                                                            .isWeekComplete(
-                                                                weeksItem
-                                                                    .weekNumber,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (!FFAppState().isDaily)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          if (!FFAppState().showAllWeeks)
+                                            FlutterFlowIconButton(
+                                              borderRadius: 20.0,
+                                              borderWidth: 0.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons
+                                                    .keyboard_double_arrow_left,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () async {
+                                                setState(() {
+                                                  FFAppState().showAllWeeks =
+                                                      true;
+                                                });
+                                              },
+                                            ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 0.0, 0.0),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final weeks =
+                                                    FFAppState().weeks.toList();
+                                                return SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: List.generate(
+                                                        weeks.length,
+                                                        (weeksIndex) {
+                                                      final weeksItem =
+                                                          weeks[weeksIndex];
+                                                      return Visibility(
+                                                        visible: FFAppState()
+                                                                .showAllWeeks ||
+                                                            (weeksItem
+                                                                    .weekNumber ==
                                                                 FFAppState()
-                                                                    .completedDays
-                                                                    .toList()))
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.79,
-                                                                    -0.82),
-                                                            child: Container(
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                              ),
-                                                              child: Align(
+                                                                    .selectedWeek),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                      .selectedWeek =
+                                                                  weeksItem
+                                                                      .weekNumber;
+                                                              FFAppState()
+                                                                      .days =
+                                                                  weeksItem.days
+                                                                      .toList()
+                                                                      .cast<
+                                                                          DaysStruct>();
+                                                              FFAppState()
+                                                                      .programExercises =
+                                                                  functions
+                                                                      .setExercises(
+                                                                          weeksItem)
+                                                                      .toList()
+                                                                      .cast<
+                                                                          ProgramExercisesStruct>();
+                                                              FFAppState()
+                                                                      .selectedDayName =
+                                                                  weeksItem
+                                                                      .days
+                                                                      .first
+                                                                      .name;
+                                                              FFAppState()
+                                                                      .selectedDay =
+                                                                  weeksItem
+                                                                      .days
+                                                                      .first
+                                                                      .day;
+                                                              FFAppState()
+                                                                      .selectedDayId =
+                                                                  weeksItem.days
+                                                                      .first.id;
+                                                              FFAppState()
+                                                                      .showAllWeeks =
+                                                                  !FFAppState()
+                                                                      .showAllWeeks;
+                                                            });
+                                                          },
+                                                          child: Stack(
+                                                            children: [
+                                                              Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
                                                                         0.00,
                                                                         0.00),
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .checkDouble,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  size: 15.0,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              }),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 5.0, 0.0),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final day =
-                                              FFAppState().days.toList();
-                                          if (day.isEmpty) {
-                                            return DaysPlaceholderWidget();
-                                          }
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: List.generate(
-                                                  day.length, (dayIndex) {
-                                                final dayItem = day[dayIndex];
-                                                return Visibility(
-                                                  visible: FFAppState()
-                                                          .showAllDays ||
-                                                      (FFAppState()
-                                                              .selectedDay ==
-                                                          dayItem.day),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .programExercises =
-                                                            dayItem.exercises
-                                                                .toList()
-                                                                .cast<
-                                                                    ProgramExercisesStruct>();
-                                                        FFAppState()
-                                                                .selectedDayName =
-                                                            dayItem.name;
-                                                        FFAppState()
-                                                                .selectedDay =
-                                                            dayItem.day;
-                                                        FFAppState()
-                                                                .selectedDayId =
-                                                            dayItem.id;
-                                                        FFAppState()
-                                                                .showAllDays =
-                                                            !FFAppState()
-                                                                .showAllDays;
-                                                      });
-                                                    },
-                                                    child: Stack(
-                                                      children: [
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.00, 0.00),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        0.0,
-                                                                        5.0,
-                                                                        0.0),
-                                                            child: Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              elevation: 3.0,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                              ),
-                                                              child: Container(
-                                                                width: 30.0,
-                                                                height: 50.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: dayItem
-                                                                              .day ==
-                                                                          FFAppState()
-                                                                              .selectedDay
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent2
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Material(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    elevation:
+                                                                        3.0,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               5.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                ),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
-                                                                  child: Text(
-                                                                    'D-${dayItem.day.toString()}',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium,
+                                                                    ),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          30.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: weeksItem.weekNumber ==
+                                                                                FFAppState().selectedWeek
+                                                                            ? FlutterFlowTheme.of(context).accent2
+                                                                            : FlutterFlowTheme.of(context).primary,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5.0),
+                                                                        shape: BoxShape
+                                                                            .rectangle,
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.00,
+                                                                            0.00),
+                                                                        child:
+                                                                            Text(
+                                                                          'W-${weeksItem.weekNumber.toString()}',
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
+                                                              if (functions.isWeekComplete(
+                                                                  weeksItem
+                                                                      .weekNumber,
+                                                                  FFAppState()
+                                                                      .completedDays
+                                                                      .toList()))
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          -1.79,
+                                                                          -0.82),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 20.0,
+                                                                    height:
+                                                                        20.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
+                                                                      child:
+                                                                          FaIcon(
+                                                                        FontAwesomeIcons
+                                                                            .checkDouble,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        size:
+                                                                            15.0,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                            ],
                                                           ),
                                                         ),
-                                                        if (FFAppState()
-                                                            .completedDays
-                                                            .contains(
-                                                                dayItem.id))
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.79,
-                                                                    -0.82),
-                                                            child: Container(
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                              ),
-                                                              child: Align(
+                                                      );
+                                                    }),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 5.0, 0.0),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final day =
+                                                    FFAppState().days.toList();
+                                                if (day.isEmpty) {
+                                                  return DaysPlaceholderWidget();
+                                                }
+                                                return SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: List.generate(
+                                                        day.length, (dayIndex) {
+                                                      final dayItem =
+                                                          day[dayIndex];
+                                                      return Visibility(
+                                                        visible: FFAppState()
+                                                                .showAllDays ||
+                                                            (FFAppState()
+                                                                    .selectedDay ==
+                                                                dayItem.day),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                      .programExercises =
+                                                                  dayItem
+                                                                      .exercises
+                                                                      .toList()
+                                                                      .cast<
+                                                                          ProgramExercisesStruct>();
+                                                              FFAppState()
+                                                                      .selectedDayName =
+                                                                  dayItem.name;
+                                                              FFAppState()
+                                                                      .selectedDay =
+                                                                  dayItem.day;
+                                                              FFAppState()
+                                                                      .selectedDayId =
+                                                                  dayItem.id;
+                                                              FFAppState()
+                                                                      .showAllDays =
+                                                                  !FFAppState()
+                                                                      .showAllDays;
+                                                            });
+                                                          },
+                                                          child: Stack(
+                                                            children: [
+                                                              Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
                                                                         0.00,
                                                                         0.00),
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .checkDouble,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  size: 15.0,
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Material(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    elevation:
+                                                                        3.0,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5.0),
+                                                                    ),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          30.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: dayItem.day ==
+                                                                                FFAppState().selectedDay
+                                                                            ? FlutterFlowTheme.of(context).accent2
+                                                                            : FlutterFlowTheme.of(context).primary,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5.0),
+                                                                        shape: BoxShape
+                                                                            .rectangle,
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.00,
+                                                                            0.00),
+                                                                        child:
+                                                                            Text(
+                                                                          'D-${dayItem.day.toString()}',
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
+                                                              if (FFAppState()
+                                                                  .completedDays
+                                                                  .contains(
+                                                                      dayItem
+                                                                          .id))
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          -1.79,
+                                                                          -0.82),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 20.0,
+                                                                    height:
+                                                                        20.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
+                                                                      child:
+                                                                          FaIcon(
+                                                                        FontAwesomeIcons
+                                                                            .checkDouble,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        size:
+                                                                            15.0,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                            ],
                                                           ),
-                                                      ],
-                                                    ),
+                                                        ),
+                                                      );
+                                                    }),
                                                   ),
                                                 );
-                                              }),
+                                              },
                                             ),
-                                          );
-                                        },
+                                          ),
+                                          if (!FFAppState().showAllDays)
+                                            FlutterFlowIconButton(
+                                              borderRadius: 20.0,
+                                              borderWidth: 0.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons
+                                                    .keyboard_double_arrow_right,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () async {
+                                                setState(() {
+                                                  FFAppState().showAllDays =
+                                                      true;
+                                                });
+                                              },
+                                            ),
+                                        ],
                                       ),
                                     ),
-                                    if (!FFAppState().showAllDays)
-                                      FlutterFlowIconButton(
-                                        borderRadius: 20.0,
-                                        borderWidth: 0.0,
-                                        buttonSize: 40.0,
-                                        icon: Icon(
-                                          Icons.keyboard_double_arrow_right,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          size: 20.0,
-                                        ),
-                                        onPressed: () async {
-                                          setState(() {
-                                            FFAppState().showAllDays = true;
-                                          });
-                                        },
+                                  ),
+                                if (FFAppState().isDaily)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 5.0, 0.0),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final day =
+                                                    FFAppState().days.toList();
+                                                if (day.isEmpty) {
+                                                  return DaysPlaceholderWidget();
+                                                }
+                                                return SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: List.generate(
+                                                        day.length, (dayIndex) {
+                                                      final dayItem =
+                                                          day[dayIndex];
+                                                      return Visibility(
+                                                        visible: FFAppState()
+                                                                .showAllDays ||
+                                                            (FFAppState()
+                                                                    .selectedDay ==
+                                                                dayItem.day),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                      .programExercises =
+                                                                  dayItem
+                                                                      .exercises
+                                                                      .toList()
+                                                                      .cast<
+                                                                          ProgramExercisesStruct>();
+                                                              FFAppState()
+                                                                      .selectedDayName =
+                                                                  dayItem.name;
+                                                              FFAppState()
+                                                                      .selectedDay =
+                                                                  dayItem.day;
+                                                              FFAppState()
+                                                                      .selectedDayId =
+                                                                  dayItem.id;
+                                                              FFAppState()
+                                                                      .showAllDays =
+                                                                  !FFAppState()
+                                                                      .showAllDays;
+                                                            });
+                                                          },
+                                                          child: Stack(
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.00,
+                                                                        0.00),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Material(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    elevation:
+                                                                        3.0,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5.0),
+                                                                    ),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          30.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: dayItem.day ==
+                                                                                FFAppState().selectedDay
+                                                                            ? FlutterFlowTheme.of(context).accent2
+                                                                            : FlutterFlowTheme.of(context).primary,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5.0),
+                                                                        shape: BoxShape
+                                                                            .rectangle,
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.00,
+                                                                            0.00),
+                                                                        child:
+                                                                            Text(
+                                                                          dateTimeFormat(
+                                                                            'Md',
+                                                                            dayItem.date!,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              if (FFAppState()
+                                                                  .completedDays
+                                                                  .contains(
+                                                                      dayItem
+                                                                          .id))
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          -1.79,
+                                                                          -0.82),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 20.0,
+                                                                    height:
+                                                                        20.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
+                                                                      child:
+                                                                          FaIcon(
+                                                                        FontAwesomeIcons
+                                                                            .checkDouble,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        size:
+                                                                            15.0,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                  ],
-                                ),
-                              ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
                         ),

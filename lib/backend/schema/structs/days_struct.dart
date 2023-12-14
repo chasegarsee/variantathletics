@@ -14,11 +14,13 @@ class DaysStruct extends FFFirebaseStruct {
     List<ProgramExercisesStruct>? exercises,
     String? id,
     int? day,
+    DateTime? date,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _exercises = exercises,
         _id = id,
         _day = day,
+        _date = date,
         super(firestoreUtilData);
 
   // "name" field.
@@ -48,6 +50,12 @@ class DaysStruct extends FFFirebaseStruct {
   void incrementDay(int amount) => _day = day + amount;
   bool hasDay() => _day != null;
 
+  // "date" field.
+  DateTime? _date;
+  DateTime? get date => _date;
+  set date(DateTime? val) => _date = val;
+  bool hasDate() => _date != null;
+
   static DaysStruct fromMap(Map<String, dynamic> data) => DaysStruct(
         name: data['name'] as String?,
         exercises: getStructList(
@@ -56,6 +64,7 @@ class DaysStruct extends FFFirebaseStruct {
         ),
         id: data['id'] as String?,
         day: castToType<int>(data['day']),
+        date: data['date'] as DateTime?,
       );
 
   static DaysStruct? maybeFromMap(dynamic data) =>
@@ -66,6 +75,7 @@ class DaysStruct extends FFFirebaseStruct {
         'exercises': _exercises?.map((e) => e.toMap()).toList(),
         'id': _id,
         'day': _day,
+        'date': _date,
       }.withoutNulls;
 
   @override
@@ -86,6 +96,10 @@ class DaysStruct extends FFFirebaseStruct {
         'day': serializeParam(
           _day,
           ParamType.int,
+        ),
+        'date': serializeParam(
+          _date,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -112,6 +126,11 @@ class DaysStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        date: deserializeParam(
+          data['date'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -124,17 +143,20 @@ class DaysStruct extends FFFirebaseStruct {
         name == other.name &&
         listEquality.equals(exercises, other.exercises) &&
         id == other.id &&
-        day == other.day;
+        day == other.day &&
+        date == other.date;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([name, exercises, id, day]);
+  int get hashCode =>
+      const ListEquality().hash([name, exercises, id, day, date]);
 }
 
 DaysStruct createDaysStruct({
   String? name,
   String? id,
   int? day,
+  DateTime? date,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -144,6 +166,7 @@ DaysStruct createDaysStruct({
       name: name,
       id: id,
       day: day,
+      date: date,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

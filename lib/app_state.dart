@@ -168,6 +168,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _favorites;
     });
+    _safeInit(() {
+      _isDaily = prefs.getBool('ff_isDaily') ?? _isDaily;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -642,6 +645,19 @@ class FFAppState extends ChangeNotifier {
     _favorites.insert(_index, _value);
     prefs.setStringList(
         'ff_favorites', _favorites.map((x) => x.serialize()).toList());
+  }
+
+  DateTime? _isDailySelectedDay;
+  DateTime? get isDailySelectedDay => _isDailySelectedDay;
+  set isDailySelectedDay(DateTime? _value) {
+    _isDailySelectedDay = _value;
+  }
+
+  bool _isDaily = false;
+  bool get isDaily => _isDaily;
+  set isDaily(bool _value) {
+    _isDaily = _value;
+    prefs.setBool('ff_isDaily', _value);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
