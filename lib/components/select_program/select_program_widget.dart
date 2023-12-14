@@ -477,8 +477,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                         ),
                                       ]
                                           .divide(SizedBox(height: 1.0))
-                                          .addToStart(SizedBox(height: 1.0))
-                                          .addToEnd(SizedBox(height: 1.0)),
+                                          .around(SizedBox(height: 1.0)),
                                     );
                                   },
                                 );
