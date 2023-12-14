@@ -158,7 +158,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                         listViewProgramsRecordList[
                                             listViewIndex];
                                     return Column(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -465,6 +465,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                         ),
                                         Text(
                                           listViewProgramsRecord.name,
+                                          maxLines: 2,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -474,7 +475,10 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                         .primaryText,
                                               ),
                                         ),
-                                      ],
+                                      ]
+                                          .divide(SizedBox(height: 1.0))
+                                          .addToStart(SizedBox(height: 1.0))
+                                          .addToEnd(SizedBox(height: 1.0)),
                                     );
                                   },
                                 );
