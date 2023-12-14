@@ -686,6 +686,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 builder: (context) {
                                                   final day = FFAppState()
                                                       .days
+                                                      .where((e) => functions
+                                                          .isDateWithinLastSevenDays(
+                                                              e.date!,
+                                                              getCurrentTimestamp))
                                                       .toList();
                                                   if (day.isEmpty) {
                                                     return DaysPlaceholderWidget();
