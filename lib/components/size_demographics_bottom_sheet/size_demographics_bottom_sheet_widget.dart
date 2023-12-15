@@ -674,8 +674,7 @@ class _SizeDemographicsBottomSheetWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 24.0, 24.0, 24.0),
+                              padding: EdgeInsets.all(24.0),
                               child: FFButtonWidget(
                                 onPressed: (_model.genderValue == null) ||
                                         (_model.activityLevelValue == null) ||

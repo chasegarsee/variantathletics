@@ -56,7 +56,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 1.00),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         height: MediaQuery.sizeOf(context).height * 1.0,
@@ -64,7 +64,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
           alignment: AlignmentDirectional(0.0, 0.0),
           children: [
             Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).height * 1.0,
@@ -72,7 +72,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: StreamBuilder<List<ExercisesRecord>>(
                     stream: FFAppState().exercise(
                       uniqueQueryKey: widget.exerciseId,
@@ -159,7 +159,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(0.0),
@@ -179,9 +179,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                         1.0,
                                                 decoration: BoxDecoration(),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 20.0,
-                                                          20.0, 20.0),
+                                                  padding: EdgeInsets.all(20.0),
                                                   child: Stack(
                                                     children: [
                                                       Padding(
@@ -202,8 +200,8 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                             Align(
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.00,
-                                                                      -1.00),
+                                                                      -1.0,
+                                                                      -1.0),
                                                               child: Padding(
                                                                 padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
@@ -264,7 +262,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                               enDetails[enDetailsIndex];
                                                                           return Align(
                                                                             alignment:
-                                                                                AlignmentDirectional(-1.00, 0.00),
+                                                                                AlignmentDirectional(-1.0, 0.0),
                                                                             child:
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -321,7 +319,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                                                               thDetails[thDetailsIndex];
                                                                           return Align(
                                                                             alignment:
-                                                                                AlignmentDirectional(-1.00, 0.00),
+                                                                                AlignmentDirectional(-1.0, 0.0),
                                                                             child:
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -356,7 +354,7 @@ class _ExerciseVideoStackWidgetState extends State<ExerciseVideoStackWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:

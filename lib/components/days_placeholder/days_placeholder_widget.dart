@@ -61,7 +61,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '48otjann' /* D-1 */,
@@ -93,7 +93,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'lz75stmz' /* D-2 */,
@@ -125,7 +125,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '0i3waa86' /* D-3 */,
@@ -157,7 +157,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'qspbidd5' /* D-4 */,
@@ -189,7 +189,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'o09oktwo' /* D-5 */,
@@ -221,7 +221,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'oasq6mrb' /* D-6 */,
@@ -253,7 +253,7 @@ class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'vwg66sbq' /* D-7 */,

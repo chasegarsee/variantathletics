@@ -107,7 +107,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'rvjg82nr' /* VARIANT */,
@@ -298,7 +298,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -476,8 +476,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                     final filteredExerciseItem =
                                         filteredExercise[filteredExerciseIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 5.0, 5.0, 5.0),
+                                      padding: EdgeInsets.all(5.0),
                                       child: Material(
                                         color: Colors.transparent,
                                         elevation: 3.0,
@@ -632,12 +631,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5.0,
-                                                                          5.0,
-                                                                          5.0,
-                                                                          5.0),
+                                                                  EdgeInsets
+                                                                      .all(5.0),
                                                               child: Text(
                                                                 getJsonField(
                                                                   filteredExerciseItem,
@@ -687,7 +682,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                                 return Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          -0.80,
+                                                                          -0.8,
                                                                           0.88),
                                                                   child:
                                                                       Padding(
@@ -747,7 +742,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                                           child:
                                                                               Align(
                                                                             alignment:
-                                                                                AlignmentDirectional(0.00, 0.00),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Text(
                                                                               tagItem.toString(),
@@ -788,7 +783,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                 ),
                 if (_model.showDialoge)
                   Align(
-                    alignment: AlignmentDirectional(-0.00, -0.18),
+                    alignment: AlignmentDirectional(0.0, -0.18),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(0.0),
                       child: BackdropFilter(
@@ -801,10 +796,9 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           height: MediaQuery.sizeOf(context).height * 1.0,
                           decoration: BoxDecoration(),
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 20.0, 20.0, 20.0),
+                              padding: EdgeInsets.all(20.0),
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 color: FlutterFlowTheme.of(context)
@@ -814,8 +808,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 20.0),
+                                  padding: EdgeInsets.all(20.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -828,7 +821,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                           Flexible(
                                             child: Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.00, 0.00),
+                                                  -1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -847,8 +840,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                1.00, -1.00),
+                                            alignment:
+                                                AlignmentDirectional(1.0, -1.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -872,8 +865,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
+                                        padding: EdgeInsets.all(10.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'vf1zei5h' /* It looks like you dont have ac... */,

@@ -251,12 +251,8 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0),
+                                                              EdgeInsets.all(
+                                                                  5.0),
                                                           child: Text(
                                                             favoritesItem.name,
                                                             textAlign:

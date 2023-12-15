@@ -88,7 +88,7 @@ class _WorkoutSetListItemWidgetState extends State<WorkoutSetListItemWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       functions.indexPlusOne(widget.listIndex!).toString(),
                       style: FlutterFlowTheme.of(context).bodyMedium,
@@ -109,7 +109,7 @@ class _WorkoutSetListItemWidgetState extends State<WorkoutSetListItemWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           widget.setItem!,
                           style: FlutterFlowTheme.of(context).bodyMedium,

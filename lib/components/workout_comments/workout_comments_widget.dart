@@ -88,7 +88,7 @@ class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                padding: EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -98,7 +98,7 @@ class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(1.00, -1.00),
+                          alignment: AlignmentDirectional(1.0, -1.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,

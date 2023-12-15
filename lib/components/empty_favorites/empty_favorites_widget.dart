@@ -43,13 +43,13 @@ class _EmptyFavoritesWidgetState extends State<EmptyFavoritesWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(),
         child: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: InkWell(
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,

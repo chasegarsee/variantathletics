@@ -62,7 +62,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
         automaticallyImplyLeading: true,
         title: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Text(
             FFLocalizations.of(context).getText(
               'zv1aqkys' /* VARIANT */,
@@ -116,8 +116,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2.0, 2.0, 2.0, 2.0),
+                                  padding: EdgeInsets.all(2.0),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
@@ -247,7 +246,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.95, 0.00),
+                                              AlignmentDirectional(0.95, 0.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -263,7 +262,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-0.85, 0.00),
+                                              AlignmentDirectional(-0.85, 0.0),
                                           child: Material(
                                             color: Colors.transparent,
                                             elevation: 2.0,
@@ -347,7 +346,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-0.90, 0.00),
+                                            AlignmentDirectional(-0.9, 0.0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -362,7 +361,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.90, 0.00),
+                                            AlignmentDirectional(0.9, 0.0),
                                         child: Material(
                                           color: Colors.transparent,
                                           elevation: 2.0,
@@ -454,7 +453,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.95, 0.00),
+                                              AlignmentDirectional(0.95, 0.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -479,7 +478,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-0.85, 0.00),
+                                              AlignmentDirectional(-0.85, 0.0),
                                           child: Material(
                                             color: Colors.transparent,
                                             elevation: 2.0,
@@ -567,7 +566,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-0.90, 0.00),
+                                              AlignmentDirectional(-0.9, 0.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -592,7 +591,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.90, 0.00),
+                                              AlignmentDirectional(0.9, 0.0),
                                           child: Material(
                                             color: Colors.transparent,
                                             elevation: 2.0,
@@ -853,8 +852,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             ),
                             child: AlignedTooltip(
                               content: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 4.0, 4.0, 4.0),
+                                  padding: EdgeInsets.all(4.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       'r2etes77' /* Lifetime VARIANT. No Purchase ... */,
@@ -902,8 +900,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             AlignmentDirectional(0.0, 0.0),
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                -0.90, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(-0.9, 0.0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(6.0, 2.0, 0.0, 0.0),
@@ -927,8 +925,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                0.90, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(0.9, 0.0),
                                             child: Material(
                                               color: Colors.transparent,
                                               elevation: 2.0,
@@ -983,8 +981,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          24.0, 24.0, 24.0, 24.0),
+                      padding: EdgeInsets.all(24.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           setState(() {

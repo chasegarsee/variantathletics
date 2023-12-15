@@ -294,7 +294,7 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
                                         ),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [

@@ -82,7 +82,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                padding: EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -453,7 +453,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                     Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.96),
+                          alignment: AlignmentDirectional(0.0, 0.96),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(0.0),
                             child: BackdropFilter(
@@ -462,7 +462,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                 sigmaY: 2.0,
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(-1.00, 0.00),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.899,
@@ -613,7 +613,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                       ],
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(0.0),
                         child: BackdropFilter(

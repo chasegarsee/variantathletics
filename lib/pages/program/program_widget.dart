@@ -224,7 +224,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 5.0,
@@ -246,7 +246,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                               children: [
                                 if (!FFAppState().isDaily)
                                   Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -360,8 +360,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -401,8 +401,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                       child:
                                                                           Align(
                                                                         alignment: AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             Text(
                                                                           'W-${weeksItem.weekNumber.toString()}',
@@ -442,9 +442,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                     ),
                                                                     child:
                                                                         Align(
-                                                                      alignment: AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
                                                                       child:
                                                                           FaIcon(
                                                                         FontAwesomeIcons
@@ -535,8 +536,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -576,8 +577,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                       child:
                                                                           Align(
                                                                         alignment: AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             Text(
                                                                           'D-${dayItem.day.toString()}',
@@ -616,9 +617,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                     ),
                                                                     child:
                                                                         Align(
-                                                                      alignment: AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
                                                                       child:
                                                                           FaIcon(
                                                                         FontAwesomeIcons
@@ -668,7 +670,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   ),
                                 if (FFAppState().isDaily)
                                   Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -750,8 +752,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -799,8 +801,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                       child:
                                                                           Align(
                                                                         alignment: AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             Text(
                                                                           dateTimeFormat(
@@ -844,9 +846,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                     ),
                                                                     child:
                                                                         Align(
-                                                                      alignment: AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
                                                                       child:
                                                                           FaIcon(
                                                                         FontAwesomeIcons
@@ -1400,8 +1403,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                           .completedDays
                           .contains(FFAppState().selectedDayId))
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 24.0, 24.0, 24.0),
+                          padding: EdgeInsets.all(24.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               setState(() {
@@ -1474,7 +1476,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                   ),
                 if (_model.isLoading)
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.09),
+                    alignment: AlignmentDirectional(0.0, -0.09),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         's2xpl59s' /* Loading... */,

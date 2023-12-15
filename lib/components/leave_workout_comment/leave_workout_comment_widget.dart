@@ -95,7 +95,7 @@ class _LeaveWorkoutCommentWidgetState extends State<LeaveWorkoutCommentWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +118,7 @@ class _LeaveWorkoutCommentWidgetState extends State<LeaveWorkoutCommentWidget> {
                       ),
                       Flexible(
                         child: Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
@@ -133,7 +133,7 @@ class _LeaveWorkoutCommentWidgetState extends State<LeaveWorkoutCommentWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(1.00, -1.00),
+                        alignment: AlignmentDirectional(1.0, -1.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -265,7 +265,7 @@ class _LeaveWorkoutCommentWidgetState extends State<LeaveWorkoutCommentWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: valueOrDefault<bool>(
                                       _model.ratingBarValue! <= 0.0,

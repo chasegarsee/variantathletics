@@ -89,7 +89,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                padding: EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -99,7 +99,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(1.00, -1.00),
+                          alignment: AlignmentDirectional(1.0, -1.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -121,7 +121,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: StreamBuilder<List<ProgramsRecord>>(
                               stream: FFAppState().programsList(
                                 requestFn: () => queryProgramsRecord(),
@@ -164,7 +164,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             height: 100.0,
                                             child: Stack(
@@ -178,7 +178,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              0.00, 0.00),
+                                                              0.0, 0.0),
                                                       child: InkWell(
                                                         splashColor:
                                                             Colors.transparent,
@@ -324,8 +324,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                             Align(
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      0.00,
-                                                                      0.00),
+                                                                      0.0, 0.0),
                                                               child: Container(
                                                                 width: 100.0,
                                                                 height: 100.0,
@@ -374,7 +373,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.00, -0.06),
+                                                            0.0, -0.06),
                                                     child: ClipOval(
                                                       child: BackdropFilter(
                                                         filter:
@@ -393,7 +392,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                           child: Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0.00, 0.00),
+                                                                    0.0, 0.0),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -429,7 +428,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            -1.00, -1.00),
+                                                            -1.0, -1.0),
                                                     child: AuthUserStreamWidget(
                                                       builder: (context) =>
                                                           Container(
@@ -446,7 +445,7 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                         child: Align(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  0.00, 0.00),
+                                                                  0.0, 0.0),
                                                           child: FaIcon(
                                                             FontAwesomeIcons
                                                                 .checkDouble,

@@ -98,7 +98,7 @@ class _PdfPageWidgetState extends State<PdfPageWidget> {
             children: [
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: FlutterFlowPdfViewer(
                     networkPath:
                         '${FFAppState().pdfBase}${FFLocalizations.of(context).getVariableText(

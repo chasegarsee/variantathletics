@@ -285,8 +285,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 24.0, 24.0, 24.0),
+                              padding: EdgeInsets.all(24.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   Navigator.pop(context);

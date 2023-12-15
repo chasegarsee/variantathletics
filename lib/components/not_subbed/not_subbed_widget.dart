@@ -79,7 +79,7 @@ class _NotSubbedWidgetState extends State<NotSubbedWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +90,7 @@ class _NotSubbedWidgetState extends State<NotSubbedWidget> {
                     children: [
                       Flexible(
                         child: Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
@@ -105,7 +105,7 @@ class _NotSubbedWidgetState extends State<NotSubbedWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(1.00, -1.00),
+                        alignment: AlignmentDirectional(1.0, -1.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -124,8 +124,7 @@ class _NotSubbedWidgetState extends State<NotSubbedWidget> {
                     ],
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'chswaljy' /* It looks like you dont have ac... */,

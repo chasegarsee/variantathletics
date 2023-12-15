@@ -1,8 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/delete_account/delete_account_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -75,7 +77,7 @@ class _InfoWidgetState extends State<InfoWidget> {
             },
           ),
           title: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               FFLocalizations.of(context).getText(
                 'fn2v0o01' /* VARIANT */,
@@ -211,44 +213,57 @@ class _InfoWidgetState extends State<InfoWidget> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          useSafeArea: true,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => _model.unfocusNode.canRequestFocus
-                                  ? FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode)
-                                  : FocusScope.of(context).unfocus(),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.5,
-                                  child: DeleteAccountWidget(),
+                    AlignedTooltip(
+                      content: Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'vevka0a5' /* password reset instructions se... */,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyLarge,
+                          )),
+                      offset: 4.0,
+                      preferredDirection: AxisDirection.down,
+                      borderRadius: BorderRadius.circular(8.0),
+                      backgroundColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 4.0,
+                      tailBaseWidth: 24.0,
+                      tailLength: 12.0,
+                      waitDuration: Duration(milliseconds: 100),
+                      showDuration: Duration(milliseconds: 1500),
+                      triggerMode: TooltipTriggerMode.tap,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          if (currentUserEmail.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
                                 ),
                               ),
                             );
-                          },
-                        ).then((value) => safeSetState(() {}));
-                      },
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          '219d9vcd' /* Change password */,
+                            return;
+                          }
+                          await authManager.resetPassword(
+                            email: currentUserEmail,
+                            context: context,
+                          );
+                        },
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            '219d9vcd' /* Change password */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Jost',
+                                    decoration: TextDecoration.underline,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Jost',
-                              decoration: TextDecoration.underline,
-                            ),
                       ),
                     ),
                   ],
