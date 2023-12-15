@@ -61,20 +61,23 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         iconTheme:
             IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
         automaticallyImplyLeading: true,
-        title: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
-          child: Text(
-            FFLocalizations.of(context).getText(
-              'zv1aqkys' /* VARIANT */,
-            ),
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Jost',
-                  fontSize: 32.0,
-                ),
-          ),
-        ),
         actions: [],
-        centerTitle: false,
+        flexibleSpace: FlexibleSpaceBar(
+          title: Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'zv1aqkys' /* VARIANT */,
+              ),
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Jost',
+                    fontSize: 32.0,
+                  ),
+            ),
+          ),
+          centerTitle: true,
+          expandedTitleScale: 1.0,
+        ),
         elevation: 3.0,
       ),
       body: Column(

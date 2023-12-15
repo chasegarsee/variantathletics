@@ -238,31 +238,31 @@ class _InfoWidgetState extends State<InfoWidget> {
                       waitDuration: Duration(milliseconds: 100),
                       showDuration: Duration(milliseconds: 1500),
                       triggerMode: TooltipTriggerMode.tap,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              if (currentUserEmail.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Email required!',
-                                    ),
-                                  ),
-                                );
-                                return;
-                              }
-                              await authManager.resetPassword(
-                                email: currentUserEmail,
-                                context: context,
-                              );
-                            },
-                            child: Text(
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          if (currentUserEmail.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+                          await authManager.resetPassword(
+                            email: currentUserEmail,
+                            context: context,
+                          );
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
                               FFLocalizations.of(context).getText(
                                 '219d9vcd' /* Change password */,
                               ),
@@ -273,8 +273,8 @@ class _InfoWidgetState extends State<InfoWidget> {
                                     decoration: TextDecoration.underline,
                                   ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
