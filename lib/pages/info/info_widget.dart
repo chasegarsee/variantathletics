@@ -220,13 +220,18 @@ class _InfoWidgetState extends State<InfoWidget> {
                             FFLocalizations.of(context).getText(
                               'vevka0a5' /* Check your email for password ... */,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyLarge,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
                           )),
                       offset: 4.0,
                       preferredDirection: AxisDirection.down,
                       borderRadius: BorderRadius.circular(8.0),
-                      backgroundColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                      backgroundColor: FlutterFlowTheme.of(context).primary,
                       elevation: 4.0,
                       tailBaseWidth: 24.0,
                       tailLength: 12.0,
