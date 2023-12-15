@@ -307,11 +307,37 @@ class _InfoWidgetState extends State<InfoWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'mj71ya32' /* Account Status: VARIANT LIFETI... */,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          if (currentUserEmail.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+                          await authManager.resetPassword(
+                            email: currentUserEmail,
+                            context: context,
+                          );
+                        },
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'fp8dv46j' /* Change password */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Jost',
+                                    decoration: TextDecoration.underline,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                     ],
                   ),
