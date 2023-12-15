@@ -974,87 +974,92 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(24.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          setState(() {
-                            FFAppState().selectedDayId = '';
-                            FFAppState().selectedDay = 1;
-                            FFAppState().selectedDayName = '';
-                            FFAppState().programExercises = [];
-                            FFAppState().days = [];
-                            FFAppState().selectedWeek = 1;
-                            FFAppState().completedDays = [];
-                            FFAppState().completedWeeks = [];
-                            FFAppState().currentProgram = '';
-                          });
-                          GoRouter.of(context).prepareAuthEvent();
-                          await authManager.signOut();
-                          GoRouter.of(context).clearRedirectLocation();
-
-                          context.goNamedAuth('signin', context.mounted);
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'h0v7c7oj' /* Log Out */,
-                        ),
-                        options: FFButtonOptions(
-                          width: MediaQuery.sizeOf(context).width * 0.5,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: 'Jost',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                          elevation: 5.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('info');
+                            },
+                            child: Icon(
+                              Icons.settings_outlined,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('info');
-                        },
-                        child: Icon(
-                          Icons.settings_outlined,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
+                      Flexible(
+                        flex: 10,
+                        child: Align(
+                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsets.all(24.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                setState(() {
+                                  FFAppState().selectedDayId = '';
+                                  FFAppState().selectedDay = 1;
+                                  FFAppState().selectedDayName = '';
+                                  FFAppState().programExercises = [];
+                                  FFAppState().days = [];
+                                  FFAppState().selectedWeek = 1;
+                                  FFAppState().completedDays = [];
+                                  FFAppState().completedWeeks = [];
+                                  FFAppState().currentProgram = '';
+                                });
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
+                                context.goNamedAuth('signin', context.mounted);
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'h0v7c7oj' /* Log Out */,
+                              ),
+                              options: FFButtonOptions(
+                                width: MediaQuery.sizeOf(context).width * 0.5,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                elevation: 5.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
