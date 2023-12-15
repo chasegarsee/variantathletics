@@ -852,7 +852,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             ),
                             child: AlignedTooltip(
                               content: Padding(
-                                  padding: EdgeInsets.all(4.0),
+                                  padding: EdgeInsets.all(6.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       'r2etes77' /* Lifetime VARIANT. No Purchase ... */,

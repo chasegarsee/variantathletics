@@ -238,37 +238,43 @@ class _InfoWidgetState extends State<InfoWidget> {
                       waitDuration: Duration(milliseconds: 100),
                       showDuration: Duration(milliseconds: 1500),
                       triggerMode: TooltipTriggerMode.tap,
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          if (currentUserEmail.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Email required!',
-                                ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (currentUserEmail.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Email required!',
+                                    ),
+                                  ),
+                                );
+                                return;
+                              }
+                              await authManager.resetPassword(
+                                email: currentUserEmail,
+                                context: context,
+                              );
+                            },
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                '219d9vcd' /* Change password */,
                               ),
-                            );
-                            return;
-                          }
-                          await authManager.resetPassword(
-                            email: currentUserEmail,
-                            context: context,
-                          );
-                        },
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '219d9vcd' /* Change password */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     fontFamily: 'Jost',
                                     decoration: TextDecoration.underline,
                                   ),
-                        ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
