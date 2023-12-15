@@ -637,14 +637,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Check your email for password reset instructions',
       'th': 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
     },
-    'fp8dv46j': {
-      'en': 'Change password',
-      'th': 'เปลี่ยนรหัสผ่าน',
-    },
-    'eu2y25tb': {
-      'en': 'Check your email for password reset instructions',
-      'th': 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
-    },
     'fn2v0o01': {
       'en': 'VARIANT',
       'th': 'VARIANT',

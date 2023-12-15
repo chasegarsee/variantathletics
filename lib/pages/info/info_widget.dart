@@ -258,6 +258,25 @@ class _InfoWidgetState extends State<InfoWidget> {
                             email: currentUserEmail,
                             context: context,
                           );
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Check your email for password reset instructions',
+                                  thText: 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
+                                ),
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).accent2,
+                            ),
+                          );
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -278,69 +297,6 @@ class _InfoWidgetState extends State<InfoWidget> {
                       ),
                     ),
                   ],
-                ),
-              ),
-              AlignedTooltip(
-                content: Padding(
-                    padding: EdgeInsets.all(6.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'eu2y25tb' /* Check your email for password ... */,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyLarge,
-                    )),
-                offset: 4.0,
-                preferredDirection: AxisDirection.down,
-                borderRadius: BorderRadius.circular(8.0),
-                backgroundColor:
-                    FlutterFlowTheme.of(context).secondaryBackground,
-                elevation: 4.0,
-                tailBaseWidth: 24.0,
-                tailLength: 12.0,
-                waitDuration: Duration(milliseconds: 100),
-                showDuration: Duration(milliseconds: 1500),
-                triggerMode: TooltipTriggerMode.tap,
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          if (currentUserEmail.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Email required!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
-                          await authManager.resetPassword(
-                            email: currentUserEmail,
-                            context: context,
-                          );
-                        },
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'fp8dv46j' /* Change password */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Jost',
-                                    decoration: TextDecoration.underline,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               ),
             ],
