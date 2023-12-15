@@ -641,13 +641,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Account Status: VARIANT LIFETIME',
       'th': 'สถานะข้อมูล: VARIANT PRO',
     },
-    'qz1i6j0o': {
-      'en': 'PRO',
-      'th': 'PRO',
-    },
     'eu2y25tb': {
-      'en': 'Lifetime VARIANT. No Purchase Required',
-      'th': 'สมาชิกตลอดชีพ ไม่จำเป็นต้องซื้อต่อ',
+      'en': 'Check your email for password reset instructions',
+      'th': 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
     },
     'fn2v0o01': {
       'en': 'VARIANT',

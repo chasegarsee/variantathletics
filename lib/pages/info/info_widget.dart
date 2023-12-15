@@ -285,7 +285,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                     padding: EdgeInsets.all(6.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'eu2y25tb' /* Lifetime VARIANT. No Purchase ... */,
+                        'eu2y25tb' /* Check your email for password ... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyLarge,
                     )),
@@ -312,66 +312,6 @@ class _InfoWidgetState extends State<InfoWidget> {
                           'mj71ya32' /* Account Status: VARIANT LIFETI... */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                      Container(
-                        width: 80.0,
-                        height: 40.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Stack(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-0.9, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    6.0, 2.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'qz1i6j0o' /* PRO */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Jost',
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent2,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.9, 0.0),
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 2.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                child: Container(
-                                  width: 36.0,
-                                  height: 36.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x430B0D0F),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
                     ],
                   ),
