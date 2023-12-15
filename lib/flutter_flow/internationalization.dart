@@ -633,10 +633,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Change password',
       'th': 'เปลี่ยนรหัสผ่าน',
     },
-    'vevka0a5': {
-      'en': 'Check your email for password reset instructions',
-      'th': 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
-    },
     'fn2v0o01': {
       'en': 'VARIANT',
       'th': 'VARIANT',

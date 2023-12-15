@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -210,93 +209,58 @@ class _InfoWidgetState extends State<InfoWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    AlignedTooltip(
-                      content: Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'vevka0a5' /* Check your email for password ... */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyLarge
-                                .override(
-                                  fontFamily: 'Jost',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                          )),
-                      offset: 4.0,
-                      preferredDirection: AxisDirection.down,
-                      borderRadius: BorderRadius.circular(8.0),
-                      backgroundColor: FlutterFlowTheme.of(context).primary,
-                      elevation: 4.0,
-                      tailBaseWidth: 24.0,
-                      tailLength: 12.0,
-                      waitDuration: Duration(milliseconds: 100),
-                      showDuration: Duration(milliseconds: 1500),
-                      triggerMode: TooltipTriggerMode.tap,
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          if (currentUserEmail.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Email required!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
-                          await authManager.resetPassword(
-                            email: currentUserEmail,
-                            context: context,
-                          );
-                          ScaffoldMessenger.of(context).clearSnackBars();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                FFLocalizations.of(context).getVariableText(
-                                  enText:
-                                      'Check your email for password reset instructions',
-                                  thText: 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
-                                ),
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).accent2,
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                '219d9vcd' /* Change password */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Jost',
-                                    decoration: TextDecoration.underline,
-                                  ),
-                            ),
-                          ],
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    if (currentUserEmail.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Email required!',
+                          ),
                         ),
+                      );
+                      return;
+                    }
+                    await authManager.resetPassword(
+                      email: currentUserEmail,
+                      context: context,
+                    );
+                    ScaffoldMessenger.of(context).clearSnackBars();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          FFLocalizations.of(context).getVariableText(
+                            enText:
+                                'Check your email for password reset instructions',
+                            thText: 'เช็คอีเมลสำหรับการรีเซ็ตรหัสผ่าน',
+                          ),
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).accent2,
                       ),
-                    ),
-                  ],
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          '219d9vcd' /* Change password */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Jost',
+                              decoration: TextDecoration.underline,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
