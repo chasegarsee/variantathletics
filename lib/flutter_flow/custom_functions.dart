@@ -279,14 +279,28 @@ List<int> macroPercentageCalc(
 ) {
   List<int> percentages = [];
 
-  double proteinPercentage = ((protein * 4) / calories) * 100;
-  double carbsPercentage = ((carbs * 4) / calories) * 100;
-  double fatPercentage = ((fat * 8) / calories) * 100;
-  percentages.addAll([
-    proteinPercentage.round(),
-    carbsPercentage.round(),
-    fatPercentage.round()
-  ]);
+  if (calories != null && calories > 0) {
+    double proteinPercentage = ((protein * 4) / calories) * 100;
+    double carbsPercentage = ((carbs * 4) / calories) * 100;
+    double fatPercentage = ((fat * 8) / calories) * 100;
+
+    // Check for NaN values and replace them with 0
+    if (proteinPercentage.isNaN) proteinPercentage = 0.0;
+    if (carbsPercentage.isNaN) carbsPercentage = 0.0;
+    if (fatPercentage.isNaN) fatPercentage = 0.0;
+
+    percentages.addAll([
+      proteinPercentage.round(),
+      carbsPercentage.round(),
+      fatPercentage.round(),
+    ]);
+  } else {
+    // Handle the case where calories are 0 or NaN
+    // You can choose an appropriate default value or error handling strategy here
+    percentages
+        .addAll([0, 0, 0]); // Defaulting to 0 in case of issues with calories
+  }
+
   return percentages;
 }
 
