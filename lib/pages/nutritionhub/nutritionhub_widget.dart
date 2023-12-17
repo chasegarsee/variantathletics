@@ -85,15 +85,18 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
     context.watch<FFAppState>();
     final chartPieChartColorsList1 = [
       FlutterFlowTheme.of(context).error,
-      FlutterFlowTheme.of(context).primary
+      FlutterFlowTheme.of(context).secondaryBackground,
+      FlutterFlowTheme.of(context).secondaryBackground
     ];
     final chartPieChartColorsList2 = [
+      FlutterFlowTheme.of(context).secondaryBackground,
       FlutterFlowTheme.of(context).warning,
-      FlutterFlowTheme.of(context).primary
+      FlutterFlowTheme.of(context).secondaryBackground
     ];
     final chartPieChartColorsList3 = [
-      FlutterFlowTheme.of(context).success,
-      FlutterFlowTheme.of(context).primary
+      FlutterFlowTheme.of(context).secondaryBackground,
+      FlutterFlowTheme.of(context).secondaryBackground,
+      FlutterFlowTheme.of(context).success
     ];
     final chartPieChartColorsList4 = [
       FlutterFlowTheme.of(context).error,
@@ -319,16 +322,17 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         child: Stack(
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-0.97, 0.89),
+                              alignment: AlignmentDirectional(-1.18, 0.45),
                               child: Container(
                                 width: 50.0,
                                 height: 50.0,
                                 child: FlutterFlowPieChart(
                                   data: FFPieChartData(
-                                    values: functions.singleMacroPercentageCalc(
+                                    values: functions.macroPercentageCalc(
                                         FFAppState().macros.totalCalories,
                                         FFAppState().macros.protein,
-                                        4),
+                                        FFAppState().macros.carbs,
+                                        FFAppState().macros.fat),
                                     colors: chartPieChartColorsList1,
                                     radius: [20.0],
                                   ),
@@ -336,7 +340,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   donutHoleColor: Colors.transparent,
                                   sectionLabelStyle:
                                       FlutterFlowTheme.of(context)
-                                          .headlineSmall,
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            fontSize: 14.0,
+                                          ),
                                 ),
                               ),
                             ),
@@ -417,26 +425,27 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         ),
                         child: Stack(
                           children: [
-                            Align(
-                              alignment: AlignmentDirectional(-0.97, 0.89),
-                              child: Container(
-                                width: 50.0,
-                                height: 50.0,
-                                child: FlutterFlowPieChart(
-                                  data: FFPieChartData(
-                                    values: functions.singleMacroPercentageCalc(
-                                        FFAppState().macros.totalCalories,
-                                        FFAppState().macros.carbs,
-                                        4),
-                                    colors: chartPieChartColorsList2,
-                                    radius: [20.0],
-                                  ),
-                                  donutHoleRadius: 0.0,
-                                  donutHoleColor: Colors.transparent,
-                                  sectionLabelStyle:
-                                      FlutterFlowTheme.of(context)
-                                          .headlineSmall,
+                            Container(
+                              width: 50.0,
+                              height: 50.0,
+                              child: FlutterFlowPieChart(
+                                data: FFPieChartData(
+                                  values: functions.macroPercentageCalc(
+                                      FFAppState().macros.totalCalories,
+                                      FFAppState().macros.protein,
+                                      FFAppState().macros.carbs,
+                                      FFAppState().macros.fat),
+                                  colors: chartPieChartColorsList2,
+                                  radius: [20.0],
                                 ),
+                                donutHoleRadius: 0.0,
+                                donutHoleColor: Colors.transparent,
+                                sectionLabelStyle: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      fontSize: 14.0,
+                                    ),
                               ),
                             ),
                             Padding(
@@ -516,26 +525,27 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         ),
                         child: Stack(
                           children: [
-                            Align(
-                              alignment: AlignmentDirectional(-0.97, 0.89),
-                              child: Container(
-                                width: 50.0,
-                                height: 50.0,
-                                child: FlutterFlowPieChart(
-                                  data: FFPieChartData(
-                                    values: functions.singleMacroPercentageCalc(
-                                        FFAppState().macros.totalCalories,
-                                        FFAppState().macros.fat,
-                                        8),
-                                    colors: chartPieChartColorsList3,
-                                    radius: [20.0],
-                                  ),
-                                  donutHoleRadius: 0.0,
-                                  donutHoleColor: Colors.transparent,
-                                  sectionLabelStyle:
-                                      FlutterFlowTheme.of(context)
-                                          .headlineSmall,
+                            Container(
+                              width: 50.0,
+                              height: 50.0,
+                              child: FlutterFlowPieChart(
+                                data: FFPieChartData(
+                                  values: functions.macroPercentageCalc(
+                                      FFAppState().macros.totalCalories,
+                                      FFAppState().macros.protein,
+                                      FFAppState().macros.carbs,
+                                      FFAppState().macros.fat),
+                                  colors: chartPieChartColorsList3,
+                                  radius: [20.0],
                                 ),
+                                donutHoleRadius: 0.0,
+                                donutHoleColor: Colors.transparent,
+                                sectionLabelStyle: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      fontSize: 14.0,
+                                    ),
                               ),
                             ),
                             Padding(
@@ -621,8 +631,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                       data: FFPieChartData(
                         values: functions.macroPercentageCalc(
                             FFAppState().macros.totalCalories,
-                            FFAppState().macros.carbs,
                             FFAppState().macros.protein,
+                            FFAppState().macros.carbs,
                             FFAppState().macros.fat),
                         colors: chartPieChartColorsList4,
                         radius: [70.0],
