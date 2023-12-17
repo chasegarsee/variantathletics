@@ -274,18 +274,18 @@ bool isFavorite(
 
 List<int> macroPercentageCalc(
   int calories,
-  int carbs,
   int protein,
+  int carbs,
   int fat,
 ) {
   List<int> percentages = [];
 
-  double carbsPercentage = ((carbs * 4) / calories) * 100;
   double proteinPercentage = ((protein * 4) / calories) * 100;
+  double carbsPercentage = ((carbs * 4) / calories) * 100;
   double fatPercentage = ((fat * 8) / calories) * 100;
   percentages.addAll([
-    carbsPercentage.round(),
     proteinPercentage.round(),
+    carbsPercentage.round(),
     fatPercentage.round()
   ]);
   return percentages;

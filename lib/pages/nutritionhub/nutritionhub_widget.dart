@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -84,6 +83,10 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
     }
 
     context.watch<FFAppState>();
+    final chartPieChartColorsList1 = [
+      FlutterFlowTheme.of(context).primary,
+      FlutterFlowTheme.of(context).error
+    ];
     final chartPieChartColorsList2 = [
       FlutterFlowTheme.of(context).error,
       FlutterFlowTheme.of(context).warning,
@@ -314,10 +317,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 height: 50.0,
                                 child: FlutterFlowPieChart(
                                   data: FFPieChartData(
-                                    values: [random_data.randomInteger(30, 70)],
-                                    colors: [
-                                      FlutterFlowTheme.of(context).error
-                                    ],
+                                    values: functions.singleMacroPercentageCalc(
+                                        FFAppState().macros.totalCalories,
+                                        FFAppState().macros.protein,
+                                        4),
+                                    colors: chartPieChartColorsList1,
                                     radius: [20.0],
                                   ),
                                   donutHoleRadius: 0.0,
@@ -345,40 +349,45 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
-                                  RichText(
-                                    textScaleFactor:
-                                        MediaQuery.of(context).textScaleFactor,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: FFAppState()
-                                              .macros
-                                              .protein
-                                              .toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'wfn67djs' /* g */,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 15.0, 0.0, 0.0),
+                                    child: RichText(
+                                      textScaleFactor: MediaQuery.of(context)
+                                          .textScaleFactor,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: FFAppState()
+                                                .macros
+                                                .protein
+                                                .toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Jost',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                           ),
-                                          style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.w100,
-                                          ),
-                                        )
-                                      ],
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'wfn67djs' /* g */,
+                                            ),
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontWeight: FontWeight.w100,
+                                            ),
+                                          )
+                                        ],
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
                                     ),
                                   ),
                                 ],
