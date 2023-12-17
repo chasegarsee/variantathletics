@@ -289,9 +289,14 @@ List<int> macroPercentageCalc(
   int fat,
 ) {
   List<int> percentages = [];
-  int carbsPercentage = (carbs / calories).round();
-  int proteinPercentage = (protein / calories).round();
-  int fatPercentage = (fat / calories).round();
-  percentages.addAll([carbsPercentage, proteinPercentage, fatPercentage]);
+
+  double carbsPercentage = (carbs / calories) * 100;
+  double proteinPercentage = (protein / calories) * 100;
+  double fatPercentage = (fat / calories) * 100;
+  percentages.addAll([
+    carbsPercentage.round(),
+    proteinPercentage.round(),
+    fatPercentage.round()
+  ]);
   return percentages;
 }
