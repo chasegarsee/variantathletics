@@ -113,7 +113,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7lqtxh5b': {
       'en': 'All Exercises',
-      'th': '',
+      'th': 'ทั้งหมด',
     },
     'lrfgewuu': {
       'en': 'All Exercises',
@@ -285,7 +285,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1y90fhqr': {
       'en': '0:00',
-      'th': '',
+      'th': '0:00',
     },
     'yjqd77tp': {
       'en': '0:05',
@@ -984,14 +984,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // revCatPaywall
   {
     's79a6uqz': {
-      'en':
-          'Become a VARIANT and reach your goals with a proven and effective plan',
-      'th':
-          'เป็นผู้ VARIANT และบรรลุเป้าหมายด้วยแผนที่ได้รับการพิสูจน์แล้วและมีประสิทธิภาพ',
-    },
-    'wvfr82d3': {
-      'en': 'Purchase for 1 YEAR access',
-      'th': 'ซื้อเพื่อการเข้าถึง 1 ปี',
+      'en': 'FREE 7 Day Trial to VARIANT PRO',
+      'th': 'ทดลองใช้ VARIANT PRO ฟรี 7 วัน',
     },
     '1i1a8uv0': {
       'en': 'Unlimited access to app functionality',
@@ -1005,21 +999,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Custom Macro Calculator',
       'th': 'เครื่องคิดเลขธาตุอาหารหลักส่วนตัว',
     },
-    '5nsu9132': {
-      'en': 'Exclusive Facebook Group',
-      'th': 'Facebook กลุ่มลับ',
-    },
     'v040zuat': {
       'en': 'Lifetime access to exercise library',
       'th': 'สิทธิ์เข้าใช้ห้องสมุดออกกำลังกายได้ตลอดชีวิต',
     },
     'q7f9i6mw': {
-      'en': 'Calorie Counting Diet Guide 101',
-      'th': 'คู่มืออาหารนับแคลอรี่ 101',
+      'en': '6+ Knowledge Building PDFs (new added monthly)',
+      'th': 'E-Book การสร้างความรู้ 6+ รายการ (เพิ่มใหม่ทุกเดือน)',
     },
     'cxc6mdxu': {
-      'en': 'Body Recomposition Methodology Blueprint',
-      'th': 'คู่มือวิธีการออกกำลังกายตามวิทยาศาสตร์',
+      'en': '5+ Programs tailored to your needs!  (new added monthly)',
+      'th': '5+ โปรแกรมที่เหมาะกับความต้องการ  (เพิ่มใหม่ทุกเดือน)',
+    },
+    '7mup3duq': {
+      'en': 'No Equiptment Body Weight Program Included',
+      'th': 'โปรแกรมออกกำลังกายจากที่บ้าน',
     },
     '4a5xgdoq': {
       'en': 'Full access for just ',
@@ -1116,6 +1110,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     '7qd9g266': {
+      'en': '',
+      'th': '',
+    },
+    'a6jstwic': {
       'en': '',
       'th': '',
     },

@@ -97,7 +97,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                               0.0, 0.0, 0.0, 5.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              's79a6uqz' /* Become a VARIANT and reach you... */,
+                              's79a6uqz' /* FREE 7 Day Trial to VARIANT PR... */,
                             ),
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
@@ -106,24 +106,6 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                   fontFamily: 'Jost',
                                   color: FlutterFlowTheme.of(context).info,
                                   fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 5.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'wvfr82d3' /* Purchase for 1 YEAR access */,
-                            ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Jost',
-                                  color: FlutterFlowTheme.of(context).accent2,
-                                  fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -277,50 +259,6 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                FaIcon(
-                                  FontAwesomeIcons.comments,
-                                  color: FlutterFlowTheme.of(context).accent2,
-                                  size: 30.0,
-                                ),
-                                Flexible(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '5nsu9132' /* Exclusive Facebook Group */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyLarge
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 12.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
                                 Icon(
                                   Icons.video_collection,
                                   color: FlutterFlowTheme.of(context).accent2,
@@ -383,7 +321,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'q7f9i6mw' /* Calorie Counting Diet Guide 10... */,
+                                            'q7f9i6mw' /* 6+ Knowledge Building PDFs (ne... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
@@ -427,7 +365,51 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'cxc6mdxu' /* Body Recomposition Methodology... */,
+                                            'cxc6mdxu' /* 5+ Programs tailored to your n... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.bolt,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            '7mup3duq' /* No Equiptment Body Weight Prog... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
@@ -535,7 +517,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                               onPressed: () async {
                                 var _shouldSetState = false;
                                 _model.purchaseResponse = await revenue_cat
-                                    .purchasePackage('\$rc_lifetime');
+                                    .purchasePackage(' \$rc_monthly');
                                 _shouldSetState = true;
                                 if (_model.purchaseResponse!) {
                                   unawaited(

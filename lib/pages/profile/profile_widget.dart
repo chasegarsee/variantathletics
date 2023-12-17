@@ -640,8 +640,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    final isEntitled =
-                        await revenue_cat.isEntitled('all_access') ?? false;
+                    final isEntitled = await revenue_cat
+                            .isEntitled('va_7_day_trial_399_tbh_monthly') ??
+                        false;
                     if (!isEntitled) {
                       await revenue_cat.loadOfferings();
                     }

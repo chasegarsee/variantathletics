@@ -148,8 +148,8 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                final isEntitled = await revenue_cat
-                                        .isEntitled('all_access') ??
+                                final isEntitled = await revenue_cat.isEntitled(
+                                        'va_7_day_trial_399_tbh_monthly') ??
                                     false;
                                 if (!isEntitled) {
                                   await revenue_cat.loadOfferings();
