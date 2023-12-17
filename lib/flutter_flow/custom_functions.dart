@@ -370,11 +370,11 @@ int convertMacroToFoodWeight(
   int foodWeight;
 
   if (foodType == 'protein') {
-    foodWeight = (macro * 3.2).round();
+    foodWeight = (macro * 3.5).round();
   } else if (foodType == 'veggies') {
     foodWeight = ((macro * .25) * 5.5).round();
   } else if (foodType == 'carbs') {
-    foodWeight = ((macro * .75) * 5).round();
+    foodWeight = ((macro * .75) * 4.5).round();
   } else {
     foodWeight = (macro * 3).round();
   }
