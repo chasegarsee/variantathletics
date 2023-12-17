@@ -582,27 +582,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Based on your goal to ',
       'th': 'ขึ้นอยู่กับเป้าหมายของคุณที่จะ ',
     },
-    'awc78nrn': {
+    '5yp8oj9v': {
       'en': 'Protein',
       'th': 'โปรตีน',
     },
-    'wfn67djs': {
+    'dyyn9jew': {
       'en': 'g',
       'th': 'กรัม',
     },
-    't3o9w1tw': {
+    '1mcjm01p': {
       'en': 'Carbs',
       'th': 'คาร์บ',
     },
-    'qi0ki1kl': {
+    'bbvvtie3': {
       'en': 'g',
       'th': 'กรัม',
     },
-    'zaetm41c': {
+    'qi0gnk6q': {
       'en': 'Fat',
       'th': 'ไขมัน',
     },
-    'x9ikutfw': {
+    '1zvm7bif': {
       'en': 'g',
       'th': 'กรัม',
     },
