@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -84,7 +83,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
     }
 
     context.watch<FFAppState>();
-
+    final chartPieChartColorsList = [
+      FlutterFlowTheme.of(context).error,
+      FlutterFlowTheme.of(context).warning,
+      FlutterFlowTheme.of(context).accent2
+    ];
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -488,8 +491,24 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                     height: 175.0,
                     child: FlutterFlowPieChart(
                       data: FFPieChartData(
-                        values: [random_data.randomInteger(0, 10)],
-                        colors: [FlutterFlowTheme.of(context).primary],
+                        values: functions.macroPercentageCalc(
+                            valueOrDefault<int>(
+                              FFAppState().macros.totalCalories,
+                              0,
+                            ),
+                            valueOrDefault<int>(
+                              FFAppState().macros.carbs,
+                              0,
+                            ),
+                            valueOrDefault<int>(
+                              FFAppState().macros.protein,
+                              0,
+                            ),
+                            valueOrDefault<int>(
+                              FFAppState().macros.fat,
+                              0,
+                            )),
+                        colors: chartPieChartColorsList,
                         radius: [70.0],
                       ),
                       donutHoleRadius: 0.0,
