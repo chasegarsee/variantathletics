@@ -618,7 +618,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                 ],
               ),
               Row(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
@@ -674,6 +674,17 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
+                      AuthUserStreamWidget(
+                        builder: (context) => Text(
+                          functions
+                              .handPortionsCalc(
+                                  FFAppState().macros.protein,
+                                  currentUserDocument!.demographics.gender,
+                                  'veggies')
+                              .toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ),
                     ],
                   ),
                   Column(
@@ -693,6 +704,17 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           'wwonjlid' /* Carbs */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                      AuthUserStreamWidget(
+                        builder: (context) => Text(
+                          functions
+                              .handPortionsCalc(
+                                  FFAppState().macros.protein,
+                                  currentUserDocument!.demographics.gender,
+                                  'carbs')
+                              .toString(),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
                       ),
                     ],
                   ),
@@ -716,6 +738,17 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                             'krpc2490' /* Fat */,
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        AuthUserStreamWidget(
+                          builder: (context) => Text(
+                            functions
+                                .handPortionsCalc(
+                                    FFAppState().macros.protein,
+                                    currentUserDocument!.demographics.gender,
+                                    'fat')
+                                .toString(),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
                         ),
                       ],
                     ),
