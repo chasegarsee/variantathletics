@@ -616,7 +616,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jrvbkajw': {
       'en': 'Vegetables',
-      'th': '',
+      'th': 'ผัก',
     },
     'ohumwb7l': {
       'en': '/day',
