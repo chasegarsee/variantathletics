@@ -403,7 +403,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '6qbw7glm': {
       'en': 'VARIANT',
-      'th': '',
+      'th': 'VARIANT',
     },
     'hek6bip9': {
       'en': 'Sign In',
@@ -442,7 +442,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'xdjla4c1': {
       'en': 'VARIANT',
-      'th': '',
+      'th': 'VARIANT',
     },
     'jx46prko': {
       'en': 'Sign Up',
