@@ -322,23 +322,23 @@ int handPortionsCalc(
   double portionSize;
   if (gender == 1) {
     if (macroType == 'protein') {
-      portionSize = macro / 24;
+      portionSize = (macro * .87) / 24;
     } else if (macroType == 'veggies') {
-      portionSize = (macro * 0.33) / 5;
+      portionSize = ((macro * .87) * 0.25) / 5;
     } else if (macroType == 'carbs') {
-      portionSize = (macro * 0.66) / 25;
+      portionSize = ((macro * .87) * 0.75) / 25;
     } else {
-      portionSize = macro / 8;
+      portionSize = (macro * .87) / 8;
     }
   } else {
     if (macroType == 'protein') {
-      portionSize = macro / 22;
+      portionSize = (macro * .87) / 22;
     } else if (macroType == 'veggies') {
-      portionSize = (macro * 0.33) / 5;
+      portionSize = ((macro * .87) * 0.25) / 5;
     } else if (macroType == 'carbs') {
-      portionSize = (macro * 0.66) / 22;
+      portionSize = ((macro * .87) * 0.75) / 22;
     } else {
-      portionSize = macro / 8;
+      portionSize = (macro * .87) / 8;
     }
   }
   return portionSize.floor();

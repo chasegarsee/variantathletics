@@ -805,17 +805,6 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
-                        AuthUserStreamWidget(
-                          builder: (context) => Text(
-                            functions
-                                .handPortionsCalc(
-                                    FFAppState().macros.fat,
-                                    currentUserDocument!.demographics.gender,
-                                    'fat')
-                                .toString(),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
                         RichText(
                           textScaleFactor:
                               MediaQuery.of(context).textScaleFactor,
@@ -824,10 +813,10 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               TextSpan(
                                 text: functions
                                     .handPortionsCalc(
-                                        FFAppState().macros.carbs,
+                                        FFAppState().macros.fat,
                                         currentUserDocument!
                                             .demographics.gender,
-                                        'carbs')
+                                        'fat')
                                     .toString(),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
