@@ -212,11 +212,10 @@ MacrosStruct macroCalculator(
   }
 
   // Calculate macronutrients
-  int proteinGrams = (totalCalories * .30)
-      .round(); // Protein in grams (body weight in kilos * 2)
-  int proteinCalories = proteinGrams * 4; // 4 calories per gram
+  int proteinCalories = (totalCalories * .30).round();
+  int proteinGrams = (proteinCalories / 4).round(); // 4 calories per gram
 
-  int carbsCalories = (totalCalories * 0.35).round(); // 40% of total calories
+  int carbsCalories = (totalCalories * 0.35).round();
   int carbsGrams = (carbsCalories / 4).round(); // 4 calories per gram
 
   // Remaining calories for fats
