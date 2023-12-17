@@ -185,6 +185,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
             children: [
               Column(
                 mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -616,25 +617,110 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                   ),
                 ],
               ),
-              Builder(
-                builder: (context) {
-                  final somethign = functions
-                      .singleMacroPercentageCalc(
-                          FFAppState().macros.totalCalories,
-                          FFAppState().macros.fat,
-                          8)
-                      .toList();
-                  return Row(
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/vnimc_1.png',
+                            width: 100.0,
+                            height: 100.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'ietj7c98' /* Protein */,
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        AuthUserStreamWidget(
+                          builder: (context) => Text(
+                            functions
+                                .handPortionsCalc(
+                                    FFAppState().macros.protein,
+                                    currentUserDocument!.demographics.gender,
+                                    'protein')
+                                .toString(),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
                     mainAxisSize: MainAxisSize.max,
-                    children: List.generate(somethign.length, (somethignIndex) {
-                      final somethignItem = somethign[somethignIndex];
-                      return Text(
-                        somethignItem.toString(),
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/49svh_2.png',
+                          width: 100.0,
+                          height: 100.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          'jrvbkajw' /* Vegetables */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
-                      );
-                    }),
-                  );
-                },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/3a9k2_3.png',
+                          width: 100.0,
+                          height: 100.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          'wwonjlid' /* Carbs */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/fijek_4.png',
+                            width: 100.0,
+                            height: 100.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'krpc2490' /* Fat */,
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -313,3 +313,33 @@ List<int> singleMacroPercentageCalc(
   percentages.addAll([caloriePercentage.round(), remainingCalories]);
   return percentages;
 }
+
+int handPortionsCalc(
+  int macro,
+  int gender,
+  String macroType,
+) {
+  double portionSize;
+  if (gender == 1) {
+    if (macroType == 'protein') {
+      portionSize = macro / 24;
+    } else if (macroType == 'veggies') {
+      portionSize = (macro * 0.33) / 5;
+    } else if (macroType == 'carbs') {
+      portionSize = (macro * 0.66) / 25;
+    } else {
+      portionSize = macro / 8;
+    }
+  } else {
+    if (macroType == 'protein') {
+      portionSize = macro / 22;
+    } else if (macroType == 'veggies') {
+      portionSize = (macro * 0.33) / 5;
+    } else if (macroType == 'carbs') {
+      portionSize = (macro * 0.66) / 22;
+    } else {
+      portionSize = macro / 8;
+    }
+  }
+  return portionSize.floor();
+}
