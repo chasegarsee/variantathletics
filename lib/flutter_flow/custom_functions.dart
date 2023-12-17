@@ -325,9 +325,9 @@ int handPortionsCalc(
     } else if (macroType == 'veggies') {
       portionSize = ((macro * .80) * 0.25) / 5;
     } else if (macroType == 'carbs') {
-      portionSize = ((macro * .80) * 0.75) / 25;
+      portionSize = ((macro * .90) * 0.75) / 25;
     } else {
-      portionSize = (macro * .75) / 8;
+      portionSize = (macro * .75) / 9;
     }
   } else {
     if (macroType == 'protein') {
@@ -335,9 +335,9 @@ int handPortionsCalc(
     } else if (macroType == 'veggies') {
       portionSize = ((macro * .80) * 0.25) / 5;
     } else if (macroType == 'carbs') {
-      portionSize = ((macro * .80) * 0.75) / 22;
+      portionSize = ((macro * .90) * 0.75) / 22;
     } else {
-      portionSize = (macro * .75) / 8;
+      portionSize = (macro * .75) / 9;
     }
   }
   return portionSize.round();
