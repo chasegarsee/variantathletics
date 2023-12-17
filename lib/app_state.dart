@@ -171,6 +171,12 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _isDaily = prefs.getBool('ff_isDaily') ?? _isDaily;
     });
+    _safeInit(() {
+      _macroTypeEN = prefs.getStringList('ff_macroTypeEN') ?? _macroTypeEN;
+    });
+    _safeInit(() {
+      _macroTypeTH = prefs.getStringList('ff_macroTypeTH') ?? _macroTypeTH;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -658,6 +664,76 @@ class FFAppState extends ChangeNotifier {
   set isDaily(bool _value) {
     _isDaily = _value;
     prefs.setBool('ff_isDaily', _value);
+  }
+
+  List<String> _macroTypeEN = ['Protein', 'Carbs', 'Fat'];
+  List<String> get macroTypeEN => _macroTypeEN;
+  set macroTypeEN(List<String> _value) {
+    _macroTypeEN = _value;
+    prefs.setStringList('ff_macroTypeEN', _value);
+  }
+
+  void addToMacroTypeEN(String _value) {
+    _macroTypeEN.add(_value);
+    prefs.setStringList('ff_macroTypeEN', _macroTypeEN);
+  }
+
+  void removeFromMacroTypeEN(String _value) {
+    _macroTypeEN.remove(_value);
+    prefs.setStringList('ff_macroTypeEN', _macroTypeEN);
+  }
+
+  void removeAtIndexFromMacroTypeEN(int _index) {
+    _macroTypeEN.removeAt(_index);
+    prefs.setStringList('ff_macroTypeEN', _macroTypeEN);
+  }
+
+  void updateMacroTypeENAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _macroTypeEN[_index] = updateFn(_macroTypeEN[_index]);
+    prefs.setStringList('ff_macroTypeEN', _macroTypeEN);
+  }
+
+  void insertAtIndexInMacroTypeEN(int _index, String _value) {
+    _macroTypeEN.insert(_index, _value);
+    prefs.setStringList('ff_macroTypeEN', _macroTypeEN);
+  }
+
+  List<String> _macroTypeTH = ['โปรตีน', 'คาร์บ', '\nไขมัน'];
+  List<String> get macroTypeTH => _macroTypeTH;
+  set macroTypeTH(List<String> _value) {
+    _macroTypeTH = _value;
+    prefs.setStringList('ff_macroTypeTH', _value);
+  }
+
+  void addToMacroTypeTH(String _value) {
+    _macroTypeTH.add(_value);
+    prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
+  }
+
+  void removeFromMacroTypeTH(String _value) {
+    _macroTypeTH.remove(_value);
+    prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
+  }
+
+  void removeAtIndexFromMacroTypeTH(int _index) {
+    _macroTypeTH.removeAt(_index);
+    prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
+  }
+
+  void updateMacroTypeTHAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _macroTypeTH[_index] = updateFn(_macroTypeTH[_index]);
+    prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
+  }
+
+  void insertAtIndexInMacroTypeTH(int _index, String _value) {
+    _macroTypeTH.insert(_index, _value);
+    prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

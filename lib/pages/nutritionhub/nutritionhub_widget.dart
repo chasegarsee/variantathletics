@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -83,7 +84,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
     }
 
     context.watch<FFAppState>();
-    final chartPieChartColorsList = [
+    final chartPieChartColorsList2 = [
       FlutterFlowTheme.of(context).error,
       FlutterFlowTheme.of(context).warning,
       FlutterFlowTheme.of(context).accent2
@@ -304,59 +305,86 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 12.0, 24.0, 12.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'awc78nrn' /* Protein */,
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(-0.97, 0.89),
+                              child: Container(
+                                width: 50.0,
+                                height: 50.0,
+                                child: FlutterFlowPieChart(
+                                  data: FFPieChartData(
+                                    values: [random_data.randomInteger(30, 70)],
+                                    colors: [
+                                      FlutterFlowTheme.of(context).error
+                                    ],
+                                    radius: [20.0],
+                                  ),
+                                  donutHoleRadius: 0.0,
+                                  donutHoleColor: Colors.transparent,
+                                  sectionLabelStyle:
+                                      FlutterFlowTheme.of(context)
+                                          .headlineSmall,
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      fontWeight: FontWeight.bold,
-                                    ),
                               ),
-                              RichText(
-                                textScaleFactor:
-                                    MediaQuery.of(context).textScaleFactor,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: FFAppState()
-                                          .macros
-                                          .protein
-                                          .toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Jost',
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            fontWeight: FontWeight.bold,
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 12.0, 24.0, 12.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'awc78nrn' /* Protein */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: FFAppState()
+                                              .macros
+                                              .protein
+                                              .toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'wfn67djs' /* g */,
                                           ),
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontWeight: FontWeight.w100,
+                                          ),
+                                        )
+                                      ],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
                                     ),
-                                    TextSpan(
-                                      text: FFLocalizations.of(context).getText(
-                                        'wfn67djs' /* g */,
-                                      ),
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.w100,
-                                      ),
-                                    )
-                                  ],
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                       Card(
@@ -487,59 +515,29 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 214.0,
+                    width: 342.0,
                     height: 175.0,
                     child: FlutterFlowPieChart(
                       data: FFPieChartData(
                         values: functions.macroPercentageCalc(
-                            valueOrDefault<int>(
-                              FFAppState().macros.totalCalories,
-                              0,
-                            ),
-                            valueOrDefault<int>(
-                              FFAppState().macros.carbs,
-                              0,
-                            ),
-                            valueOrDefault<int>(
-                              FFAppState().macros.protein,
-                              0,
-                            ),
-                            valueOrDefault<int>(
-                              FFAppState().macros.fat,
-                              0,
-                            )),
-                        colors: chartPieChartColorsList,
+                            FFAppState().macros.totalCalories,
+                            FFAppState().macros.carbs,
+                            FFAppState().macros.protein,
+                            FFAppState().macros.fat),
+                        colors: chartPieChartColorsList2,
                         radius: [70.0],
                       ),
                       donutHoleRadius: 0.0,
                       donutHoleColor: Colors.transparent,
+                      sectionLabelType: PieChartSectionLabelType.percent,
                       sectionLabelStyle:
-                          FlutterFlowTheme.of(context).headlineSmall,
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Jost',
+                                fontSize: 14.0,
+                              ),
                     ),
                   ),
                 ],
-              ),
-              Builder(
-                builder: (context) {
-                  final percentages = functions
-                      .macroPercentageCalc(
-                          FFAppState().macros.totalCalories,
-                          FFAppState().macros.carbs,
-                          FFAppState().macros.protein,
-                          FFAppState().macros.fat)
-                      .toList();
-                  return Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children:
-                        List.generate(percentages.length, (percentagesIndex) {
-                      final percentagesItem = percentages[percentagesIndex];
-                      return Text(
-                        percentagesItem.toString(),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      );
-                    }),
-                  );
-                },
               ),
             ],
           ),

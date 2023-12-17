@@ -272,16 +272,6 @@ bool isFavorite(
   return false;
 }
 
-bool isDateWithinLastSevenDays(
-  DateTime date,
-  DateTime currentTime,
-) {
-  // Calculate the difference in days between the two dates
-  Duration difference = currentTime.difference(date);
-  // Check if the difference is less than or equal to 7 days
-  return difference.inDays <= 6;
-}
-
 List<int> macroPercentageCalc(
   int calories,
   int carbs,
@@ -298,5 +288,28 @@ List<int> macroPercentageCalc(
     proteinPercentage.round(),
     fatPercentage.round()
   ]);
+  return percentages;
+}
+
+bool isDateWithinLastSevenDays(
+  DateTime date,
+  DateTime currentTime,
+) {
+  // Calculate the difference in days between the two dates
+  Duration difference = currentTime.difference(date);
+  // Check if the difference is less than or equal to 7 days
+  return difference.inDays <= 6;
+}
+
+List<int> singleMacroPercentageCalc(
+  int calories,
+  int macro,
+  int calPerGram,
+) {
+  List<int> percentages = [];
+  double caloriePercentage = ((macro * calPerGram) / calories) * 100;
+  int remainingCalories = (100 - caloriePercentage).round();
+
+  percentages.addAll([caloriePercentage.round(), remainingCalories]);
   return percentages;
 }
