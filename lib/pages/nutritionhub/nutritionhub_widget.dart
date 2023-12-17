@@ -619,7 +619,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
                     padding:
@@ -631,8 +631,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/vnimc_1.png',
-                            width: 100.0,
-                            height: 100.0,
+                            width: 80.0,
+                            height: 80.0,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -663,8 +663,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
                           'assets/images/49svh_2.png',
-                          width: 100.0,
-                          height: 100.0,
+                          width: 80.0,
+                          height: 80.0,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -694,8 +694,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
                           'assets/images/3a9k2_3.png',
-                          width: 100.0,
-                          height: 100.0,
+                          width: 80.0,
+                          height: 80.0,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -728,8 +728,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/fijek_4.png',
-                            width: 100.0,
-                            height: 100.0,
+                            width: 80.0,
+                            height: 80.0,
                             fit: BoxFit.cover,
                           ),
                         ),
