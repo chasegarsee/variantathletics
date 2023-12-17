@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/size_demographics_bottom_sheet/size_demographics_bottom_sheet_widget.dart';
+import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -81,7 +83,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
     }
 
     context.watch<FFAppState>();
-
+    final chartPieChartColorsList = [
+      FlutterFlowTheme.of(context).error,
+      FlutterFlowTheme.of(context).warning,
+      FlutterFlowTheme.of(context).accent2
+    ];
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -473,6 +479,33 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         ),
                       ),
                     ],
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 371.0,
+                    height: 175.0,
+                    child: FlutterFlowPieChart(
+                      data: FFPieChartData(
+                        values: functions.macroPercentageCalc(
+                            FFAppState().macros.totalCalories,
+                            FFAppState().macros.carbs,
+                            FFAppState().macros.protein,
+                            FFAppState().macros.fat),
+                        colors: chartPieChartColorsList,
+                        radius: [50.0],
+                        borderColor: [FlutterFlowTheme.of(context).primaryText],
+                      ),
+                      donutHoleRadius: 30.0,
+                      donutHoleColor: Colors.transparent,
+                      sectionLabelType: PieChartSectionLabelType.value,
+                      sectionLabelStyle:
+                          FlutterFlowTheme.of(context).headlineSmall,
+                    ),
                   ),
                 ],
               ),

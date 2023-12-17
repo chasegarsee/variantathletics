@@ -281,3 +281,17 @@ bool isDateWithinLastSevenDays(
   // Check if the difference is less than or equal to 7 days
   return difference.inDays <= 6;
 }
+
+List<int> macroPercentageCalc(
+  int calories,
+  int carbs,
+  int protein,
+  int fat,
+) {
+  List<int> percentages = [];
+  int carbsPercentage = (carbs * 100) ~/ calories;
+  int proteinPercentage = (protein * 100) ~/ calories;
+  int fatPercentage = (fat * 100) ~/ calories;
+  percentages.addAll([carbsPercentage, proteinPercentage, fatPercentage]);
+  return percentages;
+}
