@@ -696,6 +696,51 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
                           ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/2emqy_5.png',
+                              width: 80.0,
+                              height: 80.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          RichText(
+                            textScaleFactor:
+                                MediaQuery.of(context).textScaleFactor,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: functions
+                                      .convertMacroToFoodWeight(
+                                          valueOrDefault<int>(
+                                            FFAppState().macros.protein,
+                                            0,
+                                          ),
+                                          'protein')
+                                      .toString(),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Jost',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                TextSpan(
+                                  text: FFLocalizations.of(context).getText(
+                                    'si8x2l80' /* /g~ */,
+                                  ),
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -742,6 +787,51 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               TextSpan(
                                 text: FFLocalizations.of(context).getText(
                                   'ohumwb7l' /* /day */,
+                                ),
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/x7hc1_7.png',
+                            width: 80.0,
+                            height: 80.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        RichText(
+                          textScaleFactor:
+                              MediaQuery.of(context).textScaleFactor,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: functions
+                                    .convertMacroToFoodWeight(
+                                        valueOrDefault<int>(
+                                          FFAppState().macros.carbs,
+                                          0,
+                                        ),
+                                        'veggies')
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: FFLocalizations.of(context).getText(
+                                  'dw3pu35j' /* /g~ */,
                                 ),
                                 style: TextStyle(
                                   color:
@@ -807,6 +897,51 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/dfjsb_6.png',
+                            width: 80.0,
+                            height: 80.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        RichText(
+                          textScaleFactor:
+                              MediaQuery.of(context).textScaleFactor,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: functions
+                                    .convertMacroToFoodWeight(
+                                        valueOrDefault<int>(
+                                          FFAppState().macros.carbs,
+                                          0,
+                                        ),
+                                        'carbs')
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: FFLocalizations.of(context).getText(
+                                  'w08t5xmq' /* /g~ */,
+                                ),
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ),
                       ],
                     ),
                     Padding(
@@ -855,6 +990,51 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 TextSpan(
                                   text: FFLocalizations.of(context).getText(
                                     'z9agq4o1' /* /day */,
+                                  ),
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/k7eg7_8.png',
+                              width: 80.0,
+                              height: 80.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          RichText(
+                            textScaleFactor:
+                                MediaQuery.of(context).textScaleFactor,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: functions
+                                      .convertMacroToFoodWeight(
+                                          valueOrDefault<int>(
+                                            FFAppState().macros.fat,
+                                            0,
+                                          ),
+                                          'fat')
+                                      .toString(),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Jost',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                TextSpan(
+                                  text: FFLocalizations.of(context).getText(
+                                    '0rk4thvn' /* /g~ */,
                                   ),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)

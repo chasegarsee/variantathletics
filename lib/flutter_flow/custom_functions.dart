@@ -362,3 +362,22 @@ int handPortionsCalc(
   }
   return portionSize.round();
 }
+
+int convertMacroToFoodWeight(
+  int macro,
+  String foodType,
+) {
+  int foodWeight;
+
+  if (foodType == 'protein') {
+    foodWeight = (macro * 3.2).round();
+  } else if (foodType == 'veggies') {
+    foodWeight = ((macro * .25) * 5.5).round();
+  } else if (foodType == 'carbs') {
+    foodWeight = ((macro * .75) * 5).round();
+  } else {
+    foodWeight = (macro * 3).round();
+  }
+
+  return foodWeight;
+}

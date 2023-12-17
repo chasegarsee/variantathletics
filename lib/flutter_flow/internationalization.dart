@@ -614,6 +614,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '/day',
       'th': '/วัน',
     },
+    'si8x2l80': {
+      'en': '/g~',
+      'th': '/กรัม~',
+    },
     'jrvbkajw': {
       'en': 'Vegetables',
       'th': 'ผัก',
@@ -621,6 +625,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ohumwb7l': {
       'en': '/day',
       'th': '/วัน',
+    },
+    'dw3pu35j': {
+      'en': '/g~',
+      'th': '/กรัม~',
     },
     'wwonjlid': {
       'en': 'Carbs',
@@ -630,6 +638,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '/day',
       'th': '/วัน',
     },
+    'w08t5xmq': {
+      'en': '/g~',
+      'th': '/กรัม~',
+    },
     'krpc2490': {
       'en': 'Fat',
       'th': 'ไขมัน',
@@ -637,6 +649,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'z9agq4o1': {
       'en': '/day',
       'th': '/วัน',
+    },
+    '0rk4thvn': {
+      'en': '/g~',
+      'th': '/กรัม~',
     },
     'vxvik703': {
       'en': 'Nutrition Hub',
