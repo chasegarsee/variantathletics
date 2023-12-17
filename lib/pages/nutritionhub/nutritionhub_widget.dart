@@ -642,14 +642,38 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
-                        AuthUserStreamWidget(
-                          builder: (context) => Text(
-                            functions
-                                .handPortionsCalc(
-                                    FFAppState().macros.protein,
-                                    currentUserDocument!.demographics.gender,
-                                    'protein')
-                                .toString(),
+                        RichText(
+                          textScaleFactor:
+                              MediaQuery.of(context).textScaleFactor,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: functions
+                                    .handPortionsCalc(
+                                        FFAppState().macros.protein,
+                                        currentUserDocument!
+                                            .demographics.gender,
+                                        'protein')
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: FFLocalizations.of(context).getText(
+                                  '4mj2c9es' /* /day */,
+                                ),
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              )
+                            ],
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),
@@ -674,14 +698,35 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
-                      AuthUserStreamWidget(
-                        builder: (context) => Text(
-                          functions
-                              .handPortionsCalc(
-                                  FFAppState().macros.carbs,
-                                  currentUserDocument!.demographics.gender,
-                                  'veggies')
-                              .toString(),
+                      RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: functions
+                                  .handPortionsCalc(
+                                      FFAppState().macros.carbs,
+                                      currentUserDocument!.demographics.gender,
+                                      'veggies')
+                                  .toString(),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: FFLocalizations.of(context).getText(
+                                'ohumwb7l' /* /day */,
+                              ),
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            )
+                          ],
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
@@ -705,14 +750,35 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
-                      AuthUserStreamWidget(
-                        builder: (context) => Text(
-                          functions
-                              .handPortionsCalc(
-                                  FFAppState().macros.carbs,
-                                  currentUserDocument!.demographics.gender,
-                                  'carbs')
-                              .toString(),
+                      RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: functions
+                                  .handPortionsCalc(
+                                      FFAppState().macros.carbs,
+                                      currentUserDocument!.demographics.gender,
+                                      'carbs')
+                                  .toString(),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: FFLocalizations.of(context).getText(
+                                'orvxjnco' /* /day */,
+                              ),
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            )
+                          ],
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
@@ -747,6 +813,41 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                     currentUserDocument!.demographics.gender,
                                     'fat')
                                 .toString(),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ),
+                        RichText(
+                          textScaleFactor:
+                              MediaQuery.of(context).textScaleFactor,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: functions
+                                    .handPortionsCalc(
+                                        FFAppState().macros.carbs,
+                                        currentUserDocument!
+                                            .demographics.gender,
+                                        'carbs')
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: FFLocalizations.of(context).getText(
+                                  'z9agq4o1' /* /day */,
+                                ),
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              )
+                            ],
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),

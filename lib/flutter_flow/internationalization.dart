@@ -610,17 +610,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Protein',
       'th': 'โปรตีน',
     },
+    '4mj2c9es': {
+      'en': '/day',
+      'th': '/วัน',
+    },
     'jrvbkajw': {
       'en': 'Vegetables',
       'th': '',
+    },
+    'ohumwb7l': {
+      'en': '/day',
+      'th': '/วัน',
     },
     'wwonjlid': {
       'en': 'Carbs',
       'th': 'คาร์บ',
     },
+    'orvxjnco': {
+      'en': '/day',
+      'th': '/วัน',
+    },
     'krpc2490': {
       'en': 'Fat',
       'th': 'ไขมัน',
+    },
+    'z9agq4o1': {
+      'en': '/day',
+      'th': '/วัน',
     },
     'vxvik703': {
       'en': 'Nutrition Hub',
