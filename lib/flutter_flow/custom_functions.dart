@@ -319,26 +319,32 @@ int handPortionsCalc(
   String macroType,
 ) {
   double portionSize;
-  if (gender == 1) {
-    if (macroType == 'protein') {
-      portionSize = (macro * .90) / 24;
-    } else if (macroType == 'veggies') {
-      portionSize = ((macro * .80) * 0.25) / 5;
-    } else if (macroType == 'carbs') {
-      portionSize = ((macro * .90) * 0.75) / 25;
+  if (gender != null && macroType != null && macro != 0) {
+    if (gender == 1) {
+      if (macroType == 'protein') {
+        portionSize = (macro * 0.90) / 24;
+      } else if (macroType == 'veggies') {
+        portionSize = ((macro * 0.80) * 0.25) / 5;
+      } else if (macroType == 'carbs') {
+        portionSize = ((macro * 0.90) * 0.75) / 25;
+      } else {
+        portionSize = (macro * 0.75) / 9;
+      }
     } else {
-      portionSize = (macro * .75) / 9;
+      if (macroType == 'protein') {
+        portionSize = (macro * 0.90) / 22;
+      } else if (macroType == 'veggies') {
+        portionSize = ((macro * 0.80) * 0.25) / 5;
+      } else if (macroType == 'carbs') {
+        portionSize = ((macro * 0.90) * 0.75) / 22;
+      } else {
+        portionSize = (macro * 0.75) / 9;
+      }
     }
   } else {
-    if (macroType == 'protein') {
-      portionSize = (macro * .90) / 22;
-    } else if (macroType == 'veggies') {
-      portionSize = ((macro * .80) * 0.25) / 5;
-    } else if (macroType == 'carbs') {
-      portionSize = ((macro * .90) * 0.75) / 22;
-    } else {
-      portionSize = (macro * .75) / 9;
-    }
+    // Handle the case where gender, macroType, or macro is null or zero
+    portionSize =
+        0.0; // You can choose an appropriate default value or error handling strategy here
   }
   return portionSize.round();
 }
