@@ -678,7 +678,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         builder: (context) => Text(
                           functions
                               .handPortionsCalc(
-                                  FFAppState().macros.protein,
+                                  FFAppState().macros.carbs,
                                   currentUserDocument!.demographics.gender,
                                   'veggies')
                               .toString(),
@@ -709,7 +709,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                         builder: (context) => Text(
                           functions
                               .handPortionsCalc(
-                                  FFAppState().macros.protein,
+                                  FFAppState().macros.carbs,
                                   currentUserDocument!.demographics.gender,
                                   'carbs')
                               .toString(),
@@ -743,7 +743,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           builder: (context) => Text(
                             functions
                                 .handPortionsCalc(
-                                    FFAppState().macros.protein,
+                                    FFAppState().macros.fat,
                                     currentUserDocument!.demographics.gender,
                                     'fat')
                                 .toString(),
