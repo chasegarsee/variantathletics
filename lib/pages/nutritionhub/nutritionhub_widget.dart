@@ -84,21 +84,21 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
 
     context.watch<FFAppState>();
     final chartPieChartColorsList1 = [
-      FlutterFlowTheme.of(context).primary,
-      FlutterFlowTheme.of(context).error
+      FlutterFlowTheme.of(context).error,
+      FlutterFlowTheme.of(context).primary
     ];
     final chartPieChartColorsList2 = [
-      FlutterFlowTheme.of(context).primary,
-      FlutterFlowTheme.of(context).warning
+      FlutterFlowTheme.of(context).warning,
+      FlutterFlowTheme.of(context).primary
     ];
     final chartPieChartColorsList3 = [
-      FlutterFlowTheme.of(context).primary,
-      FlutterFlowTheme.of(context).accent2
+      FlutterFlowTheme.of(context).success,
+      FlutterFlowTheme.of(context).primary
     ];
     final chartPieChartColorsList4 = [
       FlutterFlowTheme.of(context).error,
       FlutterFlowTheme.of(context).warning,
-      FlutterFlowTheme.of(context).accent2
+      FlutterFlowTheme.of(context).success
     ];
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
