@@ -606,6 +606,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'g',
       'th': 'กรัม',
     },
+    'ietj7c98': {
+      'en': 'Hello World',
+      'th': '',
+    },
     'vxvik703': {
       'en': 'Nutrition Hub',
       'th': 'ศูนย์โภชนาการ',
