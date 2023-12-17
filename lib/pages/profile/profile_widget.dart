@@ -1021,6 +1021,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   FFAppState().completedDays = [];
                                   FFAppState().completedWeeks = [];
                                   FFAppState().currentProgram = '';
+                                  FFAppState().macros = MacrosStruct();
                                 });
                                 GoRouter.of(context).prepareAuthEvent();
                                 await authManager.signOut();
