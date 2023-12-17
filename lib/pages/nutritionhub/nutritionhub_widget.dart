@@ -652,9 +652,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                     children: List.generate(somethign.length, (somethignIndex) {
                       final somethignItem = somethign[somethignIndex];
                       return Text(
-                        FFLocalizations.of(context).getText(
-                          'ietj7c98' /* Hello World */,
-                        ),
+                        somethignItem.toString(),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       );
                     }),
