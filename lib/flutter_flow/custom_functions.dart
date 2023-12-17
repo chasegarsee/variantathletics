@@ -212,15 +212,15 @@ MacrosStruct macroCalculator(
   }
 
   // Calculate macronutrients
-  int proteinGrams =
-      (weight * 2.4).round(); // Protein in grams (body weight in kilos * 2)
+  int proteinGrams = (totalCalories * .30)
+      .round(); // Protein in grams (body weight in kilos * 2)
   int proteinCalories = proteinGrams * 4; // 4 calories per gram
 
-  int carbsCalories = (totalCalories * 0.4).round(); // 40% of total calories
+  int carbsCalories = (totalCalories * 0.35).round(); // 40% of total calories
   int carbsGrams = (carbsCalories / 4).round(); // 4 calories per gram
 
   // Remaining calories for fats
-  int remainingCalories = totalCalories - proteinCalories - carbsCalories;
+  int remainingCalories = (totalCalories * 0.35).round();
   int fatGrams = (remainingCalories / 9).round(); // 9 calories per gram
 
   return MacrosStruct(
@@ -328,7 +328,7 @@ int handPortionsCalc(
     } else if (macroType == 'carbs') {
       portionSize = ((macro * .80) * 0.75) / 25;
     } else {
-      portionSize = (macro * .87) / 8;
+      portionSize = (macro * .75) / 8;
     }
   } else {
     if (macroType == 'protein') {
