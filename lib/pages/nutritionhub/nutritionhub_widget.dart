@@ -653,8 +653,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   .withoutNulls
                                   .toList(),
                               settings: LineChartBarData(
-                                color: FlutterFlowTheme.of(context).primary,
-                                barWidth: 2.0,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                barWidth: 1.0,
                                 isCurved: true,
                                 preventCurveOverShooting: true,
                                 belowBarData: BarAreaData(
@@ -666,8 +666,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           ],
                           chartStylingInfo: ChartStylingInfo(
                             enableTooltip: true,
-                            backgroundColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primary,
                             showBorder: false,
                           ),
                           axisBounds: AxisBounds(),
