@@ -753,6 +753,39 @@ class _SizeDemographicsBottomSheetWidgetState
                                             },
                                           ),
                                         });
+                                        if ((currentUserDocument?.weightHistory
+                                                        ?.toList() ??
+                                                    [])
+                                                .length <
+                                            1) {
+                                          await currentUserReference!.update({
+                                            ...mapToFirestore(
+                                              {
+                                                'weightHistory':
+                                                    FieldValue.arrayUnion([
+                                                  getWeightHistoryFirestoreData(
+                                                    updateWeightHistoryStruct(
+                                                      WeightHistoryStruct(
+                                                        weight: int.tryParse(
+                                                            _model
+                                                                .weightController
+                                                                .text),
+                                                        date: functions.indexPlusOne(
+                                                            (currentUserDocument
+                                                                        ?.weightHistory
+                                                                        ?.toList() ??
+                                                                    [])
+                                                                .length),
+                                                      ),
+                                                      clearUnsetFields: false,
+                                                    ),
+                                                    true,
+                                                  )
+                                                ]),
+                                              },
+                                            ),
+                                          });
+                                        }
                                         setState(() {
                                           _model.isLoading = false;
                                         });
