@@ -738,7 +738,6 @@ class _SizeDemographicsBottomSheetWidgetState
                                                           _model
                                                               .weightController
                                                               .text),
-                                                      date: getCurrentTimestamp,
                                                     ),
                                                     clearUnsetFields: false,
                                                   ),
