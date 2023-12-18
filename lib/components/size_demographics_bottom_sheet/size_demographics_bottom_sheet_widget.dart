@@ -754,9 +754,10 @@ class _SizeDemographicsBottomSheetWidgetState
                                           ),
                                         });
                                         if ((currentUserDocument?.weightHistory
-                                                    ?.toList() ??
-                                                [])[1] ==
-                                            null) {
+                                                        ?.toList() ??
+                                                    [])
+                                                .length ==
+                                            1) {
                                           await currentUserReference!.update({
                                             ...mapToFirestore(
                                               {
