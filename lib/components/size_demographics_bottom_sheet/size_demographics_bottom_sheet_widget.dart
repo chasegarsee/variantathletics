@@ -738,6 +738,12 @@ class _SizeDemographicsBottomSheetWidgetState
                                                           _model
                                                               .weightController
                                                               .text),
+                                                      date: functions.indexPlusOne(
+                                                          (currentUserDocument
+                                                                      ?.weightHistory
+                                                                      ?.toList() ??
+                                                                  [])
+                                                              .length),
                                                     ),
                                                     clearUnsetFields: false,
                                                   ),

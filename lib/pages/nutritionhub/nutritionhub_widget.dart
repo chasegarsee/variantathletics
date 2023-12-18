@@ -638,78 +638,48 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                       builder: (context) => Container(
                         width: MediaQuery.sizeOf(context).width * 0.45,
                         height: 175.0,
-                        child: Stack(
-                          children: [
-                            FlutterFlowLineChart(
-                              data: [
-                                FFLineChartData(
-                                  xData: (currentUserDocument?.weightHistory
-                                              ?.toList() ??
-                                          [])
-                                      .map((e) => e.weight)
-                                      .toList(),
-                                  yData: (currentUserDocument?.weightHistory
-                                              ?.toList() ??
-                                          [])
-                                      .map((e) => e.date)
-                                      .toList(),
-                                  settings: LineChartBarData(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    barWidth: 1.0,
-                                    isCurved: true,
-                                    preventCurveOverShooting: true,
-                                    belowBarData: BarAreaData(
-                                      show: true,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent2,
-                                    ),
-                                  ),
-                                )
-                              ],
-                              chartStylingInfo: ChartStylingInfo(
-                                enableTooltip: true,
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).noColor,
-                                showBorder: false,
-                              ),
-                              axisBounds: AxisBounds(),
-                              xAxisLabelInfo: AxisLabelInfo(
-                                title: FFLocalizations.of(context).getText(
-                                  'pezhvg1t' /* Weight History */,
-                                ),
-                                titleTextStyle: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 14.0,
+                        child: FlutterFlowLineChart(
+                          data: [
+                            FFLineChartData(
+                              xData: (currentUserDocument?.weightHistory
+                                          ?.toList() ??
+                                      [])
+                                  .map((e) => e.date)
+                                  .toList(),
+                              yData: (currentUserDocument?.weightHistory
+                                          ?.toList() ??
+                                      [])
+                                  .map((e) => e.weight)
+                                  .toList(),
+                              settings: LineChartBarData(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                barWidth: 1.0,
+                                isCurved: true,
+                                preventCurveOverShooting: true,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: FlutterFlowTheme.of(context).accent2,
                                 ),
                               ),
-                              yAxisLabelInfo: AxisLabelInfo(),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(1.0, 1.0),
-                              child: FlutterFlowChartLegendWidget(
-                                entries: [
-                                  LegendEntry(
-                                      FlutterFlowTheme.of(context).primaryText,
-                                      FFLocalizations.of(context).getText(
-                                        'n05a4z0w' /* weight progress */,
-                                      )),
-                                ],
-                                width: 100.0,
-                                height: 50.0,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodyMedium,
-                                textPadding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 0.0, 0.0),
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 5.0, 0.0),
-                                borderWidth: 1.0,
-                                borderColor: Colors.black,
-                                indicatorSize: 10.0,
-                              ),
-                            ),
+                            )
                           ],
+                          chartStylingInfo: ChartStylingInfo(
+                            enableTooltip: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).noColor,
+                            showBorder: false,
+                          ),
+                          axisBounds: AxisBounds(),
+                          xAxisLabelInfo: AxisLabelInfo(
+                            title: FFLocalizations.of(context).getText(
+                              'pezhvg1t' /* Weight History */,
+                            ),
+                            titleTextStyle: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          yAxisLabelInfo: AxisLabelInfo(),
                         ),
                       ),
                     ),
