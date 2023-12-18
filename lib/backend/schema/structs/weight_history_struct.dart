@@ -11,7 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 class WeightHistoryStruct extends FFFirebaseStruct {
   WeightHistoryStruct({
     int? weight,
-    int? date,
+    DateTime? date,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _weight = weight,
         _date = date,
@@ -25,16 +25,15 @@ class WeightHistoryStruct extends FFFirebaseStruct {
   bool hasWeight() => _weight != null;
 
   // "date" field.
-  int? _date;
-  int get date => _date ?? 0;
-  set date(int? val) => _date = val;
-  void incrementDate(int amount) => _date = date + amount;
+  DateTime? _date;
+  DateTime? get date => _date;
+  set date(DateTime? val) => _date = val;
   bool hasDate() => _date != null;
 
   static WeightHistoryStruct fromMap(Map<String, dynamic> data) =>
       WeightHistoryStruct(
         weight: castToType<int>(data['weight']),
-        date: castToType<int>(data['date']),
+        date: data['date'] as DateTime?,
       );
 
   static WeightHistoryStruct? maybeFromMap(dynamic data) =>
@@ -53,7 +52,7 @@ class WeightHistoryStruct extends FFFirebaseStruct {
         ),
         'date': serializeParam(
           _date,
-          ParamType.int,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -66,7 +65,7 @@ class WeightHistoryStruct extends FFFirebaseStruct {
         ),
         date: deserializeParam(
           data['date'],
-          ParamType.int,
+          ParamType.DateTime,
           false,
         ),
       );
@@ -87,7 +86,7 @@ class WeightHistoryStruct extends FFFirebaseStruct {
 
 WeightHistoryStruct createWeightHistoryStruct({
   int? weight,
-  int? date,
+  DateTime? date,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
