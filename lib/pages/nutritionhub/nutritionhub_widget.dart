@@ -649,12 +649,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               yData: (currentUserDocument?.weightHistory
                                           ?.toList() ??
                                       [])
-                                  .map((e) => dateTimeFormat(
-                                        'Md',
-                                        e.date,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      ))
+                                  .map((e) => e.date)
                                   .toList(),
                               settings: LineChartBarData(
                                 color: FlutterFlowTheme.of(context).primary,

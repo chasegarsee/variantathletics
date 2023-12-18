@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'size_demographics_bottom_sheet_widget.dart'
     show SizeDemographicsBottomSheetWidget;
 import 'package:auto_size_text/auto_size_text.dart';
