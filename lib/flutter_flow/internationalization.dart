@@ -606,6 +606,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'g',
       'th': 'กรัม',
     },
+    'pezhvg1t': {
+      'en': 'Weight History',
+      'th': 'ประวัติน้ำหนัก',
+    },
+    'n05a4z0w': {
+      'en': 'weight progress',
+      'th': '',
+    },
     'ietj7c98': {
       'en': 'Protein',
       'th': 'โปรตีน',

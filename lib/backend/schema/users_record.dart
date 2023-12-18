@@ -83,6 +83,11 @@ class UsersRecord extends FirestoreRecord {
   String get currentProgram => _currentProgram ?? '';
   bool hasCurrentProgram() => _currentProgram != null;
 
+  // "weightHistory" field.
+  List<WeightHistoryStruct>? _weightHistory;
+  List<WeightHistoryStruct> get weightHistory => _weightHistory ?? const [];
+  bool hasWeightHistory() => _weightHistory != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -104,6 +109,10 @@ class UsersRecord extends FirestoreRecord {
     _demographics =
         UserDemographicsStruct.maybeFromMap(snapshotData['demographics']);
     _currentProgram = snapshotData['currentProgram'] as String?;
+    _weightHistory = getStructList(
+      snapshotData['weightHistory'],
+      WeightHistoryStruct.fromMap,
+    );
   }
 
   static CollectionReference get collection =>
@@ -192,7 +201,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.completedWorkouts, e2?.completedWorkouts) &&
         e1?.isSubbed == e2?.isSubbed &&
         e1?.demographics == e2?.demographics &&
-        e1?.currentProgram == e2?.currentProgram;
+        e1?.currentProgram == e2?.currentProgram &&
+        listEquality.equals(e1?.weightHistory, e2?.weightHistory);
   }
 
   @override
@@ -209,7 +219,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.completedWorkouts,
         e?.isSubbed,
         e?.demographics,
-        e?.currentProgram
+        e?.currentProgram,
+        e?.weightHistory
       ]);
 
   @override

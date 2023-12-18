@@ -708,25 +708,46 @@ class _SizeDemographicsBottomSheetWidgetState
                                                   _model.genderValue!);
                                         });
 
-                                        await currentUserReference!
-                                            .update(createUsersRecordData(
-                                          demographics:
-                                              updateUserDemographicsStruct(
-                                            UserDemographicsStruct(
-                                              age: int.tryParse(
-                                                  _model.ageController.text),
-                                              height: int.tryParse(
-                                                  _model.heightController.text),
-                                              weight: int.tryParse(
-                                                  _model.weightController.text),
-                                              gender: _model.genderValue,
-                                              activityLevel:
-                                                  _model.activityLevelValue,
-                                              goal: _model.goalValue,
+                                        await currentUserReference!.update({
+                                          ...createUsersRecordData(
+                                            demographics:
+                                                updateUserDemographicsStruct(
+                                              UserDemographicsStruct(
+                                                age: int.tryParse(
+                                                    _model.ageController.text),
+                                                height: int.tryParse(_model
+                                                    .heightController.text),
+                                                weight: int.tryParse(_model
+                                                    .weightController.text),
+                                                gender: _model.genderValue,
+                                                activityLevel:
+                                                    _model.activityLevelValue,
+                                                goal: _model.goalValue,
+                                              ),
+                                              clearUnsetFields: false,
                                             ),
-                                            clearUnsetFields: false,
                                           ),
-                                        ));
+                                          ...mapToFirestore(
+                                            {
+                                              'weightHistory':
+                                                  FieldValue.arrayUnion([
+                                                getWeightHistoryFirestoreData(
+                                                  updateWeightHistoryStruct(
+                                                    WeightHistoryStruct(
+                                                      weight: int.tryParse(
+                                                          _model
+                                                              .weightController
+                                                              .text),
+                                                      date: getCurrentTimestamp,
+                                                    ),
+                                                    clearUnsetFields: false,
+                                                  ),
+                                                  true,
+                                                )
+                                              ]),
+                                            },
+                                          ),
+                                        });
                                         setState(() {
                                           _model.isLoading = false;
                                         });

@@ -612,7 +612,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 342.0,
+                      width: MediaQuery.sizeOf(context).width * 0.45,
                       height: 175.0,
                       child: FlutterFlowPieChart(
                         data: FFPieChartData(
@@ -632,6 +632,56 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   fontFamily: 'Jost',
                                   fontSize: 14.0,
                                 ),
+                      ),
+                    ),
+                    AuthUserStreamWidget(
+                      builder: (context) => Container(
+                        width: MediaQuery.sizeOf(context).width * 0.45,
+                        height: 175.0,
+                        child: FlutterFlowLineChart(
+                          data: [
+                            FFLineChartData(
+                              xData: (currentUserDocument?.weightHistory
+                                          ?.toList() ??
+                                      [])
+                                  .map((e) => e.weight)
+                                  .toList(),
+                              yData: (currentUserDocument?.weightHistory
+                                          ?.toList() ??
+                                      [])
+                                  .map((e) => e.date)
+                                  .withoutNulls
+                                  .toList(),
+                              settings: LineChartBarData(
+                                color: FlutterFlowTheme.of(context).primary,
+                                barWidth: 2.0,
+                                isCurved: true,
+                                preventCurveOverShooting: true,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                ),
+                              ),
+                            )
+                          ],
+                          chartStylingInfo: ChartStylingInfo(
+                            enableTooltip: true,
+                            backgroundColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            showBorder: false,
+                          ),
+                          axisBounds: AxisBounds(),
+                          xAxisLabelInfo: AxisLabelInfo(
+                            title: FFLocalizations.of(context).getText(
+                              'pezhvg1t' /* Weight History */,
+                            ),
+                            titleTextStyle: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          yAxisLabelInfo: AxisLabelInfo(),
+                        ),
                       ),
                     ),
                   ],

@@ -13,3 +13,4 @@ export 'stripe_customers_struct.dart';
 export 'user_struct.dart';
 export 'user_demographics_struct.dart';
 export 'weeks_struct.dart';
+export 'weight_history_struct.dart';

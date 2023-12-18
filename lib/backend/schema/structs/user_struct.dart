@@ -21,6 +21,7 @@ class UserStruct extends FFFirebaseStruct {
     String? currentProgramId,
     bool? isSubbed,
     String? currentProgram,
+    List<WeightHistoryStruct>? weightHistory,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _coachUid = coachUid,
         _createdTime = createdTime,
@@ -33,6 +34,7 @@ class UserStruct extends FFFirebaseStruct {
         _currentProgramId = currentProgramId,
         _isSubbed = isSubbed,
         _currentProgram = currentProgram,
+        _weightHistory = weightHistory,
         super(firestoreUtilData);
 
   // "coachUid" field.
@@ -103,6 +105,14 @@ class UserStruct extends FFFirebaseStruct {
   set currentProgram(String? val) => _currentProgram = val;
   bool hasCurrentProgram() => _currentProgram != null;
 
+  // "weightHistory" field.
+  List<WeightHistoryStruct>? _weightHistory;
+  List<WeightHistoryStruct> get weightHistory => _weightHistory ?? const [];
+  set weightHistory(List<WeightHistoryStruct>? val) => _weightHistory = val;
+  void updateWeightHistory(Function(List<WeightHistoryStruct>) updateFn) =>
+      updateFn(_weightHistory ??= []);
+  bool hasWeightHistory() => _weightHistory != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
         coachUid: data['coachUid'] as String?,
         createdTime: data['created_time'] as DateTime?,
@@ -115,6 +125,10 @@ class UserStruct extends FFFirebaseStruct {
         currentProgramId: data['currentProgramId'] as String?,
         isSubbed: data['isSubbed'] as bool?,
         currentProgram: data['currentProgram'] as String?,
+        weightHistory: getStructList(
+          data['weightHistory'],
+          WeightHistoryStruct.fromMap,
+        ),
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -132,6 +146,7 @@ class UserStruct extends FFFirebaseStruct {
         'currentProgramId': _currentProgramId,
         'isSubbed': _isSubbed,
         'currentProgram': _currentProgram,
+        'weightHistory': _weightHistory?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -180,6 +195,11 @@ class UserStruct extends FFFirebaseStruct {
         'currentProgram': serializeParam(
           _currentProgram,
           ParamType.String,
+        ),
+        'weightHistory': serializeParam(
+          _weightHistory,
+          ParamType.DataStruct,
+          true,
         ),
       }.withoutNulls;
 
@@ -240,6 +260,12 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        weightHistory: deserializeStructParam<WeightHistoryStruct>(
+          data['weightHistory'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: WeightHistoryStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -259,7 +285,8 @@ class UserStruct extends FFFirebaseStruct {
         favoriteCoach == other.favoriteCoach &&
         currentProgramId == other.currentProgramId &&
         isSubbed == other.isSubbed &&
-        currentProgram == other.currentProgram;
+        currentProgram == other.currentProgram &&
+        listEquality.equals(weightHistory, other.weightHistory);
   }
 
   @override
@@ -274,7 +301,8 @@ class UserStruct extends FFFirebaseStruct {
         favoriteCoach,
         currentProgramId,
         isSubbed,
-        currentProgram
+        currentProgram,
+        weightHistory
       ]);
 }
 
