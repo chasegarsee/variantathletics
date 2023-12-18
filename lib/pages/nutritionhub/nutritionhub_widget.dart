@@ -669,7 +669,10 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 FlutterFlowTheme.of(context).noColor,
                             showBorder: false,
                           ),
-                          axisBounds: AxisBounds(),
+                          axisBounds: AxisBounds(
+                            minY: 40.0,
+                            maxY: 200.0,
+                          ),
                           xAxisLabelInfo: AxisLabelInfo(
                             title: FFLocalizations.of(context).getText(
                               'pezhvg1t' /* Weight History */,
