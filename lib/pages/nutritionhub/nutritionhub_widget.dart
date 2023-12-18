@@ -644,7 +644,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               xData: (currentUserDocument?.weightHistory
                                           ?.toList() ??
                                       [])
-                                  .map((e) => e.weight)
+                                  .map((e) => e.date?.secondsSinceEpoch)
+                                  .withoutNulls
                                   .toList(),
                               yData: (currentUserDocument?.weightHistory
                                           ?.toList() ??
@@ -667,7 +668,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                           chartStylingInfo: ChartStylingInfo(
                             enableTooltip: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primary,
+                                FlutterFlowTheme.of(context).noColor,
                             showBorder: false,
                           ),
                           axisBounds: AxisBounds(),
