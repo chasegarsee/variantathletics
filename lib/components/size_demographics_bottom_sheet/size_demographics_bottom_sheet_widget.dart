@@ -756,8 +756,8 @@ class _SizeDemographicsBottomSheetWidgetState
                                         if ((currentUserDocument?.weightHistory
                                                         ?.toList() ??
                                                     [])
-                                                .length <
-                                            1) {
+                                                .length ==
+                                            0) {
                                           await currentUserReference!.update({
                                             ...mapToFirestore(
                                               {
