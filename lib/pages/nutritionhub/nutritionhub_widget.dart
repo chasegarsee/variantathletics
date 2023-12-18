@@ -670,7 +670,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                             showBorder: false,
                           ),
                           axisBounds: AxisBounds(
-                            minY: 40.0,
+                            minY: -30.0,
                             maxY: 200.0,
                           ),
                           xAxisLabelInfo: AxisLabelInfo(
