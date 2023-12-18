@@ -753,11 +753,11 @@ class _SizeDemographicsBottomSheetWidgetState
                                             },
                                           ),
                                         });
-                                        if ((currentUserDocument?.weightHistory
+                                        if (((currentUserDocument?.weightHistory
                                                         ?.toList() ??
                                                     [])
-                                                .length ==
-                                            0) {
+                                                .isNotEmpty) ==
+                                            false) {
                                           await currentUserReference!.update({
                                             ...mapToFirestore(
                                               {
