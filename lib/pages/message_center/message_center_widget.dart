@@ -465,8 +465,10 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                             1)
                                                                           Text(
                                                                             functions.indexPlusOne(responseItem.count).toString(),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Jost',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
                                                                           ),
                                                                       ],
                                                                     ),
