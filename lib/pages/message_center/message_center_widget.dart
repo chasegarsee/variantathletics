@@ -119,18 +119,19 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                    child: Builder(
-                      builder: (context) {
-                        final message =
-                            messageCenterMessagesRecordList.toList();
-                        return SingleChildScrollView(
-                          child: Column(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                      child: Builder(
+                        builder: (context) {
+                          final message =
+                              messageCenterMessagesRecordList.toList();
+                          return Column(
                             mainAxisSize: MainAxisSize.max,
                             children:
                                 List.generate(message.length, (messageIndex) {
@@ -592,12 +593,12 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                 ),
                               );
                             }),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
