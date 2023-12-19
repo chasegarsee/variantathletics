@@ -281,83 +281,90 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                           alignment:
                                                               AlignmentDirectional(
                                                                   0.0, 0.0),
-                                                          child: Container(
-                                                            width: 32.0,
-                                                            height: 24.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x83FFFFFF),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                              ),
-                                                            ),
-                                                            child: Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0, 0.0),
-                                                              child: InkWell(
-                                                                splashColor: Colors
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
                                                                     .transparent,
-                                                                focusColor: Colors
-                                                                    .transparent,
-                                                                hoverColor: Colors
-                                                                    .transparent,
-                                                                highlightColor:
+                                                            onTap: () async {
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                    true,
+                                                                backgroundColor:
                                                                     Colors
                                                                         .transparent,
-                                                                onTap:
-                                                                    () async {
-                                                                  await showModalBottomSheet(
-                                                                    isScrollControlled:
-                                                                        true,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    enableDrag:
-                                                                        false,
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (context) {
-                                                                      return GestureDetector(
-                                                                        onTap: () => _model.unfocusNode.canRequestFocus
-                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                            : FocusScope.of(context).unfocus(),
+                                                                enableDrag:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return GestureDetector(
+                                                                    onTap: () => _model
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          Container(
+                                                                        height: MediaQuery.sizeOf(context).height *
+                                                                            0.5,
                                                                         child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              MediaQuery.viewInsetsOf(context),
-                                                                          child:
-                                                                              Container(
-                                                                            height:
-                                                                                50.0,
-                                                                            child:
-                                                                                MessageEmojiResponsesWidget(
-                                                                              messageId: messageItem.reference,
-                                                                              responses: messageItem.responses,
-                                                                            ),
-                                                                          ),
+                                                                            MessageEmojiResponsesWidget(
+                                                                          messageId:
+                                                                              messageItem.reference,
+                                                                          responses:
+                                                                              messageItem.responses,
                                                                         ),
-                                                                      );
-                                                                    },
-                                                                  ).then((value) =>
-                                                                      safeSetState(
-                                                                          () {}));
+                                                                      ),
+                                                                    ),
+                                                                  );
                                                                 },
+                                                              ).then((value) =>
+                                                                  safeSetState(
+                                                                      () {}));
+                                                            },
+                                                            child: Container(
+                                                              width: 32.0,
+                                                              height: 24.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0x83FFFFFF),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          5.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          5.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          5.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          5.0),
+                                                                ),
+                                                              ),
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: FaIcon(
                                                                   FontAwesomeIcons
                                                                       .solidSmile,
@@ -413,7 +420,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                           0.0),
                                                                   child:
                                                                       Container(
-                                                                    width: 32.0,
+                                                                    width: 38.0,
                                                                     height:
                                                                         24.0,
                                                                     decoration:
@@ -445,34 +452,36 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                             : FlutterFlowTheme.of(context).noColor,
                                                                       ),
                                                                     ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            responseItem.response,
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          3.0,
+                                                                          0.0,
+                                                                          3.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              responseItem.response,
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                        Text(
-                                                                          responseItem
-                                                                              .count
-                                                                              .toString(),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Jost',
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                              ),
-                                                                        ),
-                                                                      ],
+                                                                          Text(
+                                                                            responseItem.count.toString(),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Jost',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
