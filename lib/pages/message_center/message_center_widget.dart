@@ -353,132 +353,139 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      Wrap(
-                                                        spacing: 0.0,
-                                                        runSpacing: 0.0,
-                                                        alignment:
-                                                            WrapAlignment.start,
-                                                        crossAxisAlignment:
-                                                            WrapCrossAlignment
-                                                                .start,
-                                                        direction:
-                                                            Axis.horizontal,
-                                                        runAlignment:
-                                                            WrapAlignment.start,
-                                                        verticalDirection:
-                                                            VerticalDirection
-                                                                .down,
-                                                        clipBehavior: Clip.none,
-                                                        children: [
-                                                          if (!functions
-                                                              .allCountsAreZero(
-                                                                  messageItem
-                                                                      .responses
-                                                                      .toList()))
-                                                            Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final response =
-                                                                    messageItem
-                                                                        .responses
-                                                                        .toList();
-                                                                return Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  children: List.generate(
-                                                                      response
-                                                                          .length,
-                                                                      (responseIndex) {
-                                                                    final responseItem =
-                                                                        response[
-                                                                            responseIndex];
-                                                                    return Visibility(
-                                                                      visible:
-                                                                          responseItem.count >
-                                                                              0,
-                                                                      child:
-                                                                          Align(
-                                                                        alignment: AlignmentDirectional(
+                                                      if (!functions
+                                                          .allCountsAreZero(
+                                                              messageItem
+                                                                  .responses
+                                                                  .toList()))
+                                                        Builder(
+                                                          builder: (context) {
+                                                            final response =
+                                                                messageItem
+                                                                    .responses
+                                                                    .toList();
+                                                            return Wrap(
+                                                              spacing: 0.0,
+                                                              runSpacing: 0.0,
+                                                              alignment:
+                                                                  WrapAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  WrapCrossAlignment
+                                                                      .start,
+                                                              direction: Axis
+                                                                  .horizontal,
+                                                              runAlignment:
+                                                                  WrapAlignment
+                                                                      .start,
+                                                              verticalDirection:
+                                                                  VerticalDirection
+                                                                      .down,
+                                                              clipBehavior:
+                                                                  Clip.none,
+                                                              children: List.generate(
+                                                                  response
+                                                                      .length,
+                                                                  (responseIndex) {
+                                                                final responseItem =
+                                                                    response[
+                                                                        responseIndex];
+                                                                return Visibility(
+                                                                  visible:
+                                                                      responseItem
+                                                                              .count >
+                                                                          0,
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await actions
+                                                                              .updateMessageDocument(
+                                                                            messageItem.reference.id,
+                                                                            responseIndex,
+                                                                            currentUserUid,
+                                                                          );
+                                                                        },
                                                                         child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0),
+                                                                            Container(
+                                                                          width:
+                                                                              38.0,
+                                                                          height:
+                                                                              24.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color: responseItem.uid.contains(currentUserUid) == true
+                                                                                ? Color(0x7139D2B8)
+                                                                                : Color(0x41000000),
+                                                                            borderRadius:
+                                                                                BorderRadius.only(
+                                                                              bottomLeft: Radius.circular(5.0),
+                                                                              bottomRight: Radius.circular(5.0),
+                                                                              topLeft: Radius.circular(5.0),
+                                                                              topRight: Radius.circular(5.0),
+                                                                            ),
+                                                                            border:
+                                                                                Border.all(
+                                                                              color: responseItem.uid.contains(currentUserUid) == true ? Color(0x7139D2B8) : FlutterFlowTheme.of(context).noColor,
+                                                                            ),
+                                                                          ),
                                                                           child:
-                                                                              InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              await actions.updateMessageDocument(
-                                                                                messageItem.reference.id,
-                                                                                responseIndex,
-                                                                                currentUserUid,
-                                                                              );
-                                                                            },
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                3.0,
+                                                                                0.0,
+                                                                                3.0,
+                                                                                0.0),
                                                                             child:
-                                                                                Container(
-                                                                              width: 38.0,
-                                                                              height: 24.0,
-                                                                              decoration: BoxDecoration(
-                                                                                color: responseItem.uid.contains(currentUserUid) == true ? Color(0x7139D2B8) : Color(0x41000000),
-                                                                                borderRadius: BorderRadius.only(
-                                                                                  bottomLeft: Radius.circular(5.0),
-                                                                                  bottomRight: Radius.circular(5.0),
-                                                                                  topLeft: Radius.circular(5.0),
-                                                                                  topRight: Radius.circular(5.0),
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                Align(
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                  child: Text(
+                                                                                    responseItem.response,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                  ),
                                                                                 ),
-                                                                                border: Border.all(
-                                                                                  color: responseItem.uid.contains(currentUserUid) == true ? Color(0x7139D2B8) : FlutterFlowTheme.of(context).noColor,
-                                                                                ),
-                                                                              ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
-                                                                                child: Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    Align(
-                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        responseItem.response,
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                Text(
+                                                                                  responseItem.count.toString(),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Jost',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                       ),
-                                                                                    ),
-                                                                                    Text(
-                                                                                      responseItem.count.toString(),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Jost',
-                                                                                            color: FlutterFlowTheme.of(context).primaryText,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ],
                                                                                 ),
-                                                                              ),
+                                                                              ],
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    );
-                                                                  }),
+                                                                    ),
+                                                                  ),
                                                                 );
-                                                              },
-                                                            ),
-                                                        ],
-                                                      ),
+                                                              }),
+                                                            );
+                                                          },
+                                                        ),
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
