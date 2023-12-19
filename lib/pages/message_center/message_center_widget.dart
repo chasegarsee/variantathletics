@@ -461,15 +461,17 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                                 FlutterFlowTheme.of(context).bodyMedium,
                                                                           ),
                                                                         ),
-                                                                        if (responseItem.count >
-                                                                            1)
-                                                                          Text(
-                                                                            functions.indexPlusOne(responseItem.count).toString(),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Jost',
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                ),
-                                                                          ),
+                                                                        Text(
+                                                                          responseItem
+                                                                              .count
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Jost',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                              ),
+                                                                        ),
                                                                       ],
                                                                     ),
                                                                   ),
