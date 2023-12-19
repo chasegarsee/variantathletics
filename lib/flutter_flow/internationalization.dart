@@ -1016,8 +1016,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'E-Book การสร้างความรู้ 6+ รายการ (เพิ่มใหม่ทุกเดือน)',
     },
     'cxc6mdxu': {
-      'en': '5+ Programs tailored to your needs!  (new added monthly)',
-      'th': '5+ โปรแกรมที่เหมาะกับความต้องการ  (เพิ่มใหม่ทุกเดือน)',
+      'en': '4+ Programs tailored to your needs!  (new added monthly)',
+      'th': '4+ โปรแกรมที่เหมาะกับความต้องการ  (เพิ่มใหม่ทุกเดือน)',
     },
     '7mup3duq': {
       'en': 'No Equiptment Body Weight Program Included',

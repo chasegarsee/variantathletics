@@ -365,7 +365,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'cxc6mdxu' /* 5+ Programs tailored to your n... */,
+                                            'cxc6mdxu' /* 4+ Programs tailored to your n... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
