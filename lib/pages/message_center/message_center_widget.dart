@@ -260,7 +260,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         .info,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .bold,
+                                                                            .w300,
                                                                   ),
                                                             ),
                                                             TextSpan(
@@ -289,12 +289,22 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .info,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
                                                               ),
                                                             )
                                                           ],
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Jost',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w200,
+                                                              ),
                                                         ),
                                                       ),
                                                     ],
