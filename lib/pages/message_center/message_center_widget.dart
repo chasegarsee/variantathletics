@@ -445,19 +445,30 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                             : FlutterFlowTheme.of(context).noColor,
                                                                       ),
                                                                     ),
-                                                                    child:
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
                                                                         Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
-                                                                      child:
+                                                                          child:
+                                                                              Text(
+                                                                            responseItem.response,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                          ),
+                                                                        ),
+                                                                        if (responseItem.count >
+                                                                            1)
                                                                           Text(
-                                                                        responseItem
-                                                                            .response,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium,
-                                                                      ),
+                                                                            functions.indexPlusOne(responseItem.count).toString(),
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                          ),
+                                                                      ],
                                                                     ),
                                                                   ),
                                                                 ),
