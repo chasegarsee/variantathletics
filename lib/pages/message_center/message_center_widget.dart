@@ -349,9 +349,20 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                       ),
                                                     ],
                                                   ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
+                                                  Wrap(
+                                                    spacing: 0.0,
+                                                    runSpacing: 0.0,
+                                                    alignment:
+                                                        WrapAlignment.start,
+                                                    crossAxisAlignment:
+                                                        WrapCrossAlignment
+                                                            .start,
+                                                    direction: Axis.horizontal,
+                                                    runAlignment:
+                                                        WrapAlignment.start,
+                                                    verticalDirection:
+                                                        VerticalDirection.down,
+                                                    clipBehavior: Clip.none,
                                                     children: [
                                                       if (!functions
                                                           .allCountsAreZero(
