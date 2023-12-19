@@ -256,11 +256,23 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         'Jost',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .accent4,
+                                                                        .info,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
                                                                   ),
+                                                            ),
+                                                            TextSpan(
+                                                              text: FFLocalizations
+                                                                      .of(context)
+                                                                  .getText(
+                                                                '8oeyy7ai' /*   */,
+                                                              ),
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent4,
+                                                              ),
                                                             ),
                                                             TextSpan(
                                                               text:
@@ -275,7 +287,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                               style: TextStyle(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .accent4,
+                                                                    .info,
                                                               ),
                                                             )
                                                           ],
