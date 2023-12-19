@@ -391,7 +391,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                       child:
                                                                           Container(
                                                                         height: MediaQuery.sizeOf(context).height *
-                                                                            0.5,
+                                                                            0.2,
                                                                         child:
                                                                             MessageEmojiResponsesWidget(
                                                                           messageId:
