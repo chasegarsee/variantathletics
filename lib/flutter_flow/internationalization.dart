@@ -733,10 +733,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MessageCenter
   {
-    'rcubw8fs': {
-      'en': 'Below are messages with your friends.',
-      'th': '',
-    },
     '8t2tjpm4': {
       'en': 'Message Center',
       'th': 'ศูนย์ข้อความ',

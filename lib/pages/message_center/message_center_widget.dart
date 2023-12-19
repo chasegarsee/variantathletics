@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/message_emoji_responses/message_emoji_responses_widget.dart';
@@ -121,16 +122,6 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'rcubw8fs' /* Below are messages with your f... */,
-                      ),
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                  ),
-                  Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Builder(
                       builder: (context) {
@@ -144,19 +135,20 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                               final messageItem = message[messageIndex];
                               return Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 1.0, 0.0, 0.0),
+                                    0.0, 5.0, 0.0, 5.0),
                                 child: Material(
                                   color: Colors.transparent,
-                                  elevation: 0.0,
+                                  elevation: 3.0,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(0.0),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Container(
                                     width: double.infinity,
+                                    height: 100.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(0.0),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(12.0),
@@ -206,6 +198,9 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -224,35 +219,28 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                               .bodyLarge,
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          dateTimeFormat(
-                                                            'd/M H:mm',
-                                                            messageItem.date!,
-                                                            locale: FFLocalizations
-                                                                    .of(context)
-                                                                .languageCode,
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
+                                                      Text(
+                                                        dateTimeFormat(
+                                                          'd/M H:mm',
+                                                          messageItem.date!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
                                                         ),
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Jost',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
                                                       ),
                                                     ],
                                                   ),
@@ -419,7 +407,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          10.0,
+                                                                          0.0,
                                                                           0.0,
                                                                           10.0,
                                                                           0.0),
@@ -430,8 +418,12 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         24.0,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
-                                                                          0x83FFFFFF),
+                                                                      color: responseItem.uid.contains(currentUserUid) ==
+                                                                              true
+                                                                          ? Color(
+                                                                              0x7139D2B8)
+                                                                          : Color(
+                                                                              0x41000000),
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .only(
@@ -444,13 +436,28 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         topRight:
                                                                             Radius.circular(5.0),
                                                                       ),
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: responseItem.uid.contains(currentUserUid) ==
+                                                                                true
+                                                                            ? Color(0x7139D2B8)
+                                                                            : FlutterFlowTheme.of(context).noColor,
+                                                                      ),
                                                                     ),
-                                                                    child: Text(
-                                                                      responseItem
-                                                                          .response,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium,
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        responseItem
+                                                                            .response,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
