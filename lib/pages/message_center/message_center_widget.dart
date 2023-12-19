@@ -364,237 +364,229 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                         VerticalDirection.down,
                                                     clipBehavior: Clip.none,
                                                     children: [
-                                                      if (!functions
-                                                          .allCountsAreZero(
-                                                              messageItem
-                                                                  .responses
-                                                                  .toList()))
-                                                        Builder(
-                                                          builder: (context) {
-                                                            final response =
-                                                                messageItem
-                                                                    .responses
-                                                                    .toList();
-                                                            return Wrap(
-                                                              spacing: 0.0,
-                                                              runSpacing: 0.0,
-                                                              alignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              crossAxisAlignment:
-                                                                  WrapCrossAlignment
-                                                                      .start,
-                                                              direction: Axis
-                                                                  .horizontal,
-                                                              runAlignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              verticalDirection:
-                                                                  VerticalDirection
-                                                                      .down,
-                                                              clipBehavior:
-                                                                  Clip.none,
-                                                              children: List.generate(
-                                                                  response
-                                                                      .length,
-                                                                  (responseIndex) {
-                                                                final responseItem =
-                                                                    response[
-                                                                        responseIndex];
-                                                                return Visibility(
-                                                                  visible:
-                                                                      responseItem
-                                                                              .count >
-                                                                          0,
-                                                                  child: Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          if (!functions
+                                                              .allCountsAreZero(
+                                                                  messageItem
+                                                                      .responses
+                                                                      .toList()))
+                                                            Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                final response =
+                                                                    messageItem
+                                                                        .responses
+                                                                        .toList();
+                                                                return Wrap(
+                                                                  spacing: 0.0,
+                                                                  runSpacing:
+                                                                      0.0,
+                                                                  alignment:
+                                                                      WrapAlignment
+                                                                          .start,
+                                                                  crossAxisAlignment:
+                                                                      WrapCrossAlignment
+                                                                          .start,
+                                                                  direction: Axis
+                                                                      .horizontal,
+                                                                  runAlignment:
+                                                                      WrapAlignment
+                                                                          .start,
+                                                                  verticalDirection:
+                                                                      VerticalDirection
+                                                                          .down,
+                                                                  clipBehavior:
+                                                                      Clip.none,
+                                                                  children: List.generate(
+                                                                      response
+                                                                          .length,
+                                                                      (responseIndex) {
+                                                                    final responseItem =
+                                                                        response[
+                                                                            responseIndex];
+                                                                    return Visibility(
+                                                                      visible:
+                                                                          responseItem.count >
+                                                                              0,
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        splashColor:
-                                                                            Colors.transparent,
-                                                                        focusColor:
-                                                                            Colors.transparent,
-                                                                        hoverColor:
-                                                                            Colors.transparent,
-                                                                        highlightColor:
-                                                                            Colors.transparent,
-                                                                        onTap:
-                                                                            () async {
-                                                                          await actions
-                                                                              .updateMessageDocument(
-                                                                            messageItem.reference.id,
-                                                                            responseIndex,
-                                                                            currentUserUid,
-                                                                          );
-                                                                        },
                                                                         child:
-                                                                            Container(
-                                                                          width:
-                                                                              38.0,
-                                                                          height:
-                                                                              24.0,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color: responseItem.uid.contains(currentUserUid) == true
-                                                                                ? Color(0x7139D2B8)
-                                                                                : Color(0x41000000),
-                                                                            borderRadius:
-                                                                                BorderRadius.only(
-                                                                              bottomLeft: Radius.circular(5.0),
-                                                                              bottomRight: Radius.circular(5.0),
-                                                                              topLeft: Radius.circular(5.0),
-                                                                              topRight: Radius.circular(5.0),
-                                                                            ),
-                                                                            border:
-                                                                                Border.all(
-                                                                              color: responseItem.uid.contains(currentUserUid) == true ? Color(0x7139D2B8) : FlutterFlowTheme.of(context).noColor,
-                                                                            ),
-                                                                          ),
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0),
                                                                           child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                3.0,
-                                                                                0.0,
-                                                                                3.0,
-                                                                                0.0),
+                                                                              InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              await actions.updateMessageDocument(
+                                                                                messageItem.reference.id,
+                                                                                responseIndex,
+                                                                                currentUserUid,
+                                                                              );
+                                                                            },
                                                                             child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              children: [
-                                                                                Align(
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                  child: Text(
-                                                                                    responseItem.response,
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                  ),
+                                                                                Container(
+                                                                              width: 38.0,
+                                                                              height: 24.0,
+                                                                              decoration: BoxDecoration(
+                                                                                color: responseItem.uid.contains(currentUserUid) == true ? Color(0x7139D2B8) : Color(0x41000000),
+                                                                                borderRadius: BorderRadius.only(
+                                                                                  bottomLeft: Radius.circular(5.0),
+                                                                                  bottomRight: Radius.circular(5.0),
+                                                                                  topLeft: Radius.circular(5.0),
+                                                                                  topRight: Radius.circular(5.0),
                                                                                 ),
-                                                                                Text(
-                                                                                  responseItem.count.toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Jost',
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                border: Border.all(
+                                                                                  color: responseItem.uid.contains(currentUserUid) == true ? Color(0x7139D2B8) : FlutterFlowTheme.of(context).noColor,
+                                                                                ),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    Align(
+                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                      child: Text(
+                                                                                        responseItem.response,
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                       ),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      responseItem.count.toString(),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Jost',
+                                                                                            color: FlutterFlowTheme.of(context).primaryText,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
                                                                                 ),
-                                                                              ],
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }),
-                                                            );
-                                                          },
-                                                        ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
-                                                                          .requestFocus(_model
-                                                                              .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          MediaQuery.sizeOf(context).height *
-                                                                              0.2,
-                                                                      child:
-                                                                          MessageEmojiResponsesWidget(
-                                                                        messageId:
-                                                                            messageItem.reference,
-                                                                        responses:
-                                                                            messageItem.responses,
-                                                                      ),
-                                                                    ),
-                                                                  ),
+                                                                    );
+                                                                  }),
                                                                 );
                                                               },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
-                                                          },
-                                                          child: Container(
-                                                            width: 32.0,
-                                                            height: 24.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x80454545),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        5.0),
-                                                              ),
                                                             ),
-                                                            child: Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0, 0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .solidSmile,
-                                                                color: Color(
-                                                                    0xCCD0D0D0),
-                                                                size: 18.0,
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              MediaQuery.sizeOf(context).height * 0.2,
+                                                                          child:
+                                                                              MessageEmojiResponsesWidget(
+                                                                            messageId:
+                                                                                messageItem.reference,
+                                                                            responses:
+                                                                                messageItem.responses,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+                                                              },
+                                                              child: Container(
+                                                                width: 32.0,
+                                                                height: 24.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: Color(
+                                                                      0x80454545),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            5.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            5.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            5.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            5.0),
+                                                                  ),
+                                                                ),
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .solidSmile,
+                                                                    color: Color(
+                                                                        0xCCD0D0D0),
+                                                                    size: 18.0,
+                                                                  ),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
