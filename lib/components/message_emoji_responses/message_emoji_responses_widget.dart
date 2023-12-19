@@ -128,7 +128,7 @@ class _MessageEmojiResponsesWidgetState
                             padding: EdgeInsets.zero,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
+                              crossAxisCount: 6,
                               crossAxisSpacing: 10.0,
                               mainAxisSpacing: 10.0,
                               childAspectRatio: 1.0,
@@ -154,8 +154,12 @@ class _MessageEmojiResponsesWidgetState
                                   },
                                   child: Text(
                                     responseItem.response,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          fontSize: 24.0,
+                                        ),
                                   ),
                                 ),
                               );
