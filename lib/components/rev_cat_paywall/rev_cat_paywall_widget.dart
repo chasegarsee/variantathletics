@@ -517,7 +517,7 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
                               onPressed: () async {
                                 var _shouldSetState = false;
                                 _model.purchaseResponse = await revenue_cat
-                                    .purchasePackage('\$rc_monthly (Monthly)');
+                                    .purchasePackage('\$rc_monthly');
                                 _shouldSetState = true;
                                 if (_model.purchaseResponse!) {
                                   unawaited(
