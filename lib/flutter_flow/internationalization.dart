@@ -507,10 +507,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // profile
   {
-    'zv1aqkys': {
-      'en': 'VARIANT',
-      'th': 'VARIANT',
-    },
     '577yksax': {
       'en': 'Switch to Dark Mode',
       'th': 'สลับไปที่โหมดมืด',
@@ -543,6 +539,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Knowlege Hub',
       'th': 'ศูนย์ความรู้',
     },
+    'ixqki3gd': {
+      'en': 'Message Center',
+      'th': 'ศูนย์ข้อความ',
+    },
     '80sul3wg': {
       'en': 'Leave comments after completing workouts',
       'th': 'แสดงความคิดเห็นหลังออกกำลังกายเสร็จ',
@@ -562,6 +562,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'h0v7c7oj': {
       'en': 'Log Out',
       'th': 'ออกจากระบบ',
+    },
+    '1hgogtli': {
+      'en': 'VARIANT',
+      'th': 'VARIANT',
     },
     '8g0phl9g': {
       'en': '__',
@@ -724,6 +728,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jhvitjp9': {
       'en': 'Home',
+      'th': '',
+    },
+  },
+  // MessageCenter
+  {
+    'rcubw8fs': {
+      'en': 'Below are messages with your friends.',
+      'th': '',
+    },
+    '8t2tjpm4': {
+      'en': 'Message Center',
+      'th': 'ศูนย์ข้อความ',
+    },
+    'm2djtz22': {
+      'en': '__',
       'th': '',
     },
   },

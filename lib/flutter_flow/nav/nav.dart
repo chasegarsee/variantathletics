@@ -160,6 +160,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'favorites',
           path: '/favorites',
           builder: (context, params) => FavoritesWidget(),
+        ),
+        FFRoute(
+          name: 'MessageCenter',
+          path: '/messageCenter',
+          builder: (context, params) => MessageCenterWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

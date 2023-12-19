@@ -382,3 +382,12 @@ int convertMacroToFoodWeight(
 
   return foodWeight;
 }
+
+bool allCountsAreZero(List<ResponsesStruct> responses) {
+  for (var obj in responses) {
+    if (obj.count != 0) {
+      return false;
+    }
+  }
+  return true;
+}

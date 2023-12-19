@@ -138,6 +138,7 @@ final parametersBuilderMap =
         },
       ),
   'favorites': ParameterData.none(),
+  'MessageCenter': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

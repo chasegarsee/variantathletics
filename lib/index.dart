@@ -12,3 +12,5 @@ export '/pages/info/info_widget.dart' show InfoWidget;
 export '/pages/knowledge_hub/knowledge_hub_widget.dart' show KnowledgeHubWidget;
 export '/pages/pdf_page/pdf_page_widget.dart' show PdfPageWidget;
 export '/pages/favorites/favorites_widget.dart' show FavoritesWidget;
+export '/pages/message_center/message_center_widget.dart'
+    show MessageCenterWidget;

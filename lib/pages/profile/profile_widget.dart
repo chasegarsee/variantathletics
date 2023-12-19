@@ -57,15 +57,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-        automaticallyImplyLeading: true,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
+            size: 30.0,
+          ),
+          onPressed: () async {
+            context.pop();
+          },
+        ),
         title: Align(
           alignment: AlignmentDirectional(0.0, 0.0),
           child: Text(
             FFLocalizations.of(context).getText(
-              'zv1aqkys' /* VARIANT */,
+              '1hgogtli' /* VARIANT */,
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Jost',
@@ -74,8 +86,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
         ),
         actions: [],
-        centerTitle: false,
-        elevation: 3.0,
+        centerTitle: true,
+        elevation: 2.0,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -752,6 +764,52 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             Text(
                               FFLocalizations.of(context).getText(
                                 'o4pthagk' /* Knowlege Hub */,
+                              ),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                            Icon(
+                              Icons.keyboard_double_arrow_right_rounded,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? FlutterFlowTheme.of(context).accent1
+                                  : FlutterFlowTheme.of(context).accent2,
+                              size: 36.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('MessageCenter');
+                  },
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 5.0,
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 12.0, 24.0, 12.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'ixqki3gd' /* Message Center */,
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
