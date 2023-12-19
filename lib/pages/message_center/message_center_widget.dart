@@ -257,7 +257,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         'Jost',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .info,
+                                                                        .primaryText,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w300,
@@ -285,14 +285,19 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         context)
                                                                     .languageCode,
                                                               ),
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Jost',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
                                                             )
                                                           ],
                                                           style: FlutterFlowTheme
@@ -423,7 +428,7 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: Color(
-                                                                    0x83FFFFFF),
+                                                                    0x80454545),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -449,9 +454,8 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                 child: FaIcon(
                                                                   FontAwesomeIcons
                                                                       .solidSmile,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
+                                                                  color: Color(
+                                                                      0xCCD0D0D0),
                                                                   size: 18.0,
                                                                 ),
                                                               ),
