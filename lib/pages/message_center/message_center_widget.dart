@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -419,68 +420,88 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                           10.0,
                                                                           0.0),
                                                                   child:
-                                                                      Container(
-                                                                    width: 38.0,
-                                                                    height:
-                                                                        24.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: responseItem.uid.contains(currentUserUid) ==
-                                                                              true
-                                                                          ? Color(
-                                                                              0x7139D2B8)
-                                                                          : Color(
-                                                                              0x41000000),
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(5.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(5.0),
-                                                                        topLeft:
-                                                                            Radius.circular(5.0),
-                                                                        topRight:
-                                                                            Radius.circular(5.0),
-                                                                      ),
-                                                                      border:
-                                                                          Border
-                                                                              .all(
+                                                                      InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      await actions
+                                                                          .updateMessageDocument(
+                                                                        messageItem
+                                                                            .reference
+                                                                            .id,
+                                                                        responseIndex,
+                                                                        currentUserUid,
+                                                                      );
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          38.0,
+                                                                      height:
+                                                                          24.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
                                                                         color: responseItem.uid.contains(currentUserUid) ==
                                                                                 true
                                                                             ? Color(0x7139D2B8)
-                                                                            : FlutterFlowTheme.of(context).noColor,
+                                                                            : Color(0x41000000),
+                                                                        borderRadius:
+                                                                            BorderRadius.only(
+                                                                          bottomLeft:
+                                                                              Radius.circular(5.0),
+                                                                          bottomRight:
+                                                                              Radius.circular(5.0),
+                                                                          topLeft:
+                                                                              Radius.circular(5.0),
+                                                                          topRight:
+                                                                              Radius.circular(5.0),
+                                                                        ),
+                                                                        border:
+                                                                            Border.all(
+                                                                          color: responseItem.uid.contains(currentUserUid) == true
+                                                                              ? Color(0x7139D2B8)
+                                                                              : FlutterFlowTheme.of(context).noColor,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          3.0,
-                                                                          0.0,
-                                                                          3.0,
-                                                                          0.0),
                                                                       child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Align(
-                                                                            alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              responseItem.response,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            3.0,
+                                                                            0.0,
+                                                                            3.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Text(
+                                                                                responseItem.response,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                              ),
                                                                             ),
-                                                                          ),
-                                                                          Text(
-                                                                            responseItem.count.toString(),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Jost',
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                ),
-                                                                          ),
-                                                                        ],
+                                                                            Text(
+                                                                              responseItem.count.toString(),
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: 'Jost',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),

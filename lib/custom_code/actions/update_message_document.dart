@@ -29,12 +29,25 @@ Future updateMessageDocument(
       List<dynamic> responses = messageSnapshot['responses'];
 
       if (responseIndex >= 0 && responseIndex < responses.length) {
-        // Increment the count in the specified response
-        responses[responseIndex]['count'] =
-            (responses[responseIndex]['count'] ?? 0) + 1;
+        // Convert the uid list to a mutable List
+        List<dynamic> uidList =
+            List.from(responses[responseIndex]['uid'] ?? []);
 
-        // Add the new UID to the uid array in the same response
-        (responses[responseIndex]['uid'] as List).add(uid);
+        // Check if the uid is already in the list
+        if (uidList.contains(uid)) {
+          // Remove the uid and decrement the count
+          uidList.remove(uid);
+          responses[responseIndex]['count'] =
+              (responses[responseIndex]['count'] ?? 1) - 1;
+        } else {
+          // Add the uid and increment the count
+          uidList.add(uid);
+          responses[responseIndex]['count'] =
+              (responses[responseIndex]['count'] ?? 0) + 1;
+        }
+
+        // Update the uid list and count in the response
+        responses[responseIndex]['uid'] = uidList;
 
         // Update the 'responses' field in Firestore
         await messageRef.update({'responses': responses});
