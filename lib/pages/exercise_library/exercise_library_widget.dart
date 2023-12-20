@@ -102,23 +102,18 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    'rvjg82nr' /* VARIANT */,
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Jost',
-                        fontSize: 32.0,
-                      ),
-                ),
+          title: Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                '5ovfnw7u' /* VARIANT */,
               ),
-            ],
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Jost',
+                    fontSize: 32.0,
+                  ),
+            ),
           ),
           actions: [
             FlutterFlowIconButton(

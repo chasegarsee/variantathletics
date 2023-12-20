@@ -107,7 +107,7 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // exerciseLibrary
   {
-    'rvjg82nr': {
+    '5ovfnw7u': {
       'en': 'VARIANT',
       'th': 'VARIANT',
     },
