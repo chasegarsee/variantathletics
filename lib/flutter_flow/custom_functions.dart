@@ -22,6 +22,7 @@ dynamic convertFBPUserToJSON(UsersRecord usersDoc) {
     'uid': usersDoc.uid,
     'currentProgram': usersDoc.currentProgram,
     'weightHistory': usersDoc.weightHistory,
+    'macros': usersDoc.macros,
   };
 }
 

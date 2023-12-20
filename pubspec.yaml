@@ -80,7 +80,8 @@ dependencies:
   just_audio_platform_interface: 4.2.1
   just_audio_web: 0.4.8
   mask_text_input_formatter: 2.4.0
-  page_transition: ^2.1.0
+  package:cloud_firestorecloud_firestore.dart
+  page_transition: 2.1.0
   path_provider: 2.0.14
   path_provider_android: 2.0.25
   path_provider_foundation: 2.2.2

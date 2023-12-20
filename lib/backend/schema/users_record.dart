@@ -88,6 +88,11 @@ class UsersRecord extends FirestoreRecord {
   List<WeightHistoryStruct> get weightHistory => _weightHistory ?? const [];
   bool hasWeightHistory() => _weightHistory != null;
 
+  // "macros" field.
+  MacrosStruct? _macros;
+  MacrosStruct get macros => _macros ?? MacrosStruct();
+  bool hasMacros() => _macros != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -113,6 +118,7 @@ class UsersRecord extends FirestoreRecord {
       snapshotData['weightHistory'],
       WeightHistoryStruct.fromMap,
     );
+    _macros = MacrosStruct.maybeFromMap(snapshotData['macros']);
   }
 
   static CollectionReference get collection =>
@@ -160,6 +166,7 @@ Map<String, dynamic> createUsersRecordData({
   bool? isSubbed,
   UserDemographicsStruct? demographics,
   String? currentProgram,
+  MacrosStruct? macros,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -174,11 +181,15 @@ Map<String, dynamic> createUsersRecordData({
       'isSubbed': isSubbed,
       'demographics': UserDemographicsStruct().toMap(),
       'currentProgram': currentProgram,
+      'macros': MacrosStruct().toMap(),
     }.withoutNulls,
   );
 
   // Handle nested data for "demographics" field.
   addUserDemographicsStructData(firestoreData, demographics, 'demographics');
+
+  // Handle nested data for "macros" field.
+  addMacrosStructData(firestoreData, macros, 'macros');
 
   return firestoreData;
 }
@@ -202,7 +213,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.isSubbed == e2?.isSubbed &&
         e1?.demographics == e2?.demographics &&
         e1?.currentProgram == e2?.currentProgram &&
-        listEquality.equals(e1?.weightHistory, e2?.weightHistory);
+        listEquality.equals(e1?.weightHistory, e2?.weightHistory) &&
+        e1?.macros == e2?.macros;
   }
 
   @override
@@ -220,7 +232,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.isSubbed,
         e?.demographics,
         e?.currentProgram,
-        e?.weightHistory
+        e?.weightHistory,
+        e?.macros
       ]);
 
   @override

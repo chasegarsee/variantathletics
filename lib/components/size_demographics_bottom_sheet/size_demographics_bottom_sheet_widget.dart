@@ -726,6 +726,19 @@ class _SizeDemographicsBottomSheetWidgetState
                                               ),
                                               clearUnsetFields: false,
                                             ),
+                                            macros: updateMacrosStruct(
+                                              functions.macroCalculator(
+                                                  int.parse(_model
+                                                      .ageController.text),
+                                                  int.parse(_model
+                                                      .weightController.text),
+                                                  int.parse(_model
+                                                      .heightController.text),
+                                                  _model.activityLevelValue!,
+                                                  _model.goalValue!,
+                                                  _model.genderValue!),
+                                              clearUnsetFields: false,
+                                            ),
                                           ),
                                           ...mapToFirestore(
                                             {
