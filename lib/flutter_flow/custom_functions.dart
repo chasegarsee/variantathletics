@@ -408,7 +408,3 @@ int unreadMessageCount(
   // Ensure the count is not negative and does not exceed 9
   return unreadCount.clamp(0, 9);
 }
-
-int totalMessageCount(List<MessagesStruct> messages) {
-  return messages.length;
-}
