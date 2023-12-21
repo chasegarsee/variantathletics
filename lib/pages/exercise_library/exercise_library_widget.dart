@@ -277,56 +277,60 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                 },
               ),
             ),
-            Stack(
-              children: [
-                if (!FFAppState().isTimerRunning)
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 20.0,
-                      borderWidth: 0.0,
-                      buttonSize: 40.0,
-                      icon: Icon(
-                        Icons.message_sharp,
-                        color: FlutterFlowTheme.of(context).accent2,
-                        size: 25.0,
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+              child: Stack(
+                children: [
+                  if (!FFAppState().isTimerRunning)
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 20.0,
+                        borderWidth: 0.0,
+                        buttonSize: 40.0,
+                        icon: Icon(
+                          Icons.message_sharp,
+                          color: FlutterFlowTheme.of(context).accent2,
+                          size: 25.0,
+                        ),
+                        onPressed: () async {
+                          context.pushNamed('MessageCenter');
+                        },
                       ),
-                      onPressed: () async {
-                        context.pushNamed('MessageCenter');
-                      },
                     ),
-                  ),
-                if (valueOrDefault(currentUserDocument?.readMessages, 0) !=
-                    _model.messages?.length)
-                  AuthUserStreamWidget(
-                    builder: (context) => Container(
-                      width: 20.0,
-                      height: 20.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).error,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          functions
-                              .unreadMessageCount(
-                                  _model.messages!.length,
-                                  valueOrDefault(
-                                      currentUserDocument?.readMessages, 0))
-                              .toString(),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Jost',
-                                    color: FlutterFlowTheme.of(context).info,
-                                    fontSize: 12.0,
-                                  ),
+                  if (valueOrDefault(currentUserDocument?.readMessages, 0) !=
+                      _model.messages?.length)
+                    AuthUserStreamWidget(
+                      builder: (context) => Container(
+                        width: 20.0,
+                        height: 20.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).error,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            functions
+                                .unreadMessageCount(
+                                    _model.messages!.length,
+                                    valueOrDefault(
+                                        currentUserDocument?.readMessages, 0))
+                                .toString(),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  color: FlutterFlowTheme.of(context).info,
+                                  fontSize: 12.0,
+                                ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ],
           centerTitle: true,
