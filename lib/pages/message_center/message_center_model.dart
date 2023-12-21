@@ -25,7 +25,7 @@ class MessageCenterModel extends FlutterFlowModel<MessageCenterWidget> {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in MessageCenter widget.
-  List<MessagesRecord>? messages;
+  int? messageCount;
 
   /// Initialization and disposal methods.
 
