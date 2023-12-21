@@ -44,10 +44,15 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
         queryBuilder: (messagesRecord) =>
             messagesRecord.orderBy('date', descending: true),
       );
+      if (valueOrDefault(currentUserDocument?.readMessages, 0) ==
+          _model.messages?.length) {
+        return;
+      }
 
       await currentUserReference!.update(createUsersRecordData(
         readMessages: _model.messages?.length,
       ));
+      return;
     });
   }
 
