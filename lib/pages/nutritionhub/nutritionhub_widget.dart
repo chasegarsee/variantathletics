@@ -35,7 +35,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if ((currentUserDocument!.demographics.age <= 0) ||
-          (currentUserDocument?.macros == null)) {
+          !currentUserDocument!.macros.hasTotalCalories()) {
         await showModalBottomSheet(
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
