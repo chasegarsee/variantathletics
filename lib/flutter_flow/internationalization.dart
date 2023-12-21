@@ -723,7 +723,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '8oeyy7ai': {
       'en': ' ',
-      'th': '',
+      'th': ' ',
     },
     '8t2tjpm4': {
       'en': 'Message Center',
