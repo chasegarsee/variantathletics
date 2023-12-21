@@ -396,7 +396,7 @@ bool allCountsAreZero(List<ResponsesStruct> responses) {
 
 int unreadMessageCount(
   int messages,
-  int? readMessages,
+  int readMessages,
 ) {
   // If readMessages is null, return 0 immediately
   if (readMessages == null) {
