@@ -34,7 +34,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (currentUserDocument!.demographics.age <= 0) {
+      if ((currentUserDocument!.demographics.age <= 0) ||
+          (currentUserDocument?.macros == null)) {
         await showModalBottomSheet(
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
@@ -235,15 +236,21 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                                Text(
-                                  FFAppState().macros.totalCalories.toString(),
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: 'Jost',
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                      ),
+                                AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    valueOrDefault<String>(
+                                      currentUserDocument?.macros?.totalCalories
+                                          ?.toString(),
+                                      '0',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                        ),
+                                  ),
                                 ),
                                 if (currentUserDocument!.demographics.goal > 0)
                                   AuthUserStreamWidget(
@@ -354,10 +361,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: FFAppState()
-                                            .macros
-                                            .protein
-                                            .toString(),
+                                        text: valueOrDefault<String>(
+                                          currentUserDocument?.macros?.protein
+                                              ?.toString(),
+                                          '0',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -454,10 +462,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: FFAppState()
-                                            .macros
-                                            .carbs
-                                            .toString(),
+                                        text: valueOrDefault<String>(
+                                          currentUserDocument?.macros?.carbs
+                                              ?.toString(),
+                                          '0',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -547,8 +556,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text:
-                                            FFAppState().macros.fat.toString(),
+                                        text: valueOrDefault<String>(
+                                          currentUserDocument?.macros?.fat
+                                              ?.toString(),
+                                          '0',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -611,27 +623,42 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.45,
-                      height: 175.0,
-                      child: FlutterFlowPieChart(
-                        data: FFPieChartData(
-                          values: functions.macroPercentageCalc(
-                              FFAppState().macros.totalCalories,
-                              FFAppState().macros.protein,
-                              FFAppState().macros.carbs,
-                              FFAppState().macros.fat),
-                          colors: chartPieChartColorsList4,
-                          radius: [70.0],
-                        ),
-                        donutHoleRadius: 0.0,
-                        donutHoleColor: Colors.transparent,
-                        sectionLabelType: PieChartSectionLabelType.percent,
-                        sectionLabelStyle:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  fontFamily: 'Jost',
-                                  fontSize: 14.0,
+                    AuthUserStreamWidget(
+                      builder: (context) => Container(
+                        width: MediaQuery.sizeOf(context).width * 0.45,
+                        height: 175.0,
+                        child: FlutterFlowPieChart(
+                          data: FFPieChartData(
+                            values: functions.macroPercentageCalc(
+                                valueOrDefault<int>(
+                                  currentUserDocument?.macros?.totalCalories,
+                                  0,
                                 ),
+                                valueOrDefault<int>(
+                                  currentUserDocument?.macros?.protein,
+                                  0,
+                                ),
+                                valueOrDefault<int>(
+                                  currentUserDocument?.macros?.carbs,
+                                  0,
+                                ),
+                                valueOrDefault<int>(
+                                  currentUserDocument?.macros?.fat,
+                                  0,
+                                )),
+                            colors: chartPieChartColorsList4,
+                            radius: [70.0],
+                          ),
+                          donutHoleRadius: 0.0,
+                          donutHoleColor: Colors.transparent,
+                          sectionLabelType: PieChartSectionLabelType.percent,
+                          sectionLabelStyle: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: 'Jost',
+                                fontSize: 14.0,
+                              ),
+                        ),
                       ),
                     ),
                     AuthUserStreamWidget(
@@ -721,7 +748,11 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 TextSpan(
                                   text: functions
                                       .handPortionsCalc(
-                                          FFAppState().macros.protein,
+                                          valueOrDefault<int>(
+                                            currentUserDocument
+                                                ?.macros?.protein,
+                                            0,
+                                          ),
                                           currentUserDocument!
                                               .demographics.gender,
                                           'protein')
@@ -766,7 +797,8 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   text: functions
                                       .convertMacroToFoodWeight(
                                           valueOrDefault<int>(
-                                            FFAppState().macros.protein,
+                                            currentUserDocument
+                                                ?.macros?.protein,
                                             0,
                                           ),
                                           'protein')
@@ -822,7 +854,10 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               TextSpan(
                                 text: functions
                                     .handPortionsCalc(
-                                        FFAppState().macros.carbs,
+                                        valueOrDefault<int>(
+                                          currentUserDocument?.macros?.carbs,
+                                          0,
+                                        ),
                                         currentUserDocument!
                                             .demographics.gender,
                                         'veggies')
@@ -867,7 +902,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 text: functions
                                     .convertMacroToFoodWeight(
                                         valueOrDefault<int>(
-                                          FFAppState().macros.carbs,
+                                          currentUserDocument?.macros?.carbs,
                                           0,
                                         ),
                                         'veggies')
@@ -922,7 +957,10 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                               TextSpan(
                                 text: functions
                                     .handPortionsCalc(
-                                        FFAppState().macros.carbs,
+                                        valueOrDefault<int>(
+                                          currentUserDocument?.macros?.carbs,
+                                          0,
+                                        ),
                                         currentUserDocument!
                                             .demographics.gender,
                                         'carbs')
@@ -967,7 +1005,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 text: functions
                                     .convertMacroToFoodWeight(
                                         valueOrDefault<int>(
-                                          FFAppState().macros.carbs,
+                                          currentUserDocument?.macros?.carbs,
                                           0,
                                         ),
                                         'carbs')
@@ -1025,7 +1063,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                 TextSpan(
                                   text: functions
                                       .handPortionsCalc(
-                                          FFAppState().macros.fat,
+                                          currentUserDocument!.macros.fat,
                                           currentUserDocument!
                                               .demographics.gender,
                                           'fat')
@@ -1070,7 +1108,7 @@ class _NutritionhubWidgetState extends State<NutritionhubWidget> {
                                   text: functions
                                       .convertMacroToFoodWeight(
                                           valueOrDefault<int>(
-                                            FFAppState().macros.fat,
+                                            currentUserDocument?.macros?.fat,
                                             0,
                                           ),
                                           'fat')
