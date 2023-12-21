@@ -398,9 +398,12 @@ int unreadMessageCount(
   int messages,
   int? readMessages,
 ) {
-  // If readMessages is null, treat it as 0
-  int readCount = readMessages ?? 0;
-  int unreadCount = messages - readCount;
+  // If readMessages is null, return 0 immediately
+  if (readMessages == null) {
+    return 0;
+  }
+
+  int unreadCount = messages - readMessages;
 
   // Ensure the count is not negative and does not exceed 9
   return unreadCount.clamp(0, 9);
