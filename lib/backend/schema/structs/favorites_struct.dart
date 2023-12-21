@@ -34,8 +34,9 @@ class FavoritesStruct extends FFFirebaseStruct {
         id: data['id'] as String?,
       );
 
-  static FavoritesStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? FavoritesStruct.fromMap(data) : null;
+  static FavoritesStruct? maybeFromMap(dynamic data) => data is Map
+      ? FavoritesStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

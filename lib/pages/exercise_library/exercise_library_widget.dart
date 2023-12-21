@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:async';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
@@ -41,6 +42,11 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      unawaited(
+        () async {
+          _model.messages = await queryMessagesRecordOnce();
+        }(),
+      );
       if (FFAppState().exercises.length <= 0) {
         _model.exerciseList = await queryExercisesRecordOnce();
         FFAppState().update(() {
@@ -102,19 +108,6 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
-          title: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Text(
-              FFLocalizations.of(context).getText(
-                '5ovfnw7u' /* VARIANT */,
-              ),
-              textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Jost',
-                    fontSize: 32.0,
-                  ),
-            ),
-          ),
           actions: [
             FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -283,6 +276,57 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                   }
                 },
               ),
+            ),
+            Stack(
+              children: [
+                if (!FFAppState().isTimerRunning)
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 20.0,
+                      borderWidth: 0.0,
+                      buttonSize: 40.0,
+                      icon: Icon(
+                        Icons.message_sharp,
+                        color: FlutterFlowTheme.of(context).accent2,
+                        size: 25.0,
+                      ),
+                      onPressed: () async {
+                        context.pushNamed('MessageCenter');
+                      },
+                    ),
+                  ),
+                if (valueOrDefault(currentUserDocument?.readMessages, 0) !=
+                    _model.messages?.length)
+                  AuthUserStreamWidget(
+                    builder: (context) => Container(
+                      width: 20.0,
+                      height: 20.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).error,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Text(
+                          functions
+                              .unreadMessageCount(
+                                  _model.messages!.length,
+                                  valueOrDefault(
+                                      currentUserDocument?.readMessages, 0))
+                              .toString(),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context).info,
+                                    fontSize: 12.0,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ],
           centerTitle: true,

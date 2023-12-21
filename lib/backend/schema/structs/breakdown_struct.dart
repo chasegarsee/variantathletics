@@ -36,8 +36,9 @@ class BreakdownStruct extends FFFirebaseStruct {
         th: getDataList(data['th']),
       );
 
-  static BreakdownStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? BreakdownStruct.fromMap(data) : null;
+  static BreakdownStruct? maybeFromMap(dynamic data) => data is Map
+      ? BreakdownStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'en': _en,

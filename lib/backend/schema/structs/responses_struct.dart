@@ -45,8 +45,9 @@ class ResponsesStruct extends FFFirebaseStruct {
         uid: getDataList(data['uid']),
       );
 
-  static ResponsesStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? ResponsesStruct.fromMap(data) : null;
+  static ResponsesStruct? maybeFromMap(dynamic data) => data is Map
+      ? ResponsesStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'count': _count,

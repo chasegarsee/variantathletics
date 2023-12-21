@@ -23,6 +23,7 @@ dynamic convertFBPUserToJSON(UsersRecord usersDoc) {
     'currentProgram': usersDoc.currentProgram,
     'weightHistory': usersDoc.weightHistory,
     'macros': usersDoc.macros,
+    'readMessages': usersDoc.readMessages,
   };
 }
 
@@ -391,4 +392,18 @@ bool allCountsAreZero(List<ResponsesStruct> responses) {
     }
   }
   return true;
+}
+
+int? unreadMessageCount(
+  int messages,
+  int readMessages,
+) {
+  int unreadCount = messages - readMessages;
+  return unreadCount >= 0
+      ? unreadCount
+      : 0; // Ensuring the count is not negative
+}
+
+int totalMessageCount(List<MessagesStruct> messages) {
+  return messages.length;
 }

@@ -78,10 +78,9 @@ class UserDemographicsStruct extends FFFirebaseStruct {
         goal: castToType<int>(data['goal']),
       );
 
-  static UserDemographicsStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? UserDemographicsStruct.fromMap(data)
-          : null;
+  static UserDemographicsStruct? maybeFromMap(dynamic data) => data is Map
+      ? UserDemographicsStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'age': _age,

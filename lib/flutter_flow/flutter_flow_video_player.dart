@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
@@ -54,11 +55,12 @@ class _FlutterFlowVideoPlayerState extends State<FlutterFlowVideoPlayer>
   ChewieController? _chewieController;
   bool _loggedError = false;
   bool _subscribedRoute = false;
+  bool _isFullScreen = false;
 
   @override
   void initState() {
     super.initState();
-    initializePlayer();
+    _initializePlayer();
   }
 
   @override
@@ -66,9 +68,7 @@ class _FlutterFlowVideoPlayerState extends State<FlutterFlowVideoPlayer>
     if (_subscribedRoute) {
       routeObserver.unsubscribe(this);
     }
-    _videoPlayers.remove(_videoPlayerController);
-    _videoPlayerController?.dispose();
-    _chewieController?.dispose();
+    _disposeCurrentPlayer();
     super.dispose();
   }
 
@@ -76,10 +76,8 @@ class _FlutterFlowVideoPlayerState extends State<FlutterFlowVideoPlayer>
   void didUpdateWidget(FlutterFlowVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.path != widget.path) {
-      _videoPlayers.remove(_videoPlayerController);
-      _videoPlayerController?.dispose();
-      _chewieController?.dispose();
-      initializePlayer();
+      _disposeCurrentPlayer();
+      _initializePlayer();
     }
   }
 
@@ -112,7 +110,13 @@ class _FlutterFlowVideoPlayerState extends State<FlutterFlowVideoPlayer>
       _chewieController?.videoPlayerController.value.aspectRatio ??
       kDefaultAspectRatio;
 
-  Future initializePlayer() async {
+  void _disposeCurrentPlayer() {
+    _videoPlayers.remove(_videoPlayerController);
+    _videoPlayerController?.dispose();
+    _chewieController?.dispose();
+  }
+
+  Future _initializePlayer() async {
     _videoPlayerController = widget.videoType == VideoType.network
         ? VideoPlayerController.network(widget.path)
         : VideoPlayerController.asset(widget.path);
@@ -159,6 +163,21 @@ class _FlutterFlowVideoPlayerState extends State<FlutterFlowVideoPlayer>
           }
         });
       }
+    });
+
+    _chewieController!.addListener(() {
+      // On web, Chewie has issues when exiting fullscreen. As a workaround,
+      // reset the video player when exiting fullscreen, as suggested here:
+      // https://github.com/fluttercommunity/chewie/issues/688#issuecomment-1790033300.
+      if (kIsWeb && !_chewieController!.isFullScreen && _isFullScreen) {
+        SchedulerBinding.instance.addPostFrameCallback((_) async {
+          final position = _videoPlayerController!.value.position;
+          _disposeCurrentPlayer();
+          await _initializePlayer();
+          _videoPlayerController!.seekTo(position);
+        });
+      }
+      _isFullScreen = _chewieController!.isFullScreen;
     });
 
     setState(() {});

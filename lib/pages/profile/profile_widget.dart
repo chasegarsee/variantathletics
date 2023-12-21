@@ -73,18 +73,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             context.pop();
           },
         ),
-        title: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
-          child: Text(
-            FFLocalizations.of(context).getText(
-              '1hgogtli' /* VARIANT */,
-            ),
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Jost',
-                  fontSize: 32.0,
-                ),
-          ),
-        ),
         actions: [],
         centerTitle: true,
         elevation: 2.0,

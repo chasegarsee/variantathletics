@@ -925,6 +925,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   5.0, 10.0, 5.0, 10.0),
                               child: AutoSizeText(
                                 FFAppState().selectedDayName,
+                                textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineLarge
                                     .override(

@@ -68,7 +68,7 @@ class DaysStruct extends FFFirebaseStruct {
       );
 
   static DaysStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? DaysStruct.fromMap(data) : null;
+      data is Map ? DaysStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

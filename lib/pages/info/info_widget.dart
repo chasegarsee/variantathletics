@@ -75,19 +75,6 @@ class _InfoWidgetState extends State<InfoWidget> {
               context.pop();
             },
           ),
-          title: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Text(
-              FFLocalizations.of(context).getText(
-                'fn2v0o01' /* VARIANT */,
-              ),
-              textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Jost',
-                    fontSize: 32.0,
-                  ),
-            ),
-          ),
           actions: [],
           centerTitle: true,
           elevation: 2.0,

@@ -58,7 +58,7 @@ class MacrosStruct extends FFFirebaseStruct {
       );
 
   static MacrosStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? MacrosStruct.fromMap(data) : null;
+      data is Map ? MacrosStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'totalCalories': _totalCalories,

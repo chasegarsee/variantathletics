@@ -58,7 +58,7 @@ class ProgramStruct extends FFFirebaseStruct {
       );
 
   static ProgramStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? ProgramStruct.fromMap(data) : null;
+      data is Map ? ProgramStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

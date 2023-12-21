@@ -53,8 +53,9 @@ class StripeCustomersStruct extends FFFirebaseStruct {
         paymentStatus: data['paymentStatus'] as String?,
       );
 
-  static StripeCustomersStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? StripeCustomersStruct.fromMap(data) : null;
+  static StripeCustomersStruct? maybeFromMap(dynamic data) => data is Map
+      ? StripeCustomersStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'email': _email,

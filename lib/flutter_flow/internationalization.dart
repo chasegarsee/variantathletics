@@ -107,10 +107,6 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // exerciseLibrary
   {
-    '5ovfnw7u': {
-      'en': 'VARIANT',
-      'th': 'VARIANT',
-    },
     '7lqtxh5b': {
       'en': 'All Exercises',
       'th': 'ทั้งหมด',
@@ -355,10 +351,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Program',
       'th': 'โปรแกรม',
     },
-    'nrgtv1li': {
-      'en': 'VARIANT',
-      'th': 'VARIANT',
-    },
     '2gueynm6': {
       'en': 'Timer',
       'th': '',
@@ -563,10 +555,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Log Out',
       'th': 'ออกจากระบบ',
     },
-    '1hgogtli': {
-      'en': 'VARIANT',
-      'th': 'VARIANT',
-    },
     '8g0phl9g': {
       'en': '__',
       'th': '',
@@ -692,10 +680,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '219d9vcd': {
       'en': 'Change password',
       'th': 'เปลี่ยนรหัสผ่าน',
-    },
-    'fn2v0o01': {
-      'en': 'VARIANT',
-      'th': 'VARIANT',
     },
     '87igkgu5': {
       'en': 'Home',

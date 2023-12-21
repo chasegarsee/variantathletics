@@ -82,24 +82,6 @@ class _TimerWidgetState extends State<TimerWidget> {
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    'nrgtv1li' /* VARIANT */,
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Jost',
-                        fontSize: 32.0,
-                      ),
-                ),
-              ),
-            ],
-          ),
           actions: [],
           centerTitle: false,
           elevation: 2.0,

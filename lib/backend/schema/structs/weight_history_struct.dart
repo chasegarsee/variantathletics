@@ -37,8 +37,9 @@ class WeightHistoryStruct extends FFFirebaseStruct {
         date: castToType<int>(data['date']),
       );
 
-  static WeightHistoryStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? WeightHistoryStruct.fromMap(data) : null;
+  static WeightHistoryStruct? maybeFromMap(dynamic data) => data is Map
+      ? WeightHistoryStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'weight': _weight,

@@ -93,6 +93,11 @@ class UsersRecord extends FirestoreRecord {
   MacrosStruct get macros => _macros ?? MacrosStruct();
   bool hasMacros() => _macros != null;
 
+  // "readMessages" field.
+  int? _readMessages;
+  int get readMessages => _readMessages ?? 0;
+  bool hasReadMessages() => _readMessages != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -119,6 +124,7 @@ class UsersRecord extends FirestoreRecord {
       WeightHistoryStruct.fromMap,
     );
     _macros = MacrosStruct.maybeFromMap(snapshotData['macros']);
+    _readMessages = castToType<int>(snapshotData['readMessages']);
   }
 
   static CollectionReference get collection =>
@@ -167,6 +173,7 @@ Map<String, dynamic> createUsersRecordData({
   UserDemographicsStruct? demographics,
   String? currentProgram,
   MacrosStruct? macros,
+  int? readMessages,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -182,6 +189,7 @@ Map<String, dynamic> createUsersRecordData({
       'demographics': UserDemographicsStruct().toMap(),
       'currentProgram': currentProgram,
       'macros': MacrosStruct().toMap(),
+      'readMessages': readMessages,
     }.withoutNulls,
   );
 
@@ -214,7 +222,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.demographics == e2?.demographics &&
         e1?.currentProgram == e2?.currentProgram &&
         listEquality.equals(e1?.weightHistory, e2?.weightHistory) &&
-        e1?.macros == e2?.macros;
+        e1?.macros == e2?.macros &&
+        e1?.readMessages == e2?.readMessages;
   }
 
   @override
@@ -233,7 +242,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.demographics,
         e?.currentProgram,
         e?.weightHistory,
-        e?.macros
+        e?.macros,
+        e?.readMessages
       ]);
 
   @override

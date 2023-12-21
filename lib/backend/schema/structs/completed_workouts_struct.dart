@@ -46,10 +46,9 @@ class CompletedWorkoutsStruct extends FFFirebaseStruct {
         isComplete: data['isComplete'] as bool?,
       );
 
-  static CompletedWorkoutsStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? CompletedWorkoutsStruct.fromMap(data)
-          : null;
+  static CompletedWorkoutsStruct? maybeFromMap(dynamic data) => data is Map
+      ? CompletedWorkoutsStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'exerciseIndexes': _exerciseIndexes,

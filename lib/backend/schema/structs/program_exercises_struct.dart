@@ -80,10 +80,9 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
         tempo: data['tempo'] as String?,
       );
 
-  static ProgramExercisesStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? ProgramExercisesStruct.fromMap(data)
-          : null;
+  static ProgramExercisesStruct? maybeFromMap(dynamic data) => data is Map
+      ? ProgramExercisesStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

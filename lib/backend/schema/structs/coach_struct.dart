@@ -114,7 +114,7 @@ class CoachStruct extends FFFirebaseStruct {
       );
 
   static CoachStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CoachStruct.fromMap(data) : null;
+      data is Map ? CoachStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'bannerUrl': _bannerUrl,

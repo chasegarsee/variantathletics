@@ -41,7 +41,7 @@ class WeeksStruct extends FFFirebaseStruct {
       );
 
   static WeeksStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? WeeksStruct.fromMap(data) : null;
+      data is Map ? WeeksStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'weekNumber': _weekNumber,
