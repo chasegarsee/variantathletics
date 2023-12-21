@@ -290,8 +290,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           color: FlutterFlowTheme.of(context).accent2,
                           size: 25.0,
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
+                        onPressed: () async {
+                          context.pushNamed('MessageCenter');
                         },
                       ),
                     ),
