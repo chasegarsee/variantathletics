@@ -299,36 +299,33 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                         },
                       ),
                     ),
-                  if (valueOrDefault(currentUserDocument?.readMessages, 0) !=
-                      _model.messages?.length)
-                    AuthUserStreamWidget(
-                      builder: (context) => Container(
-                        width: 20.0,
-                        height: 20.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).error,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Text(
-                            functions
-                                .unreadMessageCount(
-                                    _model.messages!.length,
-                                    valueOrDefault(
-                                        currentUserDocument?.readMessages, 0))
-                                .toString(),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Jost',
-                                  color: FlutterFlowTheme.of(context).info,
-                                  fontSize: 12.0,
-                                ),
-                          ),
+                  Container(
+                    width: 20.0,
+                    height: 20.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).error,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => Text(
+                          functions
+                              .unreadMessageCount(
+                                  _model.messages!.length,
+                                  valueOrDefault(
+                                      currentUserDocument?.readMessages, 0))
+                              .toString(),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context).info,
+                                    fontSize: 12.0,
+                                  ),
                         ),
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
