@@ -294,67 +294,56 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                         },
                       ),
                     ),
-                  Container(
-                    width: 20.0,
-                    height: 20.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).error,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => Text(
-                                valueOrDefault<String>(
-                                  functions
-                                      .unreadMessageCount(
-                                          valueOrDefault<int>(
-                                            _model.messages?.length,
-                                            0,
-                                          ),
-                                          valueOrDefault<int>(
-                                            valueOrDefault(
-                                                currentUserDocument
-                                                    ?.readMessages,
-                                                0),
-                                            0,
-                                          ))
-                                      .toString(),
-                                  '0',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      color: FlutterFlowTheme.of(context).info,
-                                      fontSize: 12.0,
-                                    ),
+                  if (valueOrDefault<bool>(
+                    valueOrDefault<int>(
+                          functions.unreadMessageCount(
+                              valueOrDefault<int>(
+                                _model.messages?.length,
+                                0,
                               ),
-                            ),
-                          ),
-                          if (functions.unreadMessageCount(
-                                  valueOrDefault<int>(
-                                    _model.messages?.length,
-                                    0,
-                                  ),
-                                  valueOrDefault<int>(
-                                    valueOrDefault(
-                                        currentUserDocument?.readMessages, 0),
-                                    0,
-                                  )) >
-                              0)
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => Text(
-                                  FFLocalizations.of(context).getText(
-                                    'hltrs9ek' /* + */,
+                              valueOrDefault<int>(
+                                valueOrDefault(
+                                    currentUserDocument?.readMessages, 0),
+                                0,
+                              )),
+                          0,
+                        ) >
+                        0,
+                    false,
+                  ))
+                    AuthUserStreamWidget(
+                      builder: (context) => Container(
+                        width: 20.0,
+                        height: 20.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).error,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    functions
+                                        .unreadMessageCount(
+                                            valueOrDefault<int>(
+                                              _model.messages?.length,
+                                              0,
+                                            ),
+                                            valueOrDefault<int>(
+                                              valueOrDefault(
+                                                  currentUserDocument
+                                                      ?.readMessages,
+                                                  0),
+                                              0,
+                                            ))
+                                        .toString(),
+                                    '0',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -366,11 +355,39 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                       ),
                                 ),
                               ),
-                            ),
-                        ],
+                              if (functions.unreadMessageCount(
+                                      valueOrDefault<int>(
+                                        _model.messages?.length,
+                                        0,
+                                      ),
+                                      valueOrDefault<int>(
+                                        valueOrDefault(
+                                            currentUserDocument?.readMessages,
+                                            0),
+                                        0,
+                                      )) ==
+                                  9)
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'hltrs9ek' /* + */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          fontSize: 12.0,
+                                        ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
