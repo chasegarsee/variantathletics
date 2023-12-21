@@ -311,16 +311,23 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => Text(
-                                functions
-                                    .unreadMessageCount(
-                                        _model.messages!.length,
-                                        valueOrDefault<int>(
-                                          valueOrDefault(
-                                              currentUserDocument?.readMessages,
-                                              0),
-                                          0,
-                                        ))
-                                    .toString(),
+                                valueOrDefault<String>(
+                                  functions
+                                      .unreadMessageCount(
+                                          valueOrDefault<int>(
+                                            _model.messages?.length,
+                                            0,
+                                          ),
+                                          valueOrDefault<int>(
+                                            valueOrDefault(
+                                                currentUserDocument
+                                                    ?.readMessages,
+                                                0),
+                                            0,
+                                          ))
+                                      .toString(),
+                                  '0',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
