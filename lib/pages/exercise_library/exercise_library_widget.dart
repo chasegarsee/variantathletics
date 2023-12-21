@@ -332,7 +332,10 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             ),
                           ),
                           if (functions.unreadMessageCount(
-                                  _model.messages!.length,
+                                  valueOrDefault<int>(
+                                    _model.messages?.length,
+                                    0,
+                                  ),
                                   valueOrDefault<int>(
                                     valueOrDefault(
                                         currentUserDocument?.readMessages, 0),
