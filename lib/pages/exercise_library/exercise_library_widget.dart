@@ -327,29 +327,21 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                               ),
                             ),
                           ),
-                          if (functions.unreadMessageCount(
-                                  _model.messages!.length,
-                                  valueOrDefault(
-                                      currentUserDocument?.readMessages, 0)) >
-                              0)
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => Text(
-                                  FFLocalizations.of(context).getText(
-                                    'hltrs9ek' /* + */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Jost',
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        fontSize: 12.0,
-                                      ),
-                                ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'hltrs9ek' /* + */,
                               ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context).info,
+                                    fontSize: 12.0,
+                                  ),
                             ),
+                          ),
                         ],
                       ),
                     ),
