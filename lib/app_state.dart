@@ -920,6 +920,18 @@ class FFAppState extends ChangeNotifier {
         'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
   }
 
+  int _editProgramSelectedDayIndex = 0;
+  int get editProgramSelectedDayIndex => _editProgramSelectedDayIndex;
+  set editProgramSelectedDayIndex(int _value) {
+    _editProgramSelectedDayIndex = _value;
+  }
+
+  int _editProgramSelectedWeekIndex = 0;
+  int get editProgramSelectedWeekIndex => _editProgramSelectedWeekIndex;
+  set editProgramSelectedWeekIndex(int _value) {
+    _editProgramSelectedWeekIndex = _value;
+  }
+
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
   Stream<List<ExercisesRecord>> exercise({
     String? uniqueQueryKey,

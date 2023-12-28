@@ -767,7 +767,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    '4wtjwr3c': {
+    'bgsm0y1y': {
       'en': 'Home',
       'th': '',
     },
@@ -1163,7 +1163,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
-  // exerciseDropDown
+  // editExercise
   {
     '478ocvy6': {
       'en': 'Option 1',
@@ -1177,57 +1177,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'th': '',
     },
-  },
-  // setEditField
-  {
-    '1vt4h2ks': {
-      'en': 'Label here...',
+    'w281g3cm': {
+      'en': 'sets',
       'th': '',
     },
-  },
-  // editExercise
-  {
-    'kv9ka3tm': {
-      'en': 'Option 1',
+    '5ukprbsb': {
+      'en': 'reps',
       'th': '',
     },
-    'ox6sj0nm': {
-      'en': 'Please select...',
+    '60um87cx': {
+      'en': 'reps',
       'th': '',
     },
-    'msftga47': {
-      'en': 'Search for an item...',
-      'th': '',
-    },
-    '6tbl6vq9': {
-      'en': 'Sets',
-      'th': 'เซ็ต',
-    },
-    'lk81akwj': {
-      'en': 'Reps',
-      'th': 'เร็พ',
-    },
-    'dhvsd13m': {
-      'en': 'Label here...',
-      'th': '',
-    },
-    '3ywaox9j': {
-      'en': 'Tempo',
-      'th': 'จังหวะ',
-    },
-    '1lyjzrse': {
+    '9745ik8c': {
       'en': 'Work Time',
-      'th': 'เวลาออกแรง',
+      'th': '',
     },
-    'ai3oxtn1': {
+    'ag10mm7l': {
       'en': 'Rest Time',
-      'th': 'เวลาพัก',
-    },
-  },
-  // setEditor
-  {
-    'z9am4jml': {
-      'en': 'Label here...',
       'th': '',
     },
   },

@@ -1,10 +1,11 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/edit_exercise_widget.dart';
+import '/components/edit_exercise/edit_exercise_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -157,8 +158,13 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
               Padding(
                 padding: EdgeInsets.all(25.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    await actions.updateProgramDay(
+                      widget.program!.reference.id,
+                      FFAppState().editProgramSelectedWeekIndex,
+                      FFAppState().editProgramSelectedDayIndex,
+                      FFAppState().editProgramSelectedDay,
+                    );
                   },
                   text: FFLocalizations.of(context).getText(
                     'kmwtb6k3' /* Update */,

@@ -155,6 +155,8 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                                     weeksItem.weekNumber,
                                     1,
                                   );
+                                  FFAppState().editProgramSelectedWeekIndex =
+                                      weeksIndex;
                                 });
                               },
                               child: Stack(
@@ -256,6 +258,9 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                                         setState(() {
                                           FFAppState().editProgramSelectedDay =
                                               dayItem;
+                                          FFAppState()
+                                                  .editProgramSelectedDayIndex =
+                                              dayIndex;
                                         });
 
                                         context.pushNamed(
