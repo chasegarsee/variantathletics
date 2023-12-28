@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -96,14 +97,27 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
           ),
           child: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: MediaQuery.sizeOf(context).width * 0.75,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                decoration: BoxDecoration(),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: CachedNetworkImage(
+                    fadeInDuration: Duration(milliseconds: 500),
+                    fadeOutDuration: Duration(milliseconds: 500),
+                    imageUrl:
+                        '${FFAppState().exerciseBase}${functions.convertStringToHyphenatedLowerCase(_model.dropDownValue!)}.png?alt=media',
+                    width: MediaQuery.sizeOf(context).width * 0.25,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+              ),
+              Container(
+                width: MediaQuery.sizeOf(context).width * 0.75,
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

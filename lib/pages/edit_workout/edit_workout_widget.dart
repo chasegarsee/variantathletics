@@ -91,7 +91,16 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+              child: Icon(
+                Icons.add,
+                color: FlutterFlowTheme.of(context).accent2,
+                size: 40.0,
+              ),
+            ),
+          ],
           centerTitle: true,
           elevation: 2.0,
         ),

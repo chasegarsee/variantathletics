@@ -93,28 +93,7 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [
-            Visibility(
-              visible: widget.program?.isDaily == false,
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    scaffoldKey.currentState!.openDrawer();
-                  },
-                  child: Icon(
-                    Icons.dehaze,
-                    color: FlutterFlowTheme.of(context).accent2,
-                    size: 30.0,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -123,99 +102,100 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                child: Builder(
-                  builder: (context) {
-                    final weeks = widget.program?.weeks?.toList() ?? [];
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: List.generate(weeks.length, (weeksIndex) {
-                          final weeksItem = weeks[weeksIndex];
-                          return Visibility(
-                            visible: FFAppState().showAllWeeks ||
-                                (weeksItem.weekNumber ==
-                                    FFAppState().selectedWeek),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                setState(() {
-                                  FFAppState().editProgramDays = functions
-                                      .getDaysFromWeek(weeksItem)
-                                      .toList()
-                                      .cast<DaysStruct>();
-                                  FFAppState().editProgramSelectedWeek =
-                                      valueOrDefault<int>(
-                                    weeksItem.weekNumber,
-                                    1,
-                                  );
-                                  FFAppState().editProgramSelectedWeekIndex =
-                                      weeksIndex;
-                                });
-                              },
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 5.0, 0.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 3.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: Container(
-                                          width: 30.0,
-                                          height: 50.0,
-                                          decoration: BoxDecoration(
-                                            color: weeksItem.weekNumber ==
-                                                    valueOrDefault<int>(
-                                                      FFAppState()
-                                                          .editProgramSelectedWeek,
-                                                      1,
-                                                    )
-                                                ? FlutterFlowTheme.of(context)
-                                                    .accent2
-                                                : FlutterFlowTheme.of(context)
-                                                    .primary,
+              if (widget.program!.weeks.length > 1)
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                  child: Builder(
+                    builder: (context) {
+                      final weeks = widget.program?.weeks?.toList() ?? [];
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: List.generate(weeks.length, (weeksIndex) {
+                            final weeksItem = weeks[weeksIndex];
+                            return Visibility(
+                              visible: FFAppState().showAllWeeks ||
+                                  (weeksItem.weekNumber ==
+                                      FFAppState().selectedWeek),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  setState(() {
+                                    FFAppState().editProgramDays = functions
+                                        .getDaysFromWeek(weeksItem)
+                                        .toList()
+                                        .cast<DaysStruct>();
+                                    FFAppState().editProgramSelectedWeek =
+                                        valueOrDefault<int>(
+                                      weeksItem.weekNumber,
+                                      1,
+                                    );
+                                    FFAppState().editProgramSelectedWeekIndex =
+                                        weeksIndex;
+                                  });
+                                },
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 0.0, 5.0, 0.0),
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          elevation: 3.0,
+                                          shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
-                                            shape: BoxShape.rectangle,
                                           ),
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Text(
-                                              'W-${weeksItem.weekNumber.toString()}',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                          child: Container(
+                                            width: 30.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(
+                                              color: weeksItem.weekNumber ==
+                                                      valueOrDefault<int>(
+                                                        FFAppState()
+                                                            .editProgramSelectedWeek,
+                                                        1,
+                                                      )
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .accent2
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              shape: BoxShape.rectangle,
+                                            ),
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                'W-${weeksItem.weekNumber.toString()}',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        }),
-                      ),
-                    );
-                  },
+                            );
+                          }),
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
               Expanded(
                 child: Builder(
                   builder: (context) {

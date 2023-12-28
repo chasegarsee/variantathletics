@@ -781,6 +781,16 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
   }
 
+  DaysStruct _editProgramSelectedDay = DaysStruct();
+  DaysStruct get editProgramSelectedDay => _editProgramSelectedDay;
+  set editProgramSelectedDay(DaysStruct _value) {
+    _editProgramSelectedDay = _value;
+  }
+
+  void updateEditProgramSelectedDayStruct(Function(DaysStruct) updateFn) {
+    updateFn(_editProgramSelectedDay);
+  }
+
   List<WeeksStruct> _editProgramWeeks = [];
   List<WeeksStruct> get editProgramWeeks => _editProgramWeeks;
   set editProgramWeeks(List<WeeksStruct> _value) {
@@ -863,22 +873,6 @@ class FFAppState extends ChangeNotifier {
         _editProgramDays.map((x) => x.serialize()).toList());
   }
 
-  int _editProgramSelectedWeek = 0;
-  int get editProgramSelectedWeek => _editProgramSelectedWeek;
-  set editProgramSelectedWeek(int _value) {
-    _editProgramSelectedWeek = _value;
-  }
-
-  DaysStruct _editProgramSelectedDay = DaysStruct();
-  DaysStruct get editProgramSelectedDay => _editProgramSelectedDay;
-  set editProgramSelectedDay(DaysStruct _value) {
-    _editProgramSelectedDay = _value;
-  }
-
-  void updateEditProgramSelectedDayStruct(Function(DaysStruct) updateFn) {
-    updateFn(_editProgramSelectedDay);
-  }
-
   List<ExercisesStruct> _exerciseList = [];
   List<ExercisesStruct> get exerciseList => _exerciseList;
   set exerciseList(List<ExercisesStruct> _value) {
@@ -918,6 +912,12 @@ class FFAppState extends ChangeNotifier {
     _exerciseList.insert(_index, _value);
     prefs.setStringList(
         'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
+  }
+
+  int _editProgramSelectedWeek = 1;
+  int get editProgramSelectedWeek => _editProgramSelectedWeek;
+  set editProgramSelectedWeek(int _value) {
+    _editProgramSelectedWeek = _value;
   }
 
   int _editProgramSelectedDayIndex = 0;
