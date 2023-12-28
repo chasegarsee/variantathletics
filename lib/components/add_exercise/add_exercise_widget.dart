@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,7 +12,9 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -34,8 +37,25 @@ class AddExerciseWidget extends StatefulWidget {
   _AddExerciseWidgetState createState() => _AddExerciseWidgetState();
 }
 
-class _AddExerciseWidgetState extends State<AddExerciseWidget> {
+class _AddExerciseWidgetState extends State<AddExerciseWidget>
+    with TickerProviderStateMixin {
   late AddExerciseModel _model;
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      loop: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 2000.ms,
+          begin: 0.25,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -171,33 +191,46 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            decoration: BoxDecoration(),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: CachedNetworkImage(
-                                fadeInDuration: Duration(milliseconds: 500),
-                                fadeOutDuration: Duration(milliseconds: 500),
-                                imageUrl:
-                                    '${FFAppState().exerciseBase}${valueOrDefault<String>(
-                                  functions.convertStringToHyphenatedLowerCase(
-                                      _model.dropDownValue!),
-                                  '-',
-                                )}.png?alt=media',
-                                width: MediaQuery.sizeOf(context).width * 0.25,
-                                height: MediaQuery.sizeOf(context).height * 1.0,
-                                fit: BoxFit.cover,
-                                errorWidget: (context, error, stackTrace) =>
-                                    Image.asset(
-                                  'assets/images/error_image.png',
+                            width: MediaQuery.sizeOf(context).width * 0.25,
+                            height: MediaQuery.sizeOf(context).height * 1.0,
+                            decoration: BoxDecoration(
+                              color: Color(0xCCC1C1C1),
+                              borderRadius: BorderRadius.circular(3.0),
+                            ),
+                            child: Visibility(
+                              visible: _model.dropDownValue != null &&
+                                  _model.dropDownValue != '',
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(3.0),
+                                child: CachedNetworkImage(
+                                  fadeInDuration: Duration(milliseconds: 500),
+                                  fadeOutDuration: Duration(milliseconds: 500),
+                                  imageUrl:
+                                      '${FFAppState().exerciseBase}${valueOrDefault<String>(
+                                    functions
+                                        .convertStringToHyphenatedLowerCase(
+                                            _model.dropDownValue!),
+                                    '-',
+                                  )}.png?alt=media',
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.25,
                                   height:
                                       MediaQuery.sizeOf(context).height * 1.0,
                                   fit: BoxFit.cover,
+                                  errorWidget: (context, error, stackTrace) =>
+                                      Image.asset(
+                                    'assets/images/error_image.png',
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.25,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                          ).animateOnPageLoad(
+                              animationsMap['containerOnPageLoadAnimation']!),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 0.75,
                             decoration: BoxDecoration(),
