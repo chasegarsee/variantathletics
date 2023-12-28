@@ -736,6 +736,44 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
   }
 
+  int _editProgramSelectedWeek = 0;
+  int get editProgramSelectedWeek => _editProgramSelectedWeek;
+  set editProgramSelectedWeek(int _value) {
+    _editProgramSelectedWeek = _value;
+  }
+
+  List<DaysStruct> _editProgramSelectedWeekDays = [];
+  List<DaysStruct> get editProgramSelectedWeekDays =>
+      _editProgramSelectedWeekDays;
+  set editProgramSelectedWeekDays(List<DaysStruct> _value) {
+    _editProgramSelectedWeekDays = _value;
+  }
+
+  void addToEditProgramSelectedWeekDays(DaysStruct _value) {
+    _editProgramSelectedWeekDays.add(_value);
+  }
+
+  void removeFromEditProgramSelectedWeekDays(DaysStruct _value) {
+    _editProgramSelectedWeekDays.remove(_value);
+  }
+
+  void removeAtIndexFromEditProgramSelectedWeekDays(int _index) {
+    _editProgramSelectedWeekDays.removeAt(_index);
+  }
+
+  void updateEditProgramSelectedWeekDaysAtIndex(
+    int _index,
+    DaysStruct Function(DaysStruct) updateFn,
+  ) {
+    _editProgramSelectedWeekDays[_index] =
+        updateFn(_editProgramSelectedWeekDays[_index]);
+  }
+
+  void insertAtIndexInEditProgramSelectedWeekDays(
+      int _index, DaysStruct _value) {
+    _editProgramSelectedWeekDays.insert(_index, _value);
+  }
+
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
   Stream<List<ExercisesRecord>> exercise({
     String? uniqueQueryKey,

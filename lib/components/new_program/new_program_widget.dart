@@ -469,98 +469,106 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                             ),
                           ],
                         ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'v8bgbigu' /* # Weeks */,
+                        if (_model.isDailyCheckboxValue != true)
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'v8bgbigu' /* # Weeks */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Jost',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                    ),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Jost',
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                  ),
-                            ),
-                            Container(
-                              width: 40.0,
-                              height: 40.0,
-                              decoration: BoxDecoration(),
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 0.0, 8.0, 0.0),
-                                  child: Container(
-                                    width: 40.0,
-                                    child: TextFormField(
-                                      controller:
-                                          _model.numWeeksInputController,
-                                      focusNode: _model.numWeeksInputFocusNode,
-                                      readOnly:
-                                          _model.isDailyCheckboxValue == true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        alignLabelWithHint: false,
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
+                              Container(
+                                width: 40.0,
+                                height: 40.0,
+                                decoration: BoxDecoration(),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 0.0, 8.0, 0.0),
+                                    child: Container(
+                                      width: 40.0,
+                                      child: TextFormField(
+                                        controller:
+                                            _model.numWeeksInputController,
+                                        focusNode:
+                                            _model.numWeeksInputFocusNode,
+                                        readOnly:
+                                            _model.isDailyCheckboxValue == true,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          alignLabelWithHint: false,
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                        ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
                                         ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Jost',
+                                              fontSize: 14.0,
+                                            ),
+                                        maxLength: 2,
+                                        keyboardType: TextInputType.number,
+                                        validator: _model
+                                            .numWeeksInputControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .override(
-                                            fontFamily: 'Jost',
-                                            fontSize: 14.0,
-                                          ),
-                                      maxLength: 2,
-                                      keyboardType: TextInputType.number,
-                                      validator: _model
-                                          .numWeeksInputControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
                       ],
                     ),
                     FFButtonWidget(

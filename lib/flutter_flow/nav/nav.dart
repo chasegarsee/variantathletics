@@ -179,6 +179,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           },
           builder: (context, params) => EditProgramWidget(
             program: params.getParam('program', ParamType.Document),
+            weeks: params.getParam<dynamic>('weeks', ParamType.JSON, true),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

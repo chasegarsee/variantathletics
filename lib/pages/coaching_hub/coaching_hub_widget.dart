@@ -117,6 +117,49 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        FlutterFlowIconButton(
+                          borderColor: FlutterFlowTheme.of(context).primary,
+                          borderRadius: 20.0,
+                          borderWidth: 1.0,
+                          buttonSize: 40.0,
+                          fillColor: FlutterFlowTheme.of(context).accent1,
+                          icon: Icon(
+                            Icons.add,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: Container(
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.75,
+                                      child: NewProgramWidget(),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          },
+                        ),
+                      ],
+                    ),
                     Builder(
                       builder: (context) {
                         final program = coachingHubProgramsRecordList.toList();
@@ -179,6 +222,13 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                     programItem,
                                                     ParamType.Document,
                                                   ),
+                                                  'weeks': serializeParam(
+                                                    programItem.weeks
+                                                        .map((e) => e.toMap())
+                                                        .toList(),
+                                                    ParamType.JSON,
+                                                    true,
+                                                  ),
                                                 }.withoutNulls,
                                                 extra: <String, dynamic>{
                                                   'program': programItem,
@@ -225,7 +275,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                         Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.75,
+                                                  0.6,
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               1.0,
@@ -498,6 +548,56 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                             ],
                                           ),
                                         ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'editProgram',
+                                              queryParameters: {
+                                                'program': serializeParam(
+                                                  programItem,
+                                                  ParamType.Document,
+                                                ),
+                                                'weeks': serializeParam(
+                                                  programItem.weeks
+                                                      .map((e) => e.toMap())
+                                                      .toList(),
+                                                  ParamType.JSON,
+                                                  true,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'program': programItem,
+                                              },
+                                            );
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.15,
+                                            height: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Icon(
+                                              Icons
+                                                  .keyboard_double_arrow_right_rounded,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .accent1
+                                                  : FlutterFlowTheme.of(context)
+                                                      .accent2,
+                                              size: 36.0,
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -509,49 +609,6 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                               int reorderableNewIndex) async {},
                         );
                       },
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 40.0,
-                          fillColor: FlutterFlowTheme.of(context).accent1,
-                          icon: Icon(
-                            Icons.add,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: Container(
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.75,
-                                      child: NewProgramWidget(),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-                          },
-                        ),
-                      ],
                     ),
                   ],
                 ),
