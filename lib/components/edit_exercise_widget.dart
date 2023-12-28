@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/backend/schema/structs/index.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -50,6 +51,9 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditExerciseModel());
+
+    _model.textController ??= TextEditingController(text: widget.reps);
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -220,6 +224,96 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     widget.reps!,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  Container(
+                                    width: 200.0,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Container(
+                                        width: 50.0,
+                                        child: TextFormField(
+                                          controller: _model.textController,
+                                          focusNode: _model.textFieldFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.textController',
+                                            Duration(milliseconds: 500),
+                                            () async {
+                                              setState(() {
+                                                FFAppState()
+                                                    .updateEditProgramSelectedDayStruct(
+                                                  (e) => e
+                                                    ..updateExercises(
+                                                      (e) => e[widget.index!]
+                                                        ..reps = _model
+                                                            .textController
+                                                            .text,
+                                                    ),
+                                                );
+                                              });
+                                            },
+                                          ),
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'dhvsd13m' /* Label here... */,
+                                            ),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                            errorBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          maxLength: 3,
+                                          maxLengthEnforcement:
+                                              MaxLengthEnforcement.enforced,
+                                          validator: _model
+                                              .textControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),

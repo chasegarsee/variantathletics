@@ -79,7 +79,7 @@ class _SetEditorWidgetState extends State<SetEditorWidget> {
           obscureText: false,
           decoration: InputDecoration(
             labelText: FFLocalizations.of(context).getText(
-              'dhvsd13m' /* Label here... */,
+              'z9am4jml' /* Label here... */,
             ),
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(
