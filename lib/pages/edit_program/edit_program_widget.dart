@@ -146,8 +146,13 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 setState(() {
-                                  _model.selectedWeek = weeksItem.weekNumber;
-                                  _model.days = functions
+                                  _model.selectedWeek = valueOrDefault<int>(
+                                    weeksItem.weekNumber,
+                                    1,
+                                  );
+                                });
+                                setState(() {
+                                  FFAppState().editProgramDays = functions
                                       .getDaysFromWeek(weeksItem)
                                       .toList()
                                       .cast<DaysStruct>();
