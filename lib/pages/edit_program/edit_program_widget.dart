@@ -63,9 +63,6 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        endDrawer: Drawer(
-          elevation: 16.0,
-        ),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
