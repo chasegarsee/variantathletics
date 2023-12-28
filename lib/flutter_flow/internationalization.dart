@@ -1186,7 +1186,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     '60um87cx': {
-      'en': 'reps',
+      'en': 'tempo',
       'th': '',
     },
     '9745ik8c': {

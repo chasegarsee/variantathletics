@@ -414,7 +414,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              '60um87cx' /* reps */,
+                                              '60um87cx' /* tempo */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
