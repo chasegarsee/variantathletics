@@ -1198,6 +1198,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
+  // addExercise
+  {
+    'jd14j862': {
+      'en': 'Add Exercise',
+      'th': 'อะโอห์',
+    },
+    '44o00doh': {
+      'en': 'Option 1',
+      'th': '',
+    },
+    'vla6k18t': {
+      'en': 'Please select...',
+      'th': '',
+    },
+    'pajc9t5d': {
+      'en': 'Search for an exercise...',
+      'th': '',
+    },
+    'j13k6iyk': {
+      'en': 'sets',
+      'th': '',
+    },
+    '0givaqqb': {
+      'en': 'reps',
+      'th': '',
+    },
+    'ok5r3qmr': {
+      'en': 'tempo',
+      'th': '',
+    },
+    'd33k6hx1': {
+      'en': 'Work Time',
+      'th': '',
+    },
+    '0ifqbeeb': {
+      'en': 'Rest Time',
+      'th': '',
+    },
+    '28e8cj15': {
+      'en': 'Add Exercise',
+      'th': '',
+    },
+  },
   // Miscellaneous
   {
     '0akax9ls': {
