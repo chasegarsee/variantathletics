@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -122,34 +123,91 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Builder(
-                builder: (context) {
-                  final week = widget.program?.weeks?.toList() ?? [];
-                  return Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(week.length, (weekIndex) {
-                      final weekItem = week[weekIndex];
-                      return InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            FFAppState().editProgramDays =
-                                weekItem.days.toList().cast<DaysStruct>();
-                          });
-                        },
-                        child: Icon(
-                          Icons.settings_outlined,
-                          color: FlutterFlowTheme.of(context).accent2,
-                          size: 24.0,
-                        ),
-                      );
-                    }),
-                  );
-                },
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                child: Builder(
+                  builder: (context) {
+                    final weeks = widget.program?.weeks?.toList() ?? [];
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: List.generate(weeks.length, (weeksIndex) {
+                          final weeksItem = weeks[weeksIndex];
+                          return Visibility(
+                            visible: FFAppState().showAllWeeks ||
+                                (weeksItem.weekNumber ==
+                                    FFAppState().selectedWeek),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setState(() {
+                                  _model.selectedWeek = weeksItem.weekNumber;
+                                  _model.days = functions
+                                      .getDaysFromWeek(weeksItem)
+                                      .toList()
+                                      .cast<DaysStruct>();
+                                });
+                              },
+                              child: Stack(
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 0.0, 5.0, 0.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 3.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: Container(
+                                          width: 30.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: weeksItem.weekNumber ==
+                                                    valueOrDefault<int>(
+                                                      _model.selectedWeek,
+                                                      1,
+                                                    )
+                                                ? FlutterFlowTheme.of(context)
+                                                    .accent2
+                                                : FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            shape: BoxShape.rectangle,
+                                          ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              'W-${weeksItem.weekNumber.toString()}',
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    );
+                  },
+                ),
               ),
               Builder(
                 builder: (context) {

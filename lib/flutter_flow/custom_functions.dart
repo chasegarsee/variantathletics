@@ -444,3 +444,11 @@ String removeToken(String url) {
     return url;
   }
 }
+
+List<DaysStruct> detDaysFromFirstWeek(List<WeeksStruct> weeks) {
+  return weeks.isNotEmpty ? weeks[0].days : [];
+}
+
+List<DaysStruct> getDaysFromWeek(WeeksStruct week) {
+  return week.days;
+}

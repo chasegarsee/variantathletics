@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/new_program/new_program_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -215,6 +217,16 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              setState(() {
+                                                FFAppState().editProgramDays =
+                                                    functions
+                                                        .detDaysFromFirstWeek(
+                                                            programItem.weeks
+                                                                .toList())
+                                                        .toList()
+                                                        .cast<DaysStruct>();
+                                              });
+
                                               context.pushNamed(
                                                 'editProgram',
                                                 queryParameters: {
@@ -547,6 +559,16 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            setState(() {
+                                              FFAppState().editProgramDays =
+                                                  functions
+                                                      .detDaysFromFirstWeek(
+                                                          programItem.weeks
+                                                              .toList())
+                                                      .toList()
+                                                      .cast<DaysStruct>();
+                                            });
+
                                             context.pushNamed(
                                               'editProgram',
                                               queryParameters: {
