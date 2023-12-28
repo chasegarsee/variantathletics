@@ -156,7 +156,7 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(25.0),
+                padding: EdgeInsets.all(10.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     await actions.updateProgramDay(
