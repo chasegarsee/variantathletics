@@ -104,8 +104,18 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                           .map((e) => ExercisesStruct.maybeFromMap(e)?.name)
                           .withoutNulls
                           .toList(),
-                      onChanged: (val) =>
-                          setState(() => _model.dropDownValue = val),
+                      onChanged: (val) async {
+                        setState(() => _model.dropDownValue = val);
+                        setState(() {
+                          FFAppState().updateEditProgramSelectedDayStruct(
+                            (e) => e
+                              ..updateExercises(
+                                (e) => e[widget.index!]
+                                  ..name = _model.dropDownValue,
+                              ),
+                          );
+                        });
+                      },
                       width: 300.0,
                       height: 50.0,
                       textStyle: FlutterFlowTheme.of(context).bodyMedium,
@@ -191,22 +201,20 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.textController',
                                           Duration(milliseconds: 1000),
-                                          () => setState(() {}),
+                                          () async {
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateEditProgramSelectedDayStruct(
+                                                (e) => e
+                                                  ..updateExercises(
+                                                    (e) => e[widget.index!]
+                                                      ..sets = _model
+                                                          .textController.text,
+                                                  ),
+                                              );
+                                            });
+                                          },
                                         ),
-                                        onFieldSubmitted: (_) async {
-                                          setState(() {
-                                            FFAppState()
-                                                .updateEditProgramSelectedDayStruct(
-                                              (e) => e
-                                                ..updateExercises(
-                                                  (e) => e[widget.index!]
-                                                    ..sets = _model
-                                                        .textController.text,
-                                                ),
-                                            );
-                                          });
-                                        },
-                                        autofocus: true,
                                         textInputAction: TextInputAction.done,
                                         obscureText: false,
                                         decoration: InputDecoration(
