@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,11 +16,9 @@ class EditProgramWidget extends StatefulWidget {
   const EditProgramWidget({
     Key? key,
     required this.program,
-    required this.weeks,
   }) : super(key: key);
 
   final ProgramsRecord? program;
-  final List<dynamic>? weeks;
 
   @override
   _EditProgramWidgetState createState() => _EditProgramWidgetState();
@@ -133,10 +130,22 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: List.generate(week.length, (weekIndex) {
                       final weekItem = week[weekIndex];
-                      return Icon(
-                        Icons.settings_outlined,
-                        color: FlutterFlowTheme.of(context).accent2,
-                        size: 24.0,
+                      return InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          setState(() {
+                            FFAppState().editProgramDays =
+                                weekItem.days.toList().cast<DaysStruct>();
+                          });
+                        },
+                        child: Icon(
+                          Icons.settings_outlined,
+                          color: FlutterFlowTheme.of(context).accent2,
+                          size: 24.0,
+                        ),
                       );
                     }),
                   );
@@ -144,12 +153,7 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
               ),
               Builder(
                 builder: (context) {
-                  final day = widget.weeks
-                          ?.map((e) => WeeksStruct.maybeFromMap(e)?.days?.first)
-                          .withoutNulls
-                          .toList()
-                          ?.toList() ??
-                      [];
+                  final day = FFAppState().editProgramDays.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,

@@ -177,6 +177,36 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _macroTypeTH = prefs.getStringList('ff_macroTypeTH') ?? _macroTypeTH;
     });
+    _safeInit(() {
+      _editProgramWeeks = prefs
+              .getStringList('ff_editProgramWeeks')
+              ?.map((x) {
+                try {
+                  return WeeksStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _editProgramWeeks;
+    });
+    _safeInit(() {
+      _editProgramDays = prefs
+              .getStringList('ff_editProgramDays')
+              ?.map((x) {
+                try {
+                  return DaysStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _editProgramDays;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -736,42 +766,86 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_macroTypeTH', _macroTypeTH);
   }
 
-  int _editProgramSelectedWeek = 0;
-  int get editProgramSelectedWeek => _editProgramSelectedWeek;
-  set editProgramSelectedWeek(int _value) {
-    _editProgramSelectedWeek = _value;
+  List<WeeksStruct> _editProgramWeeks = [];
+  List<WeeksStruct> get editProgramWeeks => _editProgramWeeks;
+  set editProgramWeeks(List<WeeksStruct> _value) {
+    _editProgramWeeks = _value;
+    prefs.setStringList(
+        'ff_editProgramWeeks', _value.map((x) => x.serialize()).toList());
   }
 
-  List<DaysStruct> _editProgramSelectedWeekDays = [];
-  List<DaysStruct> get editProgramSelectedWeekDays =>
-      _editProgramSelectedWeekDays;
-  set editProgramSelectedWeekDays(List<DaysStruct> _value) {
-    _editProgramSelectedWeekDays = _value;
+  void addToEditProgramWeeks(WeeksStruct _value) {
+    _editProgramWeeks.add(_value);
+    prefs.setStringList('ff_editProgramWeeks',
+        _editProgramWeeks.map((x) => x.serialize()).toList());
   }
 
-  void addToEditProgramSelectedWeekDays(DaysStruct _value) {
-    _editProgramSelectedWeekDays.add(_value);
+  void removeFromEditProgramWeeks(WeeksStruct _value) {
+    _editProgramWeeks.remove(_value);
+    prefs.setStringList('ff_editProgramWeeks',
+        _editProgramWeeks.map((x) => x.serialize()).toList());
   }
 
-  void removeFromEditProgramSelectedWeekDays(DaysStruct _value) {
-    _editProgramSelectedWeekDays.remove(_value);
+  void removeAtIndexFromEditProgramWeeks(int _index) {
+    _editProgramWeeks.removeAt(_index);
+    prefs.setStringList('ff_editProgramWeeks',
+        _editProgramWeeks.map((x) => x.serialize()).toList());
   }
 
-  void removeAtIndexFromEditProgramSelectedWeekDays(int _index) {
-    _editProgramSelectedWeekDays.removeAt(_index);
+  void updateEditProgramWeeksAtIndex(
+    int _index,
+    WeeksStruct Function(WeeksStruct) updateFn,
+  ) {
+    _editProgramWeeks[_index] = updateFn(_editProgramWeeks[_index]);
+    prefs.setStringList('ff_editProgramWeeks',
+        _editProgramWeeks.map((x) => x.serialize()).toList());
   }
 
-  void updateEditProgramSelectedWeekDaysAtIndex(
+  void insertAtIndexInEditProgramWeeks(int _index, WeeksStruct _value) {
+    _editProgramWeeks.insert(_index, _value);
+    prefs.setStringList('ff_editProgramWeeks',
+        _editProgramWeeks.map((x) => x.serialize()).toList());
+  }
+
+  List<DaysStruct> _editProgramDays = [];
+  List<DaysStruct> get editProgramDays => _editProgramDays;
+  set editProgramDays(List<DaysStruct> _value) {
+    _editProgramDays = _value;
+    prefs.setStringList(
+        'ff_editProgramDays', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToEditProgramDays(DaysStruct _value) {
+    _editProgramDays.add(_value);
+    prefs.setStringList('ff_editProgramDays',
+        _editProgramDays.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromEditProgramDays(DaysStruct _value) {
+    _editProgramDays.remove(_value);
+    prefs.setStringList('ff_editProgramDays',
+        _editProgramDays.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromEditProgramDays(int _index) {
+    _editProgramDays.removeAt(_index);
+    prefs.setStringList('ff_editProgramDays',
+        _editProgramDays.map((x) => x.serialize()).toList());
+  }
+
+  void updateEditProgramDaysAtIndex(
     int _index,
     DaysStruct Function(DaysStruct) updateFn,
   ) {
-    _editProgramSelectedWeekDays[_index] =
-        updateFn(_editProgramSelectedWeekDays[_index]);
+    _editProgramDays[_index] = updateFn(_editProgramDays[_index]);
+    prefs.setStringList('ff_editProgramDays',
+        _editProgramDays.map((x) => x.serialize()).toList());
   }
 
-  void insertAtIndexInEditProgramSelectedWeekDays(
-      int _index, DaysStruct _value) {
-    _editProgramSelectedWeekDays.insert(_index, _value);
+  void insertAtIndexInEditProgramDays(int _index, DaysStruct _value) {
+    _editProgramDays.insert(_index, _value);
+    prefs.setStringList('ff_editProgramDays',
+        _editProgramDays.map((x) => x.serialize()).toList());
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

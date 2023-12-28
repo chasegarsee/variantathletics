@@ -222,13 +222,6 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                     programItem,
                                                     ParamType.Document,
                                                   ),
-                                                  'weeks': serializeParam(
-                                                    programItem.weeks
-                                                        .map((e) => e.toMap())
-                                                        .toList(),
-                                                    ParamType.JSON,
-                                                    true,
-                                                  ),
                                                 }.withoutNulls,
                                                 extra: <String, dynamic>{
                                                   'program': programItem,
@@ -560,13 +553,6 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                 'program': serializeParam(
                                                   programItem,
                                                   ParamType.Document,
-                                                ),
-                                                'weeks': serializeParam(
-                                                  programItem.weeks
-                                                      .map((e) => e.toMap())
-                                                      .toList(),
-                                                  ParamType.JSON,
-                                                  true,
                                                 ),
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
