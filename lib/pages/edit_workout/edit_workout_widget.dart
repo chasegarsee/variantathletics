@@ -1,12 +1,10 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/components/exercise_drop_down_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -151,65 +149,20 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          FlutterFlowDropDown<String>(
-                                            controller: _model
-                                                    .dropDownValueController ??=
-                                                FormFieldController<String>(
-                                              _model.dropDownValueMap[
-                                                      exercisesItem] ??=
-                                                  exercisesItem.name,
+                                          wrapWithModel(
+                                            model: _model.exerciseDropDownModels
+                                                .getModel(
+                                              exercisesIndex.toString(),
+                                              exercisesIndex,
                                             ),
-                                            options: FFAppState()
-                                                .exercises
-                                                .map((e) => ExercisesStruct
-                                                        .maybeFromMap(e)
-                                                    ?.name)
-                                                .withoutNulls
-                                                .toList(),
-                                            onChanged: (val) => setState(() =>
-                                                _model.dropDownValueMap[
-                                                    exercisesItem] = val!),
-                                            width: 300.0,
-                                            height: 50.0,
-                                            searchHintTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '8wquxxn7' /* Please select... */,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: ExerciseDropDownWidget(
+                                              key: Key(
+                                                'Keyse7_${exercisesIndex.toString()}',
+                                              ),
+                                              exercise: exercisesItem.name,
                                             ),
-                                            searchHintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '37csumcw' /* Search for an item... */,
-                                            ),
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                            borderWidth: 2.0,
-                                            borderRadius: 8.0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 4.0, 16.0, 4.0),
-                                            hidesUnderline: true,
-                                            isOverButton: true,
-                                            isSearchable: true,
-                                            isMultiSelect: false,
                                           ),
                                           Padding(
                                             padding:

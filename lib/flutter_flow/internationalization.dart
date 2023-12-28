@@ -767,25 +767,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'fd9899jc': {
+    'fc6b0h50': {
       'en': 'Home',
       'th': '',
     },
   },
   // editWorkout
   {
-    '478ocvy6': {
-      'en': 'Option 1',
-      'th': '',
-    },
-    '8wquxxn7': {
-      'en': 'Please select...',
-      'th': '',
-    },
-    '37csumcw': {
-      'en': 'Search for an item...',
-      'th': '',
-    },
     'vmxvdyso': {
       'en': 'Sets',
       'th': 'เซ็ต',
@@ -1188,6 +1176,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1dgemn8o': {
       'en': 'Create Program',
+      'th': '',
+    },
+  },
+  // exerciseDropDown
+  {
+    '478ocvy6': {
+      'en': 'Option 1',
+      'th': '',
+    },
+    '8wquxxn7': {
+      'en': 'Please select...',
+      'th': '',
+    },
+    '37csumcw': {
+      'en': 'Search for an item...',
       'th': '',
     },
   },
