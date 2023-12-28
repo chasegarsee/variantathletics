@@ -759,11 +759,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // editProgram
   {
+    'fl8n3iyz': {
+      'en': '# Exercises',
+      'th': '',
+    },
+    '0p8msx70': {
+      'en': 'Date',
+      'th': '',
+    },
     'cssqilf7': {
       'en': 'Edit Program',
       'th': '',
     },
-    'qkagdsyj': {
+    '26awntfp': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // editWorkout
+  {
+    'vmxvdyso': {
+      'en': 'Sets',
+      'th': 'เซ็ต',
+    },
+    'bn71h8qp': {
+      'en': 'Reps',
+      'th': 'เร็พ',
+    },
+    'lr28snd5': {
+      'en': 'Tempo',
+      'th': 'จังหวะ',
+    },
+    'kfype3px': {
+      'en': 'Work Time',
+      'th': 'เวลาออกแรง',
+    },
+    'et45v60k': {
+      'en': 'Rest Time',
+      'th': 'เวลาพัก',
+    },
+    'ayu9eej9': {
+      'en': 'Edit Workout',
+      'th': '',
+    },
+    '6ibn6sm7': {
       'en': 'Home',
       'th': '',
     },

@@ -146,6 +146,12 @@ final parametersBuilderMap =
               data, 'program', ProgramsRecord.fromSnapshot),
         },
       ),
+  'editWorkout': (data) async => ParameterData(
+        allParams: {
+          'workout': await getDocumentParameter<ProgramsRecord>(
+              data, 'workout', ProgramsRecord.fromSnapshot),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

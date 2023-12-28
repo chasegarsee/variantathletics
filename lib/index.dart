@@ -16,3 +16,4 @@ export '/pages/message_center/message_center_widget.dart'
     show MessageCenterWidget;
 export '/pages/coaching_hub/coaching_hub_widget.dart' show CoachingHubWidget;
 export '/pages/edit_program/edit_program_widget.dart' show EditProgramWidget;
+export '/pages/edit_workout/edit_workout_widget.dart' show EditWorkoutWidget;

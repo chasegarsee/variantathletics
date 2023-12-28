@@ -854,6 +854,16 @@ class FFAppState extends ChangeNotifier {
     _editProgramSelectedWeek = _value;
   }
 
+  DaysStruct _editProgramSelectedDay = DaysStruct();
+  DaysStruct get editProgramSelectedDay => _editProgramSelectedDay;
+  set editProgramSelectedDay(DaysStruct _value) {
+    _editProgramSelectedDay = _value;
+  }
+
+  void updateEditProgramSelectedDayStruct(Function(DaysStruct) updateFn) {
+    updateFn(_editProgramSelectedDay);
+  }
+
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
   Stream<List<ExercisesRecord>> exercise({
     String? uniqueQueryKey,

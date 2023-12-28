@@ -180,6 +180,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => EditProgramWidget(
             program: params.getParam('program', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'editWorkout',
+          path: '/editWorkout',
+          asyncParams: {
+            'workout': getDoc(['programs'], ProgramsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditWorkoutWidget(
+            workout: params.getParam('workout', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
