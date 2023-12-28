@@ -93,13 +93,7 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [
-            Icon(
-              Icons.settings_outlined,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
-            ),
-          ],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
