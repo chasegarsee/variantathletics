@@ -108,7 +108,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                     fadeInDuration: Duration(milliseconds: 500),
                     fadeOutDuration: Duration(milliseconds: 500),
                     imageUrl:
-                        '${FFAppState().exerciseBase}${functions.convertStringToHyphenatedLowerCase(_model.dropDownValue!)}.png?alt=media',
+                        '${FFAppState().exerciseBase}${functions.convertStringToHyphenatedLowerCase(FFAppState().editProgramSelectedDay.exercises[widget.index!].id)}.png?alt=media',
                     width: MediaQuery.sizeOf(context).width * 0.25,
                     height: MediaQuery.sizeOf(context).height * 1.0,
                     fit: BoxFit.cover,
