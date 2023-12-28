@@ -409,14 +409,19 @@ int unreadMessageCount(
   return unreadCount.clamp(0, 9);
 }
 
-String convertStringToHyphenatedLowerCase(String inputString) {
-  // Convert the input string to lowercase
-  String lowercaseString = inputString.toLowerCase();
+String? convertStringToHyphenatedLowerCase(String inputString) {
+  if (inputString != null) {
+    // Convert the input string to lowercase
+    String lowercaseString = inputString.toLowerCase();
 
-  // Replace spaces with hyphens
-  String hyphenatedString = lowercaseString.replaceAll(' ', '-');
+    // Replace spaces with hyphens
+    String hyphenatedString = lowercaseString.replaceAll(' ', '-');
 
-  return hyphenatedString;
+    return hyphenatedString;
+  } else {
+    // Handle the case where inputString is null
+    return 'none'; // Or provide an alternative behavior/error message
+  }
 }
 
 List<WeeksStruct> generateWeekObjects(int numWeeks) {
