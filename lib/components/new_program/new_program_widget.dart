@@ -628,7 +628,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                 _model.textController1.text),
                             liveDate: _model.calendarSelectedDay?.end,
                             isDaily: _model.isDailyCheckboxValue,
-                            thumbnailURL: _model.uploadedFileUrl1,
+                            thumbnailURL: _model.uploadedFileUrl2,
                           ),
                           ...mapToFirestore(
                             {
@@ -647,7 +647,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                 _model.textController1.text),
                             liveDate: _model.calendarSelectedDay?.end,
                             isDaily: _model.isDailyCheckboxValue,
-                            thumbnailURL: _model.uploadedFileUrl1,
+                            thumbnailURL: _model.uploadedFileUrl2,
                           ),
                           ...mapToFirestore(
                             {
