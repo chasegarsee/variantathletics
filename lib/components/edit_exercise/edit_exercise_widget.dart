@@ -134,9 +134,14 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                       },
                       width: 300.0,
                       height: 50.0,
+                      searchHintTextStyle:
+                          FlutterFlowTheme.of(context).labelMedium,
                       textStyle: FlutterFlowTheme.of(context).bodyMedium,
                       hintText: FFLocalizations.of(context).getText(
                         '8wquxxn7' /* Please select... */,
+                      ),
+                      searchHintText: FFLocalizations.of(context).getText(
+                        '37csumcw' /* Search for an exercise... */,
                       ),
                       icon: Icon(
                         Icons.keyboard_arrow_down_rounded,
@@ -153,7 +158,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                           EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                       hidesUnderline: true,
                       isOverButton: true,
-                      isSearchable: false,
+                      isSearchable: true,
                       isMultiSelect: false,
                     ),
                     Padding(
