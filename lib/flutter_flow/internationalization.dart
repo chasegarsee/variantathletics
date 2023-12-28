@@ -767,7 +767,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'bvy8emmc': {
+    'hh9z4kjm': {
       'en': 'Home',
       'th': '',
     },
@@ -1203,10 +1203,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sets',
       'th': 'เซ็ต',
     },
-    'dhvsd13m': {
-      'en': 'Label here...',
-      'th': '',
-    },
     'lk81akwj': {
       'en': 'Reps',
       'th': 'เร็พ',
@@ -1222,6 +1218,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ai3oxtn1': {
       'en': 'Rest Time',
       'th': 'เวลาพัก',
+    },
+  },
+  // setEditor
+  {
+    'dhvsd13m': {
+      'en': 'Label here...',
+      'th': '',
     },
   },
   // Miscellaneous
