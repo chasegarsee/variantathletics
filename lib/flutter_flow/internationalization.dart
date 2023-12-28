@@ -1204,12 +1204,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add Exercise',
       'th': 'อะโอห์',
     },
+    'm5l21861': {
+      'en': 'Select Exercise',
+      'th': '',
+    },
     '44o00doh': {
       'en': 'Option 1',
       'th': '',
     },
     'vla6k18t': {
-      'en': 'Please select...',
+      'en': 'Select Exercise',
       'th': '',
     },
     'pajc9t5d': {

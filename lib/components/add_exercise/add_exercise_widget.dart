@@ -9,6 +9,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -185,28 +186,74 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget>
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Row(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 5.0, 0.0),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.25,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xCCC1C1C1),
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                              child: Visibility(
+                                visible: (_model.dropDownValue != null &&
+                                        _model.dropDownValue != '') ||
+                                    (_model.dropDownValue != 'Select Exercise'),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                  child: CachedNetworkImage(
+                                    fadeInDuration: Duration(milliseconds: 500),
+                                    fadeOutDuration:
+                                        Duration(milliseconds: 500),
+                                    imageUrl:
+                                        '${FFAppState().exerciseBase}${valueOrDefault<String>(
+                                      functions
+                                          .convertStringToHyphenatedLowerCase(
+                                              _model.dropDownValue!),
+                                      '-',
+                                    )}.png?alt=media',
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.25,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
+                                    fit: BoxFit.cover,
+                                    errorWidget: (context, error, stackTrace) =>
+                                        Image.asset(
+                                      'assets/images/error_image.png',
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.25,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              1.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ).animateOnPageLoad(
+                                animationsMap['containerOnPageLoadAnimation']!),
+                          ),
                           Container(
-                            width: MediaQuery.sizeOf(context).width * 0.25,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xCCC1C1C1),
-                              borderRadius: BorderRadius.circular(3.0),
-                            ),
-                          ).animateOnPageLoad(
-                              animationsMap['containerOnPageLoadAnimation']!),
-                          Container(
-                            width: MediaQuery.sizeOf(context).width * 0.75,
+                            width: MediaQuery.sizeOf(context).width * 0.65,
                             decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 FlutterFlowDropDown<String>(
                                   controller: _model.dropDownValueController ??=
-                                      FormFieldController<String>(null),
+                                      FormFieldController<String>(
+                                    _model.dropDownValue ??=
+                                        FFLocalizations.of(context).getText(
+                                      'm5l21861' /* Select Exercise */,
+                                    ),
+                                  ),
                                   options: FFAppState()
                                       .exercises
                                       .map((e) =>
@@ -224,14 +271,14 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget>
                                       );
                                     });
                                   },
-                                  width: 300.0,
+                                  width: MediaQuery.sizeOf(context).width * 0.6,
                                   height: 50.0,
                                   searchHintTextStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: FFLocalizations.of(context).getText(
-                                    'vla6k18t' /* Please select... */,
+                                    'vla6k18t' /* Select Exercise */,
                                   ),
                                   searchHintText:
                                       FFLocalizations.of(context).getText(
