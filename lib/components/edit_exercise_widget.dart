@@ -192,6 +192,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     child: wrapWithModel(
                                       model: _model.setEditorModel,
                                       updateCallback: () => setState(() {}),
+                                      updateOnChange: true,
                                       child: SetEditorWidget(
                                         sets: widget.sets,
                                         exersiseIndex: widget.index!,
