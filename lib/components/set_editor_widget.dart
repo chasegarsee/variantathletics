@@ -79,8 +79,6 @@ class _SetEditorWidgetState extends State<SetEditorWidget> {
           labelText: FFLocalizations.of(context).getText(
             'dhvsd13m' /* Label here... */,
           ),
-          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-          hintStyle: FlutterFlowTheme.of(context).labelMedium,
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               color: FlutterFlowTheme.of(context).alternate,
@@ -112,6 +110,7 @@ class _SetEditorWidgetState extends State<SetEditorWidget> {
         ),
         style: FlutterFlowTheme.of(context).bodyMedium,
         maxLength: 3,
+        maxLengthEnforcement: MaxLengthEnforcement.enforced,
         validator: _model.textControllerValidator.asValidator(context),
       ),
     );
