@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/exercise_drop_down_widget.dart';
-import '/components/set_edit_field_widget.dart';
+import '/components/edit_exercise_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -116,384 +115,42 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                           key: ValueKey("ListView_2jumccdl" +
                               '_' +
                               exercisesIndex.toString()),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 0.0, 5.0),
-                            child: Material(
-                              color: Colors.transparent,
-                              elevation: 3.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
+                          child: wrapWithModel(
+                            model: _model.editExerciseModels.getModel(
+                              exercisesIndex.toString(),
+                              exercisesIndex,
+                            ),
+                            updateCallback: () => setState(() {}),
+                            updateOnChange: true,
+                            child: EditExerciseWidget(
+                              key: Key(
+                                'Keym30_${exercisesIndex.toString()}',
                               ),
-                              child: Container(
-                                width: double.infinity,
-                                height: 300.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.75,
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              1.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              setState(() {
-                                                FFAppState()
-                                                    .updateEditProgramSelectedDayStruct(
-                                                  (e) => e
-                                                    ..updateExercises(
-                                                      (e) => e[exercisesIndex]
-                                                        ..name = _model
-                                                            .exerciseDropDownModels
-                                                            .getValueForKey(
-                                                          exercisesIndex
-                                                              .toString(),
-                                                          (m) =>
-                                                              m.dropDownValue,
-                                                        ),
-                                                    ),
-                                                );
-                                              });
-                                            },
-                                            child: wrapWithModel(
-                                              model: _model
-                                                  .exerciseDropDownModels
-                                                  .getModel(
-                                                exercisesIndex.toString(),
-                                                exercisesIndex,
-                                              ),
-                                              updateCallback: () =>
-                                                  setState(() {}),
-                                              child: ExerciseDropDownWidget(
-                                                key: Key(
-                                                  'Keyse7_${exercisesIndex.toString()}',
-                                                ),
-                                                exercise: exercisesItem.name,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 5.0),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                exercisesItem.name,
-                                                '-',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily: 'Jost',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'vmxvdyso' /* Sets */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent2,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            exercisesItem.sets,
-                                                            '-',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                        Container(
-                                                          width: 200.0,
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              setState(() {
-                                                                FFAppState()
-                                                                    .updateEditProgramSelectedDayStruct(
-                                                                  (e) => e
-                                                                    ..updateExercises(
-                                                                      (e) => e[
-                                                                          exercisesIndex]
-                                                                        ..sets = _model
-                                                                            .setEditFieldModels
-                                                                            .getValueAtIndex(
-                                                                          exercisesIndex,
-                                                                          (m) => m
-                                                                              .textController
-                                                                              .text,
-                                                                        ),
-                                                                    ),
-                                                                );
-                                                              });
-                                                            },
-                                                            child:
-                                                                wrapWithModel(
-                                                              model: _model
-                                                                  .setEditFieldModels
-                                                                  .getModel(
-                                                                exercisesIndex
-                                                                    .toString(),
-                                                                exercisesIndex,
-                                                              ),
-                                                              updateCallback:
-                                                                  () => setState(
-                                                                      () {}),
-                                                              child:
-                                                                  SetEditFieldWidget(
-                                                                key: Key(
-                                                                  'Keypih_${exercisesIndex.toString()}',
-                                                                ),
-                                                                sets:
-                                                                    exercisesItem
-                                                                        .sets,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'bn71h8qp' /* Reps */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent2,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            exercisesItem.reps,
-                                                            '-',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'lr28snd5' /* Tempo */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent2,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            exercisesItem.tempo,
-                                                            '-',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'kfype3px' /* Work Time */,
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent2,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            exercisesItem
-                                                                .workTime,
-                                                            '-',
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'et45v60k' /* Rest Time */,
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Jost',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            exercisesItem
-                                                                .restTime,
-                                                            '-',
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                              name: valueOrDefault<String>(
+                                exercisesItem.name,
+                                '-',
                               ),
+                              sets: valueOrDefault<String>(
+                                exercisesItem.sets,
+                                '-',
+                              ),
+                              reps: valueOrDefault<String>(
+                                exercisesItem.reps,
+                                '-',
+                              ),
+                              tempo: valueOrDefault<String>(
+                                exercisesItem.tempo,
+                                '-',
+                              ),
+                              workTime: valueOrDefault<String>(
+                                exercisesItem.workTime,
+                                '-',
+                              ),
+                              restTime: valueOrDefault<String>(
+                                exercisesItem.restTime,
+                                '-',
+                              ),
+                              index: exercisesIndex,
                             ),
                           ),
                         );

@@ -767,33 +767,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'vr6opw9o': {
+    'tqnmce5t': {
       'en': 'Home',
       'th': '',
     },
   },
   // editWorkout
   {
-    'vmxvdyso': {
-      'en': 'Sets',
-      'th': 'เซ็ต',
-    },
-    'bn71h8qp': {
-      'en': 'Reps',
-      'th': 'เร็พ',
-    },
-    'lr28snd5': {
-      'en': 'Tempo',
-      'th': 'จังหวะ',
-    },
-    'kfype3px': {
-      'en': 'Work Time',
-      'th': 'เวลาออกแรง',
-    },
-    'et45v60k': {
-      'en': 'Rest Time',
-      'th': 'เวลาพัก',
-    },
     'kmwtb6k3': {
       'en': 'Update',
       'th': '',
@@ -1203,6 +1183,45 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '1vt4h2ks': {
       'en': 'Label here...',
       'th': '',
+    },
+  },
+  // editExercise
+  {
+    'kv9ka3tm': {
+      'en': 'Option 1',
+      'th': '',
+    },
+    'ox6sj0nm': {
+      'en': 'Please select...',
+      'th': '',
+    },
+    'msftga47': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
+    '6tbl6vq9': {
+      'en': 'Sets',
+      'th': 'เซ็ต',
+    },
+    'dhvsd13m': {
+      'en': 'Label here...',
+      'th': '',
+    },
+    'lk81akwj': {
+      'en': 'Reps',
+      'th': 'เร็พ',
+    },
+    '3ywaox9j': {
+      'en': 'Tempo',
+      'th': 'จังหวะ',
+    },
+    '1lyjzrse': {
+      'en': 'Work Time',
+      'th': 'เวลาออกแรง',
+    },
+    'ai3oxtn1': {
+      'en': 'Rest Time',
+      'th': 'เวลาพัก',
     },
   },
   // Miscellaneous
