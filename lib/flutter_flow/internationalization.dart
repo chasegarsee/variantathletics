@@ -535,6 +535,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Knowlege Hub',
       'th': 'ศูนย์ความรู้',
     },
+    'zstyklp7': {
+      'en': 'Coaching Hub',
+      'th': 'ศูนย์กลางโค้ช',
+    },
     '80sul3wg': {
       'en': 'Leave comments after completing workouts',
       'th': 'แสดงความคิดเห็นหลังออกกำลังกายเสร็จ',
@@ -727,6 +731,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'm2djtz22': {
       'en': '__',
+      'th': '',
+    },
+  },
+  // coachingHub
+  {
+    'vtqok2xm': {
+      'en': 'Live',
+      'th': 'เซ็ต',
+    },
+    'd4sspstf': {
+      'en': 'Daily',
+      'th': 'เร็พ',
+    },
+    'k9mbpwal': {
+      'en': 'Live Date',
+      'th': 'เวลาออกแรง',
+    },
+    'f1t9l6hs': {
+      'en': 'Coaching Hub',
+      'th': 'ศูนย์กลางโค้ช',
+    },
+    's37rtno5': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // editProgram
+  {
+    'cssqilf7': {
+      'en': 'Edit Program',
+      'th': '',
+    },
+    'rwql0xca': {
+      'en': 'Home',
       'th': '',
     },
   },
@@ -1069,6 +1107,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ej86wcg2': {
       'en': 'This cannot be undone',
       'th': 'สิ่งนี้ไม่สามารถยกเลิกได้',
+    },
+  },
+  // newProgram
+  {
+    'ujr1ajh4': {
+      'en': 'Thumbnail',
+      'th': '',
+    },
+    'rhmid3sq': {
+      'en': 'Upload Image',
+      'th': '',
+    },
+    'cgj74c4g': {
+      'en': 'Live Date',
+      'th': 'เร็พ',
+    },
+    '271cytzt': {
+      'en': 'Title',
+      'th': '',
+    },
+    '7ldbluvq': {
+      'en': 'Daily',
+      'th': 'เร็พ',
+    },
+    'v8bgbigu': {
+      'en': '# Weeks',
+      'th': 'เร็พ',
+    },
+    'oun0pvem': {
+      'en': '1',
+      'th': '',
+    },
+    '1dgemn8o': {
+      'en': 'Create Program',
+      'th': '',
     },
   },
   // Miscellaneous

@@ -60,6 +60,8 @@
 
 	<key>NSCameraUsageDescription</key>
     <string>This app does needs access to your camera, but does not collect video data. This is access is not used within the app, but belongs to a third party API in use</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>This app does needs access to your photos, but does not collect image data. This is access is not used within the app, but belongs to a third party API in use</string>
 	<key>NSMicrophoneUsageDescription</key>
     <string>This app does needs access to your microphone, but does not collect audio data. This is access is not used within the app, but belongs to a third party API in use</string>
     <key>UIBackgroundModes</key>

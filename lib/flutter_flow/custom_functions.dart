@@ -408,3 +408,23 @@ int unreadMessageCount(
   // Ensure the count is not negative and does not exceed 9
   return unreadCount.clamp(0, 9);
 }
+
+String convertStringToHyphenatedLowerCase(String inputString) {
+  // Convert the input string to lowercase
+  String lowercaseString = inputString.toLowerCase();
+
+  // Replace spaces with hyphens
+  String hyphenatedString = lowercaseString.replaceAll(' ', '-');
+
+  return hyphenatedString;
+}
+
+List<WeeksStruct> generateWeekObjects(int numWeeks) {
+  List<WeeksStruct> weekList = [];
+
+  for (int i = 1; i <= numWeeks; i++) {
+    weekList.add(WeeksStruct(days: [], weekNumber: i));
+  }
+
+  return weekList;
+}

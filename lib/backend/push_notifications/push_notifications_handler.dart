@@ -139,6 +139,13 @@ final parametersBuilderMap =
       ),
   'favorites': ParameterData.none(),
   'MessageCenter': ParameterData.none(),
+  'coachingHub': ParameterData.none(),
+  'editProgram': (data) async => ParameterData(
+        allParams: {
+          'program': await getDocumentParameter<ProgramsRecord>(
+              data, 'program', ProgramsRecord.fromSnapshot),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

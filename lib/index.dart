@@ -14,3 +14,5 @@ export '/pages/pdf_page/pdf_page_widget.dart' show PdfPageWidget;
 export '/pages/favorites/favorites_widget.dart' show FavoritesWidget;
 export '/pages/message_center/message_center_widget.dart'
     show MessageCenterWidget;
+export '/pages/coaching_hub/coaching_hub_widget.dart' show CoachingHubWidget;
+export '/pages/edit_program/edit_program_widget.dart' show EditProgramWidget;

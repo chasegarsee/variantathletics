@@ -165,6 +165,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'MessageCenter',
           path: '/messageCenter',
           builder: (context, params) => MessageCenterWidget(),
+        ),
+        FFRoute(
+          name: 'coachingHub',
+          path: '/coachingHub',
+          builder: (context, params) => CoachingHubWidget(),
+        ),
+        FFRoute(
+          name: 'editProgram',
+          path: '/editProgram',
+          asyncParams: {
+            'program': getDoc(['programs'], ProgramsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditProgramWidget(
+            program: params.getParam('program', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
