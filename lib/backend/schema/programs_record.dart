@@ -46,6 +46,11 @@ class ProgramsRecord extends FirestoreRecord {
   bool get isDaily => _isDaily ?? false;
   bool hasIsDaily() => _isDaily != null;
 
+  // "thumbnailURL" field.
+  String? _thumbnailURL;
+  String get thumbnailURL => _thumbnailURL ?? '';
+  bool hasThumbnailURL() => _thumbnailURL != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _isLive = snapshotData['isLive'] as bool?;
@@ -56,6 +61,7 @@ class ProgramsRecord extends FirestoreRecord {
     );
     _liveDate = snapshotData['liveDate'] as DateTime?;
     _isDaily = snapshotData['isDaily'] as bool?;
+    _thumbnailURL = snapshotData['thumbnailURL'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -98,6 +104,7 @@ Map<String, dynamic> createProgramsRecordData({
   String? id,
   DateTime? liveDate,
   bool? isDaily,
+  String? thumbnailURL,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -106,6 +113,7 @@ Map<String, dynamic> createProgramsRecordData({
       'id': id,
       'liveDate': liveDate,
       'isDaily': isDaily,
+      'thumbnailURL': thumbnailURL,
     }.withoutNulls,
   );
 
@@ -123,12 +131,20 @@ class ProgramsRecordDocumentEquality implements Equality<ProgramsRecord> {
         e1?.id == e2?.id &&
         listEquality.equals(e1?.weeks, e2?.weeks) &&
         e1?.liveDate == e2?.liveDate &&
-        e1?.isDaily == e2?.isDaily;
+        e1?.isDaily == e2?.isDaily &&
+        e1?.thumbnailURL == e2?.thumbnailURL;
   }
 
   @override
-  int hash(ProgramsRecord? e) => const ListEquality()
-      .hash([e?.name, e?.isLive, e?.id, e?.weeks, e?.liveDate, e?.isDaily]);
+  int hash(ProgramsRecord? e) => const ListEquality().hash([
+        e?.name,
+        e?.isLive,
+        e?.id,
+        e?.weeks,
+        e?.liveDate,
+        e?.isDaily,
+        e?.thumbnailURL
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is ProgramsRecord;

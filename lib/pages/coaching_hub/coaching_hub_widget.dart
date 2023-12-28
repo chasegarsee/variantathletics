@@ -194,7 +194,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                 fadeOutDuration:
                                                     Duration(milliseconds: 500),
                                                 imageUrl:
-                                                    'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${programItem.id}.png?alt=media',
+                                                    programItem.thumbnailURL,
                                                 width:
                                                     MediaQuery.sizeOf(context)
                                                             .width *

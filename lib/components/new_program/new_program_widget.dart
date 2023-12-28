@@ -490,6 +490,8 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                       controller:
                                           _model.numWeeksInputController,
                                       focusNode: _model.numWeeksInputFocusNode,
+                                      readOnly:
+                                          _model.isDailyCheckboxValue == true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         alignLabelWithHint: false,
@@ -555,10 +557,21 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          maxWidth: 500.00,
+                          maxHeight: 500.00,
+                          imageQuality: 100,
+                          allowPhoto: true,
+                          includeBlurHash: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
                           setState(() => _model.isDataUploading2 = true);
                           var selectedUploadedFiles = <FFUploadedFile>[];
-                          var selectedMedia = <SelectedFile>[];
+
                           var downloadUrls = <String>[];
                           try {
                             showUploadMessage(
@@ -566,13 +579,16 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                               'Uploading file...',
                               showLoading: true,
                             );
-                            selectedUploadedFiles =
-                                _model.uploadedLocalFile1.bytes!.isNotEmpty
-                                    ? [_model.uploadedLocalFile1]
-                                    : <FFUploadedFile>[];
-                            selectedMedia = selectedFilesFromUploadedFiles(
-                              selectedUploadedFiles,
-                            );
+                            selectedUploadedFiles = selectedMedia
+                                .map((m) => FFUploadedFile(
+                                      name: m.storagePath.split('/').last,
+                                      bytes: m.bytes,
+                                      height: m.dimensions?.height,
+                                      width: m.dimensions?.width,
+                                      blurHash: m.blurHash,
+                                    ))
+                                .toList();
+
                             downloadUrls = (await Future.wait(
                               selectedMedia.map(
                                 (m) async =>
@@ -612,6 +628,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                 _model.textController1.text),
                             liveDate: _model.calendarSelectedDay?.end,
                             isDaily: _model.isDailyCheckboxValue,
+                            thumbnailURL: _model.uploadedFileUrl1,
                           ),
                           ...mapToFirestore(
                             {
@@ -630,6 +647,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                 _model.textController1.text),
                             liveDate: _model.calendarSelectedDay?.end,
                             isDaily: _model.isDailyCheckboxValue,
+                            thumbnailURL: _model.uploadedFileUrl1,
                           ),
                           ...mapToFirestore(
                             {
@@ -640,6 +658,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                             },
                           ),
                         }, programsRecordReference);
+                        Navigator.pop(context);
 
                         setState(() {});
                       },
