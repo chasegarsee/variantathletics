@@ -55,63 +55,66 @@ class _SetEditorWidgetState extends State<SetEditorWidget> {
 
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-      child: TextFormField(
-        controller: _model.textController,
-        focusNode: _model.textFieldFocusNode,
-        onChanged: (_) => EasyDebounce.debounce(
-          '_model.textController',
-          Duration(milliseconds: 1000),
-          () async {
-            setState(() {
-              FFAppState().updateEditProgramSelectedDayStruct(
-                (e) => e
-                  ..updateExercises(
-                    (e) => e[widget.exersiseIndex!]
-                      ..sets = _model.textController.text,
-                  ),
-              );
-            });
-          },
+      child: Container(
+        width: 50.0,
+        child: TextFormField(
+          controller: _model.textController,
+          focusNode: _model.textFieldFocusNode,
+          onChanged: (_) => EasyDebounce.debounce(
+            '_model.textController',
+            Duration(milliseconds: 1000),
+            () async {
+              setState(() {
+                FFAppState().updateEditProgramSelectedDayStruct(
+                  (e) => e
+                    ..updateExercises(
+                      (e) => e[widget.exersiseIndex!]
+                        ..sets = _model.textController.text,
+                    ),
+                );
+              });
+            },
+          ),
+          textInputAction: TextInputAction.done,
+          obscureText: false,
+          decoration: InputDecoration(
+            labelText: FFLocalizations.of(context).getText(
+              'dhvsd13m' /* Label here... */,
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: FlutterFlowTheme.of(context).alternate,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: FlutterFlowTheme.of(context).primary,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            errorBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: FlutterFlowTheme.of(context).error,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            focusedErrorBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: FlutterFlowTheme.of(context).error,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+          ),
+          style: FlutterFlowTheme.of(context).bodyMedium,
+          maxLength: 3,
+          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+          validator: _model.textControllerValidator.asValidator(context),
         ),
-        textInputAction: TextInputAction.done,
-        obscureText: false,
-        decoration: InputDecoration(
-          labelText: FFLocalizations.of(context).getText(
-            'dhvsd13m' /* Label here... */,
-          ),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: FlutterFlowTheme.of(context).alternate,
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(0.0),
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: FlutterFlowTheme.of(context).primary,
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(0.0),
-          ),
-          errorBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: FlutterFlowTheme.of(context).error,
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(0.0),
-          ),
-          focusedErrorBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: FlutterFlowTheme.of(context).error,
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(0.0),
-          ),
-        ),
-        style: FlutterFlowTheme.of(context).bodyMedium,
-        maxLength: 3,
-        maxLengthEnforcement: MaxLengthEnforcement.enforced,
-        validator: _model.textControllerValidator.asValidator(context),
       ),
     );
   }
