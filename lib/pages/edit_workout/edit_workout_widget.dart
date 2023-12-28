@@ -99,18 +99,14 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
+              Expanded(
                 child: Builder(
                   builder: (context) {
                     final exercises =
                         FFAppState().editProgramSelectedDay.exercises.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: exercises.length,
                       itemBuilder: (context, exercisesIndex) {

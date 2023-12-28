@@ -763,15 +763,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '# Exercises',
       'th': '',
     },
-    '0p8msx70': {
-      'en': 'Date',
-      'th': '',
-    },
     'cssqilf7': {
       'en': 'Edit Program',
       'th': '',
     },
-    '26awntfp': {
+    'pqlmnwse': {
       'en': 'Home',
       'th': '',
     },

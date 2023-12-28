@@ -159,10 +159,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                       ),
                     ],
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: BoxDecoration(),
+                  Expanded(
                     child: Builder(
                       builder: (context) {
                         final program = coachingHubProgramsRecordList.toList();
