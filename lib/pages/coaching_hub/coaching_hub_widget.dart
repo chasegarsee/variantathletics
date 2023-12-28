@@ -223,6 +223,12 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                 .toList())
                                                         .toList()
                                                         .cast<DaysStruct>();
+                                                FFAppState()
+                                                    .editProgramSelectedWeek = 1;
+                                                FFAppState()
+                                                    .editProgramSelectedDayIndex = 0;
+                                                FFAppState()
+                                                    .editProgramSelectedWeekIndex = 0;
                                               });
 
                                               context.pushNamed(
@@ -565,6 +571,12 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                               .toList())
                                                       .toList()
                                                       .cast<DaysStruct>();
+                                              FFAppState()
+                                                  .editProgramSelectedWeek = 1;
+                                              FFAppState()
+                                                  .editProgramSelectedDayIndex = 0;
+                                              FFAppState()
+                                                  .editProgramSelectedWeekIndex = 0;
                                             });
 
                                             context.pushNamed(
