@@ -204,53 +204,52 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                         final dayItem = day[dayIndex];
                         return Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Stack(
-                            alignment: AlignmentDirectional(1.0, 0.0),
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 0.0, 5.0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 3.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                FFAppState().editProgramSelectedDay = dayItem;
+                                FFAppState().editProgramSelectedDayIndex =
+                                    dayIndex;
+                              });
+
+                              context.pushNamed(
+                                'editWorkout',
+                                queryParameters: {
+                                  'program': serializeParam(
+                                    widget.program,
+                                    ParamType.Document,
                                   ),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'program': widget.program,
+                                },
+                              );
+                            },
+                            child: Stack(
+                              alignment: AlignmentDirectional(1.0, 0.0),
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 5.0, 0.0, 5.0),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 3.0,
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {
-                                          FFAppState().editProgramSelectedDay =
-                                              dayItem;
-                                          FFAppState()
-                                                  .editProgramSelectedDayIndex =
-                                              dayIndex;
-                                        });
-
-                                        context.pushNamed(
-                                          'editWorkout',
-                                          queryParameters: {
-                                            'program': serializeParam(
-                                              widget.program,
-                                              ParamType.Document,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            'program': widget.program,
-                                          },
-                                        );
-                                      },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -298,16 +297,16 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                              Icon(
-                                Icons.keyboard_double_arrow_right_rounded,
-                                color: Theme.of(context).brightness ==
-                                        Brightness.light
-                                    ? FlutterFlowTheme.of(context).accent1
-                                    : FlutterFlowTheme.of(context).accent2,
-                                size: 36.0,
-                              ),
-                            ],
+                                Icon(
+                                  Icons.keyboard_double_arrow_right_rounded,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? FlutterFlowTheme.of(context).accent1
+                                      : FlutterFlowTheme.of(context).accent2,
+                                  size: 36.0,
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
