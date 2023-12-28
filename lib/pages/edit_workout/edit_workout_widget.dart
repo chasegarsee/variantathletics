@@ -104,59 +104,50 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                   builder: (context) {
                     final exercises =
                         FFAppState().editProgramSelectedDay.exercises.toList();
-                    return ReorderableListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: exercises.length,
-                      itemBuilder: (context, exercisesIndex) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children:
+                          List.generate(exercises.length, (exercisesIndex) {
                         final exercisesItem = exercises[exercisesIndex];
-                        return Container(
-                          key: ValueKey("ListView_2jumccdl" +
-                              '_' +
-                              exercisesIndex.toString()),
-                          child: wrapWithModel(
-                            model: _model.editExerciseModels.getModel(
-                              exercisesIndex.toString(),
-                              exercisesIndex,
+                        return wrapWithModel(
+                          model: _model.editExerciseModels.getModel(
+                            exercisesIndex.toString(),
+                            exercisesIndex,
+                          ),
+                          updateCallback: () => setState(() {}),
+                          updateOnChange: true,
+                          child: EditExerciseWidget(
+                            key: Key(
+                              'Keym30_${exercisesIndex.toString()}',
                             ),
-                            updateCallback: () => setState(() {}),
-                            updateOnChange: true,
-                            child: EditExerciseWidget(
-                              key: Key(
-                                'Keym30_${exercisesIndex.toString()}',
-                              ),
-                              name: valueOrDefault<String>(
-                                exercisesItem.name,
-                                '-',
-                              ),
-                              sets: valueOrDefault<String>(
-                                exercisesItem.sets,
-                                '-',
-                              ),
-                              reps: valueOrDefault<String>(
-                                exercisesItem.reps,
-                                '-',
-                              ),
-                              tempo: valueOrDefault<String>(
-                                exercisesItem.tempo,
-                                '-',
-                              ),
-                              workTime: valueOrDefault<String>(
-                                exercisesItem.workTime,
-                                '-',
-                              ),
-                              restTime: valueOrDefault<String>(
-                                exercisesItem.restTime,
-                                '-',
-                              ),
-                              index: exercisesIndex,
+                            name: valueOrDefault<String>(
+                              exercisesItem.name,
+                              '-',
                             ),
+                            sets: valueOrDefault<String>(
+                              exercisesItem.sets,
+                              '-',
+                            ),
+                            reps: valueOrDefault<String>(
+                              exercisesItem.reps,
+                              '-',
+                            ),
+                            tempo: valueOrDefault<String>(
+                              exercisesItem.tempo,
+                              '-',
+                            ),
+                            workTime: valueOrDefault<String>(
+                              exercisesItem.workTime,
+                              '-',
+                            ),
+                            restTime: valueOrDefault<String>(
+                              exercisesItem.restTime,
+                              '-',
+                            ),
+                            index: exercisesIndex,
                           ),
                         );
-                      },
-                      onReorder: (int reorderableOldIndex,
-                          int reorderableNewIndex) async {},
+                      }),
                     );
                   },
                 ),
