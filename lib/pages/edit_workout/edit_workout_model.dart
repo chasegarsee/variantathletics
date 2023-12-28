@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/exercise_drop_down_widget.dart';
+import '/components/set_edit_field_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,17 +19,21 @@ class EditWorkoutModel extends FlutterFlowModel<EditWorkoutWidget> {
   final unfocusNode = FocusNode();
   // Models for exerciseDropDown dynamic component.
   late FlutterFlowDynamicModels<ExerciseDropDownModel> exerciseDropDownModels;
+  // Models for setEditField dynamic component.
+  late FlutterFlowDynamicModels<SetEditFieldModel> setEditFieldModels;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     exerciseDropDownModels =
         FlutterFlowDynamicModels(() => ExerciseDropDownModel());
+    setEditFieldModels = FlutterFlowDynamicModels(() => SetEditFieldModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     exerciseDropDownModels.dispose();
+    setEditFieldModels.dispose();
   }
 
   /// Action blocks are added here.

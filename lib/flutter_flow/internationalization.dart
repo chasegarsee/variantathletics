@@ -767,7 +767,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'is7fkqf1': {
+    'vr6opw9o': {
       'en': 'Home',
       'th': '',
     },
@@ -1195,6 +1195,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '37csumcw': {
       'en': 'Search for an item...',
+      'th': '',
+    },
+  },
+  // setEditField
+  {
+    '1vt4h2ks': {
+      'en': 'Label here...',
       'th': '',
     },
   },

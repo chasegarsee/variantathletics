@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/exercise_drop_down_widget.dart';
+import '/components/set_edit_field_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -126,7 +127,7 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                               ),
                               child: Container(
                                 width: double.infinity,
-                                height: 125.0,
+                                height: 300.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -263,6 +264,62 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
+                                                        ),
+                                                        Container(
+                                                          width: 200.0,
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              setState(() {
+                                                                FFAppState()
+                                                                    .updateEditProgramSelectedDayStruct(
+                                                                  (e) => e
+                                                                    ..updateExercises(
+                                                                      (e) => e[
+                                                                          exercisesIndex]
+                                                                        ..sets = _model
+                                                                            .setEditFieldModels
+                                                                            .getValueAtIndex(
+                                                                          exercisesIndex,
+                                                                          (m) => m
+                                                                              .textController
+                                                                              .text,
+                                                                        ),
+                                                                    ),
+                                                                );
+                                                              });
+                                                            },
+                                                            child:
+                                                                wrapWithModel(
+                                                              model: _model
+                                                                  .setEditFieldModels
+                                                                  .getModel(
+                                                                exercisesIndex
+                                                                    .toString(),
+                                                                exercisesIndex,
+                                                              ),
+                                                              updateCallback:
+                                                                  () => setState(
+                                                                      () {}),
+                                                              child:
+                                                                  SetEditFieldWidget(
+                                                                key: Key(
+                                                                  'Keypih_${exercisesIndex.toString()}',
+                                                                ),
+                                                                sets:
+                                                                    exercisesItem
+                                                                        .sets,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
