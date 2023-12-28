@@ -428,3 +428,19 @@ List<WeeksStruct> generateWeekObjects(int numWeeks) {
 
   return weekList;
 }
+
+String removeToken(String url) {
+  // Check if the URL contains "&token="
+  if (url.contains("&token=")) {
+    // Split the URL using "&token=" as the separator
+    List<String> parts = url.split("&token=");
+
+    // Take only the part before "&token=" and join it back together
+    String updatedUrl = parts[0];
+
+    return updatedUrl;
+  } else {
+    // If "&token=" is not found in the URL, return the original URL
+    return url;
+  }
+}

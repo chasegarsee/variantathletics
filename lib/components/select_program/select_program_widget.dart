@@ -346,7 +346,8 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                           milliseconds:
                                                                               500),
                                                                   imageUrl:
-                                                                      'https://firebasestorage.googleapis.com/v0/b/variant-3baaf.appspot.com/o/programs%2F${listViewProgramsRecord.id}.png?alt=media',
+                                                                      listViewProgramsRecord
+                                                                          .thumbnailURL,
                                                                   fit: BoxFit
                                                                       .cover,
                                                                   errorWidget: (context,
