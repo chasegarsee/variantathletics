@@ -767,7 +767,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'fc6b0h50': {
+    'is7fkqf1': {
       'en': 'Home',
       'th': '',
     },
@@ -793,6 +793,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'et45v60k': {
       'en': 'Rest Time',
       'th': 'เวลาพัก',
+    },
+    'kmwtb6k3': {
+      'en': 'Update',
+      'th': '',
     },
     'ayu9eej9': {
       'en': 'Edit Workout',

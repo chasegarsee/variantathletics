@@ -261,13 +261,13 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                                         context.pushNamed(
                                           'editWorkout',
                                           queryParameters: {
-                                            'workout': serializeParam(
+                                            'program': serializeParam(
                                               widget.program,
                                               ParamType.Document,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
-                                            'workout': widget.program,
+                                            'program': widget.program,
                                           },
                                         );
                                       },

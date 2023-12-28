@@ -16,10 +16,10 @@ export 'edit_workout_model.dart';
 class EditWorkoutWidget extends StatefulWidget {
   const EditWorkoutWidget({
     Key? key,
-    required this.workout,
+    required this.program,
   }) : super(key: key);
 
-  final ProgramsRecord? workout;
+  final ProgramsRecord? program;
 
   @override
   _EditWorkoutWidgetState createState() => _EditWorkoutWidgetState();
@@ -149,19 +149,45 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          wrapWithModel(
-                                            model: _model.exerciseDropDownModels
-                                                .getModel(
-                                              exercisesIndex.toString(),
-                                              exercisesIndex,
-                                            ),
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: ExerciseDropDownWidget(
-                                              key: Key(
-                                                'Keyse7_${exercisesIndex.toString()}',
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                FFAppState()
+                                                    .updateEditProgramSelectedDayStruct(
+                                                  (e) => e
+                                                    ..updateExercises(
+                                                      (e) => e[exercisesIndex]
+                                                        ..name = _model
+                                                            .exerciseDropDownModels
+                                                            .getValueForKey(
+                                                          exercisesIndex
+                                                              .toString(),
+                                                          (m) =>
+                                                              m.dropDownValue,
+                                                        ),
+                                                    ),
+                                                );
+                                              });
+                                            },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .exerciseDropDownModels
+                                                  .getModel(
+                                                exercisesIndex.toString(),
+                                                exercisesIndex,
                                               ),
-                                              exercise: exercisesItem.name,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: ExerciseDropDownWidget(
+                                                key: Key(
+                                                  'Keyse7_${exercisesIndex.toString()}',
+                                                ),
+                                                exercise: exercisesItem.name,
+                                              ),
                                             ),
                                           ),
                                           Padding(
@@ -419,6 +445,35 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                           int reorderableNewIndex) async {},
                     );
                   },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(25.0),
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'kmwtb6k3' /* Update */,
+                  ),
+                  options: FFButtonOptions(
+                    height: 40.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).accent2,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Jost',
+                          color: Colors.white,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
               ),
             ],

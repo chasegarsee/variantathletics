@@ -148,8 +148,8 @@ final parametersBuilderMap =
       ),
   'editWorkout': (data) async => ParameterData(
         allParams: {
-          'workout': await getDocumentParameter<ProgramsRecord>(
-              data, 'workout', ProgramsRecord.fromSnapshot),
+          'program': await getDocumentParameter<ProgramsRecord>(
+              data, 'program', ProgramsRecord.fromSnapshot),
         },
       ),
 };

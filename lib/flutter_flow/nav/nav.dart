@@ -185,10 +185,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'editWorkout',
           path: '/editWorkout',
           asyncParams: {
-            'workout': getDoc(['programs'], ProgramsRecord.fromSnapshot),
+            'program': getDoc(['programs'], ProgramsRecord.fromSnapshot),
           },
           builder: (context, params) => EditWorkoutWidget(
-            workout: params.getParam('workout', ParamType.Document),
+            program: params.getParam('program', ParamType.Document),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
