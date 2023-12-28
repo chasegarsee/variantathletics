@@ -18,9 +18,10 @@ import 'package:provider/provider.dart';
 class NewProgramModel extends FlutterFlowModel<NewProgramWidget> {
   ///  State fields for stateful widgets in this component.
 
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
 
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay;
@@ -34,11 +35,6 @@ class NewProgramModel extends FlutterFlowModel<NewProgramWidget> {
   FocusNode? numWeeksInputFocusNode;
   TextEditingController? numWeeksInputController;
   String? Function(BuildContext, String?)? numWeeksInputControllerValidator;
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
-
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ProgramsRecord? newProgram;
 

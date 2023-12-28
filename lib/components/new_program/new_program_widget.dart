@@ -150,8 +150,8 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                             .accent2,
                                       ),
                                 ),
-                                if (_model.uploadedLocalFile1 == null ||
-                                    (_model.uploadedLocalFile1.bytes?.isEmpty ??
+                                if (_model.uploadedLocalFile == null ||
+                                    (_model.uploadedLocalFile.bytes?.isEmpty ??
                                         true))
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
@@ -177,12 +177,13 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             final selectedMedia =
-                                                await selectMediaWithSourceBottomSheet(
-                                              context: context,
+                                                await selectMedia(
                                               maxWidth: 500.00,
                                               maxHeight: 500.00,
-                                              allowPhoto: true,
                                               includeBlurHash: true,
+                                              mediaSource:
+                                                  MediaSource.photoGallery,
+                                              multiImage: false,
                                             );
                                             if (selectedMedia != null &&
                                                 selectedMedia.every((m) =>
@@ -190,16 +191,12 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                                         m.storagePath,
                                                         context))) {
                                               setState(() => _model
-                                                  .isDataUploading1 = true);
+                                                  .isDataUploading = true);
                                               var selectedUploadedFiles =
                                                   <FFUploadedFile>[];
 
+                                              var downloadUrls = <String>[];
                                               try {
-                                                showUploadMessage(
-                                                  context,
-                                                  'Uploading file...',
-                                                  showLoading: true,
-                                                );
                                                 selectedUploadedFiles =
                                                     selectedMedia
                                                         .map((m) =>
@@ -219,25 +216,36 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                                                   m.blurHash,
                                                             ))
                                                         .toList();
+
+                                                downloadUrls =
+                                                    (await Future.wait(
+                                                  selectedMedia.map(
+                                                    (m) async =>
+                                                        await uploadData(
+                                                            m.storagePath,
+                                                            m.bytes),
+                                                  ),
+                                                ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
                                               } finally {
-                                                ScaffoldMessenger.of(context)
-                                                    .hideCurrentSnackBar();
-                                                _model.isDataUploading1 = false;
+                                                _model.isDataUploading = false;
                                               }
                                               if (selectedUploadedFiles
-                                                      .length ==
-                                                  selectedMedia.length) {
+                                                          .length ==
+                                                      selectedMedia.length &&
+                                                  downloadUrls.length ==
+                                                      selectedMedia.length) {
                                                 setState(() {
-                                                  _model.uploadedLocalFile1 =
+                                                  _model.uploadedLocalFile =
                                                       selectedUploadedFiles
                                                           .first;
+                                                  _model.uploadedFileUrl =
+                                                      downloadUrls.first;
                                                 });
-                                                showUploadMessage(
-                                                    context, 'Success!');
                                               } else {
                                                 setState(() {});
-                                                showUploadMessage(context,
-                                                    'Failed to upload data');
                                                 return;
                                               }
                                             }
@@ -277,18 +285,18 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                       ),
                                     ),
                                   ),
-                                if ((_model.uploadedLocalFile1 != null &&
-                                        (_model.uploadedLocalFile1.bytes
+                                if ((_model.uploadedLocalFile != null &&
+                                        (_model.uploadedLocalFile.bytes
                                                 ?.isNotEmpty ??
                                             false)) ||
-                                    (_model.uploadedLocalFile1.blurHash !=
+                                    (_model.uploadedLocalFile.blurHash !=
                                             null &&
-                                        _model.uploadedLocalFile1.blurHash !=
+                                        _model.uploadedLocalFile.blurHash !=
                                             ''))
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(4.0),
                                     child: Image.memory(
-                                      _model.uploadedLocalFile1.bytes ??
+                                      _model.uploadedLocalFile.bytes ??
                                           Uint8List.fromList([]),
                                       width: 100.0,
                                       height: 100.0,
@@ -557,67 +565,6 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        final selectedMedia =
-                            await selectMediaWithSourceBottomSheet(
-                          context: context,
-                          maxWidth: 500.00,
-                          maxHeight: 500.00,
-                          imageQuality: 100,
-                          allowPhoto: true,
-                          includeBlurHash: true,
-                        );
-                        if (selectedMedia != null &&
-                            selectedMedia.every((m) =>
-                                validateFileFormat(m.storagePath, context))) {
-                          setState(() => _model.isDataUploading2 = true);
-                          var selectedUploadedFiles = <FFUploadedFile>[];
-
-                          var downloadUrls = <String>[];
-                          try {
-                            showUploadMessage(
-                              context,
-                              'Uploading file...',
-                              showLoading: true,
-                            );
-                            selectedUploadedFiles = selectedMedia
-                                .map((m) => FFUploadedFile(
-                                      name: m.storagePath.split('/').last,
-                                      bytes: m.bytes,
-                                      height: m.dimensions?.height,
-                                      width: m.dimensions?.width,
-                                      blurHash: m.blurHash,
-                                    ))
-                                .toList();
-
-                            downloadUrls = (await Future.wait(
-                              selectedMedia.map(
-                                (m) async =>
-                                    await uploadData(m.storagePath, m.bytes),
-                              ),
-                            ))
-                                .where((u) => u != null)
-                                .map((u) => u!)
-                                .toList();
-                          } finally {
-                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                            _model.isDataUploading2 = false;
-                          }
-                          if (selectedUploadedFiles.length ==
-                                  selectedMedia.length &&
-                              downloadUrls.length == selectedMedia.length) {
-                            setState(() {
-                              _model.uploadedLocalFile2 =
-                                  selectedUploadedFiles.first;
-                              _model.uploadedFileUrl2 = downloadUrls.first;
-                            });
-                            showUploadMessage(context, 'Success!');
-                          } else {
-                            setState(() {});
-                            showUploadMessage(context, 'Failed to upload data');
-                            return;
-                          }
-                        }
-
                         var programsRecordReference =
                             ProgramsRecord.collection.doc();
                         await programsRecordReference.set({
@@ -628,7 +575,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                 _model.textController1.text),
                             liveDate: _model.calendarSelectedDay?.end,
                             isDaily: _model.isDailyCheckboxValue,
-                            thumbnailURL: _model.uploadedFileUrl2,
+                            thumbnailURL: _model.uploadedFileUrl,
                           ),
                           ...mapToFirestore(
                             {
@@ -647,7 +594,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                                 _model.textController1.text),
                             liveDate: _model.calendarSelectedDay?.end,
                             isDaily: _model.isDailyCheckboxValue,
-                            thumbnailURL: _model.uploadedFileUrl2,
+                            thumbnailURL: _model.uploadedFileUrl,
                           ),
                           ...mapToFirestore(
                             {
