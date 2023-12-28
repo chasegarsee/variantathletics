@@ -146,16 +146,15 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 setState(() {
-                                  _model.selectedWeek = valueOrDefault<int>(
-                                    weeksItem.weekNumber,
-                                    1,
-                                  );
-                                });
-                                setState(() {
                                   FFAppState().editProgramDays = functions
                                       .getDaysFromWeek(weeksItem)
                                       .toList()
                                       .cast<DaysStruct>();
+                                  FFAppState().editProgramSelectedWeek =
+                                      valueOrDefault<int>(
+                                    weeksItem.weekNumber,
+                                    1,
+                                  );
                                 });
                               },
                               child: Stack(
@@ -178,7 +177,8 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                                           decoration: BoxDecoration(
                                             color: weeksItem.weekNumber ==
                                                     valueOrDefault<int>(
-                                                      _model.selectedWeek,
+                                                      FFAppState()
+                                                          .editProgramSelectedWeek,
                                                       1,
                                                     )
                                                 ? FlutterFlowTheme.of(context)

@@ -763,7 +763,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'g3yqa7jt': {
+    'qkagdsyj': {
       'en': 'Home',
       'th': '',
     },
