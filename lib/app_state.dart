@@ -207,6 +207,21 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _editProgramDays;
     });
+    _safeInit(() {
+      _exerciseList = prefs
+              .getStringList('ff_exerciseList')
+              ?.map((x) {
+                try {
+                  return ExercisesStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _exerciseList;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -862,6 +877,47 @@ class FFAppState extends ChangeNotifier {
 
   void updateEditProgramSelectedDayStruct(Function(DaysStruct) updateFn) {
     updateFn(_editProgramSelectedDay);
+  }
+
+  List<ExercisesStruct> _exerciseList = [];
+  List<ExercisesStruct> get exerciseList => _exerciseList;
+  set exerciseList(List<ExercisesStruct> _value) {
+    _exerciseList = _value;
+    prefs.setStringList(
+        'ff_exerciseList', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToExerciseList(ExercisesStruct _value) {
+    _exerciseList.add(_value);
+    prefs.setStringList(
+        'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromExerciseList(ExercisesStruct _value) {
+    _exerciseList.remove(_value);
+    prefs.setStringList(
+        'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromExerciseList(int _index) {
+    _exerciseList.removeAt(_index);
+    prefs.setStringList(
+        'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
+  }
+
+  void updateExerciseListAtIndex(
+    int _index,
+    ExercisesStruct Function(ExercisesStruct) updateFn,
+  ) {
+    _exerciseList[_index] = updateFn(_exerciseList[_index]);
+    prefs.setStringList(
+        'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInExerciseList(int _index, ExercisesStruct _value) {
+    _exerciseList.insert(_index, _value);
+    prefs.setStringList(
+        'ff_exerciseList', _exerciseList.map((x) => x.serialize()).toList());
   }
 
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();

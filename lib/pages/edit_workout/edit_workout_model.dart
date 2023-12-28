@@ -1,11 +1,13 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/backend/schema/structs/index.dart';
 import 'edit_workout_widget.dart' show EditWorkoutWidget;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -16,6 +18,9 @@ class EditWorkoutModel extends FlutterFlowModel<EditWorkoutWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for DropDown widget.
+  Map<ProgramExercisesStruct?, String> dropDownValueMap = {};
+  FormFieldController<String>? dropDownValueController;
 
   /// Initialization and disposal methods.
 

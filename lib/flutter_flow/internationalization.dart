@@ -767,13 +767,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Program',
       'th': '',
     },
-    'pqlmnwse': {
+    'fd9899jc': {
       'en': 'Home',
       'th': '',
     },
   },
   // editWorkout
   {
+    '478ocvy6': {
+      'en': 'Option 1',
+      'th': '',
+    },
+    '8wquxxn7': {
+      'en': 'Please select...',
+      'th': '',
+    },
+    '37csumcw': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
     'vmxvdyso': {
       'en': 'Sets',
       'th': 'เซ็ต',
