@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -245,7 +246,8 @@ class _AddMessageWidgetState extends State<AddMessageWidget> {
                                     _model.insertAtIndexInResponses(
                                         0,
                                         ResponsesStruct(
-                                          count: 0,
+                                          count:
+                                              random_data.randomInteger(2, 20),
                                           response: _model.textController2.text,
                                           uid: [],
                                         ));
@@ -332,7 +334,8 @@ class _AddMessageWidgetState extends State<AddMessageWidget> {
                                     _model.insertAtIndexInResponses(
                                         1,
                                         ResponsesStruct(
-                                          count: 0,
+                                          count:
+                                              random_data.randomInteger(2, 20),
                                           response: _model.textController3.text,
                                           uid: [],
                                         ));
