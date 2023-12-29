@@ -211,7 +211,6 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                   ),
                                   child: Container(
                                     width: double.infinity,
-                                    height: 100.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -375,31 +374,25 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                       ),
                                                     ],
                                                   ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Text(
-                                                            messageItem.body,
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  4.0),
+                                                      child: Text(
+                                                        messageItem.body,
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .labelMedium
                                                                 .override(
                                                                   fontFamily:
@@ -408,10 +401,8 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                 ),
-                                                          ),
-                                                        ),
                                                       ),
-                                                    ],
+                                                    ),
                                                   ),
                                                   Row(
                                                     mainAxisSize:
@@ -480,8 +471,6 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                                                                         },
                                                                         child:
                                                                             Container(
-                                                                          width:
-                                                                              38.0,
                                                                           height:
                                                                               24.0,
                                                                           decoration:
