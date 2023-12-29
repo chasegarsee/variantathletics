@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/add_message/add_message_widget.dart';
 import '/components/message_emoji_responses/message_emoji_responses_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -130,7 +131,53 @@ class _MessageCenterWidgetState extends State<MessageCenterWidget> {
                       fontSize: 22.0,
                     ),
               ),
-              actions: [],
+              actions: [
+                Visibility(
+                  visible:
+                      valueOrDefault<bool>(currentUserDocument?.isCoach, false),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                    child: AuthUserStreamWidget(
+                      builder: (context) => InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: Container(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.5,
+                                    child: AddMessageWidget(),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        },
+                        child: Icon(
+                          Icons.add,
+                          color: FlutterFlowTheme.of(context).accent2,
+                          size: 40.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
               centerTitle: true,
               elevation: 2.0,
             ),

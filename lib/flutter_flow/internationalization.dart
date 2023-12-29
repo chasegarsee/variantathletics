@@ -1245,6 +1245,53 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
+  // addMessage
+  {
+    'xfumnlf2': {
+      'en': 'Write New Message',
+      'th': 'บอกเชษฐ์ว่ามันเป็นยังไง',
+    },
+    '7ljte7j2': {
+      'en': 'Write a message',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'ez0ym4xa': {
+      'en': 'Start typing...',
+      'th': 'เริ่มพิมพ์',
+    },
+    'tuaoe3b0': {
+      'en': 'Select Emoji',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'slnimmyr': {
+      'en': 'Start typing...',
+      'th': 'เริ่มพิมพ์',
+    },
+    'idtjr6su': {
+      'en': 'Select Emoji',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'k9sl1tgk': {
+      'en': 'Start typing...',
+      'th': 'เริ่มพิมพ์',
+    },
+    'eyd05kf8': {
+      'en': 'Select Emoji',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'm8yb8m8v': {
+      'en': 'Start typing...',
+      'th': 'เริ่มพิมพ์',
+    },
+    'lwqwqo4n': {
+      'en': 'Select Emoji',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'r1khi2d3': {
+      'en': 'Start typing...',
+      'th': 'เริ่มพิมพ์',
+    },
+  },
   // Miscellaneous
   {
     '0akax9ls': {
