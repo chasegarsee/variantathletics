@@ -30,23 +30,26 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
       throw Exception('Invalid weekIndex');
     }
 
-    // Create a new day object
+    // Create a list of ProgramsExercisesStruct
+    List<ProgramExercisesStruct> exercisesList = List.generate(
+        exerciseCount,
+        (index) => ProgramExercisesStruct(
+              id: '',
+              name: '',
+              reps: '',
+              restTime: '',
+              sets: '',
+              tempo: '',
+              workTime: '',
+            ));
+
+    // Create a new DaysStruct object with the exercises list
     DaysStruct newDay = DaysStruct(
       day: weeks[weekIndex]['days'].length + 1, // Increment day number
       id: '$programId-$weekIndex-${weeks[weekIndex]['days'].length + 1}', // Create a unique day ID
       name: name,
       date: date,
-      exercises: List.generate(
-          exerciseCount,
-          (index) => ProgramsExercisesStruct(
-                id: '',
-                name: '',
-                reps: '',
-                restTime: '',
-                sets: '',
-                tempo: '',
-                workTime: '',
-              )),
+      exercises: exercisesList,
     );
 
     // Add the new day to the days array in the specified week
@@ -55,16 +58,8 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
     // Update the Firestore document with the modified data
     await programsCollection.doc(programId).update({'weeks': weeks});
 
-    // Create a DaysStruct object from the newly created day and return it
-    DaysStruct daysStruct = DaysStruct(
-      day: newDay['day'],
-      id: newDay['id'],
-      name: newDay['name'],
-      date: newDay['date'].toDate(),
-      exercises: newDay['exercises'],
-    );
-
-    return daysStruct;
+    // Return the newly created DaysStruct object
+    return newDay;
   } catch (error) {
     print('Error adding new day: $error');
     throw error;
