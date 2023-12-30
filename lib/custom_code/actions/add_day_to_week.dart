@@ -24,13 +24,13 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
     }
 
     // Get the weeks data from the program document, casting it to the expected type
-    List<dynamic> weeks = (programDoc.data() as Map<String, dynamic>)['weeks'];
+    List<dynamic> weeksData = programDoc.data()['weeks'];
 
-    if (weekIndex < 0 || weekIndex >= weeks.length) {
+    if (weekIndex < 0 || weekIndex >= weeksData.length) {
       throw Exception('Invalid weekIndex');
     }
 
-    // Create a list of ProgramsExercisesStruct
+    // Create a list of ProgramExercisesStruct
     List<ProgramExercisesStruct> exercisesList = List.generate(
         exerciseCount,
         (index) => ProgramExercisesStruct(
@@ -43,20 +43,36 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
               workTime: '',
             ));
 
-    // Create a new DaysStruct object with the exercises list
+    // Create a new DaysStruct object
     DaysStruct newDay = DaysStruct(
-      day: weeks[weekIndex]['days'].length + 1, // Increment day number
-      id: '$programId-$weekIndex-${weeks[weekIndex]['days'].length + 1}', // Create a unique day ID
+      day: weeksData[weekIndex]['days'].length + 1, // Increment day number
+      id: '$programId-$weekIndex-${weeksData[weekIndex]['days'].length + 1}', // Create a unique day ID
       name: name,
       date: date,
       exercises: exercisesList,
     );
 
     // Add the new day to the days array in the specified week
-    weeks[weekIndex]['days'].add(newDay);
+    (weeksData[weekIndex]['days'] as List).add({
+      'day': newDay.day,
+      'date': newDay.date,
+      'id': newDay.id,
+      'name': newDay.name,
+      'exercises': newDay.exercises
+          .map((e) => {
+                'id': e.id,
+                'name': e.name,
+                'reps': e.reps,
+                'restTime': e.restTime,
+                'sets': e.sets,
+                'tempo': e.tempo,
+                'workTime': e.workTime,
+              })
+          .toList(),
+    });
 
     // Update the Firestore document with the modified data
-    await programsCollection.doc(programId).update({'weeks': weeks});
+    await programsCollection.doc(programId).update({'weeks': weeksData});
 
     // Return the newly created DaysStruct object
     return newDay;
