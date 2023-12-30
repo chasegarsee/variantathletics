@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/add_workout/add_workout_widget.dart';
 import '/components/edit_program_day/edit_program_day_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -94,10 +95,45 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
           actions: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-              child: Icon(
-                Icons.add,
-                color: FlutterFlowTheme.of(context).accent2,
-                size: 40.0,
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    enableDrag: false,
+                    context: context,
+                    builder: (context) {
+                      return GestureDetector(
+                        onTap: () => _model.unfocusNode.canRequestFocus
+                            ? FocusScope.of(context)
+                                .requestFocus(_model.unfocusNode)
+                            : FocusScope.of(context).unfocus(),
+                        child: Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: Container(
+                            height: MediaQuery.sizeOf(context).height * 0.5,
+                            child: AddWorkoutWidget(
+                              programId: widget.program!.reference,
+                              weekIndex:
+                                  FFAppState().editProgramSelectedWeekIndex,
+                              dayIndex:
+                                  FFAppState().editProgramSelectedDayIndex,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ).then((value) => safeSetState(() {}));
+                },
+                child: Icon(
+                  Icons.add,
+                  color: FlutterFlowTheme.of(context).accent2,
+                  size: 40.0,
+                ),
               ),
             ),
           ],
