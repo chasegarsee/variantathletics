@@ -175,34 +175,35 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'pmlti0yk' /* Date */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      color:
-                                          FlutterFlowTheme.of(context).accent2,
-                                    ),
-                              ),
-                              if (widget.date != null)
+                          if (widget.date != null)
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
                                 Text(
-                                  dateTimeFormat(
-                                    'yMMMd',
-                                    widget.date,
-                                    locale: FFLocalizations.of(context)
-                                        .languageCode,
+                                  FFLocalizations.of(context).getText(
+                                    'pmlti0yk' /* Date */,
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Jost',
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent2,
+                                      ),
                                 ),
-                            ],
-                          ),
+                                if (widget.date != null)
+                                  Text(
+                                    dateTimeFormat(
+                                      'yMMMd',
+                                      widget.date,
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                              ],
+                            ),
                         ],
                       ),
                     ],
