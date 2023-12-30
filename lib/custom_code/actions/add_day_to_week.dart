@@ -9,76 +9,70 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
-    int exerciseCount, String name, DateTime date) async {
-  // Reference to your Firestore collection
-  CollectionReference programsCollection =
-      FirebaseFirestore.instance.collection('programs');
-
+Future<void> addDayToWeek(String programId, int weekIndex, String name,
+    DateTime date, int exerciseCount) async {
   try {
-    // Retrieve the program document
-    DocumentSnapshot programDoc = await programsCollection.doc(programId).get();
+    // Reference to the Firestore collection where you store your data.
+    CollectionReference programsCollection =
+        FirebaseFirestore.instance.collection('programs');
 
-    if (!programDoc.exists) {
-      throw Exception('Program does not exist');
-    }
+    // Get the document for the specified programId.
+    DocumentReference programDoc = programsCollection.doc(programId);
 
-    // Explicitly cast the 'weeks' field to a List<dynamic>
-    List<dynamic> weeksData = (programDoc.data()!['weeks'] as List<dynamic>);
+    // Retrieve the program data.
+    DocumentSnapshot programSnapshot = await programDoc.get();
+    Map<String, dynamic> programData =
+        programSnapshot.data() as Map<String, dynamic>;
 
-    if (weekIndex < 0 || weekIndex >= weeksData.length) {
+    // Get the weeks data from the program data.
+    List<dynamic> weeks = programData['weeks'];
+
+    if (weekIndex >= 0 && weekIndex < weeks.length) {
+      // Create a new day object.
+      DaysStruct newDay = DaysStruct(
+        day: weeks[weekIndex]['days'].length + 1,
+        id: '$programId-$weekIndex-${weeks[weekIndex]['days'].length + 1}',
+        name: name,
+        date: date,
+        exercises: List.generate(
+            exerciseCount,
+            (index) => ProgramExercisesStruct(
+                  id: '',
+                  name: '',
+                  reps: '',
+                  restTime: '',
+                  sets: '',
+                  tempo: '',
+                  workTime: '',
+                )),
+      );
+
+      // Add the new day to the specified week.
+      (weeks[weekIndex]['days'] as List).add({
+        'day': newDay.day,
+        'date': newDay.date,
+        'id': newDay.id,
+        'name': newDay.name,
+        'exercises': newDay.exercises
+            .map((e) => {
+                  'id': e.id,
+                  'name': e.name,
+                  'reps': e.reps,
+                  'restTime': e.restTime,
+                  'sets': e.sets,
+                  'tempo': e.tempo,
+                  'workTime': e.workTime,
+                })
+            .toList(),
+      });
+
+      // Update the Firestore document with the modified data.
+      await programDoc.update({'weeks': weeks});
+    } else {
       throw Exception('Invalid weekIndex');
     }
-
-    // Create a list of ProgramExercisesStruct
-    List<ProgramExercisesStruct> exercisesList = List.generate(
-        exerciseCount,
-        (index) => ProgramExercisesStruct(
-              id: '',
-              name: '',
-              reps: '',
-              restTime: '',
-              sets: '',
-              tempo: '',
-              workTime: '',
-            ));
-
-    // Create a new DaysStruct object
-    DaysStruct newDay = DaysStruct(
-      day: weeksData[weekIndex]['days'].length + 1, // Increment day number
-      id: '$programId-$weekIndex-${weeksData[weekIndex]['days'].length + 1}', // Create a unique day ID
-      name: name,
-      date: date,
-      exercises: exercisesList,
-    );
-
-    // Add the new day to the days array in the specified week
-    (weeksData[weekIndex]['days'] as List).add({
-      'day': newDay.day,
-      'date': newDay.date,
-      'id': newDay.id,
-      'name': newDay.name,
-      'exercises': newDay.exercises
-          .map((e) => {
-                'id': e.id,
-                'name': e.name,
-                'reps': e.reps,
-                'restTime': e.restTime,
-                'sets': e.sets,
-                'tempo': e.tempo,
-                'workTime': e.workTime,
-              })
-          .toList(),
-    });
-
-    // Update the Firestore document with the modified data
-    await programsCollection.doc(programId).update({'weeks': weeksData});
-
-    // Return the newly created DaysStruct object
-    return newDay;
-  } catch (error) {
-    print('Error adding new day: $error');
-    throw error;
+  } catch (e) {
+    print('Error adding day to Firestore: $e');
   }
 }
 
