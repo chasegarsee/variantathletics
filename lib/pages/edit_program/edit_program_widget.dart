@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/edit_program_day_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -201,108 +202,21 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                         final dayItem = day[dayIndex];
                         return Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              setState(() {
-                                FFAppState().editProgramSelectedDay = dayItem;
-                                FFAppState().editProgramSelectedDayIndex =
-                                    dayIndex;
-                              });
-
-                              context.pushNamed(
-                                'editWorkout',
-                                queryParameters: {
-                                  'program': serializeParam(
-                                    widget.program,
-                                    ParamType.Document,
-                                  ),
-                                }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'program': widget.program,
-                                },
-                              );
-                            },
-                            child: Stack(
-                              alignment: AlignmentDirectional(1.0, 0.0),
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 5.0),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 3.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 75.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            dayItem.name,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'fl8n3iyz' /* # Exercises */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Jost',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent2,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    dayItem.exercises.length
-                                                        .toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_double_arrow_right_rounded,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.light
-                                      ? FlutterFlowTheme.of(context).accent1
-                                      : FlutterFlowTheme.of(context).accent2,
-                                  size: 36.0,
-                                ),
-                              ],
+                          child: wrapWithModel(
+                            model: _model.editProgramDayModels.getModel(
+                              dayIndex.toString(),
+                              dayIndex,
+                            ),
+                            updateCallback: () => setState(() {}),
+                            child: EditProgramDayWidget(
+                              key: Key(
+                                'Key9vj_${dayIndex.toString()}',
+                              ),
+                              name: dayItem.name,
+                              date: dayItem.date,
+                              day: dayItem,
+                              dayIndex: dayIndex,
+                              program: widget.program!,
                             ),
                           ),
                         );

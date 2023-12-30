@@ -509,7 +509,8 @@ class _AddMessageWidgetState extends State<AddMessageWidget> {
                                     _model.insertAtIndexInResponses(
                                         3,
                                         ResponsesStruct(
-                                          count: 0,
+                                          count:
+                                              random_data.randomInteger(2, 20),
                                           response: _model.textController5.text,
                                           uid: [],
                                         ));

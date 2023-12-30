@@ -523,7 +523,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: FFButtonWidget(
-                                    onPressed: (_model.emailAddressController
+                                    onPressed: ((_model.emailAddressController
                                                         .text ==
                                                     null ||
                                                 _model.emailAddressController
@@ -534,7 +534,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                     null ||
                                                 _model.displayNameController
                                                         .text ==
-                                                    '')
+                                                    ''))
                                         ? null
                                         : () async {
                                             GoRouter.of(context)

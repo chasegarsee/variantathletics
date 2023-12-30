@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/edit_program_day_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -29,13 +30,19 @@ class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Models for editProgramDay dynamic component.
+  late FlutterFlowDynamicModels<EditProgramDayModel> editProgramDayModels;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    editProgramDayModels =
+        FlutterFlowDynamicModels(() => EditProgramDayModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
+    editProgramDayModels.dispose();
   }
 
   /// Action blocks are added here.

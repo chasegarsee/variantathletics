@@ -267,14 +267,14 @@ class _LeaveWorkoutCommentWidgetState extends State<LeaveWorkoutCommentWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: valueOrDefault<bool>(
+                            onPressed: (valueOrDefault<bool>(
                                       _model.ratingBarValue! <= 0.0,
                                       true,
                                     ) ||
                                     valueOrDefault<bool>(
                                       _model.textController.text == '',
                                       true,
-                                    )
+                                    ))
                                 ? null
                                 : () async {
                                     await WorkoutCommentsRecord.collection

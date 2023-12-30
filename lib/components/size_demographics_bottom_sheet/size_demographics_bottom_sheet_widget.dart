@@ -676,7 +676,7 @@ class _SizeDemographicsBottomSheetWidgetState
                             Padding(
                               padding: EdgeInsets.all(24.0),
                               child: FFButtonWidget(
-                                onPressed: (_model.genderValue == null) ||
+                                onPressed: ((_model.genderValue == null) ||
                                         (_model.activityLevelValue == null) ||
                                         (_model.goalValue == null) ||
                                         (functions.convertStringToInt(
@@ -688,7 +688,7 @@ class _SizeDemographicsBottomSheetWidgetState
                                         (functions.convertStringToInt(
                                                 _model.weightController.text) ==
                                             false) ||
-                                        _model.isLoading
+                                        _model.isLoading)
                                     ? null
                                     : () async {
                                         setState(() {

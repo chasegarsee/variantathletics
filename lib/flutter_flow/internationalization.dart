@@ -759,10 +759,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // editProgram
   {
-    'fl8n3iyz': {
-      'en': '# Exercises',
-      'th': '',
-    },
     'cssqilf7': {
       'en': 'Edit Program',
       'th': '',
@@ -1290,6 +1286,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'r1khi2d3': {
       'en': 'Start typing...',
       'th': 'เริ่มพิมพ์',
+    },
+  },
+  // editProgramDay
+  {
+    'aqgp420n': {
+      'en': 'Name',
+      'th': '',
+    },
+    'pmlti0yk': {
+      'en': 'Date',
+      'th': '',
     },
   },
   // Miscellaneous
