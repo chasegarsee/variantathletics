@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<void> addDayToWeek(String programId, int weekIndex, String name,
+Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
     DateTime date, int exerciseCount) async {
   try {
     // Reference to the Firestore collection where you store your data.
@@ -68,11 +68,15 @@ Future<void> addDayToWeek(String programId, int weekIndex, String name,
 
       // Update the Firestore document with the modified data.
       await programDoc.update({'weeks': weeks});
+
+      // Return the newly created DaysStruct object.
+      return newDay;
     } else {
       throw Exception('Invalid weekIndex');
     }
   } catch (e) {
     print('Error adding day to Firestore: $e');
+    throw e;
   }
 }
 

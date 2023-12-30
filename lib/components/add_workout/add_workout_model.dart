@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,6 +26,8 @@ class AddWorkoutModel extends FlutterFlowModel<AddWorkoutWidget> {
   int? countControllerValue;
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay;
+  // Stores action output result for [Custom Action - addDayToWeek] action in Button widget.
+  DaysStruct? newWorkout;
 
   /// Initialization and disposal methods.
 

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -320,14 +321,20 @@ class _AddWorkoutWidgetState extends State<AddWorkoutWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              await actions.addDayToWeek(
+                              _model.newWorkout = await actions.addDayToWeek(
                                 widget.programId!.id,
                                 widget.weekIndex!,
                                 _model.textController.text,
                                 _model.calendarSelectedDay!.end,
                                 _model.countControllerValue!,
                               );
+                              setState(() {
+                                FFAppState()
+                                    .addToEditProgramDays(_model.newWorkout!);
+                              });
                               Navigator.pop(context);
+
+                              setState(() {});
                             },
                             text: '',
                             icon: Icon(
