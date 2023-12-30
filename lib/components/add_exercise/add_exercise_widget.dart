@@ -299,7 +299,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Container(
-                                                width: 75.0,
+                                                width: 70.0,
                                                 decoration: BoxDecoration(),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -424,7 +424,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Container(
-                                                width: 75.0,
+                                                width: 70.0,
                                                 decoration: BoxDecoration(),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -551,7 +551,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Container(
-                                                width: 75.0,
+                                                width: 70.0,
                                                 decoration: BoxDecoration(),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -954,7 +954,16 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                   widget.program!.reference.id,
                   widget.weekIndex!,
                   widget.dayIndex!,
-                  _model.exercise!,
+                  ProgramExercisesStruct(
+                    name: _model.dropDownValue,
+                    id: functions.convertStringToHyphenatedLowerCase(
+                        _model.dropDownValue!),
+                    reps: _model.textController2.text,
+                    restTime: _model.textController5.text,
+                    sets: _model.textController1.text,
+                    workTime: _model.textController4.text,
+                    tempo: _model.textController3.text,
+                  ),
                 );
                 Navigator.pop(context);
               },
