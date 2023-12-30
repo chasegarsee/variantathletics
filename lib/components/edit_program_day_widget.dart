@@ -184,10 +184,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           ),
                                     ),
                                     Text(
-                                      valueOrDefault<String>(
-                                        widget.name,
-                                        '-',
-                                      ),
+                                      _model.name,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
