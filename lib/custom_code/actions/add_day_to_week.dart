@@ -23,8 +23,8 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
       throw Exception('Program does not exist');
     }
 
-    // Get the weeks data from the program document
-    List<dynamic> weeks = programDoc.data()['weeks'];
+    // Get the weeks data from the program document, casting it to the expected type
+    List<dynamic> weeks = (programDoc.data() as Map<String, dynamic>)['weeks'];
 
     if (weekIndex < 0 || weekIndex >= weeks.length) {
       throw Exception('Invalid weekIndex');
