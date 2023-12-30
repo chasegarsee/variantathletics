@@ -326,7 +326,7 @@ class _AddWorkoutWidgetState extends State<AddWorkoutWidget> {
                                 widget.weekIndex!,
                                 _model.countControllerValue!,
                                 _model.textController.text,
-                                _model.calendarSelectedDay!.start,
+                                _model.calendarSelectedDay!.end,
                               );
                               Navigator.pop(context);
 
