@@ -193,12 +193,9 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                 child: Builder(
                   builder: (context) {
                     final day = FFAppState().editProgramDays.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: day.length,
-                      itemBuilder: (context, dayIndex) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate(day.length, (dayIndex) {
                         final dayItem = day[dayIndex];
                         return Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
@@ -220,7 +217,7 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                             ),
                           ),
                         );
-                      },
+                      }),
                     );
                   },
                 ),

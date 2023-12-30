@@ -98,7 +98,6 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                 ),
                 child: Container(
                   width: double.infinity,
-                  height: 75.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(8.0),
@@ -115,7 +114,6 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(
@@ -194,7 +192,12 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                               ),
                               if (widget.date != null)
                                 Text(
-                                  widget.date!.toString(),
+                                  dateTimeFormat(
+                                    'yMMMd',
+                                    widget.date,
+                                    locale: FFLocalizations.of(context)
+                                        .languageCode,
+                                  ),
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
