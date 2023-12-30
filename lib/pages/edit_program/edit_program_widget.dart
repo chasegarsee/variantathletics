@@ -193,31 +193,33 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                 child: Builder(
                   builder: (context) {
                     final day = FFAppState().editProgramDays.toList();
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(day.length, (dayIndex) {
-                        final dayItem = day[dayIndex];
-                        return Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.editProgramDayModels.getModel(
-                              dayIndex.toString(),
-                              dayIndex,
-                            ),
-                            updateCallback: () => setState(() {}),
-                            child: EditProgramDayWidget(
-                              key: Key(
-                                'Key9vj_${dayIndex.toString()}',
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(day.length, (dayIndex) {
+                          final dayItem = day[dayIndex];
+                          return Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: wrapWithModel(
+                              model: _model.editProgramDayModels.getModel(
+                                dayIndex.toString(),
+                                dayIndex,
                               ),
-                              name: dayItem.name,
-                              date: dayItem.date,
-                              day: dayItem,
-                              dayIndex: dayIndex,
-                              program: widget.program!,
+                              updateCallback: () => setState(() {}),
+                              child: EditProgramDayWidget(
+                                key: Key(
+                                  'Key9vj_${dayIndex.toString()}',
+                                ),
+                                name: dayItem.name,
+                                date: dayItem.date,
+                                day: dayItem,
+                                dayIndex: dayIndex,
+                                program: widget.program!,
+                              ),
                             ),
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                      ),
                     );
                   },
                 ),
