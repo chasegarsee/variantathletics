@@ -15,39 +15,41 @@ Future addExerciseToDay(
   int dayIndex,
   ProgramExercisesStruct exercise,
 ) async {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  // Get a reference to the program document using programId
-  final DocumentReference programRef =
-      firestore.collection('programs').doc(programId);
   try {
-    // Fetch the program document
-    final DocumentSnapshot programSnapshot = await programRef.get();
+    // Reference to the Firestore collection where you store your data.
+    CollectionReference programsCollection =
+        FirebaseFirestore.instance.collection('programs');
 
-    if (programSnapshot.exists) {
-      // Get the 'weeks' array from the program document
-      List<dynamic> weeks = programSnapshot.get('weeks');
+    // Get the document for the specified programId.
+    DocumentReference programDoc = programsCollection.doc(programId);
 
-      if (weeks != null && weekIndex >= 0 && weekIndex < weeks.length) {
-        // Get the 'days' array for the specified week
-        List<dynamic> days = weeks[weekIndex]['days'];
+    // Retrieve the program data.
+    DocumentSnapshot programSnapshot = await programDoc.get();
+    Map<String, dynamic> programData =
+        programSnapshot.data() as Map<String, dynamic>;
 
-        if (days != null && dayIndex >= 0 && dayIndex < days.length) {
-          // Add the new exercise to the end of the 'exercises' array for the specified day
-          days[dayIndex]['exercises'].add(exercise.toMap());
+    // Update the exercises array in the specified day.
+    List<dynamic> weeks = programData['weeks'];
+    if (weekIndex >= 0 && weekIndex < weeks.length) {
+      Map<String, dynamic> week = weeks[weekIndex] as Map<String, dynamic>;
+      List<dynamic> days = week['days'];
+      if (dayIndex >= 0 && dayIndex < days.length) {
+        Map<String, dynamic> day = days[dayIndex] as Map<String, dynamic>;
+        List<dynamic> exercises = day['exercises'];
+        exercises.add(exercise);
 
-          // Update the Firestore document with the modified 'weeks' array
-          await programRef.update({
-            'weeks': weeks,
-          });
-        }
+        // Update the Firestore document with the modified data.
+        await programDoc.update({
+          'weeks': weeks,
+        });
+      } else {
+        throw Exception('Invalid Day Index');
       }
     } else {
-      // Handle the case where the program document doesn't exist
-      print('Program document with ID $programId does not exist.');
+      throw Exception('Invalid Week Index');
     }
   } catch (e) {
-    // Handle any errors that occur during the update process
-    print('Error updating program document: $e');
+    print('Error adding exercise to Firestore: $e');
   }
 }
 
