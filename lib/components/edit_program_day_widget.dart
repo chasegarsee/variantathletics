@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,6 +45,13 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProgramDayModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.name = widget.name!;
+      });
+    });
 
     _model.textController ??= TextEditingController(text: widget.name);
     _model.textFieldFocusNode ??= FocusNode();
@@ -86,96 +94,72 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Container(
-                          width: 75.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                if (!_model.editing)
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {
-                                          _model.editing = !_model.editing;
-                                        });
-                                      },
-                                      child: Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(),
-                                        child: Icon(
-                                          Icons.edit_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                if (_model.editing)
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {
-                                          _model.isLoading = true;
-                                        });
-                                        await actions.updateDayName(
-                                          widget.program!.reference.id,
-                                          FFAppState()
-                                              .editProgramSelectedWeekIndex,
-                                          widget.dayIndex!,
-                                          _model.textController.text,
-                                        );
-                                        setState(() {
-                                          _model.editing = !_model.editing;
-                                          _model.isLoading = false;
-                                        });
-                                      },
-                                      child: Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(),
-                                        child: Icon(
-                                          Icons.check,
-                                          color: _model.isLoading
-                                              ? Color(0xCCD0D0D0)
-                                              : FlutterFlowTheme.of(context)
-                                                  .accent2,
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                              ],
+                      if (_model.editing)
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                _model.isLoading = true;
+                              });
+                              await actions.updateDayName(
+                                widget.program!.reference.id,
+                                FFAppState().editProgramSelectedWeekIndex,
+                                widget.dayIndex!,
+                                _model.textController.text,
+                              );
+                              setState(() {
+                                _model.editing = !_model.editing;
+                                _model.isLoading = false;
+                                _model.name = _model.textController.text;
+                              });
+                            },
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.25,
+                              height: MediaQuery.sizeOf(context).height * 0.75,
+                              decoration: BoxDecoration(),
+                              child: Icon(
+                                Icons.check,
+                                color: _model.isLoading
+                                    ? Color(0xCCD0D0D0)
+                                    : FlutterFlowTheme.of(context).accent2,
+                                size: 24.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      if (!_model.editing)
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                _model.editing = !_model.editing;
+                              });
+                            },
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.25,
+                              height: 80.0,
+                              decoration: BoxDecoration(),
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Icon(
+                                  Icons.edit_sharp,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [

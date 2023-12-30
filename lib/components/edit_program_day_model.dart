@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'edit_program_day_widget.dart' show EditProgramDayWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,8 @@ class EditProgramDayModel extends FlutterFlowModel<EditProgramDayWidget> {
   bool editing = false;
 
   bool isLoading = false;
+
+  String name = '-';
 
   ///  State fields for stateful widgets in this component.
 
