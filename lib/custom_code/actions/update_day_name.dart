@@ -9,20 +9,22 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<void> updateDayName(DocumentReference<ProgramStruct> programId,
-    int weekIndex, int dayIndex, String name) async {
+Future<void> updateDayName(
+    String programId, int weekIndex, int dayIndex, String name) async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  DocumentReference programRef =
-      firestore.collection('programs').doc(programId);
+
   try {
     // Reference to the program document
+    DocumentReference programRef =
+        firestore.collection('programs').doc(programId);
 
     // Get the program data
     DocumentSnapshot programSnapshot = await programRef.get();
 
     if (programSnapshot.exists) {
-      // Extract the "weeks" field as a List
-      List<dynamic> weeks = programSnapshot.data()?['weeks'];
+      // Cast the "weeks" field as a List
+      List<dynamic> weeks =
+          (programSnapshot.data() as Map<String, dynamic>)['weeks'];
 
       if (weeks != null && weekIndex >= 0 && weekIndex < weeks.length) {
         // Access the target week using the weekIndex

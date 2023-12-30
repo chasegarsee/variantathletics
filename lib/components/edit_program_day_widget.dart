@@ -143,7 +143,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           _model.isLoading = true;
                                         });
                                         await actions.updateDayName(
-                                          widget.program!.reference,
+                                          widget.program!.reference.id,
                                           FFAppState()
                                               .editProgramSelectedWeekIndex,
                                           widget.dayIndex!,
