@@ -1290,6 +1290,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // editProgramDay
   {
+    'kfpwfae5': {
+      'en': 'Hello World',
+      'th': '',
+    },
     'aqgp420n': {
       'en': 'Name',
       'th': '',

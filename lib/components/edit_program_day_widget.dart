@@ -108,74 +108,110 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                8.0, 0.0, 8.0, 0.0),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 0.5,
-                              child: TextFormField(
-                                controller: _model.textController,
-                                focusNode: _model.textFieldFocusNode,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'aqgp420n' /* Name */,
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (!_model.editing)
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'kfpwfae5' /* Hello World */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent2,
+                                        ),
                                   ),
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Jost',
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget.name,
+                                      '-',
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ],
+                              ),
+                          ],
+                        ),
+                        if (_model.editing)
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 0.5,
+                                child: TextFormField(
+                                  controller: _model.textController,
+                                  focusNode: _model.textFieldFocusNode,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText:
+                                        FFLocalizations.of(context).getText(
+                                      'aqgp420n' /* Name */,
+                                    ),
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent2,
+                                        ),
+                                    alignLabelWithHint: true,
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Jost',
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent2,
+                                        ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
-                                            .accent2,
+                                            .alternate,
+                                        width: 2.0,
                                       ),
-                                  alignLabelWithHint: true,
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Jost',
+                                      borderRadius: BorderRadius.circular(0.0),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
-                                            .accent2,
+                                            .primary,
+                                        width: 2.0,
                                       ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
+                                      borderRadius: BorderRadius.circular(0.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
+                                    errorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
+                                    focusedErrorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(0.0),
                                   ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textControllerValidator
-                                    .asValidator(context),
                               ),
                             ),
                           ),
-                        ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -212,6 +248,46 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                   : FlutterFlowTheme.of(context).accent2,
               size: 36.0,
             ),
+            if (!_model.editing)
+              Align(
+                alignment: AlignmentDirectional(-0.96, -0.6),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {
+                      _model.editing = !_model.editing;
+                    });
+                  },
+                  child: Icon(
+                    Icons.edit_sharp,
+                    color: FlutterFlowTheme.of(context).accent2,
+                    size: 24.0,
+                  ),
+                ),
+              ),
+            if (_model.editing)
+              Align(
+                alignment: AlignmentDirectional(-0.96, -0.6),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {
+                      _model.editing = !_model.editing;
+                    });
+                  },
+                  child: Icon(
+                    Icons.check,
+                    color: FlutterFlowTheme.of(context).accent2,
+                    size: 24.0,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
