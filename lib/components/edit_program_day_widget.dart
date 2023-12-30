@@ -108,7 +108,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                       Expanded(
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
+                              8.0, 5.0, 8.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.5,
                             child: TextFormField(
@@ -171,38 +171,29 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                           ),
                         ),
                       ),
-                      Row(
+                      Column(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           if (widget.date != null)
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'pmlti0yk' /* Date */,
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'pmlti0yk' /* Date */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    color: FlutterFlowTheme.of(context).accent2,
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Jost',
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent2,
-                                      ),
-                                ),
-                                if (widget.date != null)
-                                  Text(
-                                    dateTimeFormat(
-                                      'yMMMd',
-                                      widget.date,
-                                      locale: FFLocalizations.of(context)
-                                          .languageCode,
-                                    ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                              ],
+                            ),
+                          if (widget.date != null)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: Text(
+                                widget.date!.toString(),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
                             ),
                         ],
                       ),
