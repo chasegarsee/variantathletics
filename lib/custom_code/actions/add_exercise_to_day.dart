@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future addExerciseToDay(
+Future<ProgramExercisesStruct> addExerciseToDay(
   String programId,
   int weekIndex,
   int dayIndex,
@@ -50,6 +50,15 @@ Future addExerciseToDay(
         await programDoc.update({
           'weeks': weeks,
         });
+        return ProgramExercisesStruct(
+          id: exercise.id,
+          name: exercise.name,
+          reps: exercise.reps,
+          restTime: exercise.restTime,
+          sets: exercise.sets,
+          tempo: exercise.tempo,
+          workTime: exercise.workTime,
+        );
       } else {
         throw Exception('Invalid Day Index');
       }
@@ -59,6 +68,15 @@ Future addExerciseToDay(
   } catch (e) {
     print('Error adding exercise to Firestore: $e');
   }
+  return ProgramExercisesStruct(
+    id: '',
+    name: '',
+    reps: '',
+    restTime: '',
+    sets: '',
+    tempo: '',
+    workTime: '',
+  );
 }
 
 // Set your action name, define your arguments and return parameter,

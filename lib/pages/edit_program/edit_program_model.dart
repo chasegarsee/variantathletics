@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/edit_program_day_widget.dart';
+import '/components/edit_program_day/edit_program_day_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

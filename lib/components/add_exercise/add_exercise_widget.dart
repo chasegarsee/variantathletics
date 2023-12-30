@@ -950,7 +950,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
             ),
             FFButtonWidget(
               onPressed: () async {
-                await actions.addExerciseToDay(
+                _model.addedExercise = await actions.addExerciseToDay(
                   widget.program!.reference.id,
                   widget.weekIndex!,
                   widget.dayIndex!,
@@ -965,7 +965,17 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                     tempo: _model.textController3.text,
                   ),
                 );
+                setState(() {
+                  FFAppState().updateEditProgramSelectedDayStruct(
+                    (e) => e
+                      ..updateExercises(
+                        (e) => e.add(_model.addedExercise!),
+                      ),
+                  );
+                });
                 Navigator.pop(context);
+
+                setState(() {});
               },
               text: FFLocalizations.of(context).getText(
                 '28e8cj15' /* Add Exercise */,

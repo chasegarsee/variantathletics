@@ -49,6 +49,8 @@ class AddExerciseModel extends FlutterFlowModel<AddExerciseWidget> {
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
+  // Stores action output result for [Custom Action - addExerciseToDay] action in Button widget.
+  ProgramExercisesStruct? addedExercise;
 
   /// Initialization and disposal methods.
 
