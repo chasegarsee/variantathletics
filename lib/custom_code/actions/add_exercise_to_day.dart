@@ -36,7 +36,15 @@ Future addExerciseToDay(
       if (dayIndex >= 0 && dayIndex < days.length) {
         Map<String, dynamic> day = days[dayIndex] as Map<String, dynamic>;
         List<dynamic> exercises = day['exercises'];
-        exercises.add(exercise);
+        exercises.add({
+          'id': exercise.id,
+          'name': exercise.name,
+          'reps': exercise.reps,
+          'restTime': exercise.restTime,
+          'sets': exercise.sets,
+          'tempo': exercise.tempo,
+          'worktime': exercise.workTime,
+        });
 
         // Update the Firestore document with the modified data.
         await programDoc.update({
