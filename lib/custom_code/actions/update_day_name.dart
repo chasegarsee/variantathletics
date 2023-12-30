@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<void> updateDayName(DocumentReference programId, int weekIndex,
-    int dayIndex, String name) async {
+Future<void> updateDayName(DocumentReference<ProgramStruct> programId,
+    int weekIndex, int dayIndex, String name) async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   DocumentReference programRef =
       firestore.collection('programs').doc(programId);
