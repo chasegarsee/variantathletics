@@ -115,7 +115,7 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                         child: Padding(
                           padding: MediaQuery.viewInsetsOf(context),
                           child: Container(
-                            height: MediaQuery.sizeOf(context).height * 0.5,
+                            height: MediaQuery.sizeOf(context).height * 0.75,
                             child: AddWorkoutWidget(
                               programId: widget.program!.reference,
                               weekIndex:
