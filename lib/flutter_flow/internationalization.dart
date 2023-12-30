@@ -1303,6 +1303,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
   },
+  // addWorkout
+  {
+    '1o3n70ns': {
+      'en': 'Create New Workout',
+      'th': 'บอกเชษฐ์ว่ามันเป็นยังไง',
+    },
+    'ajp2ydrp': {
+      'en': 'Workout Title',
+      'th': 'เขียนคอมเม้นท์',
+    },
+    'w2d7uakl': {
+      'en': 'Add Workout Name',
+      'th': 'เริ่มพิมพ์',
+    },
+    '3e1jm3vo': {
+      'en': 'Number of Exercises',
+      'th': '',
+    },
+  },
   // Miscellaneous
   {
     '0akax9ls': {
