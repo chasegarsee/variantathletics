@@ -43,7 +43,7 @@ Future<ProgramExercisesStruct> addExerciseToDay(
           'restTime': exercise.restTime,
           'sets': exercise.sets,
           'tempo': exercise.tempo,
-          'worktime': exercise.workTime,
+          'workTime': exercise.workTime,
         });
 
         // Update the Firestore document with the modified data.
