@@ -230,7 +230,12 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                               ),
                             if (widget.date != null)
                               Text(
-                                widget.date!.toString(),
+                                dateTimeFormat(
+                                  'yMMMd',
+                                  widget.date,
+                                  locale:
+                                      FFLocalizations.of(context).languageCode,
+                                ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                           ],
