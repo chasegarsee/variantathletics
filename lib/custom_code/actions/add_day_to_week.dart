@@ -31,24 +31,23 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex,
     }
 
     // Create a new day object
-    Map<String, dynamic> newDay = {
-      'day': weeks[weekIndex]['days'].length + 1, // Increment day number
-      'id':
-          '$programId-$weekIndex-${weeks[weekIndex]['days'].length + 1}', // Create a unique day ID
-      'name': name,
-      'date': Timestamp.fromDate(date),
-      'exercises': List.generate(
+    DaysStruct newDay = DaysStruct(
+      day: weeks[weekIndex]['days'].length + 1, // Increment day number
+      id: '$programId-$weekIndex-${weeks[weekIndex]['days'].length + 1}', // Create a unique day ID
+      name: name,
+      date: date,
+      exercises: List.generate(
           exerciseCount,
-          (index) => {
-                'id': '',
-                'name': '',
-                'reps': '',
-                'restTime': '',
-                'sets': '',
-                'tempo': '',
-                'workTime': '',
-              }),
-    };
+          (index) => ProgramsExercisesStruct(
+                id: '',
+                name: '',
+                reps: '',
+                restTime: '',
+                sets: '',
+                tempo: '',
+                workTime: '',
+              )),
+    );
 
     // Add the new day to the days array in the specified week
     weeks[weekIndex]['days'].add(newDay);
