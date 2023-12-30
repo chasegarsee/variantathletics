@@ -173,7 +173,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'kfpwfae5' /* Hello World */,
+                                        'qo627wbu' /* Workout Name */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -209,7 +209,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                     decoration: InputDecoration(
                                       labelText:
                                           FFLocalizations.of(context).getText(
-                                        'aqgp420n' /* Name */,
+                                        'dh4u7a0b' /* Workout Name */,
                                       ),
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium

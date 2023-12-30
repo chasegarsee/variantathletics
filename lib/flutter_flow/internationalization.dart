@@ -1290,12 +1290,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // editProgramDay
   {
-    'kfpwfae5': {
-      'en': 'Hello World',
+    'qo627wbu': {
+      'en': 'Workout Name',
       'th': '',
     },
-    'aqgp420n': {
-      'en': 'Name',
+    'dh4u7a0b': {
+      'en': 'Workout Name',
       'th': '',
     },
     'pmlti0yk': {
