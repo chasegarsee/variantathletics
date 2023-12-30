@@ -162,6 +162,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                         ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -170,6 +171,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                               if (!_model.editing)
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
@@ -270,6 +272,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                             ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (widget.date != null)
                                 Text(
