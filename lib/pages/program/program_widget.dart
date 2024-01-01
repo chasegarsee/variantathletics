@@ -426,7 +426,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                               ?.completedWorkouts
                                                                               ?.toList() ??
                                                                           [])
-                                                                      .toList()))
+                                                                      .toList(),
+                                                                  weeksItem.id,
+                                                                  weeksItem.days
+                                                                      .length))
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(

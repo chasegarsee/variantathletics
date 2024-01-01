@@ -130,6 +130,8 @@ String capitalize(String exercise) {
 bool isWeekComplete(
   int? weekNumber,
   List<String>? completedDays,
+  String weekId,
+  int daysLength,
 ) {
   // Check if weekNumber or completedDays is null
   if (weekNumber == null || completedDays == null) {
@@ -141,12 +143,12 @@ bool isWeekComplete(
   // Iterate through the list of strings
   for (String day in completedDays) {
     // Check if the string contains the pattern "w-{weekNumber}"
-    if (day.contains("w-$weekNumber")) {
+    if (day.contains(weekId)) {
       count++;
     }
 
     // Return true if count reaches 7
-    if (count == 7) {
+    if (count == daysLength) {
       return true;
     }
   }
