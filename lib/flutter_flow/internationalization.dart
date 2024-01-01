@@ -1120,7 +1120,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'สิ่งนี้ไม่สามารถยกเลิกได้',
     },
   },
-  // newProgram
+  // addProgram
   {
     '0s8xr1gy': {
       'en': 'Thumbnail',

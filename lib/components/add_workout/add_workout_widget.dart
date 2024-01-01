@@ -19,16 +19,18 @@ export 'add_workout_model.dart';
 class AddWorkoutWidget extends StatefulWidget {
   const AddWorkoutWidget({
     Key? key,
-    required this.programId,
+    required this.programRef,
     required this.weekIndex,
     required this.dayIndex,
     required this.weekId,
+    required this.programId,
   }) : super(key: key);
 
-  final DocumentReference? programId;
+  final DocumentReference? programRef;
   final int? weekIndex;
   final int? dayIndex;
   final String? weekId;
+  final String? programId;
 
   @override
   _AddWorkoutWidgetState createState() => _AddWorkoutWidgetState();
@@ -324,12 +326,12 @@ class _AddWorkoutWidgetState extends State<AddWorkoutWidget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.newWorkout = await actions.addDayToWeek(
-                                widget.programId!.id,
+                                widget.programRef!.id,
                                 widget.weekIndex!,
                                 _model.textController.text,
                                 _model.calendarSelectedDay!.end,
                                 _model.countControllerValue!,
-                                '${widget.programId?.id}-${widget.weekIndex?.toString()}',
+                                '${widget.programId}-${widget.weekIndex?.toString()}',
                               );
                               setState(() {
                                 FFAppState()

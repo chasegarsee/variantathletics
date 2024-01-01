@@ -13,18 +13,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'new_program_model.dart';
-export 'new_program_model.dart';
+import 'add_program_model.dart';
+export 'add_program_model.dart';
 
-class NewProgramWidget extends StatefulWidget {
-  const NewProgramWidget({Key? key}) : super(key: key);
+class AddProgramWidget extends StatefulWidget {
+  const AddProgramWidget({Key? key}) : super(key: key);
 
   @override
-  _NewProgramWidgetState createState() => _NewProgramWidgetState();
+  _AddProgramWidgetState createState() => _AddProgramWidgetState();
 }
 
-class _NewProgramWidgetState extends State<NewProgramWidget> {
-  late NewProgramModel _model;
+class _AddProgramWidgetState extends State<AddProgramWidget> {
+  late AddProgramModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -35,7 +35,7 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => NewProgramModel());
+    _model = createModel(context, () => AddProgramModel());
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();

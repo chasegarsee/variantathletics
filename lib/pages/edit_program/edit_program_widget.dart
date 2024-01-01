@@ -117,12 +117,13 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                           child: Container(
                             height: MediaQuery.sizeOf(context).height * 0.75,
                             child: AddWorkoutWidget(
-                              programId: widget.program!.reference,
+                              programRef: widget.program!.reference,
                               weekIndex:
                                   FFAppState().editProgramSelectedWeekIndex,
                               dayIndex:
                                   FFAppState().editProgramSelectedDayIndex,
                               weekId: '',
+                              programId: widget.program!.id,
                             ),
                           ),
                         ),

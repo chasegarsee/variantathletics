@@ -31,7 +31,7 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
       // Create a new day object.
       DaysStruct newDay = DaysStruct(
         day: weeks[weekIndex]['days'].length + 1,
-        id: '$weekId-${weeks[weekIndex]['days'].length + 1}',
+        id: '$weekId-day-${weeks[weekIndex]['days'].length + 1}',
         name: name,
         date: date,
         exercises: List.generate(
