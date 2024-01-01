@@ -192,6 +192,7 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                                 '-',
                               ),
                               index: exercisesIndex,
+                              programId: widget.program!.reference,
                             ),
                           );
                         }),

@@ -1019,7 +1019,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         ),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 125.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -1036,10 +1035,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.25,
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        1.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1089,10 +1084,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                   context)
                                                               .width *
                                                           1.0,
-                                                      height: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .height *
-                                                          1.0,
                                                       fit: BoxFit.cover,
                                                       errorWidget: (context,
                                                               error,
@@ -1103,11 +1094,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                             MediaQuery.sizeOf(
                                                                         context)
                                                                     .width *
-                                                                1.0,
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
                                                                 1.0,
                                                         fit: BoxFit.cover,
                                                       ),
@@ -1120,10 +1106,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.75,
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        1.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1482,16 +1464,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                           ),
                         ),
                     ],
-                  ),
-                if (_model.isLoading)
-                  Align(
-                    alignment: AlignmentDirectional(0.0, -0.09),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        's2xpl59s' /* Loading... */,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
                   ),
               ],
             ),

@@ -386,10 +386,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Complete Workout',
       'th': 'เล่นเสร็จแล้ว',
     },
-    's2xpl59s': {
-      'en': 'Loading...',
-      'th': '',
-    },
     'vnvch7gg': {
       'en': 'Home',
       'th': '',
@@ -1166,7 +1162,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     '8wquxxn7': {
-      'en': 'Please select...',
+      'en': 'Select Exercise...',
       'th': '',
     },
     '37csumcw': {
@@ -1186,7 +1182,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     '9745ik8c': {
-      'en': 'Work Time',
+      'en': 'Working Time',
       'th': '',
     },
     'ag10mm7l': {
