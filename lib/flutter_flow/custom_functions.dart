@@ -431,8 +431,8 @@ List<WeeksStruct> generateWeekObjects(
   List<WeeksStruct> weekList = [];
 
   for (int i = 1; i <= numWeeks; i++) {
-    weekList
-        .add(WeeksStruct(days: [], weekNumber: i, id: '${programName}-${i}'));
+    weekList.add(
+        WeeksStruct(days: [], weekNumber: i, id: '${programName}-week-${i}'));
   }
 
   return weekList;
