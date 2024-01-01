@@ -1109,16 +1109,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'COMING SOON',
       'th': 'เร็วๆ นี้',
     },
-    'eod9rf46': {
-      'en':
-          'Selecting a new program will result in all progress on your current program being lost. ',
-      'th':
-          'การเลือกโปรแกรมใหม่จะส่งผลให้ความคืบหน้าทั้งหมดของโปรแกรมปัจจุบันของคุณหายไป ',
-    },
-    'ej86wcg2': {
-      'en': 'This cannot be undone',
-      'th': 'สิ่งนี้ไม่สามารถยกเลิกได้',
-    },
   },
   // addProgram
   {
