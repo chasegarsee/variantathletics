@@ -332,7 +332,7 @@ class _AddWorkoutWidgetState extends State<AddWorkoutWidget> {
                                 _model.textController.text,
                                 _model.calendarSelectedDay!.end,
                                 _model.countControllerValue!,
-                                '${widget.programId}-${functions.indexPlusOne(widget.weekIndex!).toString()}',
+                                '${widget.programId}-week-${functions.indexPlusOne(widget.weekIndex!).toString()}',
                               );
                               setState(() {
                                 FFAppState()
