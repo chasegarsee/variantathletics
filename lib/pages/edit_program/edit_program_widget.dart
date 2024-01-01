@@ -122,6 +122,7 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                                   FFAppState().editProgramSelectedWeekIndex,
                               dayIndex:
                                   FFAppState().editProgramSelectedDayIndex,
+                              weekId: '',
                             ),
                           ),
                         ),

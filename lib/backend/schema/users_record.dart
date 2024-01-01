@@ -61,12 +61,6 @@ class UsersRecord extends FirestoreRecord {
   List<ExercisesStruct> get exercises => _exercises ?? const [];
   bool hasExercises() => _exercises != null;
 
-  // "completedWorkouts" field.
-  List<CompletedWorkoutsStruct>? _completedWorkouts;
-  List<CompletedWorkoutsStruct> get completedWorkouts =>
-      _completedWorkouts ?? const [];
-  bool hasCompletedWorkouts() => _completedWorkouts != null;
-
   // "isSubbed" field.
   bool? _isSubbed;
   bool get isSubbed => _isSubbed ?? false;
@@ -98,6 +92,11 @@ class UsersRecord extends FirestoreRecord {
   int get readMessages => _readMessages ?? 0;
   bool hasReadMessages() => _readMessages != null;
 
+  // "completedWorkouts" field.
+  List<String>? _completedWorkouts;
+  List<String> get completedWorkouts => _completedWorkouts ?? const [];
+  bool hasCompletedWorkouts() => _completedWorkouts != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -111,10 +110,6 @@ class UsersRecord extends FirestoreRecord {
       snapshotData['exercises'],
       ExercisesStruct.fromMap,
     );
-    _completedWorkouts = getStructList(
-      snapshotData['completedWorkouts'],
-      CompletedWorkoutsStruct.fromMap,
-    );
     _isSubbed = snapshotData['isSubbed'] as bool?;
     _demographics =
         UserDemographicsStruct.maybeFromMap(snapshotData['demographics']);
@@ -125,6 +120,7 @@ class UsersRecord extends FirestoreRecord {
     );
     _macros = MacrosStruct.maybeFromMap(snapshotData['macros']);
     _readMessages = castToType<int>(snapshotData['readMessages']);
+    _completedWorkouts = getDataList(snapshotData['completedWorkouts']);
   }
 
   static CollectionReference get collection =>
@@ -217,13 +213,13 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.isCoach == e2?.isCoach &&
         e1?.currentProgramId == e2?.currentProgramId &&
         listEquality.equals(e1?.exercises, e2?.exercises) &&
-        listEquality.equals(e1?.completedWorkouts, e2?.completedWorkouts) &&
         e1?.isSubbed == e2?.isSubbed &&
         e1?.demographics == e2?.demographics &&
         e1?.currentProgram == e2?.currentProgram &&
         listEquality.equals(e1?.weightHistory, e2?.weightHistory) &&
         e1?.macros == e2?.macros &&
-        e1?.readMessages == e2?.readMessages;
+        e1?.readMessages == e2?.readMessages &&
+        listEquality.equals(e1?.completedWorkouts, e2?.completedWorkouts);
   }
 
   @override
@@ -237,13 +233,13 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.isCoach,
         e?.currentProgramId,
         e?.exercises,
-        e?.completedWorkouts,
         e?.isSubbed,
         e?.demographics,
         e?.currentProgram,
         e?.weightHistory,
         e?.macros,
-        e?.readMessages
+        e?.readMessages,
+        e?.completedWorkouts
       ]);
 
   @override

@@ -12,9 +12,11 @@ class WeeksStruct extends FFFirebaseStruct {
   WeeksStruct({
     int? weekNumber,
     List<DaysStruct>? days,
+    String? id,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _weekNumber = weekNumber,
         _days = days,
+        _id = id,
         super(firestoreUtilData);
 
   // "weekNumber" field.
@@ -32,12 +34,19 @@ class WeeksStruct extends FFFirebaseStruct {
       updateFn(_days ??= []);
   bool hasDays() => _days != null;
 
+  // "id" field.
+  String? _id;
+  String get id => _id ?? '';
+  set id(String? val) => _id = val;
+  bool hasId() => _id != null;
+
   static WeeksStruct fromMap(Map<String, dynamic> data) => WeeksStruct(
         weekNumber: castToType<int>(data['weekNumber']),
         days: getStructList(
           data['days'],
           DaysStruct.fromMap,
         ),
+        id: data['id'] as String?,
       );
 
   static WeeksStruct? maybeFromMap(dynamic data) =>
@@ -46,6 +55,7 @@ class WeeksStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'weekNumber': _weekNumber,
         'days': _days?.map((e) => e.toMap()).toList(),
+        'id': _id,
       }.withoutNulls;
 
   @override
@@ -58,6 +68,10 @@ class WeeksStruct extends FFFirebaseStruct {
           _days,
           ParamType.DataStruct,
           true,
+        ),
+        'id': serializeParam(
+          _id,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -74,6 +88,11 @@ class WeeksStruct extends FFFirebaseStruct {
           true,
           structBuilder: DaysStruct.fromSerializableMap,
         ),
+        id: deserializeParam(
+          data['id'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -84,15 +103,17 @@ class WeeksStruct extends FFFirebaseStruct {
     const listEquality = ListEquality();
     return other is WeeksStruct &&
         weekNumber == other.weekNumber &&
-        listEquality.equals(days, other.days);
+        listEquality.equals(days, other.days) &&
+        id == other.id;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([weekNumber, days]);
+  int get hashCode => const ListEquality().hash([weekNumber, days, id]);
 }
 
 WeeksStruct createWeeksStruct({
   int? weekNumber,
+  String? id,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -100,6 +121,7 @@ WeeksStruct createWeeksStruct({
 }) =>
     WeeksStruct(
       weekNumber: weekNumber,
+      id: id,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

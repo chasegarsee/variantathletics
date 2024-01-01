@@ -589,8 +589,12 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                           ...mapToFirestore(
                             {
                               'weeks': getWeeksListFirestoreData(
-                                functions.generateWeekObjects(int.parse(
-                                    _model.numWeeksInputController.text)),
+                                functions.generateWeekObjects(
+                                    int.parse(
+                                        _model.numWeeksInputController.text),
+                                    functions
+                                        .convertStringToHyphenatedLowerCase(
+                                            _model.textController1.text)!),
                               ),
                             },
                           ),
@@ -609,8 +613,12 @@ class _NewProgramWidgetState extends State<NewProgramWidget> {
                           ...mapToFirestore(
                             {
                               'weeks': getWeeksListFirestoreData(
-                                functions.generateWeekObjects(int.parse(
-                                    _model.numWeeksInputController.text)),
+                                functions.generateWeekObjects(
+                                    int.parse(
+                                        _model.numWeeksInputController.text),
+                                    functions
+                                        .convertStringToHyphenatedLowerCase(
+                                            _model.textController1.text)!),
                               ),
                             },
                           ),

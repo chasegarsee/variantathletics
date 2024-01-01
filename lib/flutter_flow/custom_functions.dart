@@ -424,11 +424,15 @@ String? convertStringToHyphenatedLowerCase(String inputString) {
   }
 }
 
-List<WeeksStruct> generateWeekObjects(int numWeeks) {
+List<WeeksStruct> generateWeekObjects(
+  int numWeeks,
+  String programName,
+) {
   List<WeeksStruct> weekList = [];
 
   for (int i = 1; i <= numWeeks; i++) {
-    weekList.add(WeeksStruct(days: [], weekNumber: i));
+    weekList
+        .add(WeeksStruct(days: [], weekNumber: i, id: '${programName}-${i}'));
   }
 
   return weekList;

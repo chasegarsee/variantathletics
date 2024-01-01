@@ -22,11 +22,13 @@ class AddWorkoutWidget extends StatefulWidget {
     required this.programId,
     required this.weekIndex,
     required this.dayIndex,
+    required this.weekId,
   }) : super(key: key);
 
   final DocumentReference? programId;
   final int? weekIndex;
   final int? dayIndex;
+  final String? weekId;
 
   @override
   _AddWorkoutWidgetState createState() => _AddWorkoutWidgetState();
@@ -327,6 +329,7 @@ class _AddWorkoutWidgetState extends State<AddWorkoutWidget> {
                                 _model.textController.text,
                                 _model.calendarSelectedDay!.end,
                                 _model.countControllerValue!,
+                                '${widget.programId?.id}-${widget.weekIndex?.toString()}',
                               );
                               setState(() {
                                 FFAppState()

@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/days_placeholder/days_placeholder_widget.dart';
 import '/components/leave_workout_comment/leave_workout_comment_widget.dart';
@@ -11,6 +12,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -420,8 +422,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               if (functions.isWeekComplete(
                                                                   weeksItem
                                                                       .weekNumber,
-                                                                  FFAppState()
-                                                                      .completedDays
+                                                                  (currentUserDocument
+                                                                              ?.completedWorkouts
+                                                                              ?.toList() ??
+                                                                          [])
                                                                       .toList()))
                                                                 Align(
                                                                   alignment:
@@ -429,32 +433,35 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                           -1.79,
                                                                           -0.82),
                                                                   child:
-                                                                      Container(
-                                                                    width: 20.0,
-                                                                    height:
-                                                                        20.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent1,
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                    ),
-                                                                    child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          FaIcon(
-                                                                        FontAwesomeIcons
-                                                                            .checkDouble,
+                                                                      AuthUserStreamWidget(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            Container(
+                                                                      width:
+                                                                          20.0,
+                                                                      height:
+                                                                          20.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        size:
-                                                                            15.0,
+                                                                            .accent1,
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .checkDouble,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          size:
+                                                                              15.0,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -593,8 +600,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              if (FFAppState()
-                                                                  .completedDays
+                                                              if ((currentUserDocument
+                                                                          ?.completedWorkouts
+                                                                          ?.toList() ??
+                                                                      [])
                                                                   .contains(
                                                                       dayItem
                                                                           .id))
@@ -604,32 +613,35 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                           -1.79,
                                                                           -0.82),
                                                                   child:
-                                                                      Container(
-                                                                    width: 20.0,
-                                                                    height:
-                                                                        20.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent1,
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                    ),
-                                                                    child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          FaIcon(
-                                                                        FontAwesomeIcons
-                                                                            .checkDouble,
+                                                                      AuthUserStreamWidget(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            Container(
+                                                                      width:
+                                                                          20.0,
+                                                                      height:
+                                                                          20.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        size:
-                                                                            15.0,
+                                                                            .accent1,
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .checkDouble,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          size:
+                                                                              15.0,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -906,6 +918,16 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                     setState(() {
                                       FFAppState().removeFromCompletedDays(
                                           FFAppState().selectedDayId);
+                                    });
+
+                                    await currentUserReference!.update({
+                                      ...mapToFirestore(
+                                        {
+                                          'completedWorkouts':
+                                              FieldValue.arrayRemove(
+                                                  [FFAppState().selectedDayId]),
+                                        },
+                                      ),
                                     });
                                   },
                                   child: Icon(
@@ -1400,6 +1422,15 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                               setState(() {
                                 FFAppState().addToCompletedDays(
                                     FFAppState().selectedDayId);
+                              });
+
+                              await currentUserReference!.update({
+                                ...mapToFirestore(
+                                  {
+                                    'completedWorkouts': FieldValue.arrayUnion(
+                                        [FFAppState().selectedDayId]),
+                                  },
+                                ),
                               });
                               if (FFAppState().leaveComments) {
                                 showModalBottomSheet(

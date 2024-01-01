@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
-    DateTime date, int exerciseCount) async {
+    DateTime date, int exerciseCount, String weekId) async {
   try {
     // Reference to the Firestore collection where you store your data.
     CollectionReference programsCollection =
@@ -31,7 +31,7 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
       // Create a new day object.
       DaysStruct newDay = DaysStruct(
         day: weeks[weekIndex]['days'].length + 1,
-        id: '$programId-$weekIndex-${weeks[weekIndex]['days'].length + 1}',
+        id: '$weekId-${weeks[weekIndex]['days'].length + 1}',
         name: name,
         date: date,
         exercises: List.generate(
