@@ -12,16 +12,7 @@ import 'program_timer_model.dart';
 export 'program_timer_model.dart';
 
 class ProgramTimerWidget extends StatefulWidget {
-  const ProgramTimerWidget({
-    Key? key,
-    required this.workingInterval,
-    required this.restingInterval,
-    required this.resetTimer,
-  }) : super(key: key);
-
-  final int? workingInterval;
-  final int? restingInterval;
-  final Future<dynamic> Function()? resetTimer;
+  const ProgramTimerWidget({Key? key}) : super(key: key);
 
   @override
   _ProgramTimerWidgetState createState() => _ProgramTimerWidgetState();

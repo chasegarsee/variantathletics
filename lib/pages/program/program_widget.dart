@@ -1131,121 +1131,158 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                     width: 1.0,
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.timer,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent2,
-                                      size: 14.0,
-                                    ),
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: FlutterFlowTimer(
-                                        initialTime: FFAppState()
-                                            .intervalTimer
-                                            .currentInterval,
-                                        getDisplayTime: (value) =>
-                                            StopWatchTimer.getDisplayTime(
-                                          value,
-                                          hours: false,
-                                          milliSecond: false,
-                                        ),
-                                        controller:
-                                            _model.intervalTimerController,
-                                        updateStateInterval:
-                                            Duration(milliseconds: 1000),
-                                        onChanged:
-                                            (value, displayTime, shouldUpdate) {
-                                          _model.intervalTimerMilliseconds =
-                                              value;
-                                          _model.intervalTimerValue =
-                                              displayTime;
-                                          if (shouldUpdate) setState(() {});
-                                        },
-                                        onEnded: () async {
-                                          if (FFAppState()
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      enableDrag: false,
+                                      context: context,
+                                      builder: (context) {
+                                        return GestureDetector(
+                                          onTap: () => _model
+                                                  .unfocusNode.canRequestFocus
+                                              ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _model.unfocusNode)
+                                              : FocusScope.of(context)
+                                                  .unfocus(),
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: ProgramTimerWidget(),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.timer,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent2,
+                                        size: 14.0,
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: FlutterFlowTimer(
+                                          initialTime: FFAppState()
                                               .intervalTimer
-                                              .playSound) {
-                                            _model.soundPlayer ??=
-                                                AudioPlayer();
-                                            if (_model.soundPlayer!.playing) {
-                                              await _model.soundPlayer!.stop();
+                                              .currentInterval,
+                                          getDisplayTime: (value) =>
+                                              StopWatchTimer.getDisplayTime(
+                                            value,
+                                            hours: false,
+                                            milliSecond: false,
+                                          ),
+                                          controller:
+                                              _model.intervalTimerController,
+                                          updateStateInterval:
+                                              Duration(milliseconds: 1000),
+                                          onChanged: (value, displayTime,
+                                              shouldUpdate) {
+                                            _model.intervalTimerMilliseconds =
+                                                value;
+                                            _model.intervalTimerValue =
+                                                displayTime;
+                                            if (shouldUpdate) setState(() {});
+                                          },
+                                          onEnded: () async {
+                                            if (FFAppState()
+                                                .intervalTimer
+                                                .playSound) {
+                                              _model.soundPlayer ??=
+                                                  AudioPlayer();
+                                              if (_model.soundPlayer!.playing) {
+                                                await _model.soundPlayer!
+                                                    .stop();
+                                              }
+                                              _model.soundPlayer!
+                                                  .setVolume(1.0);
+                                              _model.soundPlayer!
+                                                  .setAsset(
+                                                      'assets/audios/ding.mp3')
+                                                  .then((_) => _model
+                                                      .soundPlayer!
+                                                      .play());
                                             }
-                                            _model.soundPlayer!.setVolume(1.0);
-                                            _model.soundPlayer!
-                                                .setAsset(
-                                                    'assets/audios/ding.mp3')
-                                                .then((_) =>
-                                                    _model.soundPlayer!.play());
-                                          }
-                                          setState(() {
-                                            FFAppState().intervalTimer =
-                                                IntervalTimerStruct(
-                                              currentInterval: FFAppState()
-                                                          .intervalTimer
-                                                          .currentInterval ==
-                                                      FFAppState()
-                                                          .intervalTimer
-                                                          .workingInterval
-                                                  ? FFAppState()
-                                                      .intervalTimer
-                                                      .restingInterval
-                                                  : FFAppState()
-                                                      .intervalTimer
-                                                      .workingInterval,
-                                            );
-                                          });
-                                          if (FFAppState()
-                                                  .intervalTimer
-                                                  .currentInterval ==
-                                              FFAppState()
-                                                  .intervalTimer
-                                                  .restingInterval) {
                                             setState(() {
                                               FFAppState()
                                                   .updateIntervalTimerStruct(
                                                 (e) => e
-                                                  ..incrementCompletedIntervals(
-                                                      1),
+                                                  ..currentInterval = FFAppState()
+                                                              .intervalTimer
+                                                              .currentInterval ==
+                                                          FFAppState()
+                                                              .intervalTimer
+                                                              .workingInterval
+                                                      ? FFAppState()
+                                                          .intervalTimer
+                                                          .restingInterval
+                                                      : FFAppState()
+                                                          .intervalTimer
+                                                          .workingInterval,
                                               );
                                             });
-                                          }
-                                          _model.intervalTimerController.timer
-                                              .setPresetTime(
-                                            mSec: FFAppState()
-                                                .intervalTimer
-                                                .currentInterval,
-                                            add: false,
-                                          );
-                                          _model.intervalTimerController
-                                              .onResetTimer();
+                                            if (FFAppState()
+                                                    .intervalTimer
+                                                    .currentInterval ==
+                                                FFAppState()
+                                                    .intervalTimer
+                                                    .restingInterval) {
+                                              setState(() {
+                                                FFAppState()
+                                                    .updateIntervalTimerStruct(
+                                                  (e) => e
+                                                    ..incrementCompletedIntervals(
+                                                        1),
+                                                );
+                                              });
+                                            }
+                                            _model.intervalTimerController.timer
+                                                .setPresetTime(
+                                              mSec: FFAppState()
+                                                  .intervalTimer
+                                                  .currentInterval,
+                                              add: false,
+                                            );
+                                            _model.intervalTimerController
+                                                .onResetTimer();
 
-                                          _model.intervalTimerController
-                                              .onStartTimer();
-                                        },
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Jost',
-                                              color: FFAppState()
-                                                          .intervalTimer
-                                                          .currentInterval ==
-                                                      FFAppState()
-                                                          .intervalTimer
-                                                          .workingInterval
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .success
-                                                  : FlutterFlowTheme.of(context)
-                                                      .error,
-                                              fontSize: 14.0,
-                                            ),
+                                            _model.intervalTimerController
+                                                .onStartTimer();
+                                          },
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color: FFAppState()
+                                                            .intervalTimer
+                                                            .currentInterval ==
+                                                        FFAppState()
+                                                            .intervalTimer
+                                                            .workingInterval
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .success
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                fontSize: 14.0,
+                                              ),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -1443,11 +1480,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: ProgramTimerWidget(
-                                                      workingInterval: 0,
-                                                      restingInterval: 0,
-                                                      resetTimer: () async {},
-                                                    ),
+                                                    child: ProgramTimerWidget(),
                                                   ),
                                                 );
                                               },
