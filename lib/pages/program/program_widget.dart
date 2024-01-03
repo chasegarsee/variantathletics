@@ -1306,8 +1306,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                             AlignmentDirectional(0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed('timer');
-
+                                            _model.intervalTimerController
+                                                .onStartTimer();
+                                            _model.elapsedTimerController
+                                                .onStartTimer();
                                             setState(() {
                                               FFAppState()
                                                   .updateIntervalTimerStruct(
