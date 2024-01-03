@@ -157,7 +157,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                     20000,
                                     25000,
                                     30000,
-                                    30000,
+                                    35000,
                                     40000,
                                     45000,
                                     50000,
@@ -234,7 +234,6 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
-                                  disabled: FFAppState().isTimerRunning,
                                   isSearchable: false,
                                   isMultiSelect: false,
                                 ),
@@ -358,7 +357,6 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
-                                  disabled: FFAppState().isTimerRunning,
                                   isSearchable: false,
                                   isMultiSelect: false,
                                 ),
