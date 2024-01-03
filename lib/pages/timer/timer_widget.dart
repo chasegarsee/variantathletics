@@ -306,7 +306,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                                               20000,
                                               25000,
                                               30000,
-                                              30000,
+                                              35000,
                                               40000,
                                               45000,
                                               50000,
