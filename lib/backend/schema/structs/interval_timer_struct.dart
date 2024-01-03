@@ -43,7 +43,7 @@ class IntervalTimerStruct extends FFFirebaseStruct {
 
   // "restingInterval" field.
   int? _restingInterval;
-  int get restingInterval => _restingInterval ?? 20000;
+  int get restingInterval => _restingInterval ?? 40000;
   set restingInterval(int? val) => _restingInterval = val;
   void incrementRestingInterval(int amount) =>
       _restingInterval = restingInterval + amount;
