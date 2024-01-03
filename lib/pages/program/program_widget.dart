@@ -88,6 +88,18 @@ class _ProgramWidgetState extends State<ProgramWidget> {
           ),
           singleRecord: true,
         ).then((s) => s.firstOrNull);
+        if (_model.currentProgram!.isDaily) {
+          setState(() {
+            FFAppState().showAllDays = true;
+            FFAppState().isDailySelectedDay = dateTimeFromSecondsSinceEpoch(
+                getCurrentTimestamp.secondsSinceEpoch);
+          });
+        } else {
+          setState(() {
+            FFAppState().showAllDays = false;
+          });
+        }
+
         setState(() {
           FFAppState().selectedWeek =
               _model.currentProgram!.weeks.first.weekNumber;
