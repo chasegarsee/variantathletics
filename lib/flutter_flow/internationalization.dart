@@ -362,6 +362,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // program
   {
+    '5xzomvk3': {
+      'en': 'Elapsed',
+      'th': 'ผ่านไปแล้ว',
+    },
+    'i2m1flh2': {
+      'en': 'Sets',
+      'th': 'เซ็ต',
+    },
     'xj8pase6': {
       'en': 'Sets',
       'th': 'เซ็ต',
@@ -1305,6 +1313,129 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3e1jm3vo': {
       'en': 'Number of Exercises',
+      'th': '',
+    },
+  },
+  // programTimer
+  {
+    '1mqrj2l6': {
+      'en': 'Working Interval',
+      'th': 'เวลาการออกกำลัง',
+    },
+    'wbk34hsj': {
+      'en': '0:10',
+      'th': '0:10',
+    },
+    '4joc9uix': {
+      'en': '0:15',
+      'th': '0:15',
+    },
+    't5z92v1s': {
+      'en': '0:20',
+      'th': '0:20',
+    },
+    'sppkxchz': {
+      'en': '0:25',
+      'th': '0:25',
+    },
+    'duwexnuq': {
+      'en': '0:30',
+      'th': '0:30',
+    },
+    'euvj8lfr': {
+      'en': '0:35',
+      'th': '0:35',
+    },
+    'kylgz5wa': {
+      'en': '0:40',
+      'th': '0:40',
+    },
+    'p911b89j': {
+      'en': '0:45',
+      'th': '0:45',
+    },
+    'jhk55wha': {
+      'en': '0:50',
+      'th': '0:50',
+    },
+    'rzzhqrhp': {
+      'en': '0:55',
+      'th': '0:55',
+    },
+    '86f3lgh8': {
+      'en': '1:00',
+      'th': '1:00',
+    },
+    'kjeonm09': {
+      'en': 'Working Time',
+      'th': 'เวลาการออกกำลัง',
+    },
+    'w3j47fu2': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
+    'ggw8l1j4': {
+      'en': 'Resting Interval',
+      'th': 'ช่วงพัก',
+    },
+    'ikirw5iw': {
+      'en': '0:00',
+      'th': '0:00',
+    },
+    'ydztfvvv': {
+      'en': '0:05',
+      'th': '0:05',
+    },
+    '0z5zxomi': {
+      'en': '0:10',
+      'th': '0:10',
+    },
+    'eee0nmmt': {
+      'en': '0:15',
+      'th': '0:15',
+    },
+    'rths4cch': {
+      'en': '0:20',
+      'th': '0:20',
+    },
+    'pvsf2hcm': {
+      'en': '0:25',
+      'th': '0:25',
+    },
+    'hrmqtwpo': {
+      'en': '0:30',
+      'th': '0:30',
+    },
+    'i3o7p9y9': {
+      'en': '0:35',
+      'th': '0:35',
+    },
+    'zkz220z1': {
+      'en': '0:40',
+      'th': '0:40',
+    },
+    'g142a53s': {
+      'en': '0:45',
+      'th': '0:45',
+    },
+    'zjqvbv0a': {
+      'en': '0:50',
+      'th': '0:50',
+    },
+    'wid2nflp': {
+      'en': '0:55',
+      'th': '0:55',
+    },
+    '0ih0pclq': {
+      'en': '1:00',
+      'th': '1:00',
+    },
+    'e96je3pm': {
+      'en': 'Rest Time',
+      'th': 'ช่วงพัก',
+    },
+    'rnko6ufn': {
+      'en': 'Search for an item...',
       'th': '',
     },
   },

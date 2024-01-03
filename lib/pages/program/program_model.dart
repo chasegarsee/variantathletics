@@ -3,13 +3,16 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/days_placeholder/days_placeholder_widget.dart';
 import '/components/leave_workout_comment/leave_workout_comment_widget.dart';
+import '/components/program_timer/program_timer_widget.dart';
 import '/components/select_program/select_program_widget.dart';
 import '/components/workout_comments/workout_comments_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'program_widget.dart' show ProgramWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -21,6 +24,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 
 class ProgramModel extends FlutterFlowModel<ProgramWidget> {
@@ -28,11 +32,38 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
 
   bool isLoading = false;
 
+  bool isCounting = false;
+
+  int? workingInterval = 20000;
+
+  int? restingInterval = 40000;
+
+  bool isCountdown = false;
+
+  int? completedIntervals;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in program widget.
   ProgramsRecord? currentProgram;
+  // State field(s) for intervalTimer widget.
+  int intervalTimerMilliseconds = 0;
+  String intervalTimerValue = StopWatchTimer.getDisplayTime(
+    0,
+    hours: false,
+    milliSecond: false,
+  );
+  FlutterFlowTimerController intervalTimerController =
+      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
+
+  AudioPlayer? soundPlayer;
+  // State field(s) for elapsedTimer widget.
+  int elapsedTimerMilliseconds = 0;
+  String elapsedTimerValue =
+      StopWatchTimer.getDisplayTime(0, milliSecond: false);
+  FlutterFlowTimerController elapsedTimerController =
+      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
 
   /// Initialization and disposal methods.
 
@@ -40,6 +71,8 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    intervalTimerController.dispose();
+    elapsedTimerController.dispose();
   }
 
   /// Action blocks are added here.

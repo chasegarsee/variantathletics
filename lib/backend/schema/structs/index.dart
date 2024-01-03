@@ -6,6 +6,7 @@ export 'completed_workouts_struct.dart';
 export 'days_struct.dart';
 export 'exercises_struct.dart';
 export 'favorites_struct.dart';
+export 'interval_timer_struct.dart';
 export 'macros_struct.dart';
 export 'messages_struct.dart';
 export 'program_struct.dart';

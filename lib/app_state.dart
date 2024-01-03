@@ -932,6 +932,16 @@ class FFAppState extends ChangeNotifier {
     _editProgramSelectedWeekIndex = _value;
   }
 
+  IntervalTimerStruct _intervalTimer = IntervalTimerStruct();
+  IntervalTimerStruct get intervalTimer => _intervalTimer;
+  set intervalTimer(IntervalTimerStruct _value) {
+    _intervalTimer = _value;
+  }
+
+  void updateIntervalTimerStruct(Function(IntervalTimerStruct) updateFn) {
+    updateFn(_intervalTimer);
+  }
+
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
   Stream<List<ExercisesRecord>> exercise({
     String? uniqueQueryKey,

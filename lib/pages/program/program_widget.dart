@@ -3,13 +3,16 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/days_placeholder/days_placeholder_widget.dart';
 import '/components/leave_workout_comment/leave_workout_comment_widget.dart';
+import '/components/program_timer/program_timer_widget.dart';
 import '/components/select_program/select_program_widget.dart';
 import '/components/workout_comments/workout_comments_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +23,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'program_model.dart';
 export 'program_model.dart';
@@ -174,6 +178,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
         }
       }
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -1103,6 +1109,381 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                             ),
                           ),
                         ],
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 0.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                              child: Container(
+                                width: 75.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24.0),
+                                  border: Border.all(
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.timer,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      size: 14.0,
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: FlutterFlowTimer(
+                                        initialTime: FFAppState()
+                                            .intervalTimer
+                                            .currentInterval,
+                                        getDisplayTime: (value) =>
+                                            StopWatchTimer.getDisplayTime(
+                                          value,
+                                          hours: false,
+                                          milliSecond: false,
+                                        ),
+                                        controller:
+                                            _model.intervalTimerController,
+                                        updateStateInterval:
+                                            Duration(milliseconds: 1000),
+                                        onChanged:
+                                            (value, displayTime, shouldUpdate) {
+                                          _model.intervalTimerMilliseconds =
+                                              value;
+                                          _model.intervalTimerValue =
+                                              displayTime;
+                                          if (shouldUpdate) setState(() {});
+                                        },
+                                        onEnded: () async {
+                                          if (FFAppState()
+                                              .intervalTimer
+                                              .playSound) {
+                                            _model.soundPlayer ??=
+                                                AudioPlayer();
+                                            if (_model.soundPlayer!.playing) {
+                                              await _model.soundPlayer!.stop();
+                                            }
+                                            _model.soundPlayer!.setVolume(1.0);
+                                            _model.soundPlayer!
+                                                .setAsset(
+                                                    'assets/audios/ding.mp3')
+                                                .then((_) =>
+                                                    _model.soundPlayer!.play());
+                                          }
+                                          setState(() {
+                                            FFAppState().intervalTimer =
+                                                IntervalTimerStruct(
+                                              currentInterval: FFAppState()
+                                                          .intervalTimer
+                                                          .currentInterval ==
+                                                      FFAppState()
+                                                          .intervalTimer
+                                                          .workingInterval
+                                                  ? FFAppState()
+                                                      .intervalTimer
+                                                      .restingInterval
+                                                  : FFAppState()
+                                                      .intervalTimer
+                                                      .workingInterval,
+                                            );
+                                          });
+                                          if (FFAppState()
+                                                  .intervalTimer
+                                                  .currentInterval ==
+                                              FFAppState()
+                                                  .intervalTimer
+                                                  .restingInterval) {
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateIntervalTimerStruct(
+                                                (e) => e
+                                                  ..incrementCompletedIntervals(
+                                                      1),
+                                              );
+                                            });
+                                          }
+                                          _model.intervalTimerController.timer
+                                              .setPresetTime(
+                                            mSec: FFAppState()
+                                                .intervalTimer
+                                                .currentInterval,
+                                            add: false,
+                                          );
+                                          _model.intervalTimerController
+                                              .onResetTimer();
+
+                                          _model.intervalTimerController
+                                              .onStartTimer();
+                                        },
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Jost',
+                                              color: FFAppState()
+                                                          .intervalTimer
+                                                          .currentInterval ==
+                                                      FFAppState()
+                                                          .intervalTimer
+                                                          .workingInterval
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .success
+                                                  : FlutterFlowTheme.of(context)
+                                                      .error,
+                                              fontSize: 14.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '5xzomvk3' /* Elapsed */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                      FlutterFlowTimer(
+                                        initialTime:
+                                            _model.elapsedTimerMilliseconds,
+                                        getDisplayTime: (value) =>
+                                            StopWatchTimer.getDisplayTime(value,
+                                                milliSecond: false),
+                                        controller:
+                                            _model.elapsedTimerController,
+                                        updateStateInterval:
+                                            Duration(milliseconds: 1000),
+                                        onChanged:
+                                            (value, displayTime, shouldUpdate) {
+                                          _model.elapsedTimerMilliseconds =
+                                              value;
+                                          _model.elapsedTimerValue =
+                                              displayTime;
+                                          if (shouldUpdate) setState(() {});
+                                        },
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Jost',
+                                              fontSize: 14.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    if (!FFAppState().intervalTimer.isOn)
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed('timer');
+
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateIntervalTimerStruct(
+                                                (e) => e..isOn = true,
+                                              );
+                                            });
+                                          },
+                                          text: '',
+                                          icon: Icon(
+                                            Icons.play_arrow_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 30.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.5,
+                                            height: 40.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .success,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .override(
+                                                      fontFamily: 'Jost',
+                                                      fontSize: 24.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                      ),
+                                    if (FFAppState().intervalTimer.isOn)
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateIntervalTimerStruct(
+                                                (e) => e..isOn = false,
+                                              );
+                                            });
+                                            _model.intervalTimerController
+                                                .onStopTimer();
+                                            _model.elapsedTimerController
+                                                .onStopTimer();
+                                          },
+                                          text: '',
+                                          icon: Icon(
+                                            Icons.pause,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.5,
+                                            height: 40.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .warning,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge,
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 10.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 10.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: ProgramTimerWidget(
+                                                      workingInterval: 0,
+                                                      restingInterval: 0,
+                                                      resetTimer: () async {},
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then(
+                                                (value) => safeSetState(() {}));
+                                          },
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'i2m1flh2' /* Sets */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Jost',
+                                                  fontSize: 14.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        valueOrDefault<String>(
+                                          _model.completedIntervals?.toString(),
+                                          '0',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Jost',
+                                              fontSize: 14.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       if (FFAppState().programExercises.length >= 1)
                         Expanded(
