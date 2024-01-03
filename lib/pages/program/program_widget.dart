@@ -1418,56 +1418,129 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (FFAppState().intervalTimer.isOn)
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                setState(() {
-                                                  FFAppState()
-                                                      .updateIntervalTimerStruct(
-                                                    (e) => e..isOn = false,
-                                                  );
-                                                });
-                                                _model.intervalTimerController
-                                                    .onStopTimer();
-                                                _model.elapsedTimerController
-                                                    .onStopTimer();
-                                              },
-                                              text: '',
-                                              icon: Icon(
-                                                Icons.pause,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            if (FFAppState().intervalTimer.isOn)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .updateIntervalTimerStruct(
+                                                        (e) => e..isOn = false,
+                                                      );
+                                                    });
+                                                    _model
+                                                        .intervalTimerController
+                                                        .onStopTimer();
+                                                    _model
+                                                        .elapsedTimerController
+                                                        .onStopTimer();
+                                                  },
+                                                  text: '',
+                                                  icon: Icon(
+                                                    Icons.pause,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .primaryText,
-                                                size: 20.0,
-                                              ),
-                                              options: FFButtonOptions(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            5.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                                    size: 20.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .warning,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge,
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge,
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  showLoadingIndicator: false,
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
                                               ),
-                                              showLoadingIndicator: false,
-                                            ),
-                                          ),
+                                            if (FFAppState().intervalTimer.isOn)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    _model
+                                                        .intervalTimerController
+                                                        .onStopTimer();
+                                                    _model
+                                                        .elapsedTimerController
+                                                        .onStopTimer();
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .updateIntervalTimerStruct(
+                                                        (e) => e
+                                                          ..isOn = false
+                                                          ..completedIntervals =
+                                                              0,
+                                                      );
+                                                    });
+                                                  },
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'rd766ym4' /*  */,
+                                                  ),
+                                                  icon: FaIcon(
+                                                    FontAwesomeIcons.stop,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 20.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge,
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ),

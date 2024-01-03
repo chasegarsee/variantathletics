@@ -362,6 +362,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Elapsed',
       'th': 'ผ่านไปแล้ว',
     },
+    'rd766ym4': {
+      'en': '',
+      'th': '',
+    },
     'i2m1flh2': {
       'en': 'Sets',
       'th': 'เซ็ต',
