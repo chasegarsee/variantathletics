@@ -84,8 +84,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
         _model.currentProgram = await queryProgramsRecordOnce(
           queryBuilder: (programsRecord) => programsRecord.where(
             'id',
-            isEqualTo:
-                valueOrDefault(currentUserDocument?.currentProgramId, ''),
+            isEqualTo: valueOrDefault(currentUserDocument?.currentProgram, ''),
           ),
           singleRecord: true,
         ).then((s) => s.firstOrNull);

@@ -18,7 +18,6 @@ class UserStruct extends FFFirebaseStruct {
     String? uid,
     List<String>? completedWorkouts,
     String? favoriteCoach,
-    String? currentProgramId,
     bool? isSubbed,
     String? currentProgram,
     List<WeightHistoryStruct>? weightHistory,
@@ -31,7 +30,6 @@ class UserStruct extends FFFirebaseStruct {
         _uid = uid,
         _completedWorkouts = completedWorkouts,
         _favoriteCoach = favoriteCoach,
-        _currentProgramId = currentProgramId,
         _isSubbed = isSubbed,
         _currentProgram = currentProgram,
         _weightHistory = weightHistory,
@@ -87,12 +85,6 @@ class UserStruct extends FFFirebaseStruct {
   set favoriteCoach(String? val) => _favoriteCoach = val;
   bool hasFavoriteCoach() => _favoriteCoach != null;
 
-  // "currentProgramId" field.
-  String? _currentProgramId;
-  String get currentProgramId => _currentProgramId ?? '';
-  set currentProgramId(String? val) => _currentProgramId = val;
-  bool hasCurrentProgramId() => _currentProgramId != null;
-
   // "isSubbed" field.
   bool? _isSubbed;
   bool get isSubbed => _isSubbed ?? false;
@@ -122,7 +114,6 @@ class UserStruct extends FFFirebaseStruct {
         uid: data['uid'] as String?,
         completedWorkouts: getDataList(data['completedWorkouts']),
         favoriteCoach: data['favoriteCoach'] as String?,
-        currentProgramId: data['currentProgramId'] as String?,
         isSubbed: data['isSubbed'] as bool?,
         currentProgram: data['currentProgram'] as String?,
         weightHistory: getStructList(
@@ -143,7 +134,6 @@ class UserStruct extends FFFirebaseStruct {
         'uid': _uid,
         'completedWorkouts': _completedWorkouts,
         'favoriteCoach': _favoriteCoach,
-        'currentProgramId': _currentProgramId,
         'isSubbed': _isSubbed,
         'currentProgram': _currentProgram,
         'weightHistory': _weightHistory?.map((e) => e.toMap()).toList(),
@@ -182,10 +172,6 @@ class UserStruct extends FFFirebaseStruct {
         ),
         'favoriteCoach': serializeParam(
           _favoriteCoach,
-          ParamType.String,
-        ),
-        'currentProgramId': serializeParam(
-          _currentProgramId,
           ParamType.String,
         ),
         'isSubbed': serializeParam(
@@ -245,11 +231,6 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        currentProgramId: deserializeParam(
-          data['currentProgramId'],
-          ParamType.String,
-          false,
-        ),
         isSubbed: deserializeParam(
           data['isSubbed'],
           ParamType.bool,
@@ -283,7 +264,6 @@ class UserStruct extends FFFirebaseStruct {
         uid == other.uid &&
         listEquality.equals(completedWorkouts, other.completedWorkouts) &&
         favoriteCoach == other.favoriteCoach &&
-        currentProgramId == other.currentProgramId &&
         isSubbed == other.isSubbed &&
         currentProgram == other.currentProgram &&
         listEquality.equals(weightHistory, other.weightHistory);
@@ -299,7 +279,6 @@ class UserStruct extends FFFirebaseStruct {
         uid,
         completedWorkouts,
         favoriteCoach,
-        currentProgramId,
         isSubbed,
         currentProgram,
         weightHistory
@@ -314,7 +293,6 @@ UserStruct createUserStruct({
   bool? isCoach,
   String? uid,
   String? favoriteCoach,
-  String? currentProgramId,
   bool? isSubbed,
   String? currentProgram,
   Map<String, dynamic> fieldValues = const {},
@@ -330,7 +308,6 @@ UserStruct createUserStruct({
       isCoach: isCoach,
       uid: uid,
       favoriteCoach: favoriteCoach,
-      currentProgramId: currentProgramId,
       isSubbed: isSubbed,
       currentProgram: currentProgram,
       firestoreUtilData: FirestoreUtilData(
