@@ -278,34 +278,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                 ),
               ],
             ),
-            Visibility(
-              visible: !widget.isFromTimer,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed(
-                      'timer',
-                      queryParameters: {
-                        'isFromProgram': serializeParam(
-                          true,
-                          ParamType.bool,
-                        ),
-                      }.withoutNulls,
-                    );
-                  },
-                  child: Icon(
-                    Icons.timer,
-                    color: FlutterFlowTheme.of(context).accent2,
-                    size: 35.0,
-                  ),
-                ),
-              ),
-            ),
           ],
           centerTitle: true,
           elevation: 2.0,
