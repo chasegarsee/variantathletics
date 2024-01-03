@@ -90,42 +90,87 @@ class _ProgramWidgetState extends State<ProgramWidget> {
         ).then((s) => s.firstOrNull);
         if (_model.currentProgram!.isDaily) {
           setState(() {
+            FFAppState().selectedWeek =
+                _model.currentProgram!.weeks.first.weekNumber;
+            FFAppState().days = functions
+                .setDays(_model.currentProgram!.weeks.toList())
+                .toList()
+                .cast<DaysStruct>();
+            FFAppState().programExercises = functions
+                .setExercises(_model.currentProgram!.weeks.first)
+                .toList()
+                .cast<ProgramExercisesStruct>();
+            FFAppState().selectedDayName =
+                _model.currentProgram!.weeks.first.days.first.name;
+            FFAppState().selectedDay = _model.currentProgram!.weeks.first.days
+                .where((e) =>
+                    dateTimeFormat(
+                      'MMMEd',
+                      e.date,
+                      locale: FFLocalizations.of(context).languageCode,
+                    ) ==
+                    dateTimeFormat(
+                      'MMMEd',
+                      getCurrentTimestamp,
+                      locale: FFLocalizations.of(context).languageCode,
+                    ))
+                .toList()
+                .first
+                .day;
+            FFAppState().selectedDayId = _model.currentProgram!.weeks.first.days
+                .where((e) =>
+                    dateTimeFormat(
+                      'MMMEd',
+                      e.date,
+                      locale: FFLocalizations.of(context).languageCode,
+                    ) ==
+                    dateTimeFormat(
+                      'MMMEd',
+                      getCurrentTimestamp,
+                      locale: FFLocalizations.of(context).languageCode,
+                    ))
+                .toList()
+                .first
+                .id;
+            FFAppState().weeks =
+                _model.currentProgram!.weeks.toList().cast<WeeksStruct>();
+            FFAppState().currentProgram = _model.currentProgram!.name;
+            FFAppState().currentProgramId = _model.currentProgram!.reference.id;
+            FFAppState().showAllWeeks = false;
+            FFAppState().isDaily = _model.currentProgram!.isDaily;
+            FFAppState().isDailySelectedDay = getCurrentTimestamp;
             FFAppState().showAllDays = true;
-            FFAppState().isDailySelectedDay = dateTimeFromSecondsSinceEpoch(
-                getCurrentTimestamp.secondsSinceEpoch);
           });
+          return;
         } else {
           setState(() {
+            FFAppState().selectedWeek =
+                _model.currentProgram!.weeks.first.weekNumber;
+            FFAppState().days = functions
+                .setDays(_model.currentProgram!.weeks.toList())
+                .toList()
+                .cast<DaysStruct>();
+            FFAppState().programExercises = functions
+                .setExercises(_model.currentProgram!.weeks.first)
+                .toList()
+                .cast<ProgramExercisesStruct>();
+            FFAppState().selectedDayName =
+                _model.currentProgram!.weeks.first.days.first.name;
+            FFAppState().selectedDay =
+                _model.currentProgram!.weeks.first.days.first.day;
+            FFAppState().selectedDayId =
+                _model.currentProgram!.weeks.first.days.first.id;
+            FFAppState().weeks =
+                _model.currentProgram!.weeks.toList().cast<WeeksStruct>();
+            FFAppState().currentProgram = _model.currentProgram!.name;
+            FFAppState().currentProgramId = _model.currentProgram!.reference.id;
+            FFAppState().showAllWeeks = false;
+            FFAppState().isDaily = _model.currentProgram!.isDaily;
+            FFAppState().isDailySelectedDay = getCurrentTimestamp;
             FFAppState().showAllDays = false;
           });
+          return;
         }
-
-        setState(() {
-          FFAppState().selectedWeek =
-              _model.currentProgram!.weeks.first.weekNumber;
-          FFAppState().days = functions
-              .setDays(_model.currentProgram!.weeks.toList())
-              .toList()
-              .cast<DaysStruct>();
-          FFAppState().programExercises = functions
-              .setExercises(_model.currentProgram!.weeks.first)
-              .toList()
-              .cast<ProgramExercisesStruct>();
-          FFAppState().selectedDayName =
-              _model.currentProgram!.weeks.first.days.first.name;
-          FFAppState().selectedDay =
-              _model.currentProgram!.weeks.first.days.first.day;
-          FFAppState().selectedDayId =
-              _model.currentProgram!.weeks.first.days.first.id;
-          FFAppState().weeks =
-              _model.currentProgram!.weeks.toList().cast<WeeksStruct>();
-          FFAppState().currentProgram = _model.currentProgram!.name;
-          FFAppState().currentProgramId = _model.currentProgram!.reference.id;
-          FFAppState().showAllWeeks = false;
-          FFAppState().isDaily = _model.currentProgram!.isDaily;
-          FFAppState().isDailySelectedDay = getCurrentTimestamp;
-        });
-        return;
       }
     });
   }
