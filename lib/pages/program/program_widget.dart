@@ -1340,14 +1340,14 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
-                                  flex: 2,
+                                  flex: 4,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
@@ -1389,7 +1389,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                 ),
                                 if (_model.selectedTimer)
                                   Expanded(
-                                    flex: 8,
+                                    flex: 4,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1419,15 +1419,13 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 size: 20.0,
                                               ),
                                               options: FFButtonOptions(
-                                                width: 40.0,
-                                                height: 40.0,
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
+                                                        0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
                                                     EdgeInsetsDirectional
                                                         .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
+                                                            5.0, 0.0, 0.0, 0.0),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .success,
@@ -1444,7 +1442,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(24.0),
+                                                    BorderRadius.circular(8.0),
                                               ),
                                             ),
                                           ),
@@ -1474,15 +1472,13 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 size: 20.0,
                                               ),
                                               options: FFButtonOptions(
-                                                width: 40.0,
-                                                height: 40.0,
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
+                                                        0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
                                                     EdgeInsetsDirectional
                                                         .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
+                                                            5.0, 0.0, 0.0, 0.0),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .warning,
@@ -1495,7 +1491,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(24.0),
+                                                    BorderRadius.circular(8.0),
                                               ),
                                               showLoadingIndicator: false,
                                             ),
@@ -1504,14 +1500,14 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                     ),
                                   ),
                                 Expanded(
-                                  flex: 2,
+                                  flex: 4,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Padding(
                                           padding:
