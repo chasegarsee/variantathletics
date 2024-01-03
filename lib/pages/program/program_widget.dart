@@ -864,7 +864,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                         child:
                                                                             Text(
                                                                           dateTimeFormat(
-                                                                            'Md',
+                                                                            'yMMMd',
                                                                             dayItem.date!,
                                                                             locale:
                                                                                 FFLocalizations.of(context).languageCode,
