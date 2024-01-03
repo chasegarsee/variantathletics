@@ -13,6 +13,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -80,7 +81,37 @@ class _ProgramWidgetState extends State<ProgramWidget> {
         });
         return;
       } else {
+        _model.currentProgram = await queryProgramsRecordOnce(
+          queryBuilder: (programsRecord) => programsRecord.where(
+            'id',
+            isEqualTo:
+                valueOrDefault(currentUserDocument?.currentProgramId, ''),
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
         setState(() {
+          FFAppState().selectedWeek =
+              _model.currentProgram!.weeks.first.weekNumber;
+          FFAppState().days = functions
+              .setDays(_model.currentProgram!.weeks.toList())
+              .toList()
+              .cast<DaysStruct>();
+          FFAppState().programExercises = functions
+              .setExercises(_model.currentProgram!.weeks.first)
+              .toList()
+              .cast<ProgramExercisesStruct>();
+          FFAppState().selectedDayName =
+              _model.currentProgram!.weeks.first.days.first.name;
+          FFAppState().selectedDay =
+              _model.currentProgram!.weeks.first.days.first.day;
+          FFAppState().selectedDayId =
+              _model.currentProgram!.weeks.first.days.first.id;
+          FFAppState().weeks =
+              _model.currentProgram!.weeks.toList().cast<WeeksStruct>();
+          FFAppState().currentProgram = _model.currentProgram!.name;
+          FFAppState().currentProgramId = _model.currentProgram!.reference.id;
+          FFAppState().showAllWeeks = false;
+          FFAppState().isDaily = _model.currentProgram!.isDaily;
           FFAppState().isDailySelectedDay = getCurrentTimestamp;
         });
         return;
