@@ -12,7 +12,12 @@ import 'program_timer_model.dart';
 export 'program_timer_model.dart';
 
 class ProgramTimerWidget extends StatefulWidget {
-  const ProgramTimerWidget({Key? key}) : super(key: key);
+  const ProgramTimerWidget({
+    Key? key,
+    required this.resetTimer,
+  }) : super(key: key);
+
+  final Future<dynamic> Function()? resetTimer;
 
   @override
   _ProgramTimerWidgetState createState() => _ProgramTimerWidgetState();
@@ -142,7 +147,9 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   controller:
                                       _model.workingIntervalValueController ??=
                                           FormFieldController<int>(
-                                    _model.workingIntervalValue ??= 20000,
+                                    _model.workingIntervalValue ??= FFAppState()
+                                        .intervalTimer
+                                        .workingInterval,
                                   ),
                                   options: List<int>.from([
                                     10000,
@@ -258,7 +265,9 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   controller:
                                       _model.restingIntervalValueController ??=
                                           FormFieldController<int>(
-                                    _model.restingIntervalValue ??= 40000,
+                                    _model.restingIntervalValue ??= FFAppState()
+                                        .intervalTimer
+                                        .restingInterval,
                                   ),
                                   options: List<int>.from([
                                     0000,

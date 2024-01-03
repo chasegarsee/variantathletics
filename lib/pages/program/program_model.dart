@@ -32,15 +32,7 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
 
   bool isLoading = false;
 
-  bool isCounting = false;
-
-  int? workingInterval = 20000;
-
-  int? restingInterval = 40000;
-
-  bool isCountdown = false;
-
-  int? completedIntervals;
+  bool selectedTimer = false;
 
   ///  State fields for stateful widgets in this page.
 
