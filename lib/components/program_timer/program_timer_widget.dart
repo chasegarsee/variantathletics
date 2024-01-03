@@ -202,7 +202,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   onChanged: (val) async {
                                     setState(() =>
                                         _model.workingIntervalValue = val);
-                                    _model.updatePage(() {
+                                    setState(() {
                                       FFAppState().updateIntervalTimerStruct(
                                         (e) => e
                                           ..workingInterval =
@@ -327,7 +327,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   onChanged: (val) async {
                                     setState(() =>
                                         _model.restingIntervalValue = val);
-                                    _model.updatePage(() {
+                                    setState(() {
                                       FFAppState().updateIntervalTimerStruct(
                                         (e) => e
                                           ..restingInterval =
