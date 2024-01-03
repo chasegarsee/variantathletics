@@ -860,17 +860,24 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                             0.0,
                                                                             0.0),
                                                                         child:
-                                                                            Text(
-                                                                          dateTimeFormat(
-                                                                            'MMMd',
-                                                                            dayItem.date!,
-                                                                            locale:
-                                                                                FFLocalizations.of(context).languageCode,
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              5.0,
+                                                                              0.0,
+                                                                              5.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            dateTimeFormat(
+                                                                              'MMM,d',
+                                                                              dayItem.date!,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyMedium,
                                                                           ),
-                                                                          textAlign:
-                                                                              TextAlign.center,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyMedium,
                                                                         ),
                                                                       ),
                                                                     ),
