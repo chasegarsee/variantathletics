@@ -463,3 +463,19 @@ List<DaysStruct> detDaysFromFirstWeek(List<WeeksStruct> weeks) {
 List<DaysStruct> getDaysFromWeek(WeeksStruct week) {
   return week.days;
 }
+
+List<ProgramExercisesStruct>? getCurrentDateExercises(
+  List<WeeksStruct> weeks,
+  DateTime currentDate,
+) {
+  final formattedCurrentDate = DateFormat.yMMMd().format(currentDate);
+
+  final exercises = weeks[0]
+      .days
+      .where(
+          (day) => DateFormat.yMMMd().format(day.date!) == formattedCurrentDate)
+      .expand((day) => day.exercises)
+      .toList();
+
+  return exercises;
+}

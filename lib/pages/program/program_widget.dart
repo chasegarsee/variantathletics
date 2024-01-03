@@ -97,7 +97,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                 .toList()
                 .cast<DaysStruct>();
             FFAppState().programExercises = functions
-                .setExercises(_model.currentProgram!.weeks.first)
+                .getCurrentDateExercises(
+                    _model.currentProgram!.weeks.toList(), getCurrentTimestamp)!
                 .toList()
                 .cast<ProgramExercisesStruct>();
             FFAppState().selectedDayName =
