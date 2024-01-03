@@ -202,13 +202,15 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   onChanged: (val) async {
                                     setState(() =>
                                         _model.workingIntervalValue = val);
-                                    FFAppState().updateIntervalTimerStruct(
-                                      (e) => e
-                                        ..workingInterval =
-                                            _model.workingIntervalValue
-                                        ..currentInterval =
-                                            _model.workingIntervalValue,
-                                    );
+                                    _model.updatePage(() {
+                                      FFAppState().updateIntervalTimerStruct(
+                                        (e) => e
+                                          ..workingInterval =
+                                              _model.workingIntervalValue
+                                          ..currentInterval =
+                                              _model.workingIntervalValue,
+                                      );
+                                    });
                                   },
                                   height: 50.0,
                                   textStyle:
@@ -325,11 +327,13 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   onChanged: (val) async {
                                     setState(() =>
                                         _model.restingIntervalValue = val);
-                                    FFAppState().updateIntervalTimerStruct(
-                                      (e) => e
-                                        ..restingInterval =
-                                            _model.restingIntervalValue,
-                                    );
+                                    _model.updatePage(() {
+                                      FFAppState().updateIntervalTimerStruct(
+                                        (e) => e
+                                          ..restingInterval =
+                                              _model.restingIntervalValue,
+                                      );
+                                    });
                                   },
                                   height: 50.0,
                                   textStyle:
