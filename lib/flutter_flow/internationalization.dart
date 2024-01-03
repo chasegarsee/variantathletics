@@ -347,14 +347,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'th': '',
     },
-    'g8h1ojsm': {
-      'en': 'Exercise Library',
-      'th': 'ท่าออกกำลังกาย',
-    },
-    'pmihhz0h': {
-      'en': 'Program',
-      'th': 'โปรแกรม',
-    },
     '2gueynm6': {
       'en': 'Timer',
       'th': '',

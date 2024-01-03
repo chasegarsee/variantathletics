@@ -81,7 +81,7 @@ class _TimerWidgetState extends State<TimerWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           actions: [],
           centerTitle: false,
           elevation: 2.0,
@@ -825,89 +825,6 @@ class _TimerWidgetState extends State<TimerWidget> {
                           ],
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 24.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed('exerciseLibrary');
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'g8h1ojsm' /* Exercise Library */,
-                            ),
-                            options: FFButtonOptions(
-                              width: MediaQuery.sizeOf(context).width * 0.4,
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).accent2,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Jost',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                              elevation: 5.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        if (widget.isFromProgram)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 24.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed(
-                                  'program',
-                                  queryParameters: {
-                                    'isFromTimer': serializeParam(
-                                      true,
-                                      ParamType.bool,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'pmihhz0h' /* Program */,
-                              ),
-                              options: FFButtonOptions(
-                                width: MediaQuery.sizeOf(context).width * 0.4,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).accent2,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Jost',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                elevation: 5.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
-                          ),
-                      ],
                     ),
                   ],
                 ),

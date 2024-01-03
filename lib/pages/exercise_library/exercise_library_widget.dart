@@ -118,27 +118,39 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                 context.pushNamed('profile');
               },
             ),
-            Visibility(
-              visible: !FFAppState().isTimerRunning,
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 20.0,
-                borderWidth: 0.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.timer,
-                  color: FlutterFlowTheme.of(context).accent2,
-                  size: 25.0,
-                ),
-                onPressed: () async {
-                  final isEntitled = await revenue_cat
-                          .isEntitled('va_7_day_trial_399_tbh_monthly') ??
-                      false;
-                  if (!isEntitled) {
-                    await revenue_cat.loadOfferings();
-                  }
+            FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 20.0,
+              borderWidth: 0.0,
+              buttonSize: 40.0,
+              icon: Icon(
+                Icons.timer,
+                color: FlutterFlowTheme.of(context).accent2,
+                size: 25.0,
+              ),
+              onPressed: () async {
+                final isEntitled = await revenue_cat
+                        .isEntitled('va_7_day_trial_399_tbh_monthly') ??
+                    false;
+                if (!isEntitled) {
+                  await revenue_cat.loadOfferings();
+                }
 
-                  if (isEntitled) {
+                if (isEntitled) {
+                  context.pushNamed(
+                    'timer',
+                    queryParameters: {
+                      'isFromProgram': serializeParam(
+                        false,
+                        ParamType.bool,
+                      ),
+                    }.withoutNulls,
+                  );
+
+                  return;
+                } else {
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false)) {
                     context.pushNamed(
                       'timer',
                       queryParameters: {
@@ -151,71 +163,68 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
                     return;
                   } else {
-                    if (valueOrDefault<bool>(
-                        currentUserDocument?.isSubbed, false)) {
-                      context.pushNamed(
-                        'timer',
-                        queryParameters: {
-                          'isFromProgram': serializeParam(
-                            false,
-                            ParamType.bool,
-                          ),
-                        }.withoutNulls,
-                      );
-
-                      return;
-                    } else {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        useSafeArea: true,
-                        context: context,
-                        builder: (context) {
-                          return GestureDetector(
-                            onTap: () => _model.unfocusNode.canRequestFocus
-                                ? FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode)
-                                : FocusScope.of(context).unfocus(),
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: Container(
-                                height: MediaQuery.sizeOf(context).height * 1.0,
-                                child: RevCatPaywallWidget(
-                                  navigateTo: 'timer',
-                                ),
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      useSafeArea: true,
+                      context: context,
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () => _model.unfocusNode.canRequestFocus
+                              ? FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode)
+                              : FocusScope.of(context).unfocus(),
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: Container(
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              child: RevCatPaywallWidget(
+                                navigateTo: 'timer',
                               ),
                             ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
 
-                      return;
-                    }
+                    return;
                   }
-                },
-              ),
+                }
+              },
             ),
-            Visibility(
-              visible: !FFAppState().isTimerRunning,
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 20.0,
-                borderWidth: 0.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.menu_book_rounded,
-                  color: FlutterFlowTheme.of(context).accent2,
-                  size: 25.0,
-                ),
-                onPressed: () async {
-                  final isEntitled = await revenue_cat
-                          .isEntitled('va_7_day_trial_399_tbh_monthly') ??
-                      false;
-                  if (!isEntitled) {
-                    await revenue_cat.loadOfferings();
-                  }
+            FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 20.0,
+              borderWidth: 0.0,
+              buttonSize: 40.0,
+              icon: Icon(
+                Icons.menu_book_rounded,
+                color: FlutterFlowTheme.of(context).accent2,
+                size: 25.0,
+              ),
+              onPressed: () async {
+                final isEntitled = await revenue_cat
+                        .isEntitled('va_7_day_trial_399_tbh_monthly') ??
+                    false;
+                if (!isEntitled) {
+                  await revenue_cat.loadOfferings();
+                }
 
-                  if (isEntitled) {
+                if (isEntitled) {
+                  context.pushNamed(
+                    'program',
+                    queryParameters: {
+                      'isFromTimer': serializeParam(
+                        false,
+                        ParamType.bool,
+                      ),
+                    }.withoutNulls,
+                  );
+
+                  return;
+                } else {
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSubbed, false)) {
                     context.pushNamed(
                       'program',
                       queryParameters: {
@@ -228,49 +237,34 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
 
                     return;
                   } else {
-                    if (valueOrDefault<bool>(
-                        currentUserDocument?.isSubbed, false)) {
-                      context.pushNamed(
-                        'program',
-                        queryParameters: {
-                          'isFromTimer': serializeParam(
-                            false,
-                            ParamType.bool,
-                          ),
-                        }.withoutNulls,
-                      );
-
-                      return;
-                    } else {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        useSafeArea: true,
-                        context: context,
-                        builder: (context) {
-                          return GestureDetector(
-                            onTap: () => _model.unfocusNode.canRequestFocus
-                                ? FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode)
-                                : FocusScope.of(context).unfocus(),
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: Container(
-                                height: MediaQuery.sizeOf(context).height * 1.0,
-                                child: RevCatPaywallWidget(
-                                  navigateTo: 'program',
-                                ),
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      useSafeArea: true,
+                      context: context,
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () => _model.unfocusNode.canRequestFocus
+                              ? FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode)
+                              : FocusScope.of(context).unfocus(),
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: Container(
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              child: RevCatPaywallWidget(
+                                navigateTo: 'program',
                               ),
                             ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
 
-                      return;
-                    }
+                    return;
                   }
-                },
-              ),
+                }
+              },
             ),
             Visibility(
               visible: !FFAppState().isTimerRunning,
