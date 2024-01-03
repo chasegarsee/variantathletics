@@ -833,8 +833,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                     ),
                                                                     child:
                                                                         Container(
-                                                                      width:
-                                                                          40.0,
                                                                       height:
                                                                           50.0,
                                                                       decoration:
@@ -864,7 +862,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                         child:
                                                                             Text(
                                                                           dateTimeFormat(
-                                                                            'yMMMd',
+                                                                            'MMMd',
                                                                             dayItem.date!,
                                                                             locale:
                                                                                 FFLocalizations.of(context).languageCode,
