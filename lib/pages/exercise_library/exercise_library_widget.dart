@@ -725,7 +725,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                           size: 30.0,
                         ),
                         onPressed: () async {
-                          scaffoldKey.currentState!.openDrawer();
+                          scaffoldKey.currentState!.openEndDrawer();
                         },
                       ),
                     ),
