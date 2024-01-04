@@ -1171,7 +1171,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         if (_model.timerSize == 14) {
                                           setState(() {
                                             _model.timerSize = 30;
-                                            _model.timerContainerSize = 100;
+                                            _model.timerContainerSize = 125;
                                           });
                                           return;
                                         } else {

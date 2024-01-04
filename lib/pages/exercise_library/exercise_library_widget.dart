@@ -104,52 +104,63 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           child: Drawer(
             elevation: 16.0,
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 10.0),
               child: ListView(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
                 children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('profile');
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 0.0,
-                          buttonSize: 40.0,
-                          icon: Icon(
-                            Icons.person,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 30.0,
-                          ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'bvm4v1nn' /* Profile */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Jost',
-                                  fontSize: 16.0,
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('profile');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 20.0,
+                                borderWidth: 0.0,
+                                buttonSize: 40.0,
+                                icon: Icon(
+                                  Icons.person,
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  size: 30.0,
                                 ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'bvm4v1nn' /* Profile */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Jost',
+                                    fontSize: 16.0,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   InkWell(
@@ -224,19 +235,23 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 0.0,
-                          buttonSize: 40.0,
-                          icon: Icon(
-                            Icons.timer,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 30.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 20.0,
+                            borderWidth: 0.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              Icons.timer,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 30.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -328,19 +343,23 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 0.0,
-                          buttonSize: 40.0,
-                          icon: Icon(
-                            Icons.menu_book_rounded,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 30.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 20.0,
+                            borderWidth: 0.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              Icons.menu_book_rounded,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 30.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -369,19 +388,24 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 20.0,
-                                  borderWidth: 0.0,
-                                  buttonSize: 40.0,
-                                  icon: Icon(
-                                    Icons.message,
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                    size: 30.0,
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 20.0,
+                                    borderWidth: 0.0,
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.message,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      size: 30.0,
+                                    ),
+                                    onPressed: () async {
+                                      scaffoldKey.currentState!.openDrawer();
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    scaffoldKey.currentState!.openDrawer();
-                                  },
                                 ),
                               ),
                               if (valueOrDefault<bool>(
@@ -573,19 +597,23 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 0.0,
-                          buttonSize: 40.0,
-                          icon: FaIcon(
-                            FontAwesomeIcons.appleAlt,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 30.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 20.0,
+                            borderWidth: 0.0,
+                            buttonSize: 40.0,
+                            icon: FaIcon(
+                              FontAwesomeIcons.appleAlt,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 30.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -662,19 +690,23 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 0.0,
-                          buttonSize: 40.0,
-                          icon: FaIcon(
-                            FontAwesomeIcons.appleAlt,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 30.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 20.0,
+                            borderWidth: 0.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              Icons.picture_as_pdf,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 30.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(

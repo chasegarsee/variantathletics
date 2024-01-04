@@ -203,7 +203,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bvm4v1nn': {
       'en': 'Profile',
-      'th': 'ประวัติผู้ใช้',
+      'th': 'โปรไฟล์',
     },
     'b9s5msak': {
       'en': 'Timer',
