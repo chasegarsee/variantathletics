@@ -232,7 +232,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           width: 2.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(0.0),
+                                            BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -241,7 +241,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           width: 2.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(0.0),
+                                            BorderRadius.circular(8.0),
                                       ),
                                       errorBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -250,7 +250,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           width: 2.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(0.0),
+                                            BorderRadius.circular(8.0),
                                       ),
                                       focusedErrorBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -259,7 +259,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           width: 2.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(0.0),
+                                            BorderRadius.circular(8.0),
                                       ),
                                     ),
                                     style:

@@ -201,6 +201,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Get Access!',
       'th': 'ได้รับการเข้าถึง',
     },
+    'bvm4v1nn': {
+      'en': 'Profile',
+      'th': 'ประวัติผู้ใช้',
+    },
+    'b9s5msak': {
+      'en': 'Timer',
+      'th': 'ตัวจับเวลา',
+    },
+    'yqasy4aa': {
+      'en': 'Program',
+      'th': 'โปรแกรม',
+    },
+    '2g1u1vjf': {
+      'en': '+',
+      'th': '',
+    },
+    'les6d1f2': {
+      'en': 'Message Center',
+      'th': 'ศูนย์ข้อความ',
+    },
+    'ed6i5yd3': {
+      'en': 'Nutrition Hub',
+      'th': 'ศูนย์โภชนาการ',
+    },
+    'fzuatu9t': {
+      'en': 'Knowledge Hub',
+      'th': 'ศูนย์ความรู้',
+    },
     '30zndnrx': {
       'en': 'library',
       'th': '',

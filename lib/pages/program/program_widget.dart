@@ -106,16 +106,30 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                 .toList()
                 .cast<ProgramExercisesStruct>();
             FFAppState().selectedDayName =
-                _model.currentProgram!.weeks.first.days.first.name;
+                _model.currentProgram!.weeks.first.days
+                    .where((e) =>
+                        dateTimeFormat(
+                          'yMMMd',
+                          e.date,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ) ==
+                        dateTimeFormat(
+                          'yMMMd',
+                          getCurrentTimestamp,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ))
+                    .toList()
+                    .first
+                    .name;
             FFAppState().selectedDay = _model.currentProgram!.weeks.first.days
                 .where((e) =>
                     dateTimeFormat(
-                      'MMMEd',
+                      'yMMMd',
                       e.date,
                       locale: FFLocalizations.of(context).languageCode,
                     ) ==
                     dateTimeFormat(
-                      'MMMEd',
+                      'yMMMd',
                       getCurrentTimestamp,
                       locale: FFLocalizations.of(context).languageCode,
                     ))
@@ -125,12 +139,12 @@ class _ProgramWidgetState extends State<ProgramWidget> {
             FFAppState().selectedDayId = _model.currentProgram!.weeks.first.days
                 .where((e) =>
                     dateTimeFormat(
-                      'MMMEd',
+                      'yMMMd',
                       e.date,
                       locale: FFLocalizations.of(context).languageCode,
                     ) ==
                     dateTimeFormat(
-                      'MMMEd',
+                      'yMMMd',
                       getCurrentTimestamp,
                       locale: FFLocalizations.of(context).languageCode,
                     ))
@@ -1095,7 +1109,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 5.0),
                                 child: Container(
-                                  width: 75.0,
+                                  width: _model.timerContainerSize.toDouble(),
                                   decoration: BoxDecoration(
                                     color: FFAppState()
                                                 .intervalTimer
@@ -1153,6 +1167,21 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                           _model.selectedTimer = true;
                                         });
                                       },
+                                      onLongPress: () async {
+                                        if (_model.timerSize == 14) {
+                                          setState(() {
+                                            _model.timerSize = 30;
+                                            _model.timerContainerSize = 100;
+                                          });
+                                          return;
+                                        } else {
+                                          setState(() {
+                                            _model.timerSize = 14;
+                                            _model.timerContainerSize = 75;
+                                          });
+                                          return;
+                                        }
+                                      },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -1168,7 +1197,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
-                                              size: 14.0,
+                                              size: _model.timerSize.toDouble(),
                                             ),
                                           ),
                                           if (_model.selectedTimer)
@@ -1276,7 +1305,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 14.0,
+                                                          fontSize: _model
+                                                              .timerSize
+                                                              .toDouble(),
                                                         ),
                                               ),
                                             ),
@@ -1297,6 +1328,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          fontSize: _model
+                                                              .timerSize
+                                                              .toDouble(),
                                                         ),
                                               ),
                                             ),
@@ -1321,39 +1355,49 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '5xzomvk3' /* Elapsed */,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '5xzomvk3' /* Elapsed */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
                                         ),
-                                        FlutterFlowTimer(
-                                          initialTime:
-                                              _model.elapsedTimerMilliseconds,
-                                          getDisplayTime: (value) =>
-                                              StopWatchTimer.getDisplayTime(
-                                                  value,
-                                                  milliSecond: false),
-                                          controller:
-                                              _model.elapsedTimerController,
-                                          updateStateInterval:
-                                              Duration(milliseconds: 1000),
-                                          onChanged: (value, displayTime,
-                                              shouldUpdate) {
-                                            _model.elapsedTimerMilliseconds =
-                                                value;
-                                            _model.elapsedTimerValue =
-                                                displayTime;
-                                            if (shouldUpdate) setState(() {});
-                                          },
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                fontSize: 14.0,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowTimer(
+                                            initialTime:
+                                                _model.elapsedTimerMilliseconds,
+                                            getDisplayTime: (value) =>
+                                                StopWatchTimer.getDisplayTime(
+                                                    value,
+                                                    milliSecond: false),
+                                            controller:
+                                                _model.elapsedTimerController,
+                                            updateStateInterval:
+                                                Duration(milliseconds: 1000),
+                                            onChanged: (value, displayTime,
+                                                shouldUpdate) {
+                                              _model.elapsedTimerMilliseconds =
+                                                  value;
+                                              _model.elapsedTimerValue =
+                                                  displayTime;
+                                              if (shouldUpdate) setState(() {});
+                                            },
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Jost',
+                                                  fontSize: 14.0,
+                                                ),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -1615,17 +1659,22 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Text(
-                                          FFAppState()
-                                              .intervalTimer
-                                              .completedIntervals
-                                              .toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Jost',
-                                                fontSize: 14.0,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Text(
+                                            FFAppState()
+                                                .intervalTimer
+                                                .completedIntervals
+                                                .toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Jost',
+                                                  fontSize: 14.0,
+                                                ),
+                                          ),
                                         ),
                                       ],
                                     ),

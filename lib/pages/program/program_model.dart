@@ -34,6 +34,10 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
 
   bool selectedTimer = false;
 
+  int timerSize = 14;
+
+  int timerContainerSize = 75;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

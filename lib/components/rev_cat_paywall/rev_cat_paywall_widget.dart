@@ -554,6 +554,21 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
 
                                     if (_shouldSetState) setState(() {});
                                     return;
+                                  } else if (widget.navigateTo ==
+                                      'knowledgehub') {
+                                    context.pushNamed(
+                                      'knowledgeHub',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.leftToRight,
+                                        ),
+                                      },
+                                    );
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
                                   } else {
                                     if (_shouldSetState) setState(() {});
                                     return;

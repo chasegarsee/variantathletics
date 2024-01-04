@@ -391,28 +391,28 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                   color: FlutterFlowTheme.of(context).alternate,
                                   width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(0.0),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).primary,
                                   width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(0.0),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               errorBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).error,
                                   width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(0.0),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedErrorBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).error,
                                   width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(0.0),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
@@ -517,7 +517,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                               width: 2.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(0.0),
+                                                BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -527,7 +527,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                               width: 2.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(0.0),
+                                                BorderRadius.circular(8.0),
                                           ),
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -537,7 +537,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                               width: 2.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(0.0),
+                                                BorderRadius.circular(8.0),
                                           ),
                                           focusedErrorBorder:
                                               UnderlineInputBorder(
@@ -548,7 +548,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                               width: 2.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(0.0),
+                                                BorderRadius.circular(8.0),
                                           ),
                                         ),
                                         style: FlutterFlowTheme.of(context)

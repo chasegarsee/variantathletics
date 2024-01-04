@@ -362,7 +362,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedBorder:
                                                             UnderlineInputBorder(
@@ -376,7 +376,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         errorBorder:
                                                             UnderlineInputBorder(
@@ -390,7 +390,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             UnderlineInputBorder(
@@ -404,7 +404,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                       ),
                                                       style:
@@ -487,7 +487,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedBorder:
                                                             UnderlineInputBorder(
@@ -501,7 +501,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         errorBorder:
                                                             UnderlineInputBorder(
@@ -515,7 +515,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             UnderlineInputBorder(
@@ -529,7 +529,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                       ),
                                                       style:
@@ -614,7 +614,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedBorder:
                                                             UnderlineInputBorder(
@@ -628,7 +628,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         errorBorder:
                                                             UnderlineInputBorder(
@@ -642,7 +642,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             UnderlineInputBorder(
@@ -656,7 +656,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                       ),
                                                       style:
@@ -748,7 +748,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedBorder:
                                                             UnderlineInputBorder(
@@ -762,7 +762,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         errorBorder:
                                                             UnderlineInputBorder(
@@ -776,7 +776,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             UnderlineInputBorder(
@@ -790,7 +790,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                       ),
                                                       style:
@@ -875,7 +875,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedBorder:
                                                             UnderlineInputBorder(
@@ -889,7 +889,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         errorBorder:
                                                             UnderlineInputBorder(
@@ -903,7 +903,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             UnderlineInputBorder(
@@ -917,7 +917,7 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      0.0),
+                                                                      8.0),
                                                         ),
                                                       ),
                                                       style:
