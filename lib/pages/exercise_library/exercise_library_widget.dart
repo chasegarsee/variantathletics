@@ -379,127 +379,103 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Stack(
-                        children: [
-                          Stack(
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 5.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 20.0,
-                                    borderWidth: 0.0,
-                                    buttonSize: 40.0,
-                                    icon: Icon(
-                                      Icons.message,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent2,
-                                      size: 30.0,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('MessageCenter');
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Stack(
+                          children: [
+                            Stack(
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 5.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 20.0,
+                                      borderWidth: 0.0,
+                                      buttonSize: 40.0,
+                                      icon: Icon(
+                                        Icons.message,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent2,
+                                        size: 30.0,
+                                      ),
+                                      onPressed: () async {
+                                        scaffoldKey.currentState!.openDrawer();
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      scaffoldKey.currentState!.openDrawer();
-                                    },
                                   ),
                                 ),
-                              ),
-                              if (valueOrDefault<bool>(
-                                valueOrDefault<int>(
-                                      functions.unreadMessageCount(
-                                          valueOrDefault<int>(
-                                            _model.messages?.length,
-                                            0,
-                                          ),
-                                          valueOrDefault<int>(
-                                            valueOrDefault(
-                                                currentUserDocument
-                                                    ?.readMessages,
-                                                0),
-                                            0,
-                                          )),
-                                      0,
-                                    ) >
-                                    0,
-                                false,
-                              ))
-                                Align(
-                                  alignment: AlignmentDirectional(-1.07, -0.5),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => Container(
-                                      width: 18.0,
-                                      height: 18.0,
-                                      decoration: BoxDecoration(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  functions
-                                                      .unreadMessageCount(
-                                                          valueOrDefault<int>(
-                                                            _model.messages
-                                                                ?.length,
-                                                            0,
-                                                          ),
-                                                          valueOrDefault<int>(
-                                                            valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.readMessages,
-                                                                0),
-                                                            0,
-                                                          ))
-                                                      .toString(),
-                                                  '0',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Jost',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          fontSize: 12.0,
-                                                        ),
-                                              ),
+                                if (valueOrDefault<bool>(
+                                  valueOrDefault<int>(
+                                        functions.unreadMessageCount(
+                                            valueOrDefault<int>(
+                                              _model.messages?.length,
+                                              0,
                                             ),
-                                            if (functions.unreadMessageCount(
-                                                    valueOrDefault<int>(
-                                                      _model.messages?.length,
-                                                      0,
-                                                    ),
-                                                    valueOrDefault<int>(
-                                                      valueOrDefault(
-                                                          currentUserDocument
-                                                              ?.readMessages,
-                                                          0),
-                                                      0,
-                                                    )) ==
-                                                9)
+                                            valueOrDefault<int>(
+                                              valueOrDefault(
+                                                  currentUserDocument
+                                                      ?.readMessages,
+                                                  0),
+                                              0,
+                                            )),
+                                        0,
+                                      ) >
+                                      0,
+                                  false,
+                                ))
+                                  Align(
+                                    alignment:
+                                        AlignmentDirectional(-1.07, -0.5),
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => Container(
+                                        width: 18.0,
+                                        height: 18.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '2g1u1vjf' /* + */,
+                                                  valueOrDefault<String>(
+                                                    functions
+                                                        .unreadMessageCount(
+                                                            valueOrDefault<int>(
+                                                              _model.messages
+                                                                  ?.length,
+                                                              0,
+                                                            ),
+                                                            valueOrDefault<int>(
+                                                              valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.readMessages,
+                                                                  0),
+                                                              0,
+                                                            ))
+                                                        .toString(),
+                                                    '0',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -514,31 +490,67 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                                                       ),
                                                 ),
                                               ),
-                                          ],
+                                              if (functions.unreadMessageCount(
+                                                      valueOrDefault<int>(
+                                                        _model.messages?.length,
+                                                        0,
+                                                      ),
+                                                      valueOrDefault<int>(
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.readMessages,
+                                                            0),
+                                                        0,
+                                                      )) ==
+                                                  9)
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '2g1u1vjf' /* + */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 12.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'les6d1f2' /* Message Center */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Jost',
-                                    fontSize: 16.0,
-                                  ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'les6d1f2' /* Message Center */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  fontSize: 16.0,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   InkWell(
                     splashColor: Colors.transparent,

@@ -922,8 +922,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              if (FFAppState()
-                                                                  .completedDays
+                                                              if ((currentUserDocument
+                                                                          ?.completedWorkouts
+                                                                          ?.toList() ??
+                                                                      [])
                                                                   .contains(
                                                                       dayItem
                                                                           .id))
@@ -933,32 +935,35 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                                           -1.79,
                                                                           -0.82),
                                                                   child:
-                                                                      Container(
-                                                                    width: 20.0,
-                                                                    height:
-                                                                        20.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent1,
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                    ),
-                                                                    child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          FaIcon(
-                                                                        FontAwesomeIcons
-                                                                            .checkDouble,
+                                                                      AuthUserStreamWidget(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            Container(
+                                                                      width:
+                                                                          20.0,
+                                                                      height:
+                                                                          20.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        size:
-                                                                            15.0,
+                                                                            .accent1,
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .checkDouble,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          size:
+                                                                              15.0,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
