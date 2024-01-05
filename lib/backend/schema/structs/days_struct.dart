@@ -15,12 +15,18 @@ class DaysStruct extends FFFirebaseStruct {
     String? id,
     int? day,
     DateTime? date,
+    String? superSetId,
+    bool? isDropSet,
+    bool? isSuperset,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _exercises = exercises,
         _id = id,
         _day = day,
         _date = date,
+        _superSetId = superSetId,
+        _isDropSet = isDropSet,
+        _isSuperset = isSuperset,
         super(firestoreUtilData);
 
   // "name" field.
@@ -56,6 +62,24 @@ class DaysStruct extends FFFirebaseStruct {
   set date(DateTime? val) => _date = val;
   bool hasDate() => _date != null;
 
+  // "superSetId" field.
+  String? _superSetId;
+  String get superSetId => _superSetId ?? '';
+  set superSetId(String? val) => _superSetId = val;
+  bool hasSuperSetId() => _superSetId != null;
+
+  // "isDropSet" field.
+  bool? _isDropSet;
+  bool get isDropSet => _isDropSet ?? false;
+  set isDropSet(bool? val) => _isDropSet = val;
+  bool hasIsDropSet() => _isDropSet != null;
+
+  // "isSuperset" field.
+  bool? _isSuperset;
+  bool get isSuperset => _isSuperset ?? false;
+  set isSuperset(bool? val) => _isSuperset = val;
+  bool hasIsSuperset() => _isSuperset != null;
+
   static DaysStruct fromMap(Map<String, dynamic> data) => DaysStruct(
         name: data['name'] as String?,
         exercises: getStructList(
@@ -65,6 +89,9 @@ class DaysStruct extends FFFirebaseStruct {
         id: data['id'] as String?,
         day: castToType<int>(data['day']),
         date: data['date'] as DateTime?,
+        superSetId: data['superSetId'] as String?,
+        isDropSet: data['isDropSet'] as bool?,
+        isSuperset: data['isSuperset'] as bool?,
       );
 
   static DaysStruct? maybeFromMap(dynamic data) =>
@@ -76,6 +103,9 @@ class DaysStruct extends FFFirebaseStruct {
         'id': _id,
         'day': _day,
         'date': _date,
+        'superSetId': _superSetId,
+        'isDropSet': _isDropSet,
+        'isSuperset': _isSuperset,
       }.withoutNulls;
 
   @override
@@ -100,6 +130,18 @@ class DaysStruct extends FFFirebaseStruct {
         'date': serializeParam(
           _date,
           ParamType.DateTime,
+        ),
+        'superSetId': serializeParam(
+          _superSetId,
+          ParamType.String,
+        ),
+        'isDropSet': serializeParam(
+          _isDropSet,
+          ParamType.bool,
+        ),
+        'isSuperset': serializeParam(
+          _isSuperset,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -131,6 +173,21 @@ class DaysStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
+        superSetId: deserializeParam(
+          data['superSetId'],
+          ParamType.String,
+          false,
+        ),
+        isDropSet: deserializeParam(
+          data['isDropSet'],
+          ParamType.bool,
+          false,
+        ),
+        isSuperset: deserializeParam(
+          data['isSuperset'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -144,12 +201,15 @@ class DaysStruct extends FFFirebaseStruct {
         listEquality.equals(exercises, other.exercises) &&
         id == other.id &&
         day == other.day &&
-        date == other.date;
+        date == other.date &&
+        superSetId == other.superSetId &&
+        isDropSet == other.isDropSet &&
+        isSuperset == other.isSuperset;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([name, exercises, id, day, date]);
+  int get hashCode => const ListEquality().hash(
+      [name, exercises, id, day, date, superSetId, isDropSet, isSuperset]);
 }
 
 DaysStruct createDaysStruct({
@@ -157,6 +217,9 @@ DaysStruct createDaysStruct({
   String? id,
   int? day,
   DateTime? date,
+  String? superSetId,
+  bool? isDropSet,
+  bool? isSuperset,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -167,6 +230,9 @@ DaysStruct createDaysStruct({
       id: id,
       day: day,
       date: date,
+      superSetId: superSetId,
+      isDropSet: isDropSet,
+      isSuperset: isSuperset,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

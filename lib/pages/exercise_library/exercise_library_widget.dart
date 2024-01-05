@@ -104,7 +104,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
           child: Drawer(
             elevation: 16.0,
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 75.0, 10.0, 10.0),
               child: ListView(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
@@ -351,8 +351,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                             borderRadius: 20.0,
                             borderWidth: 0.0,
                             buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.menu_book_rounded,
+                            icon: FaIcon(
+                              FontAwesomeIcons.weightHanging,
                               color: FlutterFlowTheme.of(context).accent2,
                               size: 30.0,
                             ),
