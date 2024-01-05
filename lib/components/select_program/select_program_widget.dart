@@ -207,95 +207,196 @@ class _SelectProgramWidgetState extends State<SelectProgramWidget> {
                                                                     listViewProgramsRecord
                                                                         .id,
                                                               ));
-                                                              _model.updatePage(
-                                                                  () {
-                                                                FFAppState()
-                                                                        .selectedWeek =
-                                                                    listViewProgramsRecord
-                                                                        .weeks
-                                                                        .first
-                                                                        .weekNumber;
-                                                                FFAppState().days = functions
-                                                                    .setDays(listViewProgramsRecord
-                                                                        .weeks
-                                                                        .toList())
-                                                                    .toList()
-                                                                    .cast<
-                                                                        DaysStruct>();
-                                                                FFAppState().programExercises = functions
-                                                                    .setExercises(
-                                                                        listViewProgramsRecord
-                                                                            .weeks
-                                                                            .first)
-                                                                    .toList()
-                                                                    .cast<
-                                                                        ProgramExercisesStruct>();
-                                                                FFAppState()
-                                                                        .selectedDayName =
-                                                                    listViewProgramsRecord
-                                                                        .weeks
-                                                                        .first
-                                                                        .days
-                                                                        .first
-                                                                        .name;
-                                                                FFAppState()
-                                                                        .selectedDay =
-                                                                    listViewProgramsRecord
-                                                                        .weeks
-                                                                        .first
-                                                                        .days
-                                                                        .first
-                                                                        .day;
-                                                                FFAppState()
-                                                                        .selectedDayId =
-                                                                    listViewProgramsRecord
-                                                                        .weeks
-                                                                        .first
-                                                                        .days
-                                                                        .first
-                                                                        .id;
-                                                                FFAppState()
-                                                                        .weeks =
-                                                                    listViewProgramsRecord
-                                                                        .weeks
-                                                                        .toList()
-                                                                        .cast<
-                                                                            WeeksStruct>();
-                                                                FFAppState()
-                                                                        .currentProgram =
-                                                                    listViewProgramsRecord
-                                                                        .name;
-                                                                FFAppState()
-                                                                        .currentProgramId =
-                                                                    listViewProgramsRecord
-                                                                        .reference
-                                                                        .id;
-                                                                FFAppState()
-                                                                    .completedDays = [];
-                                                                FFAppState()
-                                                                    .completedWeeks = [];
-                                                                FFAppState()
-                                                                        .showAllWeeks =
-                                                                    false;
-                                                                FFAppState()
-                                                                        .isDaily =
-                                                                    listViewProgramsRecord
-                                                                        .isDaily;
-                                                              });
                                                               if (listViewProgramsRecord
                                                                   .isDaily) {
                                                                 setState(() {
                                                                   FFAppState()
-                                                                          .showAllDays =
-                                                                      true;
+                                                                          .selectedWeek =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .first
+                                                                          .weekNumber;
+                                                                  FFAppState().days = functions
+                                                                      .setDays(listViewProgramsRecord
+                                                                          .weeks
+                                                                          .toList())
+                                                                      .toList()
+                                                                      .cast<
+                                                                          DaysStruct>();
+                                                                  FFAppState().programExercises = functions
+                                                                      .getCurrentDateExercises(
+                                                                          listViewProgramsRecord
+                                                                              .weeks
+                                                                              .toList(),
+                                                                          getCurrentTimestamp)!
+                                                                      .toList()
+                                                                      .cast<
+                                                                          ProgramExercisesStruct>();
+                                                                  FFAppState().selectedDayName = listViewProgramsRecord
+                                                                      .weeks
+                                                                      .first
+                                                                      .days
+                                                                      .where((e) =>
+                                                                          dateTimeFormat(
+                                                                            'yMMMd',
+                                                                            e.date,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ) ==
+                                                                          dateTimeFormat(
+                                                                            'yMMMd',
+                                                                            getCurrentTimestamp,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ))
+                                                                      .toList()
+                                                                      .first
+                                                                      .name;
+                                                                  FFAppState().selectedDay = listViewProgramsRecord
+                                                                      .weeks
+                                                                      .first
+                                                                      .days
+                                                                      .where((e) =>
+                                                                          dateTimeFormat(
+                                                                            'yMMMd',
+                                                                            e.date,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ) ==
+                                                                          dateTimeFormat(
+                                                                            'yMMMd',
+                                                                            getCurrentTimestamp,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ))
+                                                                      .toList()
+                                                                      .first
+                                                                      .day;
+                                                                  FFAppState().selectedDayId = listViewProgramsRecord
+                                                                      .weeks
+                                                                      .first
+                                                                      .days
+                                                                      .where((e) =>
+                                                                          dateTimeFormat(
+                                                                            'yMMMd',
+                                                                            e.date,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ) ==
+                                                                          dateTimeFormat(
+                                                                            'yMMMd',
+                                                                            getCurrentTimestamp,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ))
+                                                                      .toList()
+                                                                      .first
+                                                                      .id;
+                                                                  FFAppState()
+                                                                          .weeks =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .toList()
+                                                                          .cast<
+                                                                              WeeksStruct>();
+                                                                  FFAppState()
+                                                                          .currentProgram =
+                                                                      listViewProgramsRecord
+                                                                          .name;
+                                                                  FFAppState()
+                                                                          .currentProgramId =
+                                                                      listViewProgramsRecord
+                                                                          .reference
+                                                                          .id;
+                                                                  FFAppState()
+                                                                          .showAllWeeks =
+                                                                      false;
+                                                                  FFAppState()
+                                                                          .isDaily =
+                                                                      listViewProgramsRecord
+                                                                          .isDaily;
                                                                   FFAppState()
                                                                           .isDailySelectedDay =
-                                                                      dateTimeFromSecondsSinceEpoch(
-                                                                          getCurrentTimestamp
-                                                                              .secondsSinceEpoch);
+                                                                      getCurrentTimestamp;
+                                                                  FFAppState()
+                                                                          .showAllDays =
+                                                                      true;
                                                                 });
                                                               } else {
-                                                                setState(() {
+                                                                _model
+                                                                    .updatePage(
+                                                                        () {
+                                                                  FFAppState()
+                                                                          .selectedWeek =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .first
+                                                                          .weekNumber;
+                                                                  FFAppState().days = functions
+                                                                      .setDays(listViewProgramsRecord
+                                                                          .weeks
+                                                                          .toList())
+                                                                      .toList()
+                                                                      .cast<
+                                                                          DaysStruct>();
+                                                                  FFAppState().programExercises = functions
+                                                                      .setExercises(listViewProgramsRecord
+                                                                          .weeks
+                                                                          .first)
+                                                                      .toList()
+                                                                      .cast<
+                                                                          ProgramExercisesStruct>();
+                                                                  FFAppState()
+                                                                          .selectedDayName =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .first
+                                                                          .days
+                                                                          .first
+                                                                          .name;
+                                                                  FFAppState()
+                                                                          .selectedDay =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .first
+                                                                          .days
+                                                                          .first
+                                                                          .day;
+                                                                  FFAppState()
+                                                                          .selectedDayId =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .first
+                                                                          .days
+                                                                          .first
+                                                                          .id;
+                                                                  FFAppState()
+                                                                          .weeks =
+                                                                      listViewProgramsRecord
+                                                                          .weeks
+                                                                          .toList()
+                                                                          .cast<
+                                                                              WeeksStruct>();
+                                                                  FFAppState()
+                                                                          .currentProgram =
+                                                                      listViewProgramsRecord
+                                                                          .name;
+                                                                  FFAppState()
+                                                                          .currentProgramId =
+                                                                      listViewProgramsRecord
+                                                                          .reference
+                                                                          .id;
+                                                                  FFAppState()
+                                                                      .completedDays = [];
+                                                                  FFAppState()
+                                                                      .completedWeeks = [];
+                                                                  FFAppState()
+                                                                          .showAllWeeks =
+                                                                      false;
+                                                                  FFAppState()
+                                                                          .isDaily =
+                                                                      listViewProgramsRecord
+                                                                          .isDaily;
                                                                   FFAppState()
                                                                           .showAllDays =
                                                                       false;
