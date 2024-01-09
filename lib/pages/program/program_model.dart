@@ -53,7 +53,7 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
   FlutterFlowTimerController intervalTimerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
-  AudioPlayer? soundPlayer1;
+  AudioPlayer? soundPlayer;
   // State field(s) for CountUpTimer widget.
   int countUpTimerMilliseconds = 0;
   String countUpTimerValue = StopWatchTimer.getDisplayTime(
@@ -64,7 +64,6 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
   FlutterFlowTimerController countUpTimerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
 
-  AudioPlayer? soundPlayer2;
   // State field(s) for elapsedTimer widget.
   int elapsedTimerMilliseconds = 0;
   String elapsedTimerValue =

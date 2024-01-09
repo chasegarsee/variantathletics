@@ -1241,20 +1241,20 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   if (FFAppState()
                                                       .intervalTimer
                                                       .playSound) {
-                                                    _model.soundPlayer1 ??=
+                                                    _model.soundPlayer ??=
                                                         AudioPlayer();
-                                                    if (_model.soundPlayer1!
-                                                        .playing) {
-                                                      await _model.soundPlayer1!
+                                                    if (_model
+                                                        .soundPlayer!.playing) {
+                                                      await _model.soundPlayer!
                                                           .stop();
                                                     }
-                                                    _model.soundPlayer1!
+                                                    _model.soundPlayer!
                                                         .setVolume(1.0);
-                                                    _model.soundPlayer1!
+                                                    _model.soundPlayer!
                                                         .setAsset(
                                                             'assets/audios/ding.mp3')
                                                         .then((_) => _model
-                                                            .soundPlayer1!
+                                                            .soundPlayer!
                                                             .play());
                                                   }
                                                   setState(() {
@@ -1350,74 +1350,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       displayTime;
                                                   if (shouldUpdate)
                                                     setState(() {});
-                                                },
-                                                onEnded: () async {
-                                                  if (FFAppState()
-                                                      .intervalTimer
-                                                      .playSound) {
-                                                    _model.soundPlayer2 ??=
-                                                        AudioPlayer();
-                                                    if (_model.soundPlayer2!
-                                                        .playing) {
-                                                      await _model.soundPlayer2!
-                                                          .stop();
-                                                    }
-                                                    _model.soundPlayer2!
-                                                        .setVolume(1.0);
-                                                    _model.soundPlayer2!
-                                                        .setAsset(
-                                                            'assets/audios/ding.mp3')
-                                                        .then((_) => _model
-                                                            .soundPlayer2!
-                                                            .play());
-                                                  }
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .updateIntervalTimerStruct(
-                                                      (e) => e
-                                                        ..currentInterval =
-                                                            FFAppState()
-                                                                        .intervalTimer
-                                                                        .currentInterval ==
-                                                                    FFAppState()
-                                                                        .intervalTimer
-                                                                        .workingInterval
-                                                                ? FFAppState()
-                                                                    .intervalTimer
-                                                                    .restingInterval
-                                                                : FFAppState()
-                                                                    .intervalTimer
-                                                                    .workingInterval,
-                                                    );
-                                                  });
-                                                  if (FFAppState()
-                                                          .intervalTimer
-                                                          .currentInterval ==
-                                                      FFAppState()
-                                                          .intervalTimer
-                                                          .restingInterval) {
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .updateIntervalTimerStruct(
-                                                        (e) => e
-                                                          ..incrementCompletedIntervals(
-                                                              1),
-                                                      );
-                                                    });
-                                                  }
-                                                  _model.countUpTimerController
-                                                      .timer
-                                                      .setPresetTime(
-                                                    mSec: FFAppState()
-                                                        .intervalTimer
-                                                        .currentInterval,
-                                                    add: false,
-                                                  );
-                                                  _model.countUpTimerController
-                                                      .onResetTimer();
-
-                                                  _model.countUpTimerController
-                                                      .onStartTimer();
                                                 },
                                                 textAlign: TextAlign.start,
                                                 style:
