@@ -146,14 +146,15 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                     ),
                                   ),
                                 ),
-                                FlutterFlowDropDown<bool>(
+                                FlutterFlowDropDown<String>(
                                   controller:
                                       _model.timerTypeValueController ??=
-                                          FormFieldController<bool>(
-                                    _model.timerTypeValue ??= false,
+                                          FormFieldController<String>(
+                                    _model.timerTypeValue ??=
+                                        FFAppState().intervalTimer.timerType,
                                   ),
-                                  options:
-                                      List<bool>.from([false, false, true]),
+                                  options: List<String>.from(
+                                      ['Interval', 'Count Up', 'Count Down']),
                                   optionLabels: [
                                     FFLocalizations.of(context).getText(
                                       'sppkxchz' /* Interval */,
@@ -170,7 +171,12 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                     _model.updatePage(() {
                                       FFAppState().updateIntervalTimerStruct(
                                         (e) => e
-                                          ..isCountDown = _model.timerTypeValue,
+                                          ..isCountDown =
+                                              _model.timerTypeValue !=
+                                                      'Count Up'
+                                                  ? true
+                                                  : false
+                                          ..timerType = _model.timerTypeValue,
                                       );
                                     });
                                   },

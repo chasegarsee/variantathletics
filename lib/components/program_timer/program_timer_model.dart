@@ -17,8 +17,8 @@ class ProgramTimerModel extends FlutterFlowModel<ProgramTimerWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TimerType widget.
-  bool? timerTypeValue;
-  FormFieldController<bool>? timerTypeValueController;
+  String? timerTypeValue;
+  FormFieldController<String>? timerTypeValueController;
   // State field(s) for RestingInterval widget.
   int? restingIntervalValue;
   FormFieldController<int>? restingIntervalValueController;
