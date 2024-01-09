@@ -30,6 +30,8 @@ class EditExerciseWidget extends StatefulWidget {
     this.restTime,
     required this.index,
     required this.programId,
+    required this.isSuperset,
+    required this.supersetId,
   }) : super(key: key);
 
   final String? name;
@@ -40,6 +42,8 @@ class EditExerciseWidget extends StatefulWidget {
   final String? restTime;
   final int? index;
   final DocumentReference? programId;
+  final bool? isSuperset;
+  final String? supersetId;
 
   @override
   _EditExerciseWidgetState createState() => _EditExerciseWidgetState();
@@ -117,7 +121,6 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                         imageUrl:
                             '${FFAppState().exerciseBase}${functions.convertStringToHyphenatedLowerCase(FFAppState().editProgramSelectedDay.exercises[widget.index!].id)}.png?alt=media',
                         width: MediaQuery.sizeOf(context).width * 0.25,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
                         fit: BoxFit.cover,
                       ),
                     ),
