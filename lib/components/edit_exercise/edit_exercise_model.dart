@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -43,6 +44,10 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
 
   /// Initialization and disposal methods.
 
@@ -68,4 +73,6 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  String? get radioButtonValue => radioButtonValueController?.value;
 }

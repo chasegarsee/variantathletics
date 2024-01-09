@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -782,6 +783,78 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      '7p63f6nf' /* Super Set */,
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  Theme(
+                                    data: ThemeData(
+                                      checkboxTheme: CheckboxThemeData(
+                                        visualDensity: VisualDensity.compact,
+                                        materialTapTargetSize:
+                                            MaterialTapTargetSize.shrinkWrap,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                        ),
+                                      ),
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                    child: Checkbox(
+                                      value: _model.checkboxValue ??= true,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.checkboxValue = newValue!);
+                                      },
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      checkColor:
+                                          FlutterFlowTheme.of(context).info,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  FlutterFlowRadioButton(
+                                    options: ['', ''].toList(),
+                                    onChanged: (val) => setState(() {}),
+                                    controller:
+                                        _model.radioButtonValueController ??=
+                                            FormFieldController<String>(null),
+                                    optionHeight: 32.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    buttonPosition: RadioButtonPosition.left,
+                                    direction: Axis.horizontal,
+                                    radioButtonColor:
+                                        FlutterFlowTheme.of(context).accent2,
+                                    inactiveRadioButtonColor:
+                                        FlutterFlowTheme.of(context).error,
+                                    toggleable: false,
+                                    horizontalAlignment: WrapAlignment.start,
+                                    verticalAlignment: WrapCrossAlignment.start,
                                   ),
                                 ],
                               ),

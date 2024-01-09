@@ -17,6 +17,8 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
     String? workTime,
     String? id,
     String? tempo,
+    bool? isSuperset,
+    String? supersetId,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _reps = reps,
@@ -25,6 +27,8 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
         _workTime = workTime,
         _id = id,
         _tempo = tempo,
+        _isSuperset = isSuperset,
+        _supersetId = supersetId,
         super(firestoreUtilData);
 
   // "name" field.
@@ -69,6 +73,18 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
   set tempo(String? val) => _tempo = val;
   bool hasTempo() => _tempo != null;
 
+  // "isSuperset" field.
+  bool? _isSuperset;
+  bool get isSuperset => _isSuperset ?? false;
+  set isSuperset(bool? val) => _isSuperset = val;
+  bool hasIsSuperset() => _isSuperset != null;
+
+  // "supersetId" field.
+  String? _supersetId;
+  String get supersetId => _supersetId ?? '';
+  set supersetId(String? val) => _supersetId = val;
+  bool hasSupersetId() => _supersetId != null;
+
   static ProgramExercisesStruct fromMap(Map<String, dynamic> data) =>
       ProgramExercisesStruct(
         name: data['name'] as String?,
@@ -78,6 +94,8 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
         workTime: data['workTime'] as String?,
         id: data['id'] as String?,
         tempo: data['tempo'] as String?,
+        isSuperset: data['isSuperset'] as bool?,
+        supersetId: data['supersetId'] as String?,
       );
 
   static ProgramExercisesStruct? maybeFromMap(dynamic data) => data is Map
@@ -92,6 +110,8 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
         'workTime': _workTime,
         'id': _id,
         'tempo': _tempo,
+        'isSuperset': _isSuperset,
+        'supersetId': _supersetId,
       }.withoutNulls;
 
   @override
@@ -122,6 +142,14 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
         ),
         'tempo': serializeParam(
           _tempo,
+          ParamType.String,
+        ),
+        'isSuperset': serializeParam(
+          _isSuperset,
+          ParamType.bool,
+        ),
+        'supersetId': serializeParam(
+          _supersetId,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -164,6 +192,16 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        isSuperset: deserializeParam(
+          data['isSuperset'],
+          ParamType.bool,
+          false,
+        ),
+        supersetId: deserializeParam(
+          data['supersetId'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -178,12 +216,23 @@ class ProgramExercisesStruct extends FFFirebaseStruct {
         sets == other.sets &&
         workTime == other.workTime &&
         id == other.id &&
-        tempo == other.tempo;
+        tempo == other.tempo &&
+        isSuperset == other.isSuperset &&
+        supersetId == other.supersetId;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([name, reps, restTime, sets, workTime, id, tempo]);
+  int get hashCode => const ListEquality().hash([
+        name,
+        reps,
+        restTime,
+        sets,
+        workTime,
+        id,
+        tempo,
+        isSuperset,
+        supersetId
+      ]);
 }
 
 ProgramExercisesStruct createProgramExercisesStruct({
@@ -194,6 +243,8 @@ ProgramExercisesStruct createProgramExercisesStruct({
   String? workTime,
   String? id,
   String? tempo,
+  bool? isSuperset,
+  String? supersetId,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -207,6 +258,8 @@ ProgramExercisesStruct createProgramExercisesStruct({
       workTime: workTime,
       id: id,
       tempo: tempo,
+      isSuperset: isSuperset,
+      supersetId: supersetId,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

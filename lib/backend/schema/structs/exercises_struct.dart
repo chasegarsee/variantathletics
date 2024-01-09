@@ -13,22 +13,24 @@ class ExercisesStruct extends FFFirebaseStruct {
     String? exerciseId,
     int? sets,
     int? reps,
-    bool? isSuperSet,
     String? exerciseImageUrl,
     String? name,
     List<String>? setArr,
     List<String>? usersCompleted,
     BreakdownStruct? breakdown,
+    bool? isSuperSet,
+    String? supersetId,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _exerciseId = exerciseId,
         _sets = sets,
         _reps = reps,
-        _isSuperSet = isSuperSet,
         _exerciseImageUrl = exerciseImageUrl,
         _name = name,
         _setArr = setArr,
         _usersCompleted = usersCompleted,
         _breakdown = breakdown,
+        _isSuperSet = isSuperSet,
+        _supersetId = supersetId,
         super(firestoreUtilData);
 
   // "exerciseId" field.
@@ -50,12 +52,6 @@ class ExercisesStruct extends FFFirebaseStruct {
   set reps(int? val) => _reps = val;
   void incrementReps(int amount) => _reps = reps + amount;
   bool hasReps() => _reps != null;
-
-  // "isSuperSet" field.
-  bool? _isSuperSet;
-  bool get isSuperSet => _isSuperSet ?? false;
-  set isSuperSet(bool? val) => _isSuperSet = val;
-  bool hasIsSuperSet() => _isSuperSet != null;
 
   // "exerciseImageUrl" field.
   String? _exerciseImageUrl;
@@ -93,16 +89,29 @@ class ExercisesStruct extends FFFirebaseStruct {
       updateFn(_breakdown ??= BreakdownStruct());
   bool hasBreakdown() => _breakdown != null;
 
+  // "isSuperSet" field.
+  bool? _isSuperSet;
+  bool get isSuperSet => _isSuperSet ?? false;
+  set isSuperSet(bool? val) => _isSuperSet = val;
+  bool hasIsSuperSet() => _isSuperSet != null;
+
+  // "supersetId" field.
+  String? _supersetId;
+  String get supersetId => _supersetId ?? '';
+  set supersetId(String? val) => _supersetId = val;
+  bool hasSupersetId() => _supersetId != null;
+
   static ExercisesStruct fromMap(Map<String, dynamic> data) => ExercisesStruct(
         exerciseId: data['exerciseId'] as String?,
         sets: castToType<int>(data['sets']),
         reps: castToType<int>(data['reps']),
-        isSuperSet: data['isSuperSet'] as bool?,
         exerciseImageUrl: data['exerciseImageUrl'] as String?,
         name: data['name'] as String?,
         setArr: getDataList(data['setArr']),
         usersCompleted: getDataList(data['usersCompleted']),
         breakdown: BreakdownStruct.maybeFromMap(data['breakdown']),
+        isSuperSet: data['isSuperSet'] as bool?,
+        supersetId: data['supersetId'] as String?,
       );
 
   static ExercisesStruct? maybeFromMap(dynamic data) => data is Map
@@ -113,12 +122,13 @@ class ExercisesStruct extends FFFirebaseStruct {
         'exerciseId': _exerciseId,
         'sets': _sets,
         'reps': _reps,
-        'isSuperSet': _isSuperSet,
         'exerciseImageUrl': _exerciseImageUrl,
         'name': _name,
         'setArr': _setArr,
         'usersCompleted': _usersCompleted,
         'breakdown': _breakdown?.toMap(),
+        'isSuperSet': _isSuperSet,
+        'supersetId': _supersetId,
       }.withoutNulls;
 
   @override
@@ -134,10 +144,6 @@ class ExercisesStruct extends FFFirebaseStruct {
         'reps': serializeParam(
           _reps,
           ParamType.int,
-        ),
-        'isSuperSet': serializeParam(
-          _isSuperSet,
-          ParamType.bool,
         ),
         'exerciseImageUrl': serializeParam(
           _exerciseImageUrl,
@@ -161,6 +167,14 @@ class ExercisesStruct extends FFFirebaseStruct {
           _breakdown,
           ParamType.DataStruct,
         ),
+        'isSuperSet': serializeParam(
+          _isSuperSet,
+          ParamType.bool,
+        ),
+        'supersetId': serializeParam(
+          _supersetId,
+          ParamType.String,
+        ),
       }.withoutNulls;
 
   static ExercisesStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -178,11 +192,6 @@ class ExercisesStruct extends FFFirebaseStruct {
         reps: deserializeParam(
           data['reps'],
           ParamType.int,
-          false,
-        ),
-        isSuperSet: deserializeParam(
-          data['isSuperSet'],
-          ParamType.bool,
           false,
         ),
         exerciseImageUrl: deserializeParam(
@@ -211,6 +220,16 @@ class ExercisesStruct extends FFFirebaseStruct {
           false,
           structBuilder: BreakdownStruct.fromSerializableMap,
         ),
+        isSuperSet: deserializeParam(
+          data['isSuperSet'],
+          ParamType.bool,
+          false,
+        ),
+        supersetId: deserializeParam(
+          data['supersetId'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -223,12 +242,13 @@ class ExercisesStruct extends FFFirebaseStruct {
         exerciseId == other.exerciseId &&
         sets == other.sets &&
         reps == other.reps &&
-        isSuperSet == other.isSuperSet &&
         exerciseImageUrl == other.exerciseImageUrl &&
         name == other.name &&
         listEquality.equals(setArr, other.setArr) &&
         listEquality.equals(usersCompleted, other.usersCompleted) &&
-        breakdown == other.breakdown;
+        breakdown == other.breakdown &&
+        isSuperSet == other.isSuperSet &&
+        supersetId == other.supersetId;
   }
 
   @override
@@ -236,12 +256,13 @@ class ExercisesStruct extends FFFirebaseStruct {
         exerciseId,
         sets,
         reps,
-        isSuperSet,
         exerciseImageUrl,
         name,
         setArr,
         usersCompleted,
-        breakdown
+        breakdown,
+        isSuperSet,
+        supersetId
       ]);
 }
 
@@ -249,10 +270,11 @@ ExercisesStruct createExercisesStruct({
   String? exerciseId,
   int? sets,
   int? reps,
-  bool? isSuperSet,
   String? exerciseImageUrl,
   String? name,
   BreakdownStruct? breakdown,
+  bool? isSuperSet,
+  String? supersetId,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -262,10 +284,11 @@ ExercisesStruct createExercisesStruct({
       exerciseId: exerciseId,
       sets: sets,
       reps: reps,
-      isSuperSet: isSuperSet,
       exerciseImageUrl: exerciseImageUrl,
       name: name,
       breakdown: breakdown ?? (clearUnsetFields ? BreakdownStruct() : null),
+      isSuperSet: isSuperSet,
+      supersetId: supersetId,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

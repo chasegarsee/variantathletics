@@ -1215,6 +1215,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Rest Time',
       'th': '',
     },
+    '7p63f6nf': {
+      'en': 'Super Set',
+      'th': '',
+    },
   },
   // addExercise
   {
