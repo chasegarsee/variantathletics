@@ -873,7 +873,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     ),
                                   if (!_model.hasSelectedSuperSet ||
                                       (_model.selectedSuperset
-                                              .contains('#EE8B60') ==
+                                              .contains('#9CBA20FF') ==
                                           true))
                                     ToggleIcon(
                                       onPressed: () async {
