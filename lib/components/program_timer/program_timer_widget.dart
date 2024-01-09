@@ -451,8 +451,10 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                 ],
                               ),
                             ),
-                          if (FFAppState().intervalTimer.timerType !=
-                              'Interval')
+                          if ((FFAppState().intervalTimer.timerType !=
+                                  'Interval') ||
+                              (FFAppState().intervalTimer.timerType !=
+                                  'Count Down'))
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

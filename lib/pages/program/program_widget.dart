@@ -1206,14 +1206,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                             ),
                                           ),
                                           if (_model.selectedTimer &&
-                                              ((FFAppState()
-                                                          .intervalTimer
-                                                          .timerType ==
-                                                      'Interval') ||
-                                                  (FFAppState()
-                                                          .intervalTimer
-                                                          .timerType ==
-                                                      'Count Down')))
+                                              (FFAppState()
+                                                      .intervalTimer
+                                                      .timerType !=
+                                                  'Count Up'))
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
@@ -1525,6 +1521,11 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   fontSize: 14.0,
                                                 ),
                                           ),
+                                        ),
+                                        Text(
+                                          FFAppState().intervalTimer.timerType,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
