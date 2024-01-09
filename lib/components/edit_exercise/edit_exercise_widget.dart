@@ -833,102 +833,261 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  if (!_model.hasSelectedSuperSet ||
-                                      (_model.selectedSuperset
-                                              .contains('#EE8B60') ==
-                                          true))
-                                    ToggleIcon(
-                                      onPressed: () async {
-                                        setState(
-                                          () => _model.selectedSuperset
-                                                  .contains('#EE8B60')
-                                              ? _model
-                                                  .removeFromSelectedSuperset(
-                                                      '#EE8B60')
-                                              : _model.addToSelectedSuperset(
-                                                  '#EE8B60'),
-                                        );
-                                        setState(() {
-                                          _model.hasSelectedSuperSet =
-                                              !_model.hasSelectedSuperSet;
-                                        });
-                                      },
-                                      value: _model.selectedSuperset
-                                          .contains('#EE8B60'),
-                                      onIcon: Icon(
-                                        Icons.radio_button_checked_sharp,
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        size: 25.0,
+                              if (_model.checkboxValue ?? true)
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    if (!_model.hasSelectedSuperSet ||
+                                        (_model.selectedSuperset
+                                                .contains(_model.orange) ==
+                                            true))
+                                      ToggleIcon(
+                                        onPressed: () async {
+                                          setState(
+                                            () => _model.selectedSuperset
+                                                    .contains(_model.orange)
+                                                ? _model
+                                                    .removeFromSelectedSuperset(
+                                                        _model.orange)
+                                                : _model.addToSelectedSuperset(
+                                                    _model.orange),
+                                          );
+                                          setState(() {
+                                            _model.hasSelectedSuperSet =
+                                                !_model.hasSelectedSuperSet;
+                                          });
+                                        },
+                                        value: _model.selectedSuperset
+                                            .contains(_model.orange),
+                                        onIcon: Icon(
+                                          Icons.radio_button_checked_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          size: 25.0,
+                                        ),
+                                        offIcon: Icon(
+                                          Icons.radio_button_off,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          size: 25.0,
+                                        ),
                                       ),
-                                      offIcon: Icon(
-                                        Icons.radio_button_off,
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        size: 25.0,
+                                    if (!_model.hasSelectedSuperSet ||
+                                        (_model.selectedSuperset
+                                                .contains(_model.purple) ==
+                                            true))
+                                      ToggleIcon(
+                                        onPressed: () async {
+                                          setState(
+                                            () => _model.selectedSuperset
+                                                    .contains(_model
+                                                        .selectedSuperset
+                                                        .contains(_model.purple)
+                                                        .toString())
+                                                ? _model
+                                                    .removeFromSelectedSuperset(
+                                                        _model.selectedSuperset
+                                                            .contains(
+                                                                _model.purple)
+                                                            .toString())
+                                                : _model.addToSelectedSuperset(
+                                                    _model.selectedSuperset
+                                                        .contains(_model.purple)
+                                                        .toString()),
+                                          );
+                                          setState(() {
+                                            _model.hasSelectedSuperSet =
+                                                !_model.hasSelectedSuperSet;
+                                          });
+                                        },
+                                        value: _model.selectedSuperset.contains(
+                                            _model.selectedSuperset
+                                                .contains(_model.purple)
+                                                .toString()),
+                                        onIcon: Icon(
+                                          Icons.radio_button_checked_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                          size: 25.0,
+                                        ),
+                                        offIcon: Icon(
+                                          Icons.radio_button_off,
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                          size: 25.0,
+                                        ),
                                       ),
-                                    ),
-                                  if (!_model.hasSelectedSuperSet ||
-                                      (_model.selectedSuperset
-                                              .contains('#9CBA20FF') ==
-                                          true))
-                                    ToggleIcon(
-                                      onPressed: () async {
-                                        setState(
-                                          () => _model.selectedSuperset
-                                                  .contains('#9CBA20FF')
-                                              ? _model
-                                                  .removeFromSelectedSuperset(
-                                                      '#9CBA20FF')
-                                              : _model.addToSelectedSuperset(
-                                                  '#9CBA20FF'),
-                                        );
-                                        setState(() {
-                                          _model.hasSelectedSuperSet =
-                                              !_model.hasSelectedSuperSet;
-                                        });
-                                      },
-                                      value: _model.selectedSuperset
-                                          .contains('#9CBA20FF'),
-                                      onIcon: Icon(
-                                        Icons.radio_button_checked_sharp,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                        size: 25.0,
+                                    if (!_model.hasSelectedSuperSet ||
+                                        (_model.selectedSuperset
+                                                .contains(_model.red) ==
+                                            true))
+                                      ToggleIcon(
+                                        onPressed: () async {
+                                          setState(
+                                            () => _model.selectedSuperset
+                                                    .contains(_model
+                                                        .selectedSuperset
+                                                        .contains(_model.red)
+                                                        .toString())
+                                                ? _model
+                                                    .removeFromSelectedSuperset(
+                                                        _model.selectedSuperset
+                                                            .contains(
+                                                                _model.red)
+                                                            .toString())
+                                                : _model.addToSelectedSuperset(
+                                                    _model.selectedSuperset
+                                                        .contains(_model.red)
+                                                        .toString()),
+                                          );
+                                          setState(() {
+                                            _model.hasSelectedSuperSet =
+                                                !_model.hasSelectedSuperSet;
+                                          });
+                                        },
+                                        value: _model.selectedSuperset.contains(
+                                            _model.selectedSuperset
+                                                .contains(_model.red)
+                                                .toString()),
+                                        onIcon: Icon(
+                                          Icons.radio_button_checked_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 25.0,
+                                        ),
+                                        offIcon: Icon(
+                                          Icons.radio_button_off,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 25.0,
+                                        ),
                                       ),
-                                      offIcon: Icon(
-                                        Icons.radio_button_off,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                        size: 25.0,
+                                    if (!_model.hasSelectedSuperSet ||
+                                        (_model.selectedSuperset
+                                                .contains(_model.yellow) ==
+                                            true))
+                                      ToggleIcon(
+                                        onPressed: () async {
+                                          setState(
+                                            () => _model.selectedSuperset
+                                                    .contains(_model.yellow)
+                                                ? _model
+                                                    .removeFromSelectedSuperset(
+                                                        _model.yellow)
+                                                : _model.addToSelectedSuperset(
+                                                    _model.yellow),
+                                          );
+                                          setState(() {
+                                            _model.hasSelectedSuperSet =
+                                                !_model.hasSelectedSuperSet;
+                                          });
+                                        },
+                                        value: _model.selectedSuperset
+                                            .contains(_model.yellow),
+                                        onIcon: Icon(
+                                          Icons.radio_button_checked_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .warning,
+                                          size: 25.0,
+                                        ),
+                                        offIcon: Icon(
+                                          Icons.radio_button_off,
+                                          color: FlutterFlowTheme.of(context)
+                                              .warning,
+                                          size: 25.0,
+                                        ),
                                       ),
-                                    ),
-                                ],
-                              ),
+                                    if (!_model.hasSelectedSuperSet ||
+                                        (_model.selectedSuperset
+                                                .contains(_model.green) ==
+                                            true))
+                                      ToggleIcon(
+                                        onPressed: () async {
+                                          setState(
+                                            () => _model.selectedSuperset
+                                                    .contains(_model
+                                                        .selectedSuperset
+                                                        .contains(_model.green)
+                                                        .toString())
+                                                ? _model
+                                                    .removeFromSelectedSuperset(
+                                                        _model.selectedSuperset
+                                                            .contains(
+                                                                _model.green)
+                                                            .toString())
+                                                : _model.addToSelectedSuperset(
+                                                    _model.selectedSuperset
+                                                        .contains(_model.green)
+                                                        .toString()),
+                                          );
+                                          setState(() {
+                                            _model.hasSelectedSuperSet =
+                                                !_model.hasSelectedSuperSet;
+                                          });
+                                        },
+                                        value: _model.selectedSuperset.contains(
+                                            _model.selectedSuperset
+                                                .contains(_model.green)
+                                                .toString()),
+                                        onIcon: Icon(
+                                          Icons.radio_button_checked_sharp,
+                                          color: Color(0xFF1DBC53),
+                                          size: 25.0,
+                                        ),
+                                        offIcon: Icon(
+                                          Icons.radio_button_off,
+                                          color: FlutterFlowTheme.of(context)
+                                              .success,
+                                          size: 25.0,
+                                        ),
+                                      ),
+                                    if (!_model.hasSelectedSuperSet ||
+                                        (_model.selectedSuperset
+                                                .contains(_model.blue) ==
+                                            true))
+                                      ToggleIcon(
+                                        onPressed: () async {
+                                          setState(
+                                            () => _model.selectedSuperset
+                                                    .contains(_model
+                                                        .selectedSuperset
+                                                        .contains(_model.blue)
+                                                        .toString())
+                                                ? _model
+                                                    .removeFromSelectedSuperset(
+                                                        _model.selectedSuperset
+                                                            .contains(
+                                                                _model.blue)
+                                                            .toString())
+                                                : _model.addToSelectedSuperset(
+                                                    _model.selectedSuperset
+                                                        .contains(_model.blue)
+                                                        .toString()),
+                                          );
+                                          setState(() {
+                                            _model.hasSelectedSuperSet =
+                                                !_model.hasSelectedSuperSet;
+                                          });
+                                        },
+                                        value: _model.selectedSuperset.contains(
+                                            _model.selectedSuperset
+                                                .contains(_model.blue)
+                                                .toString()),
+                                        onIcon: Icon(
+                                          Icons.radio_button_checked_sharp,
+                                          color: Color(0xFF2D3CED),
+                                          size: 25.0,
+                                        ),
+                                        offIcon: Icon(
+                                          Icons.radio_button_off,
+                                          color: Color(0xFF2D3CED),
+                                          size: 25.0,
+                                        ),
+                                      ),
+                                  ],
+                                ),
                             ],
                           ),
-                        ),
-                        Builder(
-                          builder: (context) {
-                            final color = _model.selectedSuperset.toList();
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: color.length,
-                              itemBuilder: (context, colorIndex) {
-                                final colorItem = color[colorIndex];
-                                return Text(
-                                  colorItem,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                );
-                              },
-                            );
-                          },
                         ),
                       ],
                     ),

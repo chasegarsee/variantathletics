@@ -37,6 +37,14 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
 
   String orange = '#EE8B60';
 
+  String yellow = '#F9CF58';
+
+  String red = '#FF5963';
+
+  String green = '#1DBC53';
+
+  String blue = '#2D3CED';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for DropDown widget.
