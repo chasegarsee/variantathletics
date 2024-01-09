@@ -855,7 +855,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                           _model.hasSelectedSuperSet =
                                               !_model.hasSelectedSuperSet;
                                         });
-                                        if (_model.selectedSuperset.length ==
+                                        if (_model.selectedSuperset.length >=
                                             1) {
                                           setState(() {
                                             _model.selectedSuperset = [];
