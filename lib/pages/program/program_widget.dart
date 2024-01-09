@@ -1205,11 +1205,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               size: _model.timerSize.toDouble(),
                                             ),
                                           ),
-                                          if (_model.selectedTimer &&
-                                              (FFAppState()
-                                                      .intervalTimer
-                                                      .timerType !=
-                                                  'Count Up'))
+                                          if (!(_model.selectedTimer &&
+                                              FFAppState()
+                                                  .intervalTimer
+                                                  .isCountDown))
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
@@ -1321,10 +1320,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               ),
                                             ),
                                           if (_model.selectedTimer &&
-                                              (FFAppState()
-                                                      .intervalTimer
-                                                      .timerType ==
-                                                  'Count Up'))
+                                              !FFAppState()
+                                                  .intervalTimer
+                                                  .isCountDown)
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
@@ -1455,7 +1453,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                           ),
                                         ),
                                         Text(
-                                          FFAppState().intervalTimer.timerType,
+                                          FFAppState()
+                                              .intervalTimer
+                                              .isCountDown
+                                              .toString(),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
@@ -1475,10 +1476,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 AlignmentDirectional(0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                if (FFAppState()
-                                                        .intervalTimer
-                                                        .timerType ==
-                                                    'Count Up') {
+                                                if (!FFAppState()
+                                                    .intervalTimer
+                                                    .isCountDown) {
                                                   _model.countUpTimerController
                                                       .onStartTimer();
                                                 } else {
@@ -1553,10 +1553,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               e..isOn = false,
                                                         );
                                                       });
-                                                      if (FFAppState()
-                                                              .intervalTimer
-                                                              .timerType ==
-                                                          'Count Up') {
+                                                      if (!FFAppState()
+                                                          .intervalTimer
+                                                          .isCountDown) {
                                                         _model
                                                             .countUpTimerController
                                                             .onStopTimer();
@@ -1642,22 +1641,12 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                           .elapsedTimerController
                                                           .onResetTimer();
 
-                                                      if (FFAppState()
-                                                              .intervalTimer
-                                                              .timerType ==
-                                                          'Count Up') {
+                                                      if (!FFAppState()
+                                                          .intervalTimer
+                                                          .isCountDown) {
                                                         _model
                                                             .countUpTimerController
                                                             .onStopTimer();
-                                                        _model
-                                                            .countUpTimerController
-                                                            .timer
-                                                            .setPresetTime(
-                                                          mSec: FFAppState()
-                                                              .intervalTimer
-                                                              .workingInterval,
-                                                          add: false,
-                                                        );
                                                         _model
                                                             .countUpTimerController
                                                             .onResetTimer();

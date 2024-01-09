@@ -146,15 +146,15 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                     ),
                                   ),
                                 ),
-                                FlutterFlowDropDown<String>(
+                                FlutterFlowDropDown<bool>(
                                   controller:
                                       _model.timerTypeValueController ??=
-                                          FormFieldController<String>(
+                                          FormFieldController<bool>(
                                     _model.timerTypeValue ??=
-                                        FFAppState().intervalTimer.timerType,
+                                        FFAppState().intervalTimer.isCountDown,
                                   ),
-                                  options: List<String>.from(
-                                      ['Interval', 'Count Up', 'Count Down']),
+                                  options:
+                                      List<bool>.from([false, false, true]),
                                   optionLabels: [
                                     FFLocalizations.of(context).getText(
                                       'sppkxchz' /* Interval */,
@@ -171,7 +171,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                     _model.updatePage(() {
                                       FFAppState().updateIntervalTimerStruct(
                                         (e) => e
-                                          ..timerType = _model.timerTypeValue,
+                                          ..isCountDown = _model.timerTypeValue,
                                       );
                                     });
                                   },
@@ -203,8 +203,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                               ],
                             ),
                           ),
-                          if (FFAppState().intervalTimer.timerType ==
-                              'Interval')
+                          if (FFAppState().intervalTimer.isCountDown)
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
@@ -330,8 +329,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                 ],
                               ),
                             ),
-                          if (FFAppState().intervalTimer.timerType ==
-                              'Interval')
+                          if (FFAppState().intervalTimer.isCountDown)
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
@@ -451,8 +449,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                 ],
                               ),
                             ),
-                          if (FFAppState().intervalTimer.timerType ==
-                              'Count Down')
+                          if (!FFAppState().intervalTimer.isCountDown)
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
