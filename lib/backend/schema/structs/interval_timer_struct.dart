@@ -20,6 +20,7 @@ class IntervalTimerStruct extends FFFirebaseStruct {
     int? currentInterval,
     bool? isWorkingInterval,
     bool? playSound,
+    String? timerType,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _workingInterval = workingInterval,
         _restingInterval = restingInterval,
@@ -31,6 +32,7 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         _currentInterval = currentInterval,
         _isWorkingInterval = isWorkingInterval,
         _playSound = playSound,
+        _timerType = timerType,
         super(firestoreUtilData);
 
   // "workingInterval" field.
@@ -102,6 +104,12 @@ class IntervalTimerStruct extends FFFirebaseStruct {
   set playSound(bool? val) => _playSound = val;
   bool hasPlaySound() => _playSound != null;
 
+  // "timerType" field.
+  String? _timerType;
+  String get timerType => _timerType ?? 'Interval';
+  set timerType(String? val) => _timerType = val;
+  bool hasTimerType() => _timerType != null;
+
   static IntervalTimerStruct fromMap(Map<String, dynamic> data) =>
       IntervalTimerStruct(
         workingInterval: castToType<int>(data['workingInterval']),
@@ -114,6 +122,7 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         currentInterval: castToType<int>(data['currentInterval']),
         isWorkingInterval: data['isWorkingInterval'] as bool?,
         playSound: data['playSound'] as bool?,
+        timerType: data['timerType'] as String?,
       );
 
   static IntervalTimerStruct? maybeFromMap(dynamic data) => data is Map
@@ -131,6 +140,7 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         'currentInterval': _currentInterval,
         'isWorkingInterval': _isWorkingInterval,
         'playSound': _playSound,
+        'timerType': _timerType,
       }.withoutNulls;
 
   @override
@@ -174,6 +184,10 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         'playSound': serializeParam(
           _playSound,
           ParamType.bool,
+        ),
+        'timerType': serializeParam(
+          _timerType,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -229,6 +243,11 @@ class IntervalTimerStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        timerType: deserializeParam(
+          data['timerType'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -246,7 +265,8 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         countDown == other.countDown &&
         currentInterval == other.currentInterval &&
         isWorkingInterval == other.isWorkingInterval &&
-        playSound == other.playSound;
+        playSound == other.playSound &&
+        timerType == other.timerType;
   }
 
   @override
@@ -260,7 +280,8 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         countDown,
         currentInterval,
         isWorkingInterval,
-        playSound
+        playSound,
+        timerType
       ]);
 }
 
@@ -275,6 +296,7 @@ IntervalTimerStruct createIntervalTimerStruct({
   int? currentInterval,
   bool? isWorkingInterval,
   bool? playSound,
+  String? timerType,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -291,6 +313,7 @@ IntervalTimerStruct createIntervalTimerStruct({
       currentInterval: currentInterval,
       isWorkingInterval: isWorkingInterval,
       playSound: playSound,
+      timerType: timerType,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

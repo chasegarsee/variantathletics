@@ -1,11 +1,14 @@
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'program_timer_model.dart';
@@ -136,79 +139,39 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                         0.0, 0.0, 0.0, 5.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        '1mqrj2l6' /* Working Interval */,
+                                        '1mqrj2l6' /* Timer Type */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
                                   ),
                                 ),
-                                FlutterFlowDropDown<int>(
+                                FlutterFlowDropDown<String>(
                                   controller:
-                                      _model.workingIntervalValueController ??=
-                                          FormFieldController<int>(
-                                    _model.workingIntervalValue ??= FFAppState()
-                                        .intervalTimer
-                                        .workingInterval,
+                                      _model.timerTypeValueController ??=
+                                          FormFieldController<String>(
+                                    _model.timerTypeValue ??=
+                                        FFAppState().intervalTimer.timerType,
                                   ),
-                                  options: List<int>.from([
-                                    10000,
-                                    15000,
-                                    20000,
-                                    25000,
-                                    30000,
-                                    35000,
-                                    40000,
-                                    45000,
-                                    50000,
-                                    55000,
-                                    60000
-                                  ]),
+                                  options: List<String>.from(
+                                      ['Interval', 'Count Up', 'Count Down']),
                                   optionLabels: [
                                     FFLocalizations.of(context).getText(
-                                      'wbk34hsj' /* 0:10 */,
+                                      'sppkxchz' /* Interval */,
                                     ),
                                     FFLocalizations.of(context).getText(
-                                      '4joc9uix' /* 0:15 */,
+                                      'uaa2odeu' /* Count Up */,
                                     ),
                                     FFLocalizations.of(context).getText(
-                                      't5z92v1s' /* 0:20 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'sppkxchz' /* 0:25 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'duwexnuq' /* 0:30 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'euvj8lfr' /* 0:35 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'kylgz5wa' /* 0:40 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'p911b89j' /* 0:45 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'jhk55wha' /* 0:50 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'rzzhqrhp' /* 0:55 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      '86f3lgh8' /* 1:00 */,
+                                      '0qbd2d5w' /* Count Down */,
                                     )
                                   ],
                                   onChanged: (val) async {
-                                    setState(() =>
-                                        _model.workingIntervalValue = val);
+                                    setState(() => _model.timerTypeValue = val);
                                     _model.updatePage(() {
                                       FFAppState().updateIntervalTimerStruct(
                                         (e) => e
-                                          ..workingInterval =
-                                              _model.workingIntervalValue
-                                          ..currentInterval =
-                                              _model.workingIntervalValue,
+                                          ..timerType = _model.timerTypeValue,
                                       );
                                     });
                                   },
@@ -216,7 +179,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: FFLocalizations.of(context).getText(
-                                    'kjeonm09' /* Working Time */,
+                                    'kjeonm09' /* Timer Type */,
                                   ),
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
@@ -240,129 +203,448 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                               ],
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Column(
+                          if (FFAppState().intervalTimer.timerType ==
+                              'Interval')
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 5.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'ggw8l1j4' /* Resting Interval */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                  FlutterFlowDropDown<int>(
+                                    controller: _model
+                                            .restingIntervalValueController ??=
+                                        FormFieldController<int>(
+                                      _model.restingIntervalValue ??=
+                                          FFAppState()
+                                              .intervalTimer
+                                              .restingInterval,
+                                    ),
+                                    options: List<int>.from([
+                                      0000,
+                                      5000,
+                                      10000,
+                                      15000,
+                                      20000,
+                                      25000,
+                                      30000,
+                                      35000,
+                                      40000,
+                                      45000,
+                                      50000,
+                                      55000,
+                                      60000
+                                    ]),
+                                    optionLabels: [
+                                      FFLocalizations.of(context).getText(
+                                        'ikirw5iw' /* 0:00 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'ydztfvvv' /* 0:05 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '0z5zxomi' /* 0:10 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'eee0nmmt' /* 0:15 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'rths4cch' /* 0:20 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'pvsf2hcm' /* 0:25 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'hrmqtwpo' /* 0:30 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'i3o7p9y9' /* 0:35 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'zkz220z1' /* 0:40 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'g142a53s' /* 0:45 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'zjqvbv0a' /* 0:50 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'wid2nflp' /* 0:55 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '0ih0pclq' /* 1:00 */,
+                                      )
+                                    ],
+                                    onChanged: (val) async {
+                                      setState(() =>
+                                          _model.restingIntervalValue = val);
+                                      _model.updatePage(() {
+                                        FFAppState().updateIntervalTimerStruct(
+                                          (e) => e
+                                            ..restingInterval =
+                                                _model.restingIntervalValue,
+                                        );
+                                      });
+                                    },
+                                    height: 50.0,
+                                    textStyle:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'e96je3pm' /* Rest Time */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          if (FFAppState().intervalTimer.timerType ==
+                              'Interval')
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 5.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'hq97oi3z' /* Working Interval */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                  FlutterFlowDropDown<int>(
+                                    controller: _model
+                                            .workingIntervalValueController ??=
+                                        FormFieldController<int>(
+                                      _model.workingIntervalValue ??=
+                                          FFAppState()
+                                              .intervalTimer
+                                              .workingInterval,
+                                    ),
+                                    options: List<int>.from([
+                                      10000,
+                                      15000,
+                                      20000,
+                                      25000,
+                                      30000,
+                                      35000,
+                                      40000,
+                                      45000,
+                                      50000,
+                                      55000,
+                                      60000
+                                    ]),
+                                    optionLabels: [
+                                      FFLocalizations.of(context).getText(
+                                        'y43ciydt' /* 0:10 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '806ks1at' /* 0:15 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'rqyoz3zq' /* 0:20 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'ky7btma1' /* 0:25 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'xgsv7iup' /* 0:30 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'zli4dr16' /* 0:35 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '9ag5pap8' /* 0:40 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'tjfrmcx6' /* 0:45 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'h3aqm5lz' /* 0:50 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'l85jm4cr' /* 0:55 */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '8y4h9ng4' /* 1:00 */,
+                                      )
+                                    ],
+                                    onChanged: (val) async {
+                                      setState(() =>
+                                          _model.workingIntervalValue = val);
+                                      _model.updatePage(() {
+                                        FFAppState().updateIntervalTimerStruct(
+                                          (e) => e
+                                            ..workingInterval =
+                                                _model.workingIntervalValue
+                                            ..currentInterval =
+                                                _model.workingIntervalValue,
+                                        );
+                                      });
+                                    },
+                                    height: 50.0,
+                                    textStyle:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'dmxfx4p6' /* Working Time */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          if (FFAppState().intervalTimer.timerType !=
+                              'Interval')
+                            Row(
                               mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 5.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'ggw8l1j4' /* Resting Interval */,
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 5.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '39ncgprk' /* Minutes */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
+                                      Container(
+                                        width: 160.0,
+                                        height: 50.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 2.0,
+                                          ),
+                                        ),
+                                        child: FlutterFlowCountController(
+                                          decrementIconBuilder: (enabled) =>
+                                              FaIcon(
+                                            FontAwesomeIcons.minus,
+                                            color: enabled
+                                                ? FlutterFlowTheme.of(context)
+                                                    .accent2
+                                                : FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            size: 20.0,
+                                          ),
+                                          incrementIconBuilder: (enabled) =>
+                                              FaIcon(
+                                            FontAwesomeIcons.plus,
+                                            color: enabled
+                                                ? FlutterFlowTheme.of(context)
+                                                    .accent2
+                                                : FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            size: 20.0,
+                                          ),
+                                          countBuilder: (count) => Text(
+                                            count.toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge,
+                                          ),
+                                          count: _model.minutesCountValue ??= 0,
+                                          updateCount: (count) async {
+                                            setState(() => _model
+                                                .minutesCountValue = count);
+                                            _model.updatePage(() {
+                                              FFAppState()
+                                                  .updateIntervalTimerStruct(
+                                                (e) => e
+                                                  ..workingInterval = functions
+                                                      .minutesSecondsToTimeVal(
+                                                          _model
+                                                              .minutesCountValue!,
+                                                          _model
+                                                              .secondsCountValue!)
+                                                  ..currentInterval = functions
+                                                      .minutesSecondsToTimeVal(
+                                                          _model
+                                                              .minutesCountValue!,
+                                                          _model
+                                                              .secondsCountValue!),
+                                              );
+                                            });
+                                          },
+                                          stepSize: 1,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                FlutterFlowDropDown<int>(
-                                  controller:
-                                      _model.restingIntervalValueController ??=
-                                          FormFieldController<int>(
-                                    _model.restingIntervalValue ??= FFAppState()
-                                        .intervalTimer
-                                        .restingInterval,
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 5.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'fzmc01y9' /* Seconds */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 160.0,
+                                        height: 50.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 2.0,
+                                          ),
+                                        ),
+                                        child: FlutterFlowCountController(
+                                          decrementIconBuilder: (enabled) =>
+                                              FaIcon(
+                                            FontAwesomeIcons.minus,
+                                            color: enabled
+                                                ? FlutterFlowTheme.of(context)
+                                                    .accent2
+                                                : FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            size: 20.0,
+                                          ),
+                                          incrementIconBuilder: (enabled) =>
+                                              FaIcon(
+                                            FontAwesomeIcons.plus,
+                                            color: enabled
+                                                ? FlutterFlowTheme.of(context)
+                                                    .accent2
+                                                : FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            size: 20.0,
+                                          ),
+                                          countBuilder: (count) => Text(
+                                            count.toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge,
+                                          ),
+                                          count: _model.secondsCountValue ??= 0,
+                                          updateCount: (count) async {
+                                            setState(() => _model
+                                                .secondsCountValue = count);
+                                            _model.updatePage(() {
+                                              FFAppState()
+                                                  .updateIntervalTimerStruct(
+                                                (e) => e
+                                                  ..workingInterval = functions
+                                                      .minutesSecondsToTimeVal(
+                                                          _model
+                                                              .minutesCountValue!,
+                                                          _model
+                                                              .secondsCountValue!)
+                                                  ..currentInterval = functions
+                                                      .minutesSecondsToTimeVal(
+                                                          _model
+                                                              .minutesCountValue!,
+                                                          _model
+                                                              .secondsCountValue!),
+                                              );
+                                            });
+                                          },
+                                          stepSize: 1,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  options: List<int>.from([
-                                    0000,
-                                    5000,
-                                    10000,
-                                    15000,
-                                    20000,
-                                    25000,
-                                    30000,
-                                    35000,
-                                    40000,
-                                    45000,
-                                    50000,
-                                    55000,
-                                    60000
-                                  ]),
-                                  optionLabels: [
-                                    FFLocalizations.of(context).getText(
-                                      'ikirw5iw' /* 0:00 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'ydztfvvv' /* 0:05 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      '0z5zxomi' /* 0:10 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'eee0nmmt' /* 0:15 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'rths4cch' /* 0:20 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'pvsf2hcm' /* 0:25 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'hrmqtwpo' /* 0:30 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'i3o7p9y9' /* 0:35 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'zkz220z1' /* 0:40 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'g142a53s' /* 0:45 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'zjqvbv0a' /* 0:50 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'wid2nflp' /* 0:55 */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      '0ih0pclq' /* 1:00 */,
-                                    )
-                                  ],
-                                  onChanged: (val) async {
-                                    setState(() =>
-                                        _model.restingIntervalValue = val);
-                                    _model.updatePage(() {
-                                      FFAppState().updateIntervalTimerStruct(
-                                        (e) => e
-                                          ..restingInterval =
-                                              _model.restingIntervalValue,
-                                      );
-                                    });
-                                  },
-                                  height: 50.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'e96je3pm' /* Rest Time */,
-                                  ),
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  elevation: 2.0,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  borderWidth: 2.0,
-                                  borderRadius: 8.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 4.0, 16.0, 4.0),
-                                  hidesUnderline: true,
-                                  isSearchable: false,
-                                  isMultiSelect: false,
                                 ),
                               ],
                             ),
-                          ),
                         ],
                       ),
                     ),

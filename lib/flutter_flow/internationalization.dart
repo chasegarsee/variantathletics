@@ -1355,55 +1355,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // programTimer
   {
     '1mqrj2l6': {
-      'en': 'Working Interval',
+      'en': 'Timer Type',
       'th': 'เวลาการออกกำลัง',
     },
-    'wbk34hsj': {
-      'en': '0:10',
-      'th': '0:10',
-    },
-    '4joc9uix': {
-      'en': '0:15',
-      'th': '0:15',
-    },
-    't5z92v1s': {
-      'en': '0:20',
-      'th': '0:20',
-    },
     'sppkxchz': {
-      'en': '0:25',
+      'en': 'Interval',
       'th': '0:25',
     },
-    'duwexnuq': {
-      'en': '0:30',
-      'th': '0:30',
+    'uaa2odeu': {
+      'en': 'Count Up',
+      'th': '',
     },
-    'euvj8lfr': {
-      'en': '0:35',
-      'th': '0:35',
-    },
-    'kylgz5wa': {
-      'en': '0:40',
-      'th': '0:40',
-    },
-    'p911b89j': {
-      'en': '0:45',
-      'th': '0:45',
-    },
-    'jhk55wha': {
-      'en': '0:50',
-      'th': '0:50',
-    },
-    'rzzhqrhp': {
-      'en': '0:55',
-      'th': '0:55',
-    },
-    '86f3lgh8': {
-      'en': '1:00',
-      'th': '1:00',
+    '0qbd2d5w': {
+      'en': 'Count Down',
+      'th': '',
     },
     'kjeonm09': {
-      'en': 'Working Time',
+      'en': 'Timer Type',
       'th': 'เวลาการออกกำลัง',
     },
     'w3j47fu2': {
@@ -1473,6 +1441,70 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rnko6ufn': {
       'en': 'Search for an item...',
       'th': '',
+    },
+    'hq97oi3z': {
+      'en': 'Working Interval',
+      'th': 'เวลาการออกกำลัง',
+    },
+    'y43ciydt': {
+      'en': '0:10',
+      'th': '0:10',
+    },
+    '806ks1at': {
+      'en': '0:15',
+      'th': '0:15',
+    },
+    'rqyoz3zq': {
+      'en': '0:20',
+      'th': '0:20',
+    },
+    'ky7btma1': {
+      'en': '0:25',
+      'th': '0:25',
+    },
+    'xgsv7iup': {
+      'en': '0:30',
+      'th': '0:30',
+    },
+    'zli4dr16': {
+      'en': '0:35',
+      'th': '0:35',
+    },
+    '9ag5pap8': {
+      'en': '0:40',
+      'th': '0:40',
+    },
+    'tjfrmcx6': {
+      'en': '0:45',
+      'th': '0:45',
+    },
+    'h3aqm5lz': {
+      'en': '0:50',
+      'th': '0:50',
+    },
+    'l85jm4cr': {
+      'en': '0:55',
+      'th': '0:55',
+    },
+    '8y4h9ng4': {
+      'en': '1:00',
+      'th': '1:00',
+    },
+    'dmxfx4p6': {
+      'en': 'Working Time',
+      'th': 'เวลาการออกกำลัง',
+    },
+    'ld0wkohx': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
+    '39ncgprk': {
+      'en': 'Minutes',
+      'th': 'เวลาการออกกำลัง',
+    },
+    'fzmc01y9': {
+      'en': 'Seconds',
+      'th': 'เวลาการออกกำลัง',
     },
   },
   // Miscellaneous

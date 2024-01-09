@@ -1205,7 +1205,15 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               size: _model.timerSize.toDouble(),
                                             ),
                                           ),
-                                          if (_model.selectedTimer)
+                                          if (_model.selectedTimer &&
+                                              ((FFAppState()
+                                                          .intervalTimer
+                                                          .timerType ==
+                                                      'Interval') ||
+                                                  (FFAppState()
+                                                          .intervalTimer
+                                                          .timerType ==
+                                                      'Count Down')))
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
@@ -1237,20 +1245,20 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   if (FFAppState()
                                                       .intervalTimer
                                                       .playSound) {
-                                                    _model.soundPlayer ??=
+                                                    _model.soundPlayer1 ??=
                                                         AudioPlayer();
-                                                    if (_model
-                                                        .soundPlayer!.playing) {
-                                                      await _model.soundPlayer!
+                                                    if (_model.soundPlayer1!
+                                                        .playing) {
+                                                      await _model.soundPlayer1!
                                                           .stop();
                                                     }
-                                                    _model.soundPlayer!
+                                                    _model.soundPlayer1!
                                                         .setVolume(1.0);
-                                                    _model.soundPlayer!
+                                                    _model.soundPlayer1!
                                                         .setAsset(
                                                             'assets/audios/ding.mp3')
                                                         .then((_) => _model
-                                                            .soundPlayer!
+                                                            .soundPlayer1!
                                                             .play());
                                                   }
                                                   setState(() {
@@ -1299,6 +1307,120 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       .onResetTimer();
 
                                                   _model.intervalTimerController
+                                                      .onStartTimer();
+                                                },
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: _model
+                                                              .timerSize
+                                                              .toDouble(),
+                                                        ),
+                                              ),
+                                            ),
+                                          if (_model.selectedTimer &&
+                                              (FFAppState()
+                                                      .intervalTimer
+                                                      .timerType ==
+                                                  'Count Up'))
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: FlutterFlowTimer(
+                                                initialTime: _model
+                                                    .countUpTimerMilliseconds,
+                                                getDisplayTime: (value) =>
+                                                    StopWatchTimer
+                                                        .getDisplayTime(
+                                                  value,
+                                                  hours: false,
+                                                  milliSecond: false,
+                                                ),
+                                                controller: _model
+                                                    .countUpTimerController,
+                                                updateStateInterval: Duration(
+                                                    milliseconds: 1000),
+                                                onChanged: (value, displayTime,
+                                                    shouldUpdate) {
+                                                  _model.countUpTimerMilliseconds =
+                                                      value;
+                                                  _model.countUpTimerValue =
+                                                      displayTime;
+                                                  if (shouldUpdate)
+                                                    setState(() {});
+                                                },
+                                                onEnded: () async {
+                                                  if (FFAppState()
+                                                      .intervalTimer
+                                                      .playSound) {
+                                                    _model.soundPlayer2 ??=
+                                                        AudioPlayer();
+                                                    if (_model.soundPlayer2!
+                                                        .playing) {
+                                                      await _model.soundPlayer2!
+                                                          .stop();
+                                                    }
+                                                    _model.soundPlayer2!
+                                                        .setVolume(1.0);
+                                                    _model.soundPlayer2!
+                                                        .setAsset(
+                                                            'assets/audios/ding.mp3')
+                                                        .then((_) => _model
+                                                            .soundPlayer2!
+                                                            .play());
+                                                  }
+                                                  setState(() {
+                                                    FFAppState()
+                                                        .updateIntervalTimerStruct(
+                                                      (e) => e
+                                                        ..currentInterval =
+                                                            FFAppState()
+                                                                        .intervalTimer
+                                                                        .currentInterval ==
+                                                                    FFAppState()
+                                                                        .intervalTimer
+                                                                        .workingInterval
+                                                                ? FFAppState()
+                                                                    .intervalTimer
+                                                                    .restingInterval
+                                                                : FFAppState()
+                                                                    .intervalTimer
+                                                                    .workingInterval,
+                                                    );
+                                                  });
+                                                  if (FFAppState()
+                                                          .intervalTimer
+                                                          .currentInterval ==
+                                                      FFAppState()
+                                                          .intervalTimer
+                                                          .restingInterval) {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .updateIntervalTimerStruct(
+                                                        (e) => e
+                                                          ..incrementCompletedIntervals(
+                                                              1),
+                                                      );
+                                                    });
+                                                  }
+                                                  _model.countUpTimerController
+                                                      .timer
+                                                      .setPresetTime(
+                                                    mSec: FFAppState()
+                                                        .intervalTimer
+                                                        .currentInterval,
+                                                    add: false,
+                                                  );
+                                                  _model.countUpTimerController
+                                                      .onResetTimer();
+
+                                                  _model.countUpTimerController
                                                       .onStartTimer();
                                                 },
                                                 textAlign: TextAlign.start,
@@ -1420,8 +1542,17 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 AlignmentDirectional(0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                _model.intervalTimerController
-                                                    .onStartTimer();
+                                                if (FFAppState()
+                                                        .intervalTimer
+                                                        .timerType ==
+                                                    'Count Up') {
+                                                  _model.countUpTimerController
+                                                      .onStartTimer();
+                                                } else {
+                                                  _model.intervalTimerController
+                                                      .onStartTimer();
+                                                }
+
                                                 _model.elapsedTimerController
                                                     .onStartTimer();
                                                 setState(() {
@@ -1489,9 +1620,19 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                               e..isOn = false,
                                                         );
                                                       });
-                                                      _model
-                                                          .intervalTimerController
-                                                          .onStopTimer();
+                                                      if (FFAppState()
+                                                              .intervalTimer
+                                                              .timerType ==
+                                                          'Count Up') {
+                                                        _model
+                                                            .countUpTimerController
+                                                            .onStopTimer();
+                                                      } else {
+                                                        _model
+                                                            .intervalTimerController
+                                                            .onStopTimer();
+                                                      }
+
                                                       _model
                                                           .elapsedTimerController
                                                           .onStopTimer();
@@ -1553,9 +1694,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
                                                       _model
-                                                          .intervalTimerController
-                                                          .onStopTimer();
-                                                      _model
                                                           .elapsedTimerController
                                                           .onStopTimer();
                                                       setState(() {
@@ -1568,21 +1706,45 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         );
                                                       });
                                                       _model
-                                                          .intervalTimerController
-                                                          .timer
-                                                          .setPresetTime(
-                                                        mSec: FFAppState()
-                                                            .intervalTimer
-                                                            .workingInterval,
-                                                        add: false,
-                                                      );
-                                                      _model
-                                                          .intervalTimerController
-                                                          .onResetTimer();
-
-                                                      _model
                                                           .elapsedTimerController
                                                           .onResetTimer();
+
+                                                      if (FFAppState()
+                                                              .intervalTimer
+                                                              .timerType ==
+                                                          'Count Up') {
+                                                        _model
+                                                            .countUpTimerController
+                                                            .onStopTimer();
+                                                        _model
+                                                            .countUpTimerController
+                                                            .timer
+                                                            .setPresetTime(
+                                                          mSec: FFAppState()
+                                                              .intervalTimer
+                                                              .workingInterval,
+                                                          add: false,
+                                                        );
+                                                        _model
+                                                            .countUpTimerController
+                                                            .onResetTimer();
+                                                      } else {
+                                                        _model
+                                                            .intervalTimerController
+                                                            .onStopTimer();
+                                                        _model
+                                                            .intervalTimerController
+                                                            .timer
+                                                            .setPresetTime(
+                                                          mSec: FFAppState()
+                                                              .intervalTimer
+                                                              .workingInterval,
+                                                          add: false,
+                                                        );
+                                                        _model
+                                                            .intervalTimerController
+                                                            .onResetTimer();
+                                                      }
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
@@ -1752,67 +1914,75 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       AlignmentDirectional(
                                                           -1.0, 1.0),
                                                   children: [
-                                                    InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'exercise',
-                                                          queryParameters: {
-                                                            'exerciseId':
-                                                                serializeParam(
-                                                              exerciseListItem
-                                                                  .id,
-                                                              ParamType.String,
-                                                            ),
-                                                            'exercise':
-                                                                serializeParam(
-                                                              exerciseListItem
-                                                                  .name,
-                                                              ParamType.String,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          fadeInDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          fadeOutDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          imageUrl:
-                                                              '${FFAppState().exerciseBase}${exerciseListItem.id}.png?alt=media',
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  1.0,
-                                                          fit: BoxFit.cover,
-                                                          errorWidget: (context,
-                                                                  error,
-                                                                  stackTrace) =>
-                                                              Image.asset(
-                                                            'assets/images/error_image.png',
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                            'exercise',
+                                                            queryParameters: {
+                                                              'exerciseId':
+                                                                  serializeParam(
+                                                                exerciseListItem
+                                                                    .id,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'exercise':
+                                                                  serializeParam(
+                                                                exerciseListItem
+                                                                    .name,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            fadeInDuration:
+                                                                Duration(
+                                                                    milliseconds:
+                                                                        500),
+                                                            fadeOutDuration:
+                                                                Duration(
+                                                                    milliseconds:
+                                                                        500),
+                                                            imageUrl:
+                                                                '${FFAppState().exerciseBase}${exerciseListItem.id}.png?alt=media',
                                                             width: MediaQuery
                                                                         .sizeOf(
                                                                             context)
                                                                     .width *
                                                                 1.0,
                                                             fit: BoxFit.cover,
+                                                            errorWidget: (context,
+                                                                    error,
+                                                                    stackTrace) =>
+                                                                Image.asset(
+                                                              'assets/images/error_image.png',
+                                                              width: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .width *
+                                                                  1.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -1822,46 +1992,72 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                -1.18, 0.88),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      5.0),
-                                                          child: Material(
-                                                            color: Colors
-                                                                .transparent,
-                                                            elevation: 10.0,
-                                                            shape:
-                                                                RoundedRectangleBorder(
+                                                                -1.0, 1.0),
+                                                        child: Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          elevation: 10.0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      8.0),
+                                                            ),
+                                                          ),
+                                                          child: Container(
+                                                            width: 75.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color:
+                                                                  colorFromCssString(
+                                                                exerciseListItem
+                                                                    .supersetId,
+                                                              ),
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(
-                                                                          50.0),
-                                                            ),
-                                                            child: Container(
-                                                              width: 70.0,
-                                                              height: 25.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color:
-                                                                    colorFromCssString(
-                                                                  exerciseListItem
-                                                                      .supersetId,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            50.0),
-                                                              ),
-                                                              child: Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
                                                                         0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        8.0),
+                                                              ),
+                                                            ),
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            3.0,
+                                                                            0.0,
+                                                                            3.0),
                                                                 child: Text(
                                                                   FFLocalizations.of(
                                                                           context)

@@ -479,3 +479,10 @@ List<ProgramExercisesStruct>? getCurrentDateExercises(
 
   return exercises;
 }
+
+int minutesSecondsToTimeVal(
+  int minutes,
+  int seconds,
+) {
+  return (minutes * 10000) + (seconds * 1000);
+}
