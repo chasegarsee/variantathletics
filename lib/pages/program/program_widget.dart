@@ -1172,6 +1172,12 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                           _model.selectedTimer = true;
                                         });
                                         _model.intervalTimerController
+                                            .onStopTimer();
+                                        _model.countUpTimerController
+                                            .onStopTimer();
+                                        _model.elapsedTimerController
+                                            .onStopTimer();
+                                        _model.intervalTimerController
                                             .onResetTimer();
 
                                         _model.countUpTimerController
