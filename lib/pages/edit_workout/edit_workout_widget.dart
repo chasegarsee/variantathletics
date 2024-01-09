@@ -193,7 +193,7 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                               ),
                               index: exercisesIndex,
                               programId: widget.program!.reference,
-                              isSuperset: false,
+                              isSuperset: exercisesItem.isSuperset,
                               supersetId: valueOrDefault<String>(
                                 exercisesItem.supersetId,
                                 '-',

@@ -823,7 +823,8 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                           FlutterFlowTheme.of(context).error,
                                     ),
                                     child: Checkbox(
-                                      value: _model.checkboxValue ??= true,
+                                      value: _model.checkboxValue ??=
+                                          widget.isSuperset!,
                                       onChanged: (newValue) async {
                                         setState(() =>
                                             _model.checkboxValue = newValue!);

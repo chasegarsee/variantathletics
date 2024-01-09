@@ -398,6 +398,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sets',
       'th': 'เซ็ต',
     },
+    '2q6ncczf': {
+      'en': 'Super Set',
+      'th': 'ซูเปอร์เซต',
+    },
     'xj8pase6': {
       'en': 'Sets',
       'th': 'เซ็ต',

@@ -1747,62 +1747,143 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                 ),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      'exercise',
-                                                      queryParameters: {
-                                                        'exerciseId':
-                                                            serializeParam(
-                                                          exerciseListItem.id,
-                                                          ParamType.String,
-                                                        ),
-                                                        'exercise':
-                                                            serializeParam(
-                                                          exerciseListItem.name,
-                                                          ParamType.String,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
-                                                          milliseconds: 500),
-                                                      fadeOutDuration: Duration(
-                                                          milliseconds: 500),
-                                                      imageUrl:
-                                                          '${FFAppState().exerciseBase}${exerciseListItem.id}.png?alt=media',
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          1.0,
-                                                      fit: BoxFit.cover,
-                                                      errorWidget: (context,
-                                                              error,
-                                                              stackTrace) =>
-                                                          Image.asset(
-                                                        'assets/images/error_image.png',
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
+                                                child: Stack(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          -1.0, 1.0),
+                                                  children: [
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'exercise',
+                                                          queryParameters: {
+                                                            'exerciseId':
+                                                                serializeParam(
+                                                              exerciseListItem
+                                                                  .id,
+                                                              ParamType.String,
+                                                            ),
+                                                            'exercise':
+                                                                serializeParam(
+                                                              exerciseListItem
+                                                                  .name,
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          fadeInDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          fadeOutDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          imageUrl:
+                                                              '${FFAppState().exerciseBase}${exerciseListItem.id}.png?alt=media',
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          fit: BoxFit.cover,
+                                                          errorWidget: (context,
+                                                                  error,
+                                                                  stackTrace) =>
+                                                              Image.asset(
+                                                            'assets/images/error_image.png',
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
                                                                     .width *
                                                                 1.0,
-                                                        fit: BoxFit.cover,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
+                                                    if (exerciseListItem
+                                                        .isSuperset)
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.18, 0.88),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0),
+                                                          child: Material(
+                                                            color: Colors
+                                                                .transparent,
+                                                            elevation: 10.0,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          50.0),
+                                                            ),
+                                                            child: Container(
+                                                              width: 70.0,
+                                                              height: 25.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color:
+                                                                    colorFromCssString(
+                                                                  exerciseListItem
+                                                                      .supersetId,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            50.0),
+                                                              ),
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    '2q6ncczf' /* Super Set */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Jost',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                  ],
                                                 ),
                                               ),
                                               Container(
