@@ -859,9 +859,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                         if (_model.selectedSuperset.length ==
                                             1) {
                                           setState(() {
-                                            _model
-                                                .removeAtIndexFromSelectedSuperset(
-                                                    1);
+                                            _model.selectedSuperset = [];
                                           });
                                         } else {
                                           setState(() {
@@ -907,9 +905,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                         if (_model.selectedSuperset.length ==
                                             1) {
                                           setState(() {
-                                            _model
-                                                .removeAtIndexFromSelectedSuperset(
-                                                    1);
+                                            _model.selectedSuperset = [];
                                           });
                                         } else {
                                           setState(() {
