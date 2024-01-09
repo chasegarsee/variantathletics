@@ -1,7 +1,7 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/backend/schema/structs/index.dart';
@@ -19,6 +19,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
+  ///  Local state fields for this component.
+
+  bool hasSelectedSuperSet = false;
+
+  List<String> selectedSuperset = [];
+  void addToSelectedSuperset(String item) => selectedSuperset.add(item);
+  void removeFromSelectedSuperset(String item) => selectedSuperset.remove(item);
+  void removeAtIndexFromSelectedSuperset(int index) =>
+      selectedSuperset.removeAt(index);
+  void insertAtIndexInSelectedSuperset(int index, String item) =>
+      selectedSuperset.insert(index, item);
+  void updateSelectedSupersetAtIndex(int index, Function(String) updateFn) =>
+      selectedSuperset[index] = updateFn(selectedSuperset[index]);
+
+  String purple = '#9CBA20FF';
+
+  String orange = '#EE8B60';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for DropDown widget.
@@ -46,8 +64,6 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
   String? Function(BuildContext, String?)? textController5Validator;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController;
 
   /// Initialization and disposal methods.
 
@@ -73,6 +89,4 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  String? get radioButtonValue => radioButtonValueController?.value;
 }

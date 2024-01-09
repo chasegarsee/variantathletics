@@ -1,7 +1,7 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/backend/schema/structs/index.dart';
@@ -837,25 +837,102 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  FlutterFlowRadioButton(
-                                    options: ['', ''].toList(),
-                                    onChanged: (val) => setState(() {}),
-                                    controller:
-                                        _model.radioButtonValueController ??=
-                                            FormFieldController<String>(null),
-                                    optionHeight: 32.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    buttonPosition: RadioButtonPosition.left,
-                                    direction: Axis.horizontal,
-                                    radioButtonColor:
-                                        FlutterFlowTheme.of(context).accent2,
-                                    inactiveRadioButtonColor:
-                                        FlutterFlowTheme.of(context).error,
-                                    toggleable: false,
-                                    horizontalAlignment: WrapAlignment.start,
-                                    verticalAlignment: WrapCrossAlignment.start,
-                                  ),
+                                  if (!_model.hasSelectedSuperSet ||
+                                      (_model.selectedSuperset
+                                              .contains(_model.orange) ==
+                                          true))
+                                    ToggleIcon(
+                                      onPressed: () async {
+                                        setState(
+                                          () => _model.selectedSuperset
+                                                  .contains(_model.orange)
+                                              ? _model
+                                                  .removeFromSelectedSuperset(
+                                                      _model.orange)
+                                              : _model.addToSelectedSuperset(
+                                                  _model.orange),
+                                        );
+                                        setState(() {
+                                          _model.hasSelectedSuperSet =
+                                              !_model.hasSelectedSuperSet;
+                                        });
+                                        if (_model.selectedSuperset.length ==
+                                            1) {
+                                          setState(() {
+                                            _model
+                                                .removeAtIndexFromSelectedSuperset(
+                                                    1);
+                                          });
+                                        } else {
+                                          setState(() {
+                                            _model.addToSelectedSuperset(
+                                                '#EE8B60');
+                                          });
+                                        }
+                                      },
+                                      value: _model.selectedSuperset
+                                          .contains(_model.orange),
+                                      onIcon: Icon(
+                                        Icons.radio_button_checked_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        size: 25.0,
+                                      ),
+                                      offIcon: Icon(
+                                        Icons.radio_button_off,
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        size: 25.0,
+                                      ),
+                                    ),
+                                  if (!_model.hasSelectedSuperSet ||
+                                      (_model.selectedSuperset
+                                              .contains(_model.purple) ==
+                                          true))
+                                    ToggleIcon(
+                                      onPressed: () async {
+                                        setState(
+                                          () => _model.selectedSuperset
+                                                  .contains(_model.purple)
+                                              ? _model
+                                                  .removeFromSelectedSuperset(
+                                                      _model.purple)
+                                              : _model.addToSelectedSuperset(
+                                                  _model.purple),
+                                        );
+                                        setState(() {
+                                          _model.hasSelectedSuperSet =
+                                              !_model.hasSelectedSuperSet;
+                                        });
+                                        if (_model.selectedSuperset.length ==
+                                            1) {
+                                          setState(() {
+                                            _model
+                                                .removeAtIndexFromSelectedSuperset(
+                                                    1);
+                                          });
+                                        } else {
+                                          setState(() {
+                                            _model.addToSelectedSuperset(
+                                                '#9CBA20FF');
+                                          });
+                                        }
+                                      },
+                                      value: _model.selectedSuperset
+                                          .contains(_model.purple),
+                                      onIcon: Icon(
+                                        Icons.radio_button_checked_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        size: 25.0,
+                                      ),
+                                      offIcon: Icon(
+                                        Icons.radio_button_off,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        size: 25.0,
+                                      ),
+                                    ),
                                 ],
                               ),
                             ],
