@@ -1158,7 +1158,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   height:
                                                       MediaQuery.sizeOf(context)
                                                               .height *
-                                                          0.4,
+                                                          0.75,
                                                   child: ProgramTimerWidget(
                                                     resetTimer: () async {},
                                                   ),
