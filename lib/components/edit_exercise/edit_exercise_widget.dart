@@ -839,18 +839,18 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                 children: [
                                   if (!_model.hasSelectedSuperSet ||
                                       (_model.selectedSuperset
-                                              .contains(_model.orange) ==
+                                              .contains('#EE8B60') ==
                                           true))
                                     ToggleIcon(
                                       onPressed: () async {
                                         setState(
                                           () => _model.selectedSuperset
-                                                  .contains(_model.orange)
+                                                  .contains('#EE8B60')
                                               ? _model
                                                   .removeFromSelectedSuperset(
-                                                      _model.orange)
+                                                      '#EE8B60')
                                               : _model.addToSelectedSuperset(
-                                                  _model.orange),
+                                                  '#EE8B60'),
                                         );
                                         setState(() {
                                           _model.hasSelectedSuperSet =
@@ -869,7 +869,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                         }
                                       },
                                       value: _model.selectedSuperset
-                                          .contains(_model.orange),
+                                          .contains('#EE8B60'),
                                       onIcon: Icon(
                                         Icons.radio_button_checked_sharp,
                                         color: FlutterFlowTheme.of(context)
