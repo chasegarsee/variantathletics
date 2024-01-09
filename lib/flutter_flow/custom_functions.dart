@@ -484,5 +484,7 @@ int minutesSecondsToTimeVal(
   int minutes,
   int seconds,
 ) {
-  return (minutes * 10000) + (seconds * 1000);
+  int totalTime = (minutes * 60000) + (seconds * 1000);
+
+  return totalTime;
 }
