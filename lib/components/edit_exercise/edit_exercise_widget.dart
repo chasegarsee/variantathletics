@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -62,6 +63,14 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditExerciseModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.hasSelectedSuperSet = widget.isSuperset!;
+        _model.addToSelectedSuperset(widget.supersetId!);
+      });
+    });
 
     _model.textController1 ??= TextEditingController(text: widget.sets);
     _model.textFieldFocusNode1 ??= FocusNode();
