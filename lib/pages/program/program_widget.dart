@@ -1171,6 +1171,14 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         setState(() {
                                           _model.selectedTimer = true;
                                         });
+                                        _model.intervalTimerController
+                                            .onResetTimer();
+
+                                        _model.countUpTimerController
+                                            .onResetTimer();
+
+                                        _model.elapsedTimerController
+                                            .onResetTimer();
                                       },
                                       onLongPress: () async {
                                         if (_model.timerSize == 14) {
@@ -1451,14 +1459,6 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   fontSize: 14.0,
                                                 ),
                                           ),
-                                        ),
-                                        Text(
-                                          FFAppState()
-                                              .intervalTimer
-                                              .isCountDown
-                                              .toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
                                         ),
                                       ],
                                     ),

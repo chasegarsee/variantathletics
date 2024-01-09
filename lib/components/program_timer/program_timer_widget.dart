@@ -208,7 +208,8 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                               ],
                             ),
                           ),
-                          if (FFAppState().intervalTimer.isCountDown)
+                          if (FFAppState().intervalTimer.timerType ==
+                              'Interval')
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
@@ -334,7 +335,8 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                 ],
                               ),
                             ),
-                          if (FFAppState().intervalTimer.isCountDown)
+                          if (FFAppState().intervalTimer.timerType ==
+                              'Interval')
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
@@ -454,7 +456,8 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                 ],
                               ),
                             ),
-                          if (!FFAppState().intervalTimer.isCountDown)
+                          if (FFAppState().intervalTimer.timerType ==
+                              'Count Down')
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
