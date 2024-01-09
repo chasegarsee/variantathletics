@@ -873,37 +873,26 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     ),
                                   if (!_model.hasSelectedSuperSet ||
                                       (_model.selectedSuperset
-                                              .contains(_model.purple) ==
+                                              .contains('#EE8B60') ==
                                           true))
                                     ToggleIcon(
                                       onPressed: () async {
                                         setState(
                                           () => _model.selectedSuperset
-                                                  .contains(_model.purple)
+                                                  .contains('#9CBA20FF')
                                               ? _model
                                                   .removeFromSelectedSuperset(
-                                                      _model.purple)
+                                                      '#9CBA20FF')
                                               : _model.addToSelectedSuperset(
-                                                  _model.purple),
+                                                  '#9CBA20FF'),
                                         );
                                         setState(() {
                                           _model.hasSelectedSuperSet =
                                               !_model.hasSelectedSuperSet;
                                         });
-                                        if (_model.selectedSuperset.length ==
-                                            1) {
-                                          setState(() {
-                                            _model.selectedSuperset = [];
-                                          });
-                                        } else {
-                                          setState(() {
-                                            _model.addToSelectedSuperset(
-                                                '#9CBA20FF');
-                                          });
-                                        }
                                       },
                                       value: _model.selectedSuperset
-                                          .contains(_model.purple),
+                                          .contains('#9CBA20FF'),
                                       onIcon: Icon(
                                         Icons.radio_button_checked_sharp,
                                         color: FlutterFlowTheme.of(context)
