@@ -98,7 +98,6 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
             ),
             child: Container(
               width: double.infinity,
-              height: 200.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(8.0),
@@ -933,6 +932,25 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                               ),
                             ],
                           ),
+                        ),
+                        Builder(
+                          builder: (context) {
+                            final color = _model.selectedSuperset.toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: color.length,
+                              itemBuilder: (context, colorIndex) {
+                                final colorItem = color[colorIndex];
+                                return Text(
+                                  colorItem,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),
