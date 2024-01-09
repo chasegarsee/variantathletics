@@ -150,8 +150,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                   controller:
                                       _model.timerTypeValueController ??=
                                           FormFieldController<bool>(
-                                    _model.timerTypeValue ??=
-                                        FFAppState().intervalTimer.isCountDown,
+                                    _model.timerTypeValue ??= false,
                                   ),
                                   options:
                                       List<bool>.from([false, false, true]),

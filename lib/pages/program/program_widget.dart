@@ -1205,10 +1205,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               size: _model.timerSize.toDouble(),
                                             ),
                                           ),
-                                          if (!(_model.selectedTimer &&
+                                          if (_model.selectedTimer &&
                                               FFAppState()
                                                   .intervalTimer
-                                                  .isCountDown))
+                                                  .isCountDown)
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),

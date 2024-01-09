@@ -15,7 +15,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
     int? completedIntervals,
     bool? isOn,
     bool? isInterval,
-    bool? isCountdown,
     int? countDown,
     int? currentInterval,
     bool? isWorkingInterval,
@@ -28,7 +27,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         _completedIntervals = completedIntervals,
         _isOn = isOn,
         _isInterval = isInterval,
-        _isCountdown = isCountdown,
         _countDown = countDown,
         _currentInterval = currentInterval,
         _isWorkingInterval = isWorkingInterval,
@@ -72,12 +70,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
   bool get isInterval => _isInterval ?? true;
   set isInterval(bool? val) => _isInterval = val;
   bool hasIsInterval() => _isInterval != null;
-
-  // "isCountdown" field.
-  bool? _isCountdown;
-  bool get isCountdown => _isCountdown ?? false;
-  set isCountdown(bool? val) => _isCountdown = val;
-  bool hasIsCountdown() => _isCountdown != null;
 
   // "countDown" field.
   int? _countDown;
@@ -125,7 +117,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         completedIntervals: castToType<int>(data['completedIntervals']),
         isOn: data['isOn'] as bool?,
         isInterval: data['isInterval'] as bool?,
-        isCountdown: data['isCountdown'] as bool?,
         countDown: castToType<int>(data['countDown']),
         currentInterval: castToType<int>(data['currentInterval']),
         isWorkingInterval: data['isWorkingInterval'] as bool?,
@@ -144,7 +135,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         'completedIntervals': _completedIntervals,
         'isOn': _isOn,
         'isInterval': _isInterval,
-        'isCountdown': _isCountdown,
         'countDown': _countDown,
         'currentInterval': _currentInterval,
         'isWorkingInterval': _isWorkingInterval,
@@ -173,10 +163,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         ),
         'isInterval': serializeParam(
           _isInterval,
-          ParamType.bool,
-        ),
-        'isCountdown': serializeParam(
-          _isCountdown,
           ParamType.bool,
         ),
         'countDown': serializeParam(
@@ -232,11 +218,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
-        isCountdown: deserializeParam(
-          data['isCountdown'],
-          ParamType.bool,
-          false,
-        ),
         countDown: deserializeParam(
           data['countDown'],
           ParamType.int,
@@ -280,7 +261,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         completedIntervals == other.completedIntervals &&
         isOn == other.isOn &&
         isInterval == other.isInterval &&
-        isCountdown == other.isCountdown &&
         countDown == other.countDown &&
         currentInterval == other.currentInterval &&
         isWorkingInterval == other.isWorkingInterval &&
@@ -296,7 +276,6 @@ class IntervalTimerStruct extends FFFirebaseStruct {
         completedIntervals,
         isOn,
         isInterval,
-        isCountdown,
         countDown,
         currentInterval,
         isWorkingInterval,
@@ -312,7 +291,6 @@ IntervalTimerStruct createIntervalTimerStruct({
   int? completedIntervals,
   bool? isOn,
   bool? isInterval,
-  bool? isCountdown,
   int? countDown,
   int? currentInterval,
   bool? isWorkingInterval,
@@ -330,7 +308,6 @@ IntervalTimerStruct createIntervalTimerStruct({
       completedIntervals: completedIntervals,
       isOn: isOn,
       isInterval: isInterval,
-      isCountdown: isCountdown,
       countDown: countDown,
       currentInterval: currentInterval,
       isWorkingInterval: isWorkingInterval,
