@@ -53,6 +53,16 @@ class _ProgramWidgetState extends State<ProgramWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.intervalTimerController.timer.setPresetTime(
+        mSec: FFAppState().intervalTimer.workingInterval,
+        add: false,
+      );
+      _model.intervalTimerController.onResetTimer();
+
+      _model.countUpTimerController.onResetTimer();
+
+      _model.elapsedTimerController.onResetTimer();
+
       if ((valueOrDefault(currentUserDocument?.currentProgram, '') == null ||
               valueOrDefault(currentUserDocument?.currentProgram, '') == '') ||
           (FFAppState().currentProgram == null ||
