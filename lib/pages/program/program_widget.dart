@@ -1375,7 +1375,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                     width: _model.timerContainerSize.toDouble(),
                                     decoration: BoxDecoration(
                                       color:
-                                          FlutterFlowTheme.of(context).success,
+                                          FlutterFlowTheme.of(context).accent1,
                                       borderRadius: BorderRadius.circular(24.0),
                                     ),
                                     alignment: AlignmentDirectional(0.0, 0.0),
