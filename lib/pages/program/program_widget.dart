@@ -1378,126 +1378,223 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   ),
                                 ),
                               ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 5.0),
-                                child: Container(
-                                  width: _model.timerContainerSize.toDouble(),
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    borderRadius: BorderRadius.circular(24.0),
-                                  ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Align(
+                            if (!FFAppState().intervalTimer.isCountDown)
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Container(
+                                    width: _model.timerContainerSize.toDouble(),
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      borderRadius: BorderRadius.circular(24.0),
+                                    ),
                                     alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          isDismissible: false,
-                                          enableDrag: false,
-                                          useSafeArea: true,
-                                          context: context,
-                                          builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
-                                                      .unfocus(),
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: Container(
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.75,
-                                                  child: ProgramTimerWidget(
-                                                    resetTimer: () async {},
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            isDismissible: false,
+                                            enableDrag: false,
+                                            useSafeArea: true,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: Container(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.75,
+                                                    child: ProgramTimerWidget(
+                                                      resetTimer: () async {},
+                                                    ),
                                                   ),
                                                 ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+
+                                          setState(() {
+                                            _model.selectedTimer = true;
+                                          });
+                                          _model.elapsedTimerController1
+                                              .onStopTimer();
+                                          _model.elapsedTimerController2
+                                              .onStopTimer();
+                                          _model.elapsedTimerController1
+                                              .onResetTimer();
+
+                                          _model.elapsedTimerController2
+                                              .onResetTimer();
+                                        },
+                                        onLongPress: () async {
+                                          if (_model.timerSize == 14) {
+                                            setState(() {
+                                              _model.timerSize = 30;
+                                              _model.timerContainerSize = 125;
+                                            });
+                                            return;
+                                          } else {
+                                            setState(() {
+                                              _model.timerSize = 14;
+                                              _model.timerContainerSize = 75;
+                                            });
+                                            return;
+                                          }
+                                        },
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Icon(
+                                                Icons.timer,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size:
+                                                    _model.timerSize.toDouble(),
                                               ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
-
-                                        setState(() {
-                                          _model.selectedTimer = true;
-                                        });
-                                        _model.elapsedTimerController1
-                                            .onStopTimer();
-                                        _model.elapsedTimerController2
-                                            .onStopTimer();
-                                        _model.elapsedTimerController1
-                                            .onResetTimer();
-
-                                        _model.elapsedTimerController2
-                                            .onResetTimer();
-                                      },
-                                      onLongPress: () async {
-                                        if (_model.timerSize == 14) {
-                                          setState(() {
-                                            _model.timerSize = 30;
-                                            _model.timerContainerSize = 125;
-                                          });
-                                          return;
-                                        } else {
-                                          setState(() {
-                                            _model.timerSize = 14;
-                                            _model.timerContainerSize = 75;
-                                          });
-                                          return;
-                                        }
-                                      },
-                                      child: Row(
+                                            ),
+                                            if (_model.selectedTimer &&
+                                                !FFAppState()
+                                                    .intervalTimer
+                                                    .isCountDown)
+                                              FlutterFlowTimer(
+                                                initialTime: _model
+                                                    .elapsedTimerMilliseconds1,
+                                                getDisplayTime: (value) =>
+                                                    StopWatchTimer
+                                                        .getDisplayTime(value,
+                                                            milliSecond: false),
+                                                controller: _model
+                                                    .elapsedTimerController1,
+                                                updateStateInterval: Duration(
+                                                    milliseconds: 1000),
+                                                onChanged: (value, displayTime,
+                                                    shouldUpdate) {
+                                                  _model.elapsedTimerMilliseconds1 =
+                                                      value;
+                                                  _model.elapsedTimerValue1 =
+                                                      displayTime;
+                                                  if (shouldUpdate)
+                                                    setState(() {});
+                                                },
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          fontSize: 14.0,
+                                                        ),
+                                              ),
+                                            if (!_model.selectedTimer)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '807dbg9w' /* Timer */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: _model
+                                                            .timerSize
+                                                            .toDouble(),
+                                                      ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                if (FFAppState().intervalTimer.isCountDown)
+                                  Expanded(
+                                    flex: 4,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Column(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Icon(
-                                              Icons.timer,
-                                              color:
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '5xzomvk3' /* Elapsed */,
+                                              ),
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: _model.timerSize.toDouble(),
+                                                      .bodyMedium,
                                             ),
                                           ),
-                                          if (_model.selectedTimer &&
-                                              !FFAppState()
-                                                  .intervalTimer
-                                                  .isCountDown)
-                                            FlutterFlowTimer(
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: FlutterFlowTimer(
                                               initialTime: _model
-                                                  .elapsedTimerMilliseconds1,
+                                                  .elapsedTimerMilliseconds2,
                                               getDisplayTime: (value) =>
                                                   StopWatchTimer.getDisplayTime(
                                                       value,
                                                       milliSecond: false),
                                               controller: _model
-                                                  .elapsedTimerController1,
+                                                  .elapsedTimerController2,
                                               updateStateInterval:
                                                   Duration(milliseconds: 1000),
                                               onChanged: (value, displayTime,
                                                   shouldUpdate) {
-                                                _model.elapsedTimerMilliseconds1 =
+                                                _model.elapsedTimerMilliseconds2 =
                                                     value;
-                                                _model.elapsedTimerValue1 =
+                                                _model.elapsedTimerValue2 =
                                                     displayTime;
                                                 if (shouldUpdate)
                                                   setState(() {});
@@ -1511,111 +1608,11 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         fontSize: 14.0,
                                                       ),
                                             ),
-                                          if (!_model.selectedTimer)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '807dbg9w' /* Timer */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Jost',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: _model
-                                                              .timerSize
-                                                              .toDouble(),
-                                                        ),
-                                              ),
-                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  flex: 4,
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '5xzomvk3' /* Elapsed */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: FlutterFlowTimer(
-                                            initialTime: _model
-                                                .elapsedTimerMilliseconds2,
-                                            getDisplayTime: (value) =>
-                                                StopWatchTimer.getDisplayTime(
-                                                    value,
-                                                    milliSecond: false),
-                                            controller:
-                                                _model.elapsedTimerController2,
-                                            updateStateInterval:
-                                                Duration(milliseconds: 1000),
-                                            onChanged: (value, displayTime,
-                                                shouldUpdate) {
-                                              _model.elapsedTimerMilliseconds2 =
-                                                  value;
-                                              _model.elapsedTimerValue2 =
-                                                  displayTime;
-                                              if (shouldUpdate) setState(() {});
-                                            },
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineSmall
-                                                .override(
-                                                  fontFamily: 'Jost',
-                                                  fontSize: 14.0,
-                                                ),
-                                          ),
-                                        ),
-                                        Text(
-                                          FFAppState().intervalTimer.timerType,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          FFAppState()
-                                              .intervalTimer
-                                              .isCountDown
-                                              .toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
                                 if (_model.selectedTimer)
                                   Expanded(
                                     flex: 4,
@@ -1874,53 +1871,57 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                       ],
                                     ),
                                   ),
-                                Expanded(
-                                  flex: 4,
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'i2m1flh2' /* Sets */,
+                                if (FFAppState().intervalTimer.isCountDown)
+                                  Expanded(
+                                    flex: 4,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 10.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'i2m1flh2' /* Sets */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        fontSize: 14.0,
+                                                      ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Jost',
-                                                  fontSize: 14.0,
-                                                ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            FFAppState()
-                                                .intervalTimer
-                                                .completedIntervals
-                                                .toString(),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Jost',
-                                                  fontSize: 14.0,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              FFAppState()
+                                                  .intervalTimer
+                                                  .completedIntervals
+                                                  .toString(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        fontSize: 14.0,
+                                                      ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
                               ],
                             ),
                           ],
