@@ -1473,47 +1473,61 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
-                                              child: Icon(
-                                                Icons.timer,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size:
-                                                    _model.timerSize.toDouble(),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  Icons.timer,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: _model.timerSize
+                                                      .toDouble(),
+                                                ),
                                               ),
                                             ),
                                             if (_model.selectedTimer &&
                                                 !FFAppState()
                                                     .intervalTimer
                                                     .isCountDown)
-                                              FlutterFlowTimer(
-                                                initialTime: _model
-                                                    .elapsedTimerMilliseconds1,
-                                                getDisplayTime: (value) =>
-                                                    StopWatchTimer
-                                                        .getDisplayTime(value,
-                                                            milliSecond: false),
-                                                controller: _model
-                                                    .elapsedTimerController1,
-                                                updateStateInterval: Duration(
-                                                    milliseconds: 1000),
-                                                onChanged: (value, displayTime,
-                                                    shouldUpdate) {
-                                                  _model.elapsedTimerMilliseconds1 =
-                                                      value;
-                                                  _model.elapsedTimerValue1 =
-                                                      displayTime;
-                                                  if (shouldUpdate)
-                                                    setState(() {});
-                                                },
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Jost',
-                                                          fontSize: 14.0,
-                                                        ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 5.0, 0.0),
+                                                child: FlutterFlowTimer(
+                                                  initialTime: _model
+                                                      .elapsedTimerMilliseconds1,
+                                                  getDisplayTime: (value) =>
+                                                      StopWatchTimer
+                                                          .getDisplayTime(value,
+                                                              milliSecond:
+                                                                  false),
+                                                  controller: _model
+                                                      .elapsedTimerController1,
+                                                  updateStateInterval: Duration(
+                                                      milliseconds: 1000),
+                                                  onChanged: (value,
+                                                      displayTime,
+                                                      shouldUpdate) {
+                                                    _model.elapsedTimerMilliseconds1 =
+                                                        value;
+                                                    _model.elapsedTimerValue1 =
+                                                        displayTime;
+                                                    if (shouldUpdate)
+                                                      setState(() {});
+                                                  },
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        fontSize: _model
+                                                            .timerSize
+                                                            .toDouble(),
+                                                      ),
+                                                ),
                                               ),
                                             if (!_model.selectedTimer)
                                               Align(
