@@ -550,6 +550,8 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                             });
                                           },
                                           stepSize: 1,
+                                          minimum: 0,
+                                          maximum: 60,
                                         ),
                                       ),
                                     ],
@@ -643,6 +645,8 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                             });
                                           },
                                           stepSize: 1,
+                                          minimum: 0,
+                                          maximum: 60,
                                         ),
                                       ),
                                     ],

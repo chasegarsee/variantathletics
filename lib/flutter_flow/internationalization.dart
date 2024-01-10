@@ -386,6 +386,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Timer',
       'th': 'จับเวลา',
     },
+    '807dbg9w': {
+      'en': 'Timer',
+      'th': 'จับเวลา',
+    },
     '5xzomvk3': {
       'en': 'Elapsed',
       'th': 'ผ่านไปแล้ว',
