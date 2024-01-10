@@ -1516,7 +1516,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .accent2,
                                                         fontSize: _model
                                                             .timerSize
                                                             .toDouble(),
