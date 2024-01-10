@@ -1478,45 +1478,48 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               size: _model.timerSize.toDouble(),
                                             ),
                                           ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: FlutterFlowTimer(
-                                              initialTime: _model
-                                                  .countUpTimerMilliseconds,
-                                              getDisplayTime: (value) =>
-                                                  StopWatchTimer.getDisplayTime(
-                                                      value,
-                                                      milliSecond: false),
-                                              controller:
-                                                  _model.countUpTimerController,
-                                              updateStateInterval:
-                                                  Duration(milliseconds: 1000),
-                                              onChanged: (value, displayTime,
-                                                  shouldUpdate) {
-                                                _model.countUpTimerMilliseconds =
-                                                    value;
-                                                _model.countUpTimerValue =
-                                                    displayTime;
-                                                if (shouldUpdate)
-                                                  setState(() {});
-                                              },
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Jost',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: _model
-                                                            .timerSize
-                                                            .toDouble(),
-                                                      ),
+                                          if (_model.selectedTimer &&
+                                              !FFAppState()
+                                                  .intervalTimer
+                                                  .isCountDown)
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: FlutterFlowTimer(
+                                                initialTime: _model
+                                                    .countUpTimerMilliseconds,
+                                                getDisplayTime: (value) =>
+                                                    StopWatchTimer
+                                                        .getDisplayTime(value,
+                                                            milliSecond: false),
+                                                controller: _model
+                                                    .countUpTimerController,
+                                                updateStateInterval: Duration(
+                                                    milliseconds: 1000),
+                                                onChanged: (value, displayTime,
+                                                    shouldUpdate) {
+                                                  _model.countUpTimerMilliseconds =
+                                                      value;
+                                                  _model.countUpTimerValue =
+                                                      displayTime;
+                                                  if (shouldUpdate)
+                                                    setState(() {});
+                                                },
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: _model
+                                                              .timerSize
+                                                              .toDouble(),
+                                                        ),
+                                              ),
                                             ),
-                                          ),
                                           if (!_model.selectedTimer)
                                             Align(
                                               alignment: AlignmentDirectional(
