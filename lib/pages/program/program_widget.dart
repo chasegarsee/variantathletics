@@ -59,9 +59,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
       );
       _model.intervalTimerController.onResetTimer();
 
-      _model.countUpTimerController.onResetTimer();
+      _model.elapsedTimerController1.onResetTimer();
 
-      _model.elapsedTimerController.onResetTimer();
+      _model.elapsedTimerController2.onResetTimer();
 
       if ((valueOrDefault(currentUserDocument?.currentProgram, '') == null ||
               valueOrDefault(currentUserDocument?.currentProgram, '') == '') ||
@@ -1186,12 +1186,12 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                           });
                                           _model.intervalTimerController
                                               .onStopTimer();
-                                          _model.elapsedTimerController
+                                          _model.elapsedTimerController2
                                               .onStopTimer();
                                           _model.intervalTimerController
                                               .onResetTimer();
 
-                                          _model.elapsedTimerController
+                                          _model.elapsedTimerController2
                                               .onResetTimer();
                                         },
                                         onLongPress: () async {
@@ -1435,14 +1435,14 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                         setState(() {
                                           _model.selectedTimer = true;
                                         });
-                                        _model.countUpTimerController
+                                        _model.elapsedTimerController1
                                             .onStopTimer();
-                                        _model.elapsedTimerController
+                                        _model.elapsedTimerController2
                                             .onStopTimer();
-                                        _model.countUpTimerController
+                                        _model.elapsedTimerController1
                                             .onResetTimer();
 
-                                        _model.elapsedTimerController
+                                        _model.elapsedTimerController2
                                             .onResetTimer();
                                       },
                                       onLongPress: () async {
@@ -1482,43 +1482,34 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               !FFAppState()
                                                   .intervalTimer
                                                   .isCountDown)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: FlutterFlowTimer(
-                                                initialTime: _model
-                                                    .countUpTimerMilliseconds,
-                                                getDisplayTime: (value) =>
-                                                    StopWatchTimer
-                                                        .getDisplayTime(value,
-                                                            milliSecond: false),
-                                                controller: _model
-                                                    .countUpTimerController,
-                                                updateStateInterval: Duration(
-                                                    milliseconds: 1000),
-                                                onChanged: (value, displayTime,
-                                                    shouldUpdate) {
-                                                  _model.countUpTimerMilliseconds =
-                                                      value;
-                                                  _model.countUpTimerValue =
-                                                      displayTime;
-                                                  if (shouldUpdate)
-                                                    setState(() {});
-                                                },
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Jost',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: _model
-                                                              .timerSize
-                                                              .toDouble(),
-                                                        ),
-                                              ),
+                                            FlutterFlowTimer(
+                                              initialTime: _model
+                                                  .elapsedTimerMilliseconds1,
+                                              getDisplayTime: (value) =>
+                                                  StopWatchTimer.getDisplayTime(
+                                                      value,
+                                                      milliSecond: false),
+                                              controller: _model
+                                                  .elapsedTimerController1,
+                                              updateStateInterval:
+                                                  Duration(milliseconds: 1000),
+                                              onChanged: (value, displayTime,
+                                                  shouldUpdate) {
+                                                _model.elapsedTimerMilliseconds1 =
+                                                    value;
+                                                _model.elapsedTimerValue1 =
+                                                    displayTime;
+                                                if (shouldUpdate)
+                                                  setState(() {});
+                                              },
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        fontSize: 14.0,
+                                                      ),
                                             ),
                                           if (!_model.selectedTimer)
                                             Align(
@@ -1581,21 +1572,21 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: FlutterFlowTimer(
-                                            initialTime:
-                                                _model.elapsedTimerMilliseconds,
+                                            initialTime: _model
+                                                .elapsedTimerMilliseconds2,
                                             getDisplayTime: (value) =>
                                                 StopWatchTimer.getDisplayTime(
                                                     value,
                                                     milliSecond: false),
                                             controller:
-                                                _model.elapsedTimerController,
+                                                _model.elapsedTimerController2,
                                             updateStateInterval:
                                                 Duration(milliseconds: 1000),
                                             onChanged: (value, displayTime,
                                                 shouldUpdate) {
-                                              _model.elapsedTimerMilliseconds =
+                                              _model.elapsedTimerMilliseconds2 =
                                                   value;
-                                              _model.elapsedTimerValue =
+                                              _model.elapsedTimerValue2 =
                                                   displayTime;
                                               if (shouldUpdate) setState(() {});
                                             },
@@ -1640,14 +1631,14 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 if (!FFAppState()
                                                     .intervalTimer
                                                     .isCountDown) {
-                                                  _model.countUpTimerController
+                                                  _model.elapsedTimerController1
                                                       .onStartTimer();
                                                 } else {
                                                   _model.intervalTimerController
                                                       .onStartTimer();
                                                 }
 
-                                                _model.elapsedTimerController
+                                                _model.elapsedTimerController2
                                                     .onStartTimer();
                                                 setState(() {
                                                   FFAppState()
@@ -1718,7 +1709,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                           .intervalTimer
                                                           .isCountDown) {
                                                         _model
-                                                            .countUpTimerController
+                                                            .elapsedTimerController1
                                                             .onStopTimer();
                                                       } else {
                                                         _model
@@ -1727,7 +1718,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       }
 
                                                       _model
-                                                          .elapsedTimerController
+                                                          .elapsedTimerController2
                                                           .onStopTimer();
                                                     },
                                                     text: '',
@@ -1787,7 +1778,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
                                                       _model
-                                                          .elapsedTimerController
+                                                          .elapsedTimerController2
                                                           .onStopTimer();
                                                       setState(() {
                                                         FFAppState()
@@ -1799,17 +1790,17 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         );
                                                       });
                                                       _model
-                                                          .elapsedTimerController
+                                                          .elapsedTimerController2
                                                           .onResetTimer();
 
                                                       if (!FFAppState()
                                                           .intervalTimer
                                                           .isCountDown) {
                                                         _model
-                                                            .countUpTimerController
+                                                            .elapsedTimerController1
                                                             .onStopTimer();
                                                         _model
-                                                            .countUpTimerController
+                                                            .elapsedTimerController1
                                                             .onResetTimer();
                                                       } else {
                                                         _model

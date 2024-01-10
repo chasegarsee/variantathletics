@@ -54,18 +54,18 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
   AudioPlayer? soundPlayer;
-  // State field(s) for CountUpTimer widget.
-  int countUpTimerMilliseconds = 0;
-  String countUpTimerValue =
+  // State field(s) for elapsedTimer widget.
+  int elapsedTimerMilliseconds1 = 0;
+  String elapsedTimerValue1 =
       StopWatchTimer.getDisplayTime(0, milliSecond: false);
-  FlutterFlowTimerController countUpTimerController =
+  FlutterFlowTimerController elapsedTimerController1 =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
 
   // State field(s) for elapsedTimer widget.
-  int elapsedTimerMilliseconds = 0;
-  String elapsedTimerValue =
+  int elapsedTimerMilliseconds2 = 0;
+  String elapsedTimerValue2 =
       StopWatchTimer.getDisplayTime(0, milliSecond: false);
-  FlutterFlowTimerController elapsedTimerController =
+  FlutterFlowTimerController elapsedTimerController2 =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
 
   /// Initialization and disposal methods.
@@ -75,8 +75,8 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
   void dispose() {
     unfocusNode.dispose();
     intervalTimerController.dispose();
-    countUpTimerController.dispose();
-    elapsedTimerController.dispose();
+    elapsedTimerController1.dispose();
+    elapsedTimerController2.dispose();
   }
 
   /// Action blocks are added here.
