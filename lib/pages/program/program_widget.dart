@@ -1602,6 +1602,19 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                 ),
                                           ),
                                         ),
+                                        Text(
+                                          FFAppState().intervalTimer.timerType,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          FFAppState()
+                                              .intervalTimer
+                                              .isCountDown
+                                              .toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ),

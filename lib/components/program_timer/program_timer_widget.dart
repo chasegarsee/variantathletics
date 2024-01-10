@@ -171,12 +171,17 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                     _model.updatePage(() {
                                       FFAppState().updateIntervalTimerStruct(
                                         (e) => e
+                                          ..timerType = _model.timerTypeValue,
+                                      );
+                                    });
+                                    setState(() {
+                                      FFAppState().updateIntervalTimerStruct(
+                                        (e) => e
                                           ..isCountDown =
                                               _model.timerTypeValue !=
                                                       'Count Up'
                                                   ? true
-                                                  : false
-                                          ..timerType = _model.timerTypeValue,
+                                                  : false,
                                       );
                                     });
                                   },
