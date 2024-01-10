@@ -56,11 +56,8 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
   AudioPlayer? soundPlayer;
   // State field(s) for CountUpTimer widget.
   int countUpTimerMilliseconds = 0;
-  String countUpTimerValue = StopWatchTimer.getDisplayTime(
-    0,
-    hours: false,
-    milliSecond: false,
-  );
+  String countUpTimerValue =
+      StopWatchTimer.getDisplayTime(0, milliSecond: false);
   FlutterFlowTimerController countUpTimerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
 

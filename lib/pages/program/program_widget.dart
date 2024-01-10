@@ -1488,11 +1488,9 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                       .countUpTimerMilliseconds,
                                                   getDisplayTime: (value) =>
                                                       StopWatchTimer
-                                                          .getDisplayTime(
-                                                    value,
-                                                    hours: false,
-                                                    milliSecond: false,
-                                                  ),
+                                                          .getDisplayTime(value,
+                                                              milliSecond:
+                                                                  false),
                                                   controller: _model
                                                       .countUpTimerController,
                                                   updateStateInterval: Duration(
@@ -1516,7 +1514,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .accent2,
+                                                                .primaryText,
                                                         fontSize: _model
                                                             .timerSize
                                                             .toDouble(),
