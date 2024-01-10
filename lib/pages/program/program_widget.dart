@@ -1385,7 +1385,8 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 5.0),
                                   child: Container(
-                                    width: _model.timerContainerSize.toDouble(),
+                                    width: _model.countUpTimerContainerSize
+                                        .toDouble(),
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).accent1,
@@ -1452,13 +1453,15 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                           if (_model.timerSize == 14) {
                                             setState(() {
                                               _model.timerSize = 30;
-                                              _model.timerContainerSize = 125;
+                                              _model.countUpTimerContainerSize =
+                                                  175;
                                             });
                                             return;
                                           } else {
                                             setState(() {
                                               _model.timerSize = 14;
-                                              _model.timerContainerSize = 75;
+                                              _model.countUpTimerContainerSize =
+                                                  100;
                                             });
                                             return;
                                           }

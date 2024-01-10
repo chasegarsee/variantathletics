@@ -38,6 +38,8 @@ class ProgramModel extends FlutterFlowModel<ProgramWidget> {
 
   int timerContainerSize = 75;
 
+  int countUpTimerContainerSize = 100;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
