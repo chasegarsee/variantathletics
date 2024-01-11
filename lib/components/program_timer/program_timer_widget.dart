@@ -116,6 +116,8 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              await widget.resetCountUpTimer?.call();
+                              await widget.resetCountDownTimer?.call();
                               Navigator.pop(context);
                             },
                             child: Icon(
