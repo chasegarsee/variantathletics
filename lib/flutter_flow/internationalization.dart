@@ -1364,19 +1364,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sppkxchz': {
       'en': 'Interval',
-      'th': '0:25',
+      'th': 'ช่วงเวลา',
     },
     'uaa2odeu': {
-      'en': 'Count Up',
-      'th': '',
+      'en': 'Stopwatch',
+      'th': 'นาฬิกาจับเวลา',
     },
     '0qbd2d5w': {
       'en': 'Count Down',
-      'th': '',
+      'th': 'นับถอยหลัง',
     },
     'kjeonm09': {
       'en': 'Timer Type',
-      'th': 'เวลาการออกกำลัง',
+      'th': 'ประเภทตัวจับเวลา',
     },
     'w3j47fu2': {
       'en': 'Search for an item...',

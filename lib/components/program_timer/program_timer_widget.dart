@@ -171,7 +171,7 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
                                       'sppkxchz' /* Interval */,
                                     ),
                                     FFLocalizations.of(context).getText(
-                                      'uaa2odeu' /* Count Up */,
+                                      'uaa2odeu' /* Stopwatch */,
                                     ),
                                     FFLocalizations.of(context).getText(
                                       '0qbd2d5w' /* Count Down */,
