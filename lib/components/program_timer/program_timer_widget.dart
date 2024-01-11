@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,10 +18,12 @@ export 'program_timer_model.dart';
 class ProgramTimerWidget extends StatefulWidget {
   const ProgramTimerWidget({
     Key? key,
-    required this.resetTimer,
+    required this.resetCountUpTimer,
+    required this.resetCountDownTimer,
   }) : super(key: key);
 
-  final Future<dynamic> Function()? resetTimer;
+  final Future<dynamic> Function()? resetCountUpTimer;
+  final Future<dynamic> Function()? resetCountDownTimer;
 
   @override
   _ProgramTimerWidgetState createState() => _ProgramTimerWidgetState();
@@ -39,6 +42,12 @@ class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProgramTimerModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await widget.resetCountUpTimer?.call();
+      await widget.resetCountDownTimer?.call();
+    });
   }
 
   @override

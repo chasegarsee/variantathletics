@@ -1172,7 +1172,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                             .height *
                                                         0.75,
                                                     child: ProgramTimerWidget(
-                                                      resetTimer: () async {},
+                                                      resetCountUpTimer:
+                                                          () async {},
+                                                      resetCountDownTimer:
+                                                          () async {},
                                                     ),
                                                   ),
                                                 ),
@@ -1427,7 +1430,10 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                             .height *
                                                         0.75,
                                                     child: ProgramTimerWidget(
-                                                      resetTimer: () async {},
+                                                      resetCountUpTimer:
+                                                          () async {},
+                                                      resetCountDownTimer:
+                                                          () async {},
                                                     ),
                                                   ),
                                                 ),
