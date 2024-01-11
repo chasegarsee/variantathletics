@@ -1360,7 +1360,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '1mqrj2l6': {
       'en': 'Timer Type',
-      'th': 'เวลาการออกกำลัง',
+      'th': 'ประเภทตัวจับเวลา',
     },
     'sppkxchz': {
       'en': 'Interval',
@@ -1448,7 +1448,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hq97oi3z': {
       'en': 'Working Interval',
-      'th': 'เวลาการออกกำลัง',
+      'th': 'ช่วงเวลาการทำงาน',
     },
     'y43ciydt': {
       'en': '0:10',
@@ -1504,11 +1504,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '39ncgprk': {
       'en': 'Minutes',
-      'th': 'เวลาการออกกำลัง',
+      'th': 'นาที',
     },
     'fzmc01y9': {
       'en': 'Seconds',
-      'th': 'เวลาการออกกำลัง',
+      'th': 'วินาที',
     },
   },
   // Miscellaneous
