@@ -36,7 +36,7 @@ class RunRouteView extends StatefulWidget {
   final Color? lineColor;
   final String? startAddress;
   final String? destinationAddress;
-  final LatLng startCoordinate;
+  final LatLong.LatLng startCoordinate;
   final LatLng endCoordinate;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
