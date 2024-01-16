@@ -24,8 +24,8 @@ class RunRouteView extends StatefulWidget {
     this.lineColor,
     this.startAddress,
     this.destinationAddress,
-    required this.startCoordinate,
-    required this.endCoordinate,
+    required this.startLocation,
+    required this.endLocation,
     required this.iOSGoogleMapsApiKey,
     required this.androidGoogleMapsApiKey,
     required this.webGoogleMapsApiKey,
@@ -37,8 +37,8 @@ class RunRouteView extends StatefulWidget {
   final Color? lineColor;
   final String? startAddress;
   final String? destinationAddress;
-  final gmaps.LatLng startCoordinate;
-  final gmaps.LatLng endCoordinate;
+  final gmaps.LatLng startLocation;
+  final gmaps.LatLng endLocation;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
   final String webGoogleMapsApiKey;
@@ -57,7 +57,7 @@ class _RunRouteViewState extends State<RunRouteView> {
   @override
   void initState() {
     super.initState();
-    flow.LatLng variantLatLng = widget.startCoordinate!
+    flow.LatLng variantLatLng = widget.startLocation!
         as LatLng; // This is your original LatLng from variant_exercise_library
     gmaps.LatLng googleLatLng = gmaps.LatLng(variantLatLng.latitude,
         variantLatLng.longitude); // Convert to google_maps_flutter LatLng

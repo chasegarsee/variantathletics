@@ -131,9 +131,9 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                             'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
                         webGoogleMapsApiKey:
                             'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
-                        startCoordinate:
+                        startLocation:
                             enduranceCenterRunsRecord!.startLocation!,
-                        endCoordinate: enduranceCenterRunsRecord!.endLocation!,
+                        endLocation: enduranceCenterRunsRecord!.endLocation!,
                         runDetailsReference:
                             enduranceCenterRunsRecord!.reference,
                       ),
