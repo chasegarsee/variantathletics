@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:tuple/tuple.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:variant_exercise_library/flutter_flow/lat_lng.dart' as flow;
+import 'package:google_maps_flutter/google_maps_flutter.dart' hide LatLng;
+import 'package:google_maps_flutter/google_maps_flutter.dart' as LatLong;
 
 class RunRouteView extends StatefulWidget {
   const RunRouteView({
@@ -36,8 +36,8 @@ class RunRouteView extends StatefulWidget {
   final Color? lineColor;
   final String? startAddress;
   final String? destinationAddress;
-  final LatLng startCoordinate;
-  final LatLng endCoordinate;
+  final LatLong startCoordinate;
+  final LatLong endCoordinate;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
   final String webGoogleMapsApiKey;
@@ -66,21 +66,21 @@ class _RunRouteViewState extends State<RunRouteView> {
     markers.clear();
     markers.add(Marker(
       markerId: MarkerId('startMarker'),
-      position: LatLng(
+      position: LatLong(
           runRecord.startLocation.latitude, runRecord.startLocation.longitude),
       infoWindow: InfoWindow(title: 'Start Point'),
     ));
     markers.add(Marker(
       markerId: MarkerId('endMarker'),
-      position: LatLng(
+      position: LatLong(
           runRecord.endLocation.latitude, runRecord.endLocation.longitude),
       infoWindow: InfoWindow(title: 'End Point'),
     ));
   }
 
   void _drawRunRoute(RunRecord runRecord) {
-    List<LatLng> routePoints = runRecord.route
-        .map((geoPoint) => LatLng(geoPoint.latitude, geoPoint.longitude))
+    List<LatLong> routePoints = runRecord.route
+        .map((geoPoint) => LatLong(geoPoint.latitude, geoPoint.longitude))
         .toList();
 
     PolylineId id = PolylineId('runRoute');
