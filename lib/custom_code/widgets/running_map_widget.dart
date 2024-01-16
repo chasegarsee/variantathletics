@@ -16,21 +16,23 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as gmaps;
 
 class RunningMapWidget extends StatefulWidget {
-  final double width; // Width of the map widget
-  final double height; // Height of the map widget
+  final RunsRecord enduranceCenterRunsRecord;
   final String startLocationLat;
   final String startLocationLng;
   final String endLocationLat;
   final String endLocationLng;
+  final double width; // Width of the map widget
+  final double height; // Height of the map widget
 
   const RunningMapWidget({
     Key? key,
-    required this.width,
-    required this.height,
+    required this.enduranceCenterRunsRecord,
     required this.startLocationLat,
     required this.startLocationLng,
     required this.endLocationLat,
     required this.endLocationLng,
+    required this.width,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -48,6 +50,8 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
   }
 
   void _createPolyline() {
+    // Here you can use widget.enduranceCenterRunsRecord to access its properties
+    // For now, we are using the passed lat/lng parameters directly
     var startLat = double.parse(widget.startLocationLat);
     var startLng = double.parse(widget.startLocationLng);
     var endLat = double.parse(widget.endLocationLat);
