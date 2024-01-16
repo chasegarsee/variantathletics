@@ -62,14 +62,21 @@ dependencies:
   flutter_cache_manager: 3.3.1
   flutter_native_splash: 2.3.1
   flutter_plugin_android_lifecycle: 2.0.17
+  flutter_polyline_points: ^2.0.0
   flutter_rating_bar: 4.0.1
   flutter_spinkit: 5.2.0
   flutter_stripe: 9.4.0
   flutter_stripe_web: 4.4.0
   font_awesome_flutter: 10.6.0
   from_css_color: 2.0.0
+  geolocator: 10.0.1
+  geolocator_android: 4.2.4
+  geolocator_apple: 2.2.7
+  geolocator_platform_interface: 4.0.8
+  geolocator_web: 2.1.6
   go_router: 7.1.1
   google_fonts: 4.0.3
+  google_maps_flutter: ^2.5.3
   google_sign_in: 6.1.5
   google_sign_in_android: 6.1.20
   google_sign_in_ios: 5.6.4
@@ -117,6 +124,7 @@ dependencies:
   stripe_platform_interface: 9.4.0
   table_calendar: 3.0.9
   timeago: 3.2.2
+  tuple: ^2.0.2
   universal_io: 2.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27

@@ -190,6 +190,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => EditWorkoutWidget(
             program: params.getParam('program', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'enduranceCenter',
+          path: '/enduranceCenter',
+          builder: (context, params) => EnduranceCenterWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

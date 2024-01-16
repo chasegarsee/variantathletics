@@ -942,6 +942,12 @@ class FFAppState extends ChangeNotifier {
     updateFn(_intervalTimer);
   }
 
+  LatLng? _tempLatLong = LatLng(18.7398125, 98.9357052);
+  LatLng? get tempLatLong => _tempLatLong;
+  set tempLatLong(LatLng? _value) {
+    _tempLatLong = _value;
+  }
+
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
   Stream<List<ExercisesRecord>> exercise({
     String? uniqueQueryKey,

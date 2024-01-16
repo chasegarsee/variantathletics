@@ -229,6 +229,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Knowledge Hub',
       'th': 'ศูนย์ความรู้',
     },
+    'e9i18bj6': {
+      'en': 'Endurance Center',
+      'th': 'ศูนย์ความอดทน',
+    },
     '30zndnrx': {
       'en': 'library',
       'th': '',
@@ -819,6 +823,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     '6ibn6sm7': {
+      'en': 'Home',
+      'th': '',
+    },
+  },
+  // enduranceCenter
+  {
+    'fjb89n8c': {
       'en': 'Home',
       'th': '',
     },

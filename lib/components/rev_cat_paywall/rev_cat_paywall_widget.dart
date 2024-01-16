@@ -569,6 +569,12 @@ class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {
 
                                     if (_shouldSetState) setState(() {});
                                     return;
+                                  } else if (widget.navigateTo ==
+                                      'enduranceCenter') {
+                                    context.pushNamed('enduranceCenter');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
                                   } else {
                                     if (_shouldSetState) setState(() {});
                                     return;

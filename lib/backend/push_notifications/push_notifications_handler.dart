@@ -152,6 +152,7 @@ final parametersBuilderMap =
               data, 'program', ProgramsRecord.fromSnapshot),
         },
       ),
+  'enduranceCenter': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

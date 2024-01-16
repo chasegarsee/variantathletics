@@ -738,6 +738,99 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       ],
                     ),
                   ),
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      final isEntitled = await revenue_cat
+                              .isEntitled('va_7_day_trial_399_tbh_monthly') ??
+                          false;
+                      if (!isEntitled) {
+                        await revenue_cat.loadOfferings();
+                      }
+
+                      if (isEntitled) {
+                        context.pushNamed('enduranceCenter');
+
+                        return;
+                      } else {
+                        if (valueOrDefault<bool>(
+                            currentUserDocument?.isSubbed, false)) {
+                          context.pushNamed('enduranceCenter');
+
+                          return;
+                        } else {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            useSafeArea: true,
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: Container(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
+                                    child: RevCatPaywallWidget(
+                                      navigateTo: 'enduranceCenter',
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+
+                          return;
+                        }
+                      }
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 20.0,
+                            borderWidth: 0.0,
+                            buttonSize: 40.0,
+                            icon: FaIcon(
+                              FontAwesomeIcons.mapMarkedAlt,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 30.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'e9i18bj6' /* Endurance Center */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Jost',
+                                  fontSize: 16.0,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ].divide(SizedBox(height: 10.0)),
               ),
             ),

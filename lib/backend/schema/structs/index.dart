@@ -12,6 +12,7 @@ export 'messages_struct.dart';
 export 'program_struct.dart';
 export 'program_exercises_struct.dart';
 export 'responses_struct.dart';
+export 'runs_struct.dart';
 export 'stripe_customers_struct.dart';
 export 'user_struct.dart';
 export 'user_demographics_struct.dart';
