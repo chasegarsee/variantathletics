@@ -991,6 +991,8 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                               fontFamily: 'Jost',
                               color: FlutterFlowTheme.of(context).primaryText,
                             ),
+                        searchTextStyle:
+                            FlutterFlowTheme.of(context).bodyMedium,
                         textStyle: FlutterFlowTheme.of(context).bodyMedium,
                         hintText: FFLocalizations.of(context).getText(
                           'r7x3za7i' /* select a muscle group... */,

@@ -249,6 +249,8 @@ class _AddExerciseWidgetState extends State<AddExerciseWidget> {
                                   height: 50.0,
                                   searchHintTextStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
+                                  searchTextStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: FFLocalizations.of(context).getText(
