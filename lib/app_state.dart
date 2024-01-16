@@ -948,6 +948,18 @@ class FFAppState extends ChangeNotifier {
     _tempLatLong = _value;
   }
 
+  String _routeDistance = '';
+  String get routeDistance => _routeDistance;
+  set routeDistance(String _value) {
+    _routeDistance = _value;
+  }
+
+  String _routeDuration = '';
+  String get routeDuration => _routeDuration;
+  set routeDuration(String _value) {
+    _routeDuration = _value;
+  }
+
   final _exerciseManager = StreamRequestManager<List<ExercisesRecord>>();
   Stream<List<ExercisesRecord>> exercise({
     String? uniqueQueryKey,

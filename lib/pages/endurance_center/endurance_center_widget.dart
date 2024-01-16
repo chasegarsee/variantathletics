@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -24,15 +23,11 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
   late EnduranceCenterModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => EnduranceCenterModel());
-
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
-        .then((loc) => setState(() => currentUserLocationValue = loc));
   }
 
   @override
@@ -54,21 +49,6 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
     }
 
     context.watch<FFAppState>();
-    if (currentUserLocationValue == null) {
-      return Container(
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        child: Center(
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: SpinKitRipple(
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 50.0,
-            ),
-          ),
-        ),
-      );
-    }
 
     return StreamBuilder<List<RunsRecord>>(
       stream: queryRunsRecord(
@@ -133,25 +113,7 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
               top: true,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.9,
-                    child: custom_widgets.RunRouteView(
-                      width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * 0.9,
-                      iOSGoogleMapsApiKey:
-                          'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
-                      androidGoogleMapsApiKey:
-                          'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
-                      webGoogleMapsApiKey:
-                          'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
-                      startCoordinate: currentUserLocationValue!,
-                      runDetailsReference: enduranceCenterRunsRecord!.reference,
-                      endCoordinate: FFAppState().tempLatLong!,
-                    ),
-                  ),
-                ],
+                children: [],
               ),
             ),
           ),

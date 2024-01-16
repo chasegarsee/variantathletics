@@ -58,8 +58,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>In order to search nearby, this app requires access to your current location.</string>
 	<key>NSCameraUsageDescription</key>
     <string>This app does needs access to your camera, but does not collect video data. This is access is not used within the app, but belongs to a third party API in use</string>
 	<key>NSPhotoLibraryUsageDescription</key>
