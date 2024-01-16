@@ -141,6 +141,7 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                                 runningMapWidgetRunsRecord!.endLocation!)
                             .last
                             .toString(),
+                        enduranceCenterRunsRecord: runningMapWidgetRunsRecord!,
                       ),
                     );
                   },
