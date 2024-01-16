@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -119,23 +120,24 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      child: custom_widgets.RunRouteView(
+                      child: custom_widgets.RunningMapWidget(
                         width: double.infinity,
                         height: double.infinity,
-                        lineColor: FlutterFlowTheme.of(context).accent1,
-                        startAddress: 'Somewhere',
-                        destinationAddress: 'Nowhere',
-                        iOSGoogleMapsApiKey:
-                            'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
-                        androidGoogleMapsApiKey:
-                            'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
-                        webGoogleMapsApiKey:
-                            'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
-                        startLocation:
-                            enduranceCenterRunsRecord!.startLocation!,
-                        endLocation: enduranceCenterRunsRecord!.endLocation!,
-                        runDetailsReference:
-                            enduranceCenterRunsRecord!.reference,
+                        startLocationLat: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.startLocation!)
+                            .first
+                            .toString(),
+                        startLocationLng: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.startLocation!)
+                            .last
+                            .toString(),
+                        endLocationLat: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.endLocation!)
+                            .first
+                            .toString(),
                       ),
                     ),
                   ),

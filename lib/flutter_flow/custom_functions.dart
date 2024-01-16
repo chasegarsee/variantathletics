@@ -488,3 +488,8 @@ int minutesSecondsToTimeVal(
 
   return totalTime;
 }
+
+List<double> splitLatLng(LatLng latLng) {
+  List<double> latLngList = [latLng.latitude, latLng.longitude];
+  return latLngList;
+}
