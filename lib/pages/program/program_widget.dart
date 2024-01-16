@@ -1009,34 +1009,39 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                               height: 24.0,
                               decoration: BoxDecoration(),
                               child: Visibility(
-                                visible: FFAppState()
-                                    .completedDays
+                                visible: (currentUserDocument?.completedWorkouts
+                                            ?.toList() ??
+                                        [])
                                     .contains(FFAppState().selectedDayId),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    setState(() {
-                                      FFAppState().removeFromCompletedDays(
-                                          FFAppState().selectedDayId);
-                                    });
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        FFAppState().removeFromCompletedDays(
+                                            FFAppState().selectedDayId);
+                                      });
 
-                                    await currentUserReference!.update({
-                                      ...mapToFirestore(
-                                        {
-                                          'completedWorkouts':
-                                              FieldValue.arrayRemove(
-                                                  [FFAppState().selectedDayId]),
-                                        },
-                                      ),
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.replay,
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                    size: 24.0,
+                                      await currentUserReference!.update({
+                                        ...mapToFirestore(
+                                          {
+                                            'completedWorkouts':
+                                                FieldValue.arrayRemove([
+                                              FFAppState().selectedDayId
+                                            ]),
+                                          },
+                                        ),
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.replay,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      size: 24.0,
+                                    ),
                                   ),
                                 ),
                               ),
