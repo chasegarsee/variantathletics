@@ -52,72 +52,70 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
 
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<RunsRecord>>(
-      stream: queryRunsRecord(
-        parent: currentUserReference,
-        singleRecord: true,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 50.0,
-                ),
-              ),
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: FlutterFlowTheme.of(context).primaryText,
+              size: 30.0,
             ),
-          );
-        }
-        List<RunsRecord> enduranceCenterRunsRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final enduranceCenterRunsRecord =
-            enduranceCenterRunsRecordList.isNotEmpty
-                ? enduranceCenterRunsRecordList.first
-                : null;
-        return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primary,
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
-                ),
-                onPressed: () async {
-                  context.pop();
-                },
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 2.0,
-            ),
-            body: SafeArea(
-              top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Container(
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 2.0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: StreamBuilder<List<RunsRecord>>(
+                  stream: queryRunsRecord(
+                    parent: currentUserReference,
+                    singleRecord: true,
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitRipple(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<RunsRecord> runningMapWidgetRunsRecordList =
+                        snapshot.data!;
+                    // Return an empty Container when the item does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final runningMapWidgetRunsRecord =
+                        runningMapWidgetRunsRecordList.isNotEmpty
+                            ? runningMapWidgetRunsRecordList.first
+                            : null;
+                    return Container(
                       width: double.infinity,
                       height: double.infinity,
                       child: custom_widgets.RunningMapWidget(
@@ -125,33 +123,33 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                         height: double.infinity,
                         startLocationLat: functions
                             .splitLatLng(
-                                enduranceCenterRunsRecord!.startLocation!)
+                                runningMapWidgetRunsRecord!.startLocation!)
                             .first
                             .toString(),
                         startLocationLng: functions
                             .splitLatLng(
-                                enduranceCenterRunsRecord!.startLocation!)
+                                runningMapWidgetRunsRecord!.startLocation!)
                             .last
                             .toString(),
                         endLocationLat: functions
                             .splitLatLng(
-                                enduranceCenterRunsRecord!.endLocation!)
+                                runningMapWidgetRunsRecord!.endLocation!)
                             .first
                             .toString(),
                         endLocationLng: functions
                             .splitLatLng(
-                                enduranceCenterRunsRecord!.endLocation!)
+                                runningMapWidgetRunsRecord!.endLocation!)
                             .last
                             .toString(),
                       ),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
-            ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
