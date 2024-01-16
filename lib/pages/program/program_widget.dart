@@ -797,7 +797,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                             e.date!,
                                                             getCurrentTimestamp))
                                                     .toList()
-                                                    .take(8)
+                                                    .take(7)
                                                     .toList();
                                                 if (day.isEmpty) {
                                                   return DaysPlaceholderWidget();
