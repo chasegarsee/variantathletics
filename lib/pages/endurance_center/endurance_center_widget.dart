@@ -137,7 +137,7 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                   Container(
                     width: double.infinity,
                     height: MediaQuery.sizeOf(context).height * 0.9,
-                    child: custom_widgets.RunningRouteView(
+                    child: custom_widgets.RunRouteView(
                       width: double.infinity,
                       height: MediaQuery.sizeOf(context).height * 0.9,
                       iOSGoogleMapsApiKey:
