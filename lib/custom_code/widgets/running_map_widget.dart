@@ -10,21 +10,28 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+// Set your widget name, define your parameter, and then add the
+// boilerplate code using the green button on the right!
+
 import 'package:google_maps_flutter/google_maps_flutter.dart' as gmaps;
 
 class RunningMapWidget extends StatefulWidget {
+  final double width; // Width of the map widget
+  final double height; // Height of the map widget
+  final String startLocationLat;
+  final String startLocationLng;
+  final String endLocationLat;
+  final String endLocationLng;
+
   const RunningMapWidget({
     Key? key,
+    required this.width,
+    required this.height,
     required this.startLocationLat,
     required this.startLocationLng,
     required this.endLocationLat,
     required this.endLocationLng,
   }) : super(key: key);
-
-  final String startLocationLat;
-  final String startLocationLng;
-  final String endLocationLat;
-  final String endLocationLng;
 
   @override
   _RunningMapWidgetState createState() => _RunningMapWidgetState();
@@ -63,16 +70,20 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return gmaps.GoogleMap(
-      onMapCreated: _onMapCreated,
-      initialCameraPosition: gmaps.CameraPosition(
-        target: gmaps.LatLng(
-          double.parse(widget.startLocationLat),
-          double.parse(widget.startLocationLng),
+    return Container(
+      width: widget.width,
+      height: widget.height,
+      child: gmaps.GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: gmaps.CameraPosition(
+          target: gmaps.LatLng(
+            double.parse(widget.startLocationLat),
+            double.parse(widget.startLocationLng),
+          ),
+          zoom: 14.0,
         ),
-        zoom: 14.0,
+        polylines: {polyline},
       ),
-      polylines: {polyline},
     );
   }
 }
