@@ -50,8 +50,6 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
   }
 
   void _createPolyline() {
-    // Here you can use widget.enduranceCenterRunsRecord to access its properties
-    // For now, we are using the passed lat/lng parameters directly
     var startLat = double.parse(widget.startLocationLat);
     var startLng = double.parse(widget.startLocationLng);
     var endLat = double.parse(widget.endLocationLat);
