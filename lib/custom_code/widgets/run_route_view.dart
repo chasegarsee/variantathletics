@@ -50,15 +50,15 @@ class RunRouteView extends StatefulWidget {
 
 class _RunRouteViewState extends State<RunRouteView> {
   late final gmaps.CameraPosition _initialLocation;
-  GoogleMapController? mapController;
-  Set<Marker> markers = {};
-  Map<PolylineId, Polyline> initialPolylines = {};
+  gmaps.GoogleMapController? mapController;
+  Set<gmaps.Marker> markers = {};
+  Map<gmaps.PolylineId, gmaps.Polyline> initialPolylines = {};
 
   @override
   void initState() {
     super.initState();
-    flow.LatLng variantLatLng = enduranceCenterRunsRecord!
-        .startLocation!; // This is your original LatLng from variant_exercise_library
+    flow.LatLng variantLatLng = widget.startCoordinate!
+        as LatLng; // This is your original LatLng from variant_exercise_library
     gmaps.LatLng googleLatLng = gmaps.LatLng(variantLatLng.latitude,
         variantLatLng.longitude); // Convert to google_maps_flutter LatLng
     _initialLocation = gmaps.CameraPosition(
@@ -69,28 +69,27 @@ class _RunRouteViewState extends State<RunRouteView> {
 
   void _createMarkers(RunRecord runRecord) {
     markers.clear();
-    markers.add(Marker(
-      markerId: MarkerId('startMarker'),
-      position: LatLong.LatLng(
+    markers.add(gmaps.Marker(
+      markerId: gmaps.MarkerId('startMarker'),
+      position: gmaps.LatLng(
           runRecord.startLocation.latitude, runRecord.startLocation.longitude),
-      infoWindow: InfoWindow(title: 'Start Point'),
+      infoWindow: gmaps.InfoWindow(title: 'Start Point'),
     ));
-    markers.add(Marker(
-      markerId: MarkerId('endMarker'),
-      position: LatLong.LatLng(
+    markers.add(gmaps.Marker(
+      markerId: gmaps.MarkerId('endMarker'),
+      position: gmaps.LatLng(
           runRecord.endLocation.latitude, runRecord.endLocation.longitude),
-      infoWindow: InfoWindow(title: 'End Point'),
+      infoWindow: gmaps.InfoWindow(title: 'End Point'),
     ));
   }
 
   void _drawRunRoute(RunRecord runRecord) {
-    List<LatLong.LatLng> routePoints = runRecord.route
-        .map(
-            (geoPoint) => LatLong.LatLng(geoPoint.latitude, geoPoint.longitude))
+    List<gmaps.LatLng> routePoints = runRecord.route
+        .map((geoPoint) => gmaps.LatLng(geoPoint.latitude, geoPoint.longitude))
         .toList();
 
-    PolylineId id = PolylineId('runRoute');
-    Polyline polyline = Polyline(
+    gmaps.PolylineId id = gmaps.PolylineId('runRoute');
+    gmaps.Polyline polyline = gmaps.Polyline(
       polylineId: id,
       color: Colors.blue,
       points: routePoints,
@@ -115,16 +114,16 @@ class _RunRouteViewState extends State<RunRouteView> {
           _createMarkers(runRecord);
           _drawRunRoute(runRecord);
 
-          return GoogleMap(
+          return gmaps.GoogleMap(
             markers: markers,
             initialCameraPosition: _initialLocation,
             myLocationEnabled: true,
             myLocationButtonEnabled: false,
-            mapType: MapType.normal,
+            mapType: gmaps.MapType.normal,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: false,
-            polylines: Set<Polyline>.of(initialPolylines.values),
-            onMapCreated: (GoogleMapController controller) {
+            polylines: Set<gmaps.Polyline>.of(initialPolylines.values),
+            onMapCreated: (gmaps.GoogleMapController controller) {
               mapController = controller;
             },
           );
