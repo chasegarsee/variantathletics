@@ -36,8 +36,8 @@ class RunRouteView extends StatefulWidget {
   final Color? lineColor;
   final String? startAddress;
   final String? destinationAddress;
-  final LatLong startCoordinate;
-  final LatLong endCoordinate;
+  final LatLong.LatLng startCoordinate;
+  final LatLong.LatLng endCoordinate;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
   final String webGoogleMapsApiKey;
@@ -66,21 +66,22 @@ class _RunRouteViewState extends State<RunRouteView> {
     markers.clear();
     markers.add(Marker(
       markerId: MarkerId('startMarker'),
-      position: LatLong(
+      position: LatLong.LatLng(
           runRecord.startLocation.latitude, runRecord.startLocation.longitude),
       infoWindow: InfoWindow(title: 'Start Point'),
     ));
     markers.add(Marker(
       markerId: MarkerId('endMarker'),
-      position: LatLong(
+      position: LatLong.LatLng(
           runRecord.endLocation.latitude, runRecord.endLocation.longitude),
       infoWindow: InfoWindow(title: 'End Point'),
     ));
   }
 
   void _drawRunRoute(RunRecord runRecord) {
-    List<LatLong> routePoints = runRecord.route
-        .map((geoPoint) => LatLong(geoPoint.latitude, geoPoint.longitude))
+    List<LatLong.LatLng> routePoints = runRecord.route
+        .map(
+            (geoPoint) => LatLong.LatLng(geoPoint.latitude, geoPoint.longitude))
         .toList();
 
     PolylineId id = PolylineId('runRoute');
