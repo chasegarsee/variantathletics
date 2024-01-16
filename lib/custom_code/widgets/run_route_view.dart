@@ -12,8 +12,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:tuple/tuple.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart' hide LatLng;
-import 'package:google_maps_flutter/google_maps_flutter.dart' as LatLong;
+
+import 'package:google_maps_flutter/google_maps_flutter.dart' as gmaps;
+import 'package:variant_exercise_library/flutter_flow/lat_lng.dart' as flow;
 
 class RunRouteView extends StatefulWidget {
   const RunRouteView({
@@ -36,7 +37,7 @@ class RunRouteView extends StatefulWidget {
   final Color? lineColor;
   final String? startAddress;
   final String? destinationAddress;
-  final LatLong.LatLng startCoordinate;
+  final LatLng startCoordinate;
   final LatLng endCoordinate;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
@@ -56,8 +57,12 @@ class _RunRouteViewState extends State<RunRouteView> {
   @override
   void initState() {
     super.initState();
+    flow.LatLng variantLatLng = enduranceCenterRunsRecord!
+        .startLocation!; // This is your original LatLng from variant_exercise_library
+    gmaps.LatLng googleLatLng = gmaps.LatLng(variantLatLng.latitude,
+        variantLatLng.longitude); // Convert to google_maps_flutter LatLng
     _initialLocation = CameraPosition(
-      target: widget.startCoordinate,
+      target: googleLatLng,
       zoom: 14.4746,
     );
   }
