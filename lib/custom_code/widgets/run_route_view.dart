@@ -37,8 +37,8 @@ class RunRouteView extends StatefulWidget {
   final Color? lineColor;
   final String? startAddress;
   final String? destinationAddress;
-  final LatLng startCoordinate;
-  final LatLng endCoordinate;
+  final gmaps.LatLng startCoordinate;
+  final gmaps.LatLng endCoordinate;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
   final String webGoogleMapsApiKey;
@@ -49,7 +49,7 @@ class RunRouteView extends StatefulWidget {
 }
 
 class _RunRouteViewState extends State<RunRouteView> {
-  late final CameraPosition _initialLocation;
+  late final gmaps.CameraPosition _initialLocation;
   GoogleMapController? mapController;
   Set<Marker> markers = {};
   Map<PolylineId, Polyline> initialPolylines = {};
@@ -61,7 +61,7 @@ class _RunRouteViewState extends State<RunRouteView> {
         .startLocation!; // This is your original LatLng from variant_exercise_library
     gmaps.LatLng googleLatLng = gmaps.LatLng(variantLatLng.latitude,
         variantLatLng.longitude); // Convert to google_maps_flutter LatLng
-    _initialLocation = CameraPosition(
+    _initialLocation = gmaps.CameraPosition(
       target: googleLatLng,
       zoom: 14.4746,
     );
