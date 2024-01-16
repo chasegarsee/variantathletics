@@ -141,8 +141,8 @@ class RunRecord {
   final num duration;
   final num averagePace;
   final num caloriesBurned;
-  final GeoPoint startLocation;
-  final GeoPoint endLocation;
+  final gmaps.LatLng startLocation;
+  final gmaps.LatLng endLocation;
   final String runTitle;
   final String notes;
 
@@ -172,10 +172,10 @@ class RunRecord {
       duration: data['duration'],
       averagePace: data['averagePace'],
       caloriesBurned: data['caloriesBurned'],
-      startLocation: GeoPoint(
+      startLocation: gmaps.LatLng(
           data['startLocation'].latitude, data['startLocation'].longitude),
-      endLocation:
-          GeoPoint(data['endLocation'].latitude, data['endLocation'].longitude),
+      endLocation: gmaps.LatLng(
+          data['endLocation'].latitude, data['endLocation'].longitude),
       runTitle: data['runTitle'],
       notes: data['notes'],
     );
