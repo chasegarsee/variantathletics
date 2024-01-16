@@ -57,7 +57,7 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
     );
   }
 
-  void _onMapCreated(GoogleMapController controller) {
+  void _onMapCreated(gmaps.GoogleMapController controller) {
     mapController = controller;
   }
 
