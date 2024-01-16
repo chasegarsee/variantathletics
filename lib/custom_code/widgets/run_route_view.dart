@@ -54,17 +54,31 @@ class _RunRouteViewState extends State<RunRouteView> {
   Set<gmaps.Marker> markers = {};
   Map<gmaps.PolylineId, gmaps.Polyline> initialPolylines = {};
 
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // flow.LatLng variantLatLng = widget.startLocation! as LatLng; // This is your original LatLng from variant_exercise_library
+  //   gmaps.LatLng googleLatLng = gmaps.LatLng(variantLatLng.latitude,
+  //       variantLatLng.longitude); // Convert to google_maps_flutter LatLng
+  //   _initialLocation = gmaps.CameraPosition(
+  //     target: googleLatLng,
+  //     zoom: 14.4746,
+  //   );
+  // }
+
   @override
   void initState() {
     super.initState();
-    flow.LatLng variantLatLng = widget.startLocation!
-        as LatLng; // This is your original LatLng from variant_exercise_library
-    gmaps.LatLng googleLatLng = gmaps.LatLng(variantLatLng.latitude,
-        variantLatLng.longitude); // Convert to google_maps_flutter LatLng
-    _initialLocation = gmaps.CameraPosition(
-      target: googleLatLng,
-      zoom: 14.4746,
-    );
+    if (enduranceCenterRunsRecord != null &&
+        enduranceCenterRunsRecord!.startLocation != null) {
+      var startLoc = enduranceCenterRunsRecord!.startLocation!;
+      // Assuming startLoc is of the custom LatLng type
+      _initialLocation = gmaps.CameraPosition(
+        target: gmaps.LatLng(startLoc.latitude,
+            startLoc.longitude), // Convert to google_maps_flutter LatLng
+        zoom: 14.4746,
+      );
+    }
   }
 
   void _createMarkers(RunRecord runRecord) {
