@@ -10,21 +10,17 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart' as gmaps;
 
 class RunningMapWidget extends StatefulWidget {
   const RunningMapWidget({
     Key? key,
-    this.width,
-    this.height,
     required this.startLocationLat,
     required this.startLocationLng,
     required this.endLocationLat,
     required this.endLocationLng,
   }) : super(key: key);
 
-  final double? width;
-  final double? height;
   final String startLocationLat;
   final String startLocationLng;
   final String endLocationLat;
@@ -35,8 +31,8 @@ class RunningMapWidget extends StatefulWidget {
 }
 
 class _RunningMapWidgetState extends State<RunningMapWidget> {
-  late GoogleMapController mapController;
-  late Polyline polyline;
+  late gmaps.GoogleMapController mapController;
+  late gmaps.Polyline polyline;
 
   @override
   void initState() {
@@ -50,12 +46,12 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
     var endLat = double.parse(widget.endLocationLat);
     var endLng = double.parse(widget.endLocationLng);
 
-    polyline = Polyline(
-      polylineId: PolylineId('running_route'),
+    polyline = gmaps.Polyline(
+      polylineId: gmaps.PolylineId('running_route'),
       color: Colors.blue,
       points: [
-        LatLng(startLat, startLng),
-        LatLng(endLat, endLng),
+        gmaps.LatLng(startLat, startLng),
+        gmaps.LatLng(endLat, endLng),
       ],
       width: 5,
     );
@@ -67,10 +63,10 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleMap(
+    return gmaps.GoogleMap(
       onMapCreated: _onMapCreated,
-      initialCameraPosition: CameraPosition(
-        target: LatLng(
+      initialCameraPosition: gmaps.CameraPosition(
+        target: gmaps.LatLng(
           double.parse(widget.startLocationLat),
           double.parse(widget.startLocationLng),
         ),

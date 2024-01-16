@@ -138,6 +138,11 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                                 enduranceCenterRunsRecord!.endLocation!)
                             .first
                             .toString(),
+                        endLocationLng: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.endLocation!)
+                            .last
+                            .toString(),
                       ),
                     ),
                   ),
