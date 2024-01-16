@@ -133,7 +133,7 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                             'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
                         startCoordinate:
                             enduranceCenterRunsRecord!.startLocation!,
-                        endCoordinate: FFAppState().tempLatLong!,
+                        endCoordinate: enduranceCenterRunsRecord!.endLocation!,
                         runDetailsReference:
                             enduranceCenterRunsRecord!.reference,
                       ),
