@@ -62,8 +62,8 @@ class _RunRouteViewState extends State<RunRouteView> {
     super.initState();
     _initialLocation = gmaps.CameraPosition(
       target: gmaps.LatLng(
-        widget.startCoordinateLat,
-        widget.startCoordinateLng,
+        double.parse(widget.startCoordinateLat),
+        double.parse(widget.startCoordinateLng),
       ),
       zoom: 14.4746,
     );
