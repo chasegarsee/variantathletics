@@ -121,34 +121,40 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
-                        child: custom_widgets.RunningMapWidget(
+                        child: custom_widgets.RunRouteView(
                           width: double.infinity,
                           height: double.infinity,
-                          startLocationLat: functions
+                          lineColor: FlutterFlowTheme.of(context).accent1,
+                          startAddress: 'Somewhere',
+                          destinationAddress: 'No Where',
+                          startCoordinateLat: functions
                               .splitLatLng(
                                   enduranceCenterRunsRecord!.startLocation!)
                               .first
                               .toString(),
-                          startLocationLng: functions
+                          startCoordinateLng: functions
                               .splitLatLng(
                                   enduranceCenterRunsRecord!.startLocation!)
                               .last
                               .toString(),
-                          endLocationLat: functions
+                          endCoordinateLat: functions
                               .splitLatLng(
                                   enduranceCenterRunsRecord!.endLocation!)
                               .first
                               .toString(),
-                          endLocationLng: functions
+                          endCoordinateLng: functions
                               .splitLatLng(
                                   enduranceCenterRunsRecord!.endLocation!)
                               .last
                               .toString(),
-                          enduranceCenterRunsRecord: enduranceCenterRunsRecord!,
-                          androidApiKey:
+                          iOSGoogleMapsApiKey:
                               'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
-                          iosApiKey: 'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
-                          webApiKey: 'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
+                          androidGoogleMapsApiKey:
+                              'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
+                          webGoogleMapsApiKey:
+                              'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
+                          runDetailsReference:
+                              enduranceCenterRunsRecord!.reference,
                         ),
                       ),
                     ),
