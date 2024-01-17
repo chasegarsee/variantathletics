@@ -62,7 +62,6 @@ dependencies:
   flutter_cache_manager: 3.3.1
   flutter_native_splash: 2.3.1
   flutter_plugin_android_lifecycle: 2.0.17
-  flutter_polyline_points: ^1.0.0
   flutter_rating_bar: 4.0.1
   flutter_spinkit: 5.2.0
   flutter_stripe: 9.4.0
@@ -119,7 +118,6 @@ dependencies:
   stripe_platform_interface: 9.4.0
   table_calendar: 3.0.9
   timeago: 3.2.2
-  tuple: ^2.0.2
   universal_io: 2.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27
