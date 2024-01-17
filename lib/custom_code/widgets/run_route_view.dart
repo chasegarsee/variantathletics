@@ -62,8 +62,8 @@ class _RunRouteViewState extends State<RunRouteView> {
     super.initState();
     _initialLocation = gmaps.CameraPosition(
       target: gmaps.LatLng(
-        double.parse(widget.startCoordinateLat),
-        double.parse(widget.startCoordinateLng),
+        widget.startCoordinateLat,
+        widget.startCoordinateLng,
       ),
       zoom: 14.4746,
     );
@@ -74,16 +74,16 @@ class _RunRouteViewState extends State<RunRouteView> {
     markers.add(gmaps.Marker(
       markerId: gmaps.MarkerId('startMarker'),
       position: gmaps.LatLng(
-        double.parse(runRecord.startLocation.latitude as String),
-        double.parse(runRecord.startLocation.longitude as String),
+        runRecord.startLocation.latitude,
+        runRecord.startLocation.longitude,
       ),
       infoWindow: gmaps.InfoWindow(title: 'Start Point'),
     ));
     markers.add(gmaps.Marker(
       markerId: gmaps.MarkerId('endMarker'),
       position: gmaps.LatLng(
-        double.parse(runRecord.endLocation.latitude as String),
-        double.parse(runRecord.endLocation.longitude as String),
+        runRecord.endLocation.latitude,
+        runRecord.endLocation.longitude,
       ),
       infoWindow: gmaps.InfoWindow(title: 'End Point'),
     ));
@@ -92,8 +92,8 @@ class _RunRouteViewState extends State<RunRouteView> {
   void _drawRunRoute(RunRecord runRecord) {
     List<gmaps.LatLng> routePoints = runRecord.route
         .map((geoPoint) => gmaps.LatLng(
-              double.parse(geoPoint.latitude as String),
-              double.parse(geoPoint.longitude as String),
+              geoPoint.latitude,
+              geoPoint.longitude,
             ))
         .toList();
 
@@ -145,11 +145,11 @@ class _RunRouteViewState extends State<RunRouteView> {
 class RunRecord {
   final Timestamp startTime;
   final Timestamp endTime;
-  final num? totalDistance; // Make it nullable
+  final num? totalDistance;
   final List<GeoPoint> route;
-  final num? duration; // Make it nullable
-  final num? averagePace; // Make it nullable
-  final num? caloriesBurned; // Make it nullable
+  final num? duration;
+  final num? averagePace;
+  final num? caloriesBurned;
   final GeoPoint startLocation;
   final GeoPoint endLocation;
   final String runTitle;
@@ -174,13 +174,13 @@ class RunRecord {
     return RunRecord(
       startTime: data['startTime'],
       endTime: data['endTime'],
-      totalDistance: data['totalDistance'] as num?, // Cast to num?
+      totalDistance: data['totalDistance'] as num?,
       route: (data['route'] as List)
           .map((e) => GeoPoint(e.latitude, e.longitude))
           .toList(),
-      duration: data['duration'] as num?, // Cast to num?
-      averagePace: data['averagePace'] as num?, // Cast to num?
-      caloriesBurned: data['caloriesBurned'] as num?, // Cast to num?
+      duration: data['duration'] as num?,
+      averagePace: data['averagePace'] as num?,
+      caloriesBurned: data['caloriesBurned'] as num?,
       startLocation: GeoPoint(
           data['startLocation'].latitude, data['startLocation'].longitude),
       endLocation:
