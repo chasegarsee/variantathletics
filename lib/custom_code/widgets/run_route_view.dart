@@ -74,16 +74,16 @@ class _RunRouteViewState extends State<RunRouteView> {
     markers.add(gmaps.Marker(
       markerId: gmaps.MarkerId('startMarker'),
       position: gmaps.LatLng(
-        double.parse(runRecord.startLocation.latitude),
-        double.parse(runRecord.startLocation.longitude),
+        double.parse(runRecord.startLocation.Latitude),
+        double.parse(runRecord.startLocation.Longitude),
       ),
       infoWindow: gmaps.InfoWindow(title: 'Start Point'),
     ));
     markers.add(gmaps.Marker(
       markerId: gmaps.MarkerId('endMarker'),
       position: gmaps.LatLng(
-        double.parse(runRecord.endLocation.latitude),
-        double.parse(runRecord.endLocation.longitude),
+        double.parse(runRecord.endLocation.Latitude),
+        double.parse(runRecord.endLocation.Longitude),
       ),
       infoWindow: gmaps.InfoWindow(title: 'End Point'),
     ));
@@ -92,8 +92,8 @@ class _RunRouteViewState extends State<RunRouteView> {
   void _drawRunRoute(RunRecord runRecord) {
     List<gmaps.LatLng> routePoints = runRecord.route
         .map((geoPoint) => gmaps.LatLng(
-              double.parse(geoPoint.latitude),
-              double.parse(geoPoint.longitude),
+              double.parse(geoPoint.Latitude),
+              double.parse(geoPoint.Longitude),
             ))
         .toList();
 
