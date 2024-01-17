@@ -145,11 +145,11 @@ class _RunRouteViewState extends State<RunRouteView> {
 class RunRecord {
   final Timestamp startTime;
   final Timestamp endTime;
-  final num totalDistance;
+  final num? totalDistance; // Make it nullable
   final List<GeoPoint> route;
-  final num duration;
-  final num averagePace;
-  final num caloriesBurned;
+  final num? duration; // Make it nullable
+  final num? averagePace; // Make it nullable
+  final num? caloriesBurned; // Make it nullable
   final GeoPoint startLocation;
   final GeoPoint endLocation;
   final String runTitle;
@@ -158,11 +158,11 @@ class RunRecord {
   RunRecord({
     required this.startTime,
     required this.endTime,
-    required this.totalDistance,
+    this.totalDistance,
     required this.route,
-    required this.duration,
-    required this.averagePace,
-    required this.caloriesBurned,
+    this.duration,
+    this.averagePace,
+    this.caloriesBurned,
     required this.startLocation,
     required this.endLocation,
     required this.runTitle,
@@ -174,13 +174,13 @@ class RunRecord {
     return RunRecord(
       startTime: data['startTime'],
       endTime: data['endTime'],
-      totalDistance: data['totalDistance'],
+      totalDistance: data['totalDistance'] as num?, // Cast to num?
       route: (data['route'] as List)
           .map((e) => GeoPoint(e.latitude, e.longitude))
           .toList(),
-      duration: data['duration'],
-      averagePace: data['averagePace'],
-      caloriesBurned: data['caloriesBurned'],
+      duration: data['duration'] as num?, // Cast to num?
+      averagePace: data['averagePace'] as num?, // Cast to num?
+      caloriesBurned: data['caloriesBurned'] as num?, // Cast to num?
       startLocation: GeoPoint(
           data['startLocation'].latitude, data['startLocation'].longitude),
       endLocation:
