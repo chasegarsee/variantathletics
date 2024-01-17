@@ -54,7 +54,7 @@ class _RunRouteViewState extends State<RunRouteView> {
   late final gmaps.CameraPosition _initialLocation;
   gmaps.GoogleMapController? mapController;
   Set<gmaps.Marker> markers = {};
-  Map<gmaps.PolylineId, gmaps.Polyline> initialPolylines = {};
+  Map<gmaps.PolylineId, gmaps.Polyline> polylines = {};
 
   @override
   void initState() {
@@ -66,26 +66,36 @@ class _RunRouteViewState extends State<RunRouteView> {
       ),
       zoom: 14.4746,
     );
+
+    widget.runDetailsReference.snapshots().listen((snapshot) {
+      if (snapshot != null && snapshot.exists) {
+        RunRecord runRecord = RunRecord.fromSnapshot(snapshot);
+        _createMarkers(runRecord);
+        _drawRunRoute(runRecord);
+      }
+    });
   }
 
   void _createMarkers(RunRecord runRecord) {
-    markers.clear();
-    markers.add(gmaps.Marker(
-      markerId: gmaps.MarkerId('startMarker'),
-      position: gmaps.LatLng(
-        runRecord.startLocation.latitude,
-        runRecord.startLocation.longitude,
-      ),
-      infoWindow: gmaps.InfoWindow(title: 'Start Point'),
-    ));
-    markers.add(gmaps.Marker(
-      markerId: gmaps.MarkerId('endMarker'),
-      position: gmaps.LatLng(
-        runRecord.endLocation.latitude,
-        runRecord.endLocation.longitude,
-      ),
-      infoWindow: gmaps.InfoWindow(title: 'End Point'),
-    ));
+    setState(() {
+      markers.clear();
+      markers.add(gmaps.Marker(
+        markerId: gmaps.MarkerId('startMarker'),
+        position: gmaps.LatLng(
+          runRecord.startLocation.latitude,
+          runRecord.startLocation.longitude,
+        ),
+        infoWindow: gmaps.InfoWindow(title: 'Start Point'),
+      ));
+      markers.add(gmaps.Marker(
+        markerId: gmaps.MarkerId('endMarker'),
+        position: gmaps.LatLng(
+          runRecord.endLocation.latitude,
+          runRecord.endLocation.longitude,
+        ),
+        infoWindow: gmaps.InfoWindow(title: 'End Point'),
+      ));
+    });
   }
 
   void _drawRunRoute(RunRecord runRecord) {
@@ -99,42 +109,30 @@ class _RunRouteViewState extends State<RunRouteView> {
     gmaps.PolylineId id = gmaps.PolylineId('runRoute');
     gmaps.Polyline polyline = gmaps.Polyline(
       polylineId: id,
-      color: Colors.blue,
+      color: widget.lineColor,
       points: routePoints,
       width: 5,
     );
 
     setState(() {
-      initialPolylines[id] = polyline;
+      polylines[id] = polyline;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<DocumentSnapshot>(
-        stream: widget.runDetailsReference.snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
-          }
-          RunRecord runRecord = RunRecord.fromSnapshot(snapshot.data!);
-          _createMarkers(runRecord);
-          _drawRunRoute(runRecord);
-
-          return gmaps.GoogleMap(
-            markers: markers,
-            initialCameraPosition: _initialLocation,
-            myLocationEnabled: true,
-            myLocationButtonEnabled: false,
-            mapType: gmaps.MapType.normal,
-            zoomGesturesEnabled: true,
-            zoomControlsEnabled: false,
-            polylines: Set<gmaps.Polyline>.of(initialPolylines.values),
-            onMapCreated: (gmaps.GoogleMapController controller) {
-              mapController = controller;
-            },
-          );
+      body: gmaps.GoogleMap(
+        markers: markers,
+        initialCameraPosition: _initialLocation,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: false,
+        mapType: gmaps.MapType.normal,
+        zoomGesturesEnabled: true,
+        zoomControlsEnabled: false,
+        polylines: Set<gmaps.Polyline>.of(polylines.values),
+        onMapCreated: (gmaps.GoogleMapController controller) {
+          mapController = controller;
         },
       ),
     );
