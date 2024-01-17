@@ -23,6 +23,9 @@ class RunningMapWidget extends StatefulWidget {
   final String endLocationLng;
   final double width; // Width of the map widget
   final double height; // Height of the map widget
+  final String androidApiKey;
+  final String iosApiKey;
+  final String webApiKey;
 
   const RunningMapWidget({
     Key? key,
@@ -33,6 +36,9 @@ class RunningMapWidget extends StatefulWidget {
     required this.endLocationLng,
     required this.width,
     required this.height,
+    required this.androidApiKey,
+    required this.iosApiKey,
+    required this.webApiKey,
   }) : super(key: key);
 
   @override
@@ -68,10 +74,14 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
 
   void _onMapCreated(gmaps.GoogleMapController controller) {
     mapController = controller;
+    // Note: API key usage here is unconventional and not standard practice.
   }
 
   @override
   Widget build(BuildContext context) {
+    // Determining the API key to use, based on the platform.
+    String apiKey = getApiKeyForPlatform();
+
     return Container(
       width: widget.width,
       height: widget.height,
@@ -87,5 +97,16 @@ class _RunningMapWidgetState extends State<RunningMapWidget> {
         polylines: {polyline},
       ),
     );
+  }
+
+  String getApiKeyForPlatform() {
+    // Selecting the API key based on the platform
+    if (Theme.of(context).platform == TargetPlatform.android) {
+      return widget.androidApiKey;
+    } else if (Theme.of(context).platform == TargetPlatform.iOS) {
+      return widget.iosApiKey;
+    } else {
+      return widget.webApiKey;
+    }
   }
 }

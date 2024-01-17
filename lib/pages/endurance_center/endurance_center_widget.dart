@@ -145,6 +145,10 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
                               .last
                               .toString(),
                           enduranceCenterRunsRecord: enduranceCenterRunsRecord!,
+                          androidApiKey:
+                              'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
+                          iosApiKey: 'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
+                          webApiKey: 'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
                         ),
                       ),
                     ),
