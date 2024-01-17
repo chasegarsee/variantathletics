@@ -116,48 +116,47 @@ class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  if (enduranceCenterRunsRecord != null)
-                    Expanded(
-                      child: Container(
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: custom_widgets.RunRouteView(
                         width: double.infinity,
                         height: double.infinity,
-                        child: custom_widgets.RunRouteView(
-                          width: double.infinity,
-                          height: double.infinity,
-                          lineColor: FlutterFlowTheme.of(context).accent1,
-                          startAddress: 'Somewhere',
-                          destinationAddress: 'No Where',
-                          startCoordinateLat: functions
-                              .splitLatLng(
-                                  enduranceCenterRunsRecord!.startLocation!)
-                              .first
-                              .toString(),
-                          startCoordinateLng: functions
-                              .splitLatLng(
-                                  enduranceCenterRunsRecord!.startLocation!)
-                              .last
-                              .toString(),
-                          endCoordinateLat: functions
-                              .splitLatLng(
-                                  enduranceCenterRunsRecord!.endLocation!)
-                              .first
-                              .toString(),
-                          endCoordinateLng: functions
-                              .splitLatLng(
-                                  enduranceCenterRunsRecord!.endLocation!)
-                              .last
-                              .toString(),
-                          iOSGoogleMapsApiKey:
-                              'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
-                          androidGoogleMapsApiKey:
-                              'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
-                          webGoogleMapsApiKey:
-                              'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
-                          runDetailsReference:
-                              enduranceCenterRunsRecord!.reference,
-                        ),
+                        lineColor: FlutterFlowTheme.of(context).accent1,
+                        startAddress: 'Somewhere',
+                        destinationAddress: 'No Where',
+                        startCoordinateLat: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.startLocation!)
+                            .first
+                            .toString(),
+                        startCoordinateLng: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.startLocation!)
+                            .last
+                            .toString(),
+                        endCoordinateLat: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.endLocation!)
+                            .first
+                            .toString(),
+                        endCoordinateLng: functions
+                            .splitLatLng(
+                                enduranceCenterRunsRecord!.endLocation!)
+                            .last
+                            .toString(),
+                        iOSGoogleMapsApiKey:
+                            'AIzaSyCPj6jJroavbymhPwDS1-FTUfhPizJFJfk',
+                        androidGoogleMapsApiKey:
+                            'AIzaSyCu9PkWlJOgTrjveyy75ZyDqqCtCqYe7SQ',
+                        webGoogleMapsApiKey:
+                            'AIzaSyDeeTs5AsU16nwbf4ZKdwAhsssTuDwzfss',
+                        runDetailsReference:
+                            enduranceCenterRunsRecord!.reference,
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
