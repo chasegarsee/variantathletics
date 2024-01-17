@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 
 // Set your widget name, define your parameter, and then add the
 // boilerplate code using the green button on the right!
-
 import 'package:google_maps_flutter/google_maps_flutter.dart' as gmaps;
 
 class RunRouteView extends StatefulWidget {
