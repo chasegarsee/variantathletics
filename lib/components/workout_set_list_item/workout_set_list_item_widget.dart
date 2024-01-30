@@ -13,13 +13,12 @@ export 'workout_set_list_item_model.dart';
 
 class WorkoutSetListItemWidget extends StatefulWidget {
   const WorkoutSetListItemWidget({
-    Key? key,
+    super.key,
     this.listIndex,
     required this.setItem,
     required this.exerciseIndex,
     int? complete,
-  })  : this.complete = complete ?? 0,
-        super(key: key);
+  }) : this.complete = complete ?? 0;
 
   final int? listIndex;
   final String? setItem;
@@ -27,7 +26,7 @@ class WorkoutSetListItemWidget extends StatefulWidget {
   final int complete;
 
   @override
-  _WorkoutSetListItemWidgetState createState() =>
+  State<WorkoutSetListItemWidget> createState() =>
       _WorkoutSetListItemWidgetState();
 }
 

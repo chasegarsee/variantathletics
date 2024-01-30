@@ -86,8 +86,8 @@ class RunsRecord extends FirestoreRecord {
           ? parent.collection('runs')
           : FirebaseFirestore.instance.collectionGroup('runs');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('runs').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('runs').doc(id);
 
   static Stream<RunsRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => RunsRecord.fromSnapshot(s));

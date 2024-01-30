@@ -17,10 +17,10 @@ import 'knowledge_hub_model.dart';
 export 'knowledge_hub_model.dart';
 
 class KnowledgeHubWidget extends StatefulWidget {
-  const KnowledgeHubWidget({Key? key}) : super(key: key);
+  const KnowledgeHubWidget({super.key});
 
   @override
-  _KnowledgeHubWidgetState createState() => _KnowledgeHubWidgetState();
+  State<KnowledgeHubWidget> createState() => _KnowledgeHubWidgetState();
 }
 
 class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {

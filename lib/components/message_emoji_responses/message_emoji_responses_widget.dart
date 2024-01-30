@@ -14,16 +14,16 @@ export 'message_emoji_responses_model.dart';
 
 class MessageEmojiResponsesWidget extends StatefulWidget {
   const MessageEmojiResponsesWidget({
-    Key? key,
+    super.key,
     required this.messageId,
     required this.responses,
-  }) : super(key: key);
+  });
 
   final DocumentReference? messageId;
   final List<ResponsesStruct>? responses;
 
   @override
-  _MessageEmojiResponsesWidgetState createState() =>
+  State<MessageEmojiResponsesWidget> createState() =>
       _MessageEmojiResponsesWidgetState();
 }
 

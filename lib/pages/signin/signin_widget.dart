@@ -12,10 +12,10 @@ import 'signin_model.dart';
 export 'signin_model.dart';
 
 class SigninWidget extends StatefulWidget {
-  const SigninWidget({Key? key}) : super(key: key);
+  const SigninWidget({super.key});
 
   @override
-  _SigninWidgetState createState() => _SigninWidgetState();
+  State<SigninWidget> createState() => _SigninWidgetState();
 }
 
 class _SigninWidgetState extends State<SigninWidget> {

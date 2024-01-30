@@ -16,10 +16,10 @@ import 'add_message_model.dart';
 export 'add_message_model.dart';
 
 class AddMessageWidget extends StatefulWidget {
-  const AddMessageWidget({Key? key}) : super(key: key);
+  const AddMessageWidget({super.key});
 
   @override
-  _AddMessageWidgetState createState() => _AddMessageWidgetState();
+  State<AddMessageWidget> createState() => _AddMessageWidgetState();
 }
 
 class _AddMessageWidgetState extends State<AddMessageWidget> {

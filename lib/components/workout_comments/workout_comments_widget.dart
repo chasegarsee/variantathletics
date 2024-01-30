@@ -14,14 +14,14 @@ export 'workout_comments_model.dart';
 
 class WorkoutCommentsWidget extends StatefulWidget {
   const WorkoutCommentsWidget({
-    Key? key,
+    super.key,
     required this.workoutId,
-  }) : super(key: key);
+  });
 
   final String? workoutId;
 
   @override
-  _WorkoutCommentsWidgetState createState() => _WorkoutCommentsWidgetState();
+  State<WorkoutCommentsWidget> createState() => _WorkoutCommentsWidgetState();
 }
 
 class _WorkoutCommentsWidgetState extends State<WorkoutCommentsWidget> {

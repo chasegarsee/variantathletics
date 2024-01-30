@@ -14,14 +14,14 @@ export 'pdf_page_model.dart';
 
 class PdfPageWidget extends StatefulWidget {
   const PdfPageWidget({
-    Key? key,
+    super.key,
     required this.pdfUrl,
-  }) : super(key: key);
+  });
 
   final String? pdfUrl;
 
   @override
-  _PdfPageWidgetState createState() => _PdfPageWidgetState();
+  State<PdfPageWidget> createState() => _PdfPageWidgetState();
 }
 
 class _PdfPageWidgetState extends State<PdfPageWidget> {

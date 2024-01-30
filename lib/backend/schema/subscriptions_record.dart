@@ -44,8 +44,8 @@ class SubscriptionsRecord extends FirestoreRecord {
           ? parent.collection('subscriptions')
           : FirebaseFirestore.instance.collectionGroup('subscriptions');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('subscriptions').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('subscriptions').doc(id);
 
   static Stream<SubscriptionsRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => SubscriptionsRecord.fromSnapshot(s));

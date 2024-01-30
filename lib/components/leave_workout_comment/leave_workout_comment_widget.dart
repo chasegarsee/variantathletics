@@ -16,16 +16,16 @@ export 'leave_workout_comment_model.dart';
 
 class LeaveWorkoutCommentWidget extends StatefulWidget {
   const LeaveWorkoutCommentWidget({
-    Key? key,
+    super.key,
     required this.workoutId,
     required this.displayName,
-  }) : super(key: key);
+  });
 
   final String? workoutId;
   final String? displayName;
 
   @override
-  _LeaveWorkoutCommentWidgetState createState() =>
+  State<LeaveWorkoutCommentWidget> createState() =>
       _LeaveWorkoutCommentWidgetState();
 }
 

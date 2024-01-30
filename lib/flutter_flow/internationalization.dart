@@ -410,6 +410,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Super Set',
       'th': 'ซูเปอร์เซต',
     },
+    'rrymb317': {
+      'en': 'Drop Set',
+      'th': 'ดรอปเซ็ต',
+    },
     'xj8pase6': {
       'en': 'Sets',
       'th': 'เซ็ต',
@@ -1232,6 +1236,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ag10mm7l': {
       'en': 'Rest Time',
+      'th': '',
+    },
+    'j74fv2fh': {
+      'en': 'Drop Set',
       'th': '',
     },
     '7p63f6nf': {

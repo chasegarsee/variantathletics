@@ -20,18 +20,18 @@ export 'add_exercise_model.dart';
 
 class AddExerciseWidget extends StatefulWidget {
   const AddExerciseWidget({
-    Key? key,
+    super.key,
     required this.program,
     required this.weekIndex,
     required this.dayIndex,
-  }) : super(key: key);
+  });
 
   final ProgramsRecord? program;
   final int? weekIndex;
   final int? dayIndex;
 
   @override
-  _AddExerciseWidgetState createState() => _AddExerciseWidgetState();
+  State<AddExerciseWidget> createState() => _AddExerciseWidgetState();
 }
 
 class _AddExerciseWidgetState extends State<AddExerciseWidget> {

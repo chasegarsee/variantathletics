@@ -16,16 +16,16 @@ export 'exercise_video_stack_model.dart';
 
 class ExerciseVideoStackWidget extends StatefulWidget {
   const ExerciseVideoStackWidget({
-    Key? key,
+    super.key,
     this.parameter1,
     required this.exerciseId,
-  }) : super(key: key);
+  });
 
   final String? parameter1;
   final String? exerciseId;
 
   @override
-  _ExerciseVideoStackWidgetState createState() =>
+  State<ExerciseVideoStackWidget> createState() =>
       _ExerciseVideoStackWidgetState();
 }
 

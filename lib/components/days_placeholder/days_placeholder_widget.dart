@@ -9,10 +9,10 @@ import 'days_placeholder_model.dart';
 export 'days_placeholder_model.dart';
 
 class DaysPlaceholderWidget extends StatefulWidget {
-  const DaysPlaceholderWidget({Key? key}) : super(key: key);
+  const DaysPlaceholderWidget({super.key});
 
   @override
-  _DaysPlaceholderWidgetState createState() => _DaysPlaceholderWidgetState();
+  State<DaysPlaceholderWidget> createState() => _DaysPlaceholderWidgetState();
 }
 
 class _DaysPlaceholderWidgetState extends State<DaysPlaceholderWidget> {

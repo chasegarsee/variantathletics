@@ -10,10 +10,10 @@ import 'empty_favorites_model.dart';
 export 'empty_favorites_model.dart';
 
 class EmptyFavoritesWidget extends StatefulWidget {
-  const EmptyFavoritesWidget({Key? key}) : super(key: key);
+  const EmptyFavoritesWidget({super.key});
 
   @override
-  _EmptyFavoritesWidgetState createState() => _EmptyFavoritesWidgetState();
+  State<EmptyFavoritesWidget> createState() => _EmptyFavoritesWidgetState();
 }
 
 class _EmptyFavoritesWidgetState extends State<EmptyFavoritesWidget> {

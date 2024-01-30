@@ -14,10 +14,10 @@ import 'favorites_model.dart';
 export 'favorites_model.dart';
 
 class FavoritesWidget extends StatefulWidget {
-  const FavoritesWidget({Key? key}) : super(key: key);
+  const FavoritesWidget({super.key});
 
   @override
-  _FavoritesWidgetState createState() => _FavoritesWidgetState();
+  State<FavoritesWidget> createState() => _FavoritesWidgetState();
 }
 
 class _FavoritesWidgetState extends State<FavoritesWidget> {

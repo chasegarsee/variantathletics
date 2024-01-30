@@ -10,16 +10,16 @@ export 'program_switch_model.dart';
 
 class ProgramSwitchWidget extends StatefulWidget {
   const ProgramSwitchWidget({
-    Key? key,
+    super.key,
     this.parameter1,
     this.parameter2,
-  }) : super(key: key);
+  });
 
   final String? parameter1;
   final String? parameter2;
 
   @override
-  _ProgramSwitchWidgetState createState() => _ProgramSwitchWidgetState();
+  State<ProgramSwitchWidget> createState() => _ProgramSwitchWidgetState();
 }
 
 class _ProgramSwitchWidgetState extends State<ProgramSwitchWidget> {

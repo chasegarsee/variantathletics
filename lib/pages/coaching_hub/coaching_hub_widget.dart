@@ -18,10 +18,10 @@ import 'coaching_hub_model.dart';
 export 'coaching_hub_model.dart';
 
 class CoachingHubWidget extends StatefulWidget {
-  const CoachingHubWidget({Key? key}) : super(key: key);
+  const CoachingHubWidget({super.key});
 
   @override
-  _CoachingHubWidgetState createState() => _CoachingHubWidgetState();
+  State<CoachingHubWidget> createState() => _CoachingHubWidgetState();
 }
 
 class _CoachingHubWidgetState extends State<CoachingHubWidget> {

@@ -10,10 +10,10 @@ import 'not_subbed_model.dart';
 export 'not_subbed_model.dart';
 
 class NotSubbedWidget extends StatefulWidget {
-  const NotSubbedWidget({Key? key}) : super(key: key);
+  const NotSubbedWidget({super.key});
 
   @override
-  _NotSubbedWidgetState createState() => _NotSubbedWidgetState();
+  State<NotSubbedWidget> createState() => _NotSubbedWidgetState();
 }
 
 class _NotSubbedWidgetState extends State<NotSubbedWidget> {

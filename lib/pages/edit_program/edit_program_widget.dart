@@ -17,14 +17,14 @@ export 'edit_program_model.dart';
 
 class EditProgramWidget extends StatefulWidget {
   const EditProgramWidget({
-    Key? key,
+    super.key,
     required this.program,
-  }) : super(key: key);
+  });
 
   final ProgramsRecord? program;
 
   @override
-  _EditProgramWidgetState createState() => _EditProgramWidgetState();
+  State<EditProgramWidget> createState() => _EditProgramWidgetState();
 }
 
 class _EditProgramWidgetState extends State<EditProgramWidget> {

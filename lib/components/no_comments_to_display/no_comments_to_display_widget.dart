@@ -9,10 +9,10 @@ import 'no_comments_to_display_model.dart';
 export 'no_comments_to_display_model.dart';
 
 class NoCommentsToDisplayWidget extends StatefulWidget {
-  const NoCommentsToDisplayWidget({Key? key}) : super(key: key);
+  const NoCommentsToDisplayWidget({super.key});
 
   @override
-  _NoCommentsToDisplayWidgetState createState() =>
+  State<NoCommentsToDisplayWidget> createState() =>
       _NoCommentsToDisplayWidgetState();
 }
 

@@ -22,7 +22,7 @@ export 'edit_exercise_model.dart';
 
 class EditExerciseWidget extends StatefulWidget {
   const EditExerciseWidget({
-    Key? key,
+    super.key,
     this.name,
     this.sets,
     this.reps,
@@ -33,7 +33,8 @@ class EditExerciseWidget extends StatefulWidget {
     required this.programId,
     required this.isSuperset,
     required this.supersetId,
-  }) : super(key: key);
+    required this.isDropset,
+  });
 
   final String? name;
   final String? sets;
@@ -45,9 +46,10 @@ class EditExerciseWidget extends StatefulWidget {
   final DocumentReference? programId;
   final bool? isSuperset;
   final String? supersetId;
+  final bool? isDropset;
 
   @override
-  _EditExerciseWidgetState createState() => _EditExerciseWidgetState();
+  State<EditExerciseWidget> createState() => _EditExerciseWidgetState();
 }
 
 class _EditExerciseWidgetState extends State<EditExerciseWidget> {
@@ -143,95 +145,105 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              FlutterFlowDropDown<String>(
-                                controller: _model.dropDownValueController ??=
-                                    FormFieldController<String>(
-                                  _model.dropDownValue ??= widget.name,
-                                ),
-                                options: FFAppState()
-                                    .exercises
-                                    .map((e) =>
-                                        ExercisesStruct.maybeFromMap(e)?.name)
-                                    .withoutNulls
-                                    .toList(),
-                                onChanged: (val) async {
-                                  setState(() => _model.dropDownValue = val);
-                                  setState(() {
-                                    FFAppState()
-                                        .updateEditProgramSelectedDayStruct(
-                                      (e) => e
-                                        ..updateExercises(
-                                          (e) => e[widget.index!]
-                                            ..name = _model.dropDownValue
-                                            ..id = functions
-                                                .convertStringToHyphenatedLowerCase(
-                                                    _model.dropDownValue!),
-                                        ),
-                                    );
-                                  });
-                                },
-                                width: 300.0,
-                                height: 50.0,
-                                searchHintTextStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
-                                searchTextStyle:
-                                    FlutterFlowTheme.of(context).bodyMedium,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodyMedium,
-                                hintText: FFLocalizations.of(context).getText(
-                                  '8wquxxn7' /* Select Exercise... */,
-                                ),
-                                searchHintText:
-                                    FFLocalizations.of(context).getText(
-                                  '37csumcw' /* Search for an exercise... */,
-                                ),
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 2.0,
-                                borderColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                borderWidth: 2.0,
-                                borderRadius: 8.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 4.0, 16.0, 4.0),
-                                hidesUnderline: true,
-                                isOverButton: true,
-                                isSearchable: true,
-                                isMultiSelect: false,
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.95, -0.74),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await actions.deleteExerciseFromWorkout(
-                                      widget.programId!.id,
-                                      FFAppState().editProgramSelectedWeekIndex,
-                                      FFAppState().editProgramSelectedDayIndex,
-                                      widget.index!,
-                                    );
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 5.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                FlutterFlowDropDown<String>(
+                                  controller: _model.dropDownValueController ??=
+                                      FormFieldController<String>(
+                                    _model.dropDownValue ??= widget.name,
+                                  ),
+                                  options: FFAppState()
+                                      .exercises
+                                      .map((e) =>
+                                          ExercisesStruct.maybeFromMap(e)?.name)
+                                      .withoutNulls
+                                      .toList(),
+                                  onChanged: (val) async {
+                                    setState(() => _model.dropDownValue = val);
+                                    setState(() {
+                                      FFAppState()
+                                          .updateEditProgramSelectedDayStruct(
+                                        (e) => e
+                                          ..updateExercises(
+                                            (e) => e[widget.index!]
+                                              ..name = _model.dropDownValue
+                                              ..id = functions
+                                                  .convertStringToHyphenatedLowerCase(
+                                                      _model.dropDownValue!),
+                                          ),
+                                      );
+                                    });
                                   },
-                                  child: FaIcon(
-                                    FontAwesomeIcons.trashAlt,
-                                    color: FlutterFlowTheme.of(context).error,
-                                    size: 20.0,
+                                  width: 300.0,
+                                  height: 50.0,
+                                  searchHintTextStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  searchTextStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  hintText: FFLocalizations.of(context).getText(
+                                    '8wquxxn7' /* Select Exercise... */,
+                                  ),
+                                  searchHintText:
+                                      FFLocalizations.of(context).getText(
+                                    '37csumcw' /* Search for an exercise... */,
+                                  ),
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 4.0, 16.0, 4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: true,
+                                  isMultiSelect: false,
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.95, -0.74),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await actions.deleteExerciseFromWorkout(
+                                          widget.programId!.id,
+                                          FFAppState()
+                                              .editProgramSelectedWeekIndex,
+                                          FFAppState()
+                                              .editProgramSelectedDayIndex,
+                                          widget.index!,
+                                        );
+                                      },
+                                      child: FaIcon(
+                                        FontAwesomeIcons.trashAlt,
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        size: 20.0,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -879,6 +891,69 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
+                                        'j74fv2fh' /* Drop Set */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue1 ??=
+                                            widget.isSuperset!,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model.checkboxValue1 =
+                                              newValue!);
+                                          if (newValue!) {
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateEditProgramSelectedDayStruct(
+                                                (e) => e
+                                                  ..updateExercises(
+                                                    (e) => e[widget.index!]
+                                                      ..isDropset = true,
+                                                  ),
+                                              );
+                                            });
+                                          } else {
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateEditProgramSelectedDayStruct(
+                                                (e) => e
+                                                  ..updateExercises(
+                                                    (e) => e[widget.index!]
+                                                      ..isDropset = false,
+                                                  ),
+                                              );
+                                            });
+                                          }
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .accent2,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
                                         '7p63f6nf' /* Super Set */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -899,11 +974,11 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                             FlutterFlowTheme.of(context).error,
                                       ),
                                       child: Checkbox(
-                                        value: _model.checkboxValue ??=
+                                        value: _model.checkboxValue2 ??=
                                             widget.isSuperset!,
                                         onChanged: (newValue) async {
-                                          setState(() =>
-                                              _model.checkboxValue = newValue!);
+                                          setState(() => _model.checkboxValue2 =
+                                              newValue!);
                                           if (newValue!) {
                                             setState(() {
                                               FFAppState()
@@ -937,7 +1012,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     ),
                                   ],
                                 ),
-                                if (_model.checkboxValue ?? true)
+                                if (_model.checkboxValue2 ?? true)
                                   Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [

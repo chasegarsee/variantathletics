@@ -19,13 +19,13 @@ export 'add_workout_model.dart';
 
 class AddWorkoutWidget extends StatefulWidget {
   const AddWorkoutWidget({
-    Key? key,
+    super.key,
     required this.programRef,
     required this.weekIndex,
     required this.dayIndex,
     required this.weekId,
     required this.programId,
-  }) : super(key: key);
+  });
 
   final DocumentReference? programRef;
   final int? weekIndex;
@@ -34,7 +34,7 @@ class AddWorkoutWidget extends StatefulWidget {
   final String? programId;
 
   @override
-  _AddWorkoutWidgetState createState() => _AddWorkoutWidgetState();
+  State<AddWorkoutWidget> createState() => _AddWorkoutWidgetState();
 }
 
 class _AddWorkoutWidgetState extends State<AddWorkoutWidget> {

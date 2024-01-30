@@ -10,10 +10,10 @@ import 'kg_input_model.dart';
 export 'kg_input_model.dart';
 
 class KgInputWidget extends StatefulWidget {
-  const KgInputWidget({Key? key}) : super(key: key);
+  const KgInputWidget({super.key});
 
   @override
-  _KgInputWidgetState createState() => _KgInputWidgetState();
+  State<KgInputWidget> createState() => _KgInputWidgetState();
 }
 
 class _KgInputWidgetState extends State<KgInputWidget> {

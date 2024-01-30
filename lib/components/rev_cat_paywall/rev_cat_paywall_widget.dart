@@ -19,14 +19,14 @@ export 'rev_cat_paywall_model.dart';
 
 class RevCatPaywallWidget extends StatefulWidget {
   const RevCatPaywallWidget({
-    Key? key,
+    super.key,
     this.navigateTo,
-  }) : super(key: key);
+  });
 
   final String? navigateTo;
 
   @override
-  _RevCatPaywallWidgetState createState() => _RevCatPaywallWidgetState();
+  State<RevCatPaywallWidget> createState() => _RevCatPaywallWidgetState();
 }
 
 class _RevCatPaywallWidgetState extends State<RevCatPaywallWidget> {

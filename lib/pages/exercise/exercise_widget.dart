@@ -12,16 +12,16 @@ export 'exercise_model.dart';
 
 class ExerciseWidget extends StatefulWidget {
   const ExerciseWidget({
-    Key? key,
+    super.key,
     required this.exerciseId,
     required this.exercise,
-  }) : super(key: key);
+  });
 
   final String? exerciseId;
   final String? exercise;
 
   @override
-  _ExerciseWidgetState createState() => _ExerciseWidgetState();
+  State<ExerciseWidget> createState() => _ExerciseWidgetState();
 }
 
 class _ExerciseWidgetState extends State<ExerciseWidget> {

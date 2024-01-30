@@ -15,10 +15,10 @@ import 'endurance_center_model.dart';
 export 'endurance_center_model.dart';
 
 class EnduranceCenterWidget extends StatefulWidget {
-  const EnduranceCenterWidget({Key? key}) : super(key: key);
+  const EnduranceCenterWidget({super.key});
 
   @override
-  _EnduranceCenterWidgetState createState() => _EnduranceCenterWidgetState();
+  State<EnduranceCenterWidget> createState() => _EnduranceCenterWidgetState();
 }
 
 class _EnduranceCenterWidgetState extends State<EnduranceCenterWidget> {

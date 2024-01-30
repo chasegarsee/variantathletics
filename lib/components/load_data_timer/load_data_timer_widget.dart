@@ -11,10 +11,10 @@ import 'load_data_timer_model.dart';
 export 'load_data_timer_model.dart';
 
 class LoadDataTimerWidget extends StatefulWidget {
-  const LoadDataTimerWidget({Key? key}) : super(key: key);
+  const LoadDataTimerWidget({super.key});
 
   @override
-  _LoadDataTimerWidgetState createState() => _LoadDataTimerWidgetState();
+  State<LoadDataTimerWidget> createState() => _LoadDataTimerWidgetState();
 }
 
 class _LoadDataTimerWidgetState extends State<LoadDataTimerWidget> {

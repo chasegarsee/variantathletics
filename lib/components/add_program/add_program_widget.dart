@@ -17,10 +17,10 @@ import 'add_program_model.dart';
 export 'add_program_model.dart';
 
 class AddProgramWidget extends StatefulWidget {
-  const AddProgramWidget({Key? key}) : super(key: key);
+  const AddProgramWidget({super.key});
 
   @override
-  _AddProgramWidgetState createState() => _AddProgramWidgetState();
+  State<AddProgramWidget> createState() => _AddProgramWidgetState();
 }
 
 class _AddProgramWidgetState extends State<AddProgramWidget> {

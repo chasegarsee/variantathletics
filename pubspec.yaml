@@ -37,6 +37,7 @@ dependencies:
   cloud_functions: 4.5.8
   cloud_functions_platform_interface: 5.5.11
   cloud_functions_web: 4.6.11
+  collection: 1.17.2
   device_info_plus: 9.1.0
   device_info_plus_platform_interface: 7.0.0
   dropdown_button2: 2.3.9

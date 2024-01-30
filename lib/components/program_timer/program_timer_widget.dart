@@ -17,16 +17,16 @@ export 'program_timer_model.dart';
 
 class ProgramTimerWidget extends StatefulWidget {
   const ProgramTimerWidget({
-    Key? key,
+    super.key,
     required this.resetCountUpTimer,
     required this.resetCountDownTimer,
-  }) : super(key: key);
+  });
 
-  final Future<dynamic> Function()? resetCountUpTimer;
-  final Future<dynamic> Function()? resetCountDownTimer;
+  final Future Function()? resetCountUpTimer;
+  final Future Function()? resetCountDownTimer;
 
   @override
-  _ProgramTimerWidgetState createState() => _ProgramTimerWidgetState();
+  State<ProgramTimerWidget> createState() => _ProgramTimerWidgetState();
 }
 
 class _ProgramTimerWidgetState extends State<ProgramTimerWidget> {

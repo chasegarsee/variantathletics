@@ -14,13 +14,13 @@ export 'edit_program_day_model.dart';
 
 class EditProgramDayWidget extends StatefulWidget {
   const EditProgramDayWidget({
-    Key? key,
+    super.key,
     required this.name,
     this.date,
     required this.day,
     required this.dayIndex,
     required this.program,
-  }) : super(key: key);
+  });
 
   final String? name;
   final DateTime? date;
@@ -29,7 +29,7 @@ class EditProgramDayWidget extends StatefulWidget {
   final ProgramsRecord? program;
 
   @override
-  _EditProgramDayWidgetState createState() => _EditProgramDayWidgetState();
+  State<EditProgramDayWidget> createState() => _EditProgramDayWidgetState();
 }
 
 class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {

@@ -72,7 +72,9 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
   // State field(s) for Checkbox widget.
-  bool? checkboxValue;
+  bool? checkboxValue1;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue2;
 
   /// Initialization and disposal methods.
 

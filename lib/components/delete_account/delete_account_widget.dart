@@ -13,10 +13,10 @@ import 'delete_account_model.dart';
 export 'delete_account_model.dart';
 
 class DeleteAccountWidget extends StatefulWidget {
-  const DeleteAccountWidget({Key? key}) : super(key: key);
+  const DeleteAccountWidget({super.key});
 
   @override
-  _DeleteAccountWidgetState createState() => _DeleteAccountWidgetState();
+  State<DeleteAccountWidget> createState() => _DeleteAccountWidgetState();
 }
 
 class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {

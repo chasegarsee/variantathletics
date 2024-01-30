@@ -14,10 +14,10 @@ import 'info_model.dart';
 export 'info_model.dart';
 
 class InfoWidget extends StatefulWidget {
-  const InfoWidget({Key? key}) : super(key: key);
+  const InfoWidget({super.key});
 
   @override
-  _InfoWidgetState createState() => _InfoWidgetState();
+  State<InfoWidget> createState() => _InfoWidgetState();
 }
 
 class _InfoWidgetState extends State<InfoWidget> {

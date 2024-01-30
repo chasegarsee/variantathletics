@@ -30,15 +30,14 @@ export 'program_model.dart';
 
 class ProgramWidget extends StatefulWidget {
   const ProgramWidget({
-    Key? key,
+    super.key,
     bool? isFromTimer,
-  })  : this.isFromTimer = isFromTimer ?? false,
-        super(key: key);
+  }) : this.isFromTimer = isFromTimer ?? false;
 
   final bool isFromTimer;
 
   @override
-  _ProgramWidgetState createState() => _ProgramWidgetState();
+  State<ProgramWidget> createState() => _ProgramWidgetState();
 }
 
 class _ProgramWidgetState extends State<ProgramWidget> {
@@ -2182,6 +2181,96 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                           ),
                                                         ),
                                                       ),
+                                                    if (exerciseListItem
+                                                        .isDropset)
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.0, 1.0),
+                                                        child: Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          elevation: 10.0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      8.0),
+                                                            ),
+                                                          ),
+                                                          child: Container(
+                                                            width: 75.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent2,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        8.0),
+                                                              ),
+                                                            ),
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            3.0,
+                                                                            0.0,
+                                                                            3.0),
+                                                                child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'rrymb317' /* Drop Set */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Jost',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
                                                   ],
                                                 ),
                                               ),
@@ -2497,7 +2586,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   ),
                                 });
                                 if (FFAppState().leaveComments) {
-                                  showModalBottomSheet(
+                                  await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
                                     enableDrag: false,
@@ -2522,13 +2611,18 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                               workoutId:
                                                   FFAppState().selectedDayId,
                                               displayName:
-                                                  currentUserDisplayName,
+                                                  valueOrDefault<String>(
+                                                currentUserDisplayName,
+                                                '-',
+                                              ),
                                             ),
                                           ),
                                         ),
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));
+
+                                  return;
                                 } else {
                                   return;
                                 }

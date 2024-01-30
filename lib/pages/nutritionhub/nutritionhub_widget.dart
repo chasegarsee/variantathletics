@@ -16,10 +16,10 @@ import 'nutritionhub_model.dart';
 export 'nutritionhub_model.dart';
 
 class NutritionhubWidget extends StatefulWidget {
-  const NutritionhubWidget({Key? key}) : super(key: key);
+  const NutritionhubWidget({super.key});
 
   @override
-  _NutritionhubWidgetState createState() => _NutritionhubWidgetState();
+  State<NutritionhubWidget> createState() => _NutritionhubWidgetState();
 }
 
 class _NutritionhubWidgetState extends State<NutritionhubWidget> {

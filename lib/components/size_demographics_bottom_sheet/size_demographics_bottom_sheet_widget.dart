@@ -20,10 +20,10 @@ import 'size_demographics_bottom_sheet_model.dart';
 export 'size_demographics_bottom_sheet_model.dart';
 
 class SizeDemographicsBottomSheetWidget extends StatefulWidget {
-  const SizeDemographicsBottomSheetWidget({Key? key}) : super(key: key);
+  const SizeDemographicsBottomSheetWidget({super.key});
 
   @override
-  _SizeDemographicsBottomSheetWidgetState createState() =>
+  State<SizeDemographicsBottomSheetWidget> createState() =>
       _SizeDemographicsBottomSheetWidgetState();
 }
 

@@ -17,14 +17,14 @@ export 'edit_workout_model.dart';
 
 class EditWorkoutWidget extends StatefulWidget {
   const EditWorkoutWidget({
-    Key? key,
+    super.key,
     required this.program,
-  }) : super(key: key);
+  });
 
   final ProgramsRecord? program;
 
   @override
-  _EditWorkoutWidgetState createState() => _EditWorkoutWidgetState();
+  State<EditWorkoutWidget> createState() => _EditWorkoutWidgetState();
 }
 
 class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
@@ -198,6 +198,7 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                                 exercisesItem.supersetId,
                                 '-',
                               ),
+                              isDropset: exercisesItem.isDropset,
                             ),
                           );
                         }),

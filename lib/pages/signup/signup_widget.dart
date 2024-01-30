@@ -15,10 +15,10 @@ import 'signup_model.dart';
 export 'signup_model.dart';
 
 class SignupWidget extends StatefulWidget {
-  const SignupWidget({Key? key}) : super(key: key);
+  const SignupWidget({super.key});
 
   @override
-  _SignupWidgetState createState() => _SignupWidgetState();
+  State<SignupWidget> createState() => _SignupWidgetState();
 }
 
 class _SignupWidgetState extends State<SignupWidget> {

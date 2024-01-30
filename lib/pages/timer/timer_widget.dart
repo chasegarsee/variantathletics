@@ -19,15 +19,14 @@ export 'timer_model.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({
-    Key? key,
+    super.key,
     bool? isFromProgram,
-  })  : this.isFromProgram = isFromProgram ?? false,
-        super(key: key);
+  }) : this.isFromProgram = isFromProgram ?? false;
 
   final bool isFromProgram;
 
   @override
-  _TimerWidgetState createState() => _TimerWidgetState();
+  State<TimerWidget> createState() => _TimerWidgetState();
 }
 
 class _TimerWidgetState extends State<TimerWidget> {

@@ -23,10 +23,10 @@ import 'message_center_model.dart';
 export 'message_center_model.dart';
 
 class MessageCenterWidget extends StatefulWidget {
-  const MessageCenterWidget({Key? key}) : super(key: key);
+  const MessageCenterWidget({super.key});
 
   @override
-  _MessageCenterWidgetState createState() => _MessageCenterWidgetState();
+  State<MessageCenterWidget> createState() => _MessageCenterWidgetState();
 }
 
 class _MessageCenterWidgetState extends State<MessageCenterWidget> {

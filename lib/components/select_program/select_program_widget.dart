@@ -18,10 +18,10 @@ import 'select_program_model.dart';
 export 'select_program_model.dart';
 
 class SelectProgramWidget extends StatefulWidget {
-  const SelectProgramWidget({Key? key}) : super(key: key);
+  const SelectProgramWidget({super.key});
 
   @override
-  _SelectProgramWidgetState createState() => _SelectProgramWidgetState();
+  State<SelectProgramWidget> createState() => _SelectProgramWidgetState();
 }
 
 class _SelectProgramWidgetState extends State<SelectProgramWidget> {

@@ -11,14 +11,14 @@ export 'pdf_viewer_model.dart';
 
 class PdfViewerWidget extends StatefulWidget {
   const PdfViewerWidget({
-    Key? key,
+    super.key,
     required this.pdfPath,
-  }) : super(key: key);
+  });
 
   final String? pdfPath;
 
   @override
-  _PdfViewerWidgetState createState() => _PdfViewerWidgetState();
+  State<PdfViewerWidget> createState() => _PdfViewerWidgetState();
 }
 
 class _PdfViewerWidgetState extends State<PdfViewerWidget> {
