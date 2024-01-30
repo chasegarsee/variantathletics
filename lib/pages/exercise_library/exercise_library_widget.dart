@@ -738,7 +738,7 @@ class _ExerciseLibraryWidgetState extends State<ExerciseLibraryWidget> {
                       ],
                     ),
                   ),
-                  if (true)
+                  if (false)
                     InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
