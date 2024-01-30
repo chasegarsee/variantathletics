@@ -298,25 +298,28 @@ class _KnowledgeHubWidgetState extends State<KnowledgeHubWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 12.0, 24.0, 12.0),
-                                                child: Text(
-                                                  functions
-                                                      .formatPDFName(pdfItem),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily: 'Jost',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent2,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(24.0, 12.0,
+                                                          24.0, 12.0),
+                                                  child: Text(
+                                                    functions
+                                                        .formatPDFName(pdfItem),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleMedium
+                                                        .override(
+                                                          fontFamily: 'Jost',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent2,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
                                                 ),
                                               ),
                                             ],
