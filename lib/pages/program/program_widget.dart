@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -2575,16 +2576,19 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                   FFAppState().addToCompletedDays(
                                       FFAppState().selectedDayId);
                                 });
-
-                                await currentUserReference!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'completedWorkouts':
-                                          FieldValue.arrayUnion(
-                                              [FFAppState().selectedDayId]),
-                                    },
-                                  ),
-                                });
+                                unawaited(
+                                  () async {
+                                    await currentUserReference!.update({
+                                      ...mapToFirestore(
+                                        {
+                                          'completedWorkouts':
+                                              FieldValue.arrayUnion(
+                                                  [FFAppState().selectedDayId]),
+                                        },
+                                      ),
+                                    });
+                                  }(),
+                                );
                                 if (FFAppState().leaveComments) {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,

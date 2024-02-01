@@ -179,7 +179,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                       );
                                     });
                                   },
-                                  width: 300.0,
+                                  width: 200.0,
                                   height: 50.0,
                                   searchHintTextStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
@@ -949,69 +949,73 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     ),
                                   ],
                                 ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        '7p63f6nf' /* Super Set */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Theme(
-                                      data: ThemeData(
-                                        checkboxTheme: CheckboxThemeData(
-                                          visualDensity: VisualDensity.compact,
-                                          materialTapTargetSize:
-                                              MaterialTapTargetSize.shrinkWrap,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(4.0),
-                                          ),
+                                if (!widget.isDropset!)
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '7p63f6nf' /* Super Set */,
                                         ),
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context).error,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
                                       ),
-                                      child: Checkbox(
-                                        value: _model.checkboxValue2 ??=
-                                            widget.isSuperset!,
-                                        onChanged: (newValue) async {
-                                          setState(() => _model.checkboxValue2 =
-                                              newValue!);
-                                          if (newValue!) {
-                                            setState(() {
-                                              FFAppState()
-                                                  .updateEditProgramSelectedDayStruct(
-                                                (e) => e
-                                                  ..updateExercises(
-                                                    (e) => e[widget.index!]
-                                                      ..isSuperset = true,
-                                                  ),
-                                              );
-                                            });
-                                          } else {
-                                            setState(() {
-                                              FFAppState()
-                                                  .updateEditProgramSelectedDayStruct(
-                                                (e) => e
-                                                  ..updateExercises(
-                                                    (e) => e[widget.index!]
-                                                      ..isSuperset = false,
-                                                  ),
-                                              );
-                                            });
-                                          }
-                                        },
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent2,
-                                        checkColor:
-                                            FlutterFlowTheme.of(context).info,
+                                      Theme(
+                                        data: ThemeData(
+                                          checkboxTheme: CheckboxThemeData(
+                                            visualDensity:
+                                                VisualDensity.compact,
+                                            materialTapTargetSize:
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(4.0),
+                                            ),
+                                          ),
+                                          unselectedWidgetColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                        child: Checkbox(
+                                          value: _model.checkboxValue2 ??=
+                                              widget.isSuperset!,
+                                          onChanged: (newValue) async {
+                                            setState(() => _model
+                                                .checkboxValue2 = newValue!);
+                                            if (newValue!) {
+                                              setState(() {
+                                                FFAppState()
+                                                    .updateEditProgramSelectedDayStruct(
+                                                  (e) => e
+                                                    ..updateExercises(
+                                                      (e) => e[widget.index!]
+                                                        ..isSuperset = true,
+                                                    ),
+                                                );
+                                              });
+                                            } else {
+                                              setState(() {
+                                                FFAppState()
+                                                    .updateEditProgramSelectedDayStruct(
+                                                  (e) => e
+                                                    ..updateExercises(
+                                                      (e) => e[widget.index!]
+                                                        ..isSuperset = false,
+                                                    ),
+                                                );
+                                              });
+                                            }
+                                          },
+                                          activeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent2,
+                                          checkColor:
+                                              FlutterFlowTheme.of(context).info,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
                                 if (_model.checkboxValue2 ?? true)
                                   Column(
                                     mainAxisSize: MainAxisSize.max,
