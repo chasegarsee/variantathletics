@@ -434,6 +434,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Rest Time',
       'th': 'เวลาพัก',
     },
+    'v7qcf3qc': {
+      'en': 'Notes',
+      'th': 'คำแนะนำ',
+    },
     'di4t2jeu': {
       'en': 'Complete Workout',
       'th': 'เล่นเสร็จแล้ว',
@@ -1236,6 +1240,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ag10mm7l': {
       'en': 'Rest Time',
+      'th': '',
+    },
+    'lp729soj': {
+      'en': 'sets',
       'th': '',
     },
     'j74fv2fh': {

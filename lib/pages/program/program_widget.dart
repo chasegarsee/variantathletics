@@ -2550,6 +2550,52 @@ class _ProgramWidgetState extends State<ProgramWidget> {
                                                         ],
                                                       ),
                                                     ),
+                                                    if (exerciseListItem
+                                                                .notes !=
+                                                            null &&
+                                                        exerciseListItem
+                                                                .notes !=
+                                                            '')
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'v7qcf3qc' /* Notes */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Jost',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent2,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              exerciseListItem
+                                                                  .notes,
+                                                              '-',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                        ],
+                                                      ),
                                                   ],
                                                 ),
                                               ),

@@ -34,6 +34,7 @@ class EditExerciseWidget extends StatefulWidget {
     required this.isSuperset,
     required this.supersetId,
     required this.isDropset,
+    required this.notes,
   });
 
   final String? name;
@@ -47,6 +48,7 @@ class EditExerciseWidget extends StatefulWidget {
   final bool? isSuperset;
   final String? supersetId;
   final bool? isDropset;
+  final String? notes;
 
   @override
   State<EditExerciseWidget> createState() => _EditExerciseWidgetState();
@@ -88,6 +90,9 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
 
     _model.textController5 ??= TextEditingController(text: widget.restTime);
     _model.textFieldFocusNode5 ??= FocusNode();
+
+    _model.textController6 ??= TextEditingController(text: widget.notes);
+    _model.textFieldFocusNode6 ??= FocusNode();
   }
 
   @override
@@ -876,6 +881,119 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                     ),
                                   ],
                                 ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: Container(
+                                          width: 50.0,
+                                          child: TextFormField(
+                                            controller: _model.textController6,
+                                            focusNode:
+                                                _model.textFieldFocusNode6,
+                                            onChanged: (_) =>
+                                                EasyDebounce.debounce(
+                                              '_model.textController6',
+                                              Duration(milliseconds: 500),
+                                              () async {
+                                                setState(() {
+                                                  FFAppState()
+                                                      .updateEditProgramSelectedDayStruct(
+                                                    (e) => e
+                                                      ..updateExercises(
+                                                        (e) => e[widget.index!]
+                                                          ..notes = _model
+                                                              .textController6
+                                                              .text,
+                                                      ),
+                                                  );
+                                                });
+                                              },
+                                            ),
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              isDense: true,
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'lp729soj' /* sets */,
+                                              ),
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Jost',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                      ),
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedBorder:
+                                                  UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                            maxLength: 50,
+                                            maxLengthEnforcement:
+                                                MaxLengthEnforcement.enforced,
+                                            buildCounter: (context,
+                                                    {required currentLength,
+                                                    required isFocused,
+                                                    maxLength}) =>
+                                                null,
+                                            validator: _model
+                                                .textController6Validator
+                                                .asValidator(context),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -894,7 +1012,12 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                         'j74fv2fh' /* Drop Set */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent2,
+                                          ),
                                     ),
                                     Theme(
                                       data: ThemeData(
@@ -912,7 +1035,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                       ),
                                       child: Checkbox(
                                         value: _model.checkboxValue1 ??=
-                                            widget.isSuperset!,
+                                            widget.isDropset!,
                                         onChanged: (newValue) async {
                                           setState(() => _model.checkboxValue1 =
                                               newValue!);
@@ -958,7 +1081,13 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                           '7p63f6nf' /* Super Set */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Jost',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent2,
+                                            ),
                                       ),
                                       Theme(
                                         data: ThemeData(

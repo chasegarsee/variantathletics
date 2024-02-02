@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'dart:ffi';
+
 Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
     DateTime date, int exerciseCount, String weekId) async {
   try {
@@ -44,6 +46,10 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
                   sets: '',
                   tempo: '',
                   workTime: '',
+                  isSuperset: false,
+                  supersetId: '',
+                  isDropset: false,
+                  notes: '',
                 )),
       );
 
@@ -62,6 +68,10 @@ Future<DaysStruct> addDayToWeek(String programId, int weekIndex, String name,
                   'sets': e.sets,
                   'tempo': e.tempo,
                   'workTime': e.workTime,
+                  'isSuperset': e.isSuperset,
+                  'supersetId': e.supersetId,
+                  'isDropset': e.isDropset,
+                  'notes': e.notes,
                 })
             .toList(),
       });

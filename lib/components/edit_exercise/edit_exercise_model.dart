@@ -71,6 +71,10 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode6;
+  TextEditingController? textController6;
+  String? Function(BuildContext, String?)? textController6Validator;
   // State field(s) for Checkbox widget.
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
@@ -95,6 +99,9 @@ class EditExerciseModel extends FlutterFlowModel<EditExerciseWidget> {
 
     textFieldFocusNode5?.dispose();
     textController5?.dispose();
+
+    textFieldFocusNode6?.dispose();
+    textController6?.dispose();
   }
 
   /// Action blocks are added here.

@@ -199,6 +199,7 @@ class _EditWorkoutWidgetState extends State<EditWorkoutWidget> {
                                 '-',
                               ),
                               isDropset: exercisesItem.isDropset,
+                              notes: exercisesItem.notes,
                             ),
                           );
                         }),
