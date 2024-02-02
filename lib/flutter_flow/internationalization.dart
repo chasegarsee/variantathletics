@@ -1243,7 +1243,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     'lp729soj': {
-      'en': 'sets',
+      'en': 'notes',
       'th': '',
     },
     'j74fv2fh': {

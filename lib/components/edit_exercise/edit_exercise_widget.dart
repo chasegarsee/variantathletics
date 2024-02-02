@@ -919,7 +919,7 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                               labelText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'lp729soj' /* sets */,
+                                                'lp729soj' /* notes */,
                                               ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
@@ -977,14 +977,6 @@ class _EditExerciseWidgetState extends State<EditExerciseWidget> {
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
-                                            maxLength: 50,
-                                            maxLengthEnforcement:
-                                                MaxLengthEnforcement.enforced,
-                                            buildCounter: (context,
-                                                    {required currentLength,
-                                                    required isFocused,
-                                                    maxLength}) =>
-                                                null,
                                             validator: _model
                                                 .textController6Validator
                                                 .asValidator(context),
