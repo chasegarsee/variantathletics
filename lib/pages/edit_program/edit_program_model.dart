@@ -35,7 +35,7 @@ class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
   // Models for editProgramDay dynamic component.
   late FlutterFlowDynamicModels<EditProgramDayModel> editProgramDayModels;
   // Stores action output result for [Custom Action - reverseDaysOrder] action in Icon widget.
-  List<DaysStruct>? editProgramDays;
+  List<DaysStruct>? reorderedDays;
 
   /// Initialization and disposal methods.
 

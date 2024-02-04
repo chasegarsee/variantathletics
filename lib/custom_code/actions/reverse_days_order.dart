@@ -11,5 +11,6 @@ import 'package:flutter/material.dart';
 
 Future<List<DaysStruct>> reverseDaysOrder(List<DaysStruct> days) async {
   // Add your function code here!
-  return days.reversed.toList();
+  var reorderedList = days.reversed.toList();
+  return reorderedList;
 }

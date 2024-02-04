@@ -104,12 +104,12 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    _model.editProgramDays = await actions.reverseDaysOrder(
+                    _model.reorderedDays = await actions.reverseDaysOrder(
                       FFAppState().editProgramDays.toList(),
                     );
                     setState(() {
                       FFAppState().editProgramDays =
-                          _model.editProgramDays!.toList().cast<DaysStruct>();
+                          _model.reorderedDays!.toList().cast<DaysStruct>();
                     });
 
                     setState(() {});
