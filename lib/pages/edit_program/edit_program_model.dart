@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'edit_program_widget.dart' show EditProgramWidget;
 import 'package:flutter/material.dart';
@@ -33,6 +34,8 @@ class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
   final unfocusNode = FocusNode();
   // Models for editProgramDay dynamic component.
   late FlutterFlowDynamicModels<EditProgramDayModel> editProgramDayModels;
+  // Stores action output result for [Custom Action - reverseDaysOrder] action in Icon widget.
+  List<DaysStruct>? editProgramDays;
 
   /// Initialization and disposal methods.
 

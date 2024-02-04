@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -93,6 +94,34 @@ class _EditProgramWidgetState extends State<EditProgramWidget> {
                 ),
           ),
           actions: [
+            Visibility(
+              visible: widget.program?.weeks?.length == 1,
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    _model.editProgramDays = await actions.reverseDaysOrder(
+                      FFAppState().editProgramDays.toList(),
+                    );
+                    setState(() {
+                      FFAppState().editProgramDays =
+                          _model.editProgramDays!.toList().cast<DaysStruct>();
+                    });
+
+                    setState(() {});
+                  },
+                  child: Icon(
+                    Icons.swap_vert_sharp,
+                    color: FlutterFlowTheme.of(context).accent2,
+                    size: 40.0,
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
               child: InkWell(

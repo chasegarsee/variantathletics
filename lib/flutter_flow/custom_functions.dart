@@ -493,3 +493,7 @@ List<double> splitLatLng(LatLng latLng) {
   List<double> latLngList = [latLng.latitude, latLng.longitude];
   return latLngList;
 }
+
+List<DaysStruct> reverseList(List<DaysStruct> days) {
+  return days.reversed.toList();
+}
