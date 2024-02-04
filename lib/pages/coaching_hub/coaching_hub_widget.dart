@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_program/add_program_widget.dart';
+import '/components/subbed_users_list/subbed_users_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,7 +10,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,6 +36,16 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CoachingHubModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.users = await queryUsersRecordOnce(
+        queryBuilder: (usersRecord) => usersRecord.where(
+          'isSubbed',
+          isEqualTo: true,
+        ),
+      );
+    });
   }
 
   @override
@@ -182,7 +195,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                   ),
                                   child: Container(
                                     width: double.infinity,
-                                    height: 125.0,
+                                    height: 150.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -325,7 +338,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .spaceEvenly,
+                                                              .spaceBetween,
                                                       children: [
                                                         Column(
                                                           mainAxisSize:
@@ -335,7 +348,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                   .start,
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
-                                                                  .start,
+                                                                  .center,
                                                           children: [
                                                             Text(
                                                               FFLocalizations.of(
@@ -492,6 +505,97 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                             ),
                                                           ],
                                                         ),
+                                                        Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'stn6vrbh' /* For Client */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Jost',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .accent2,
+                                                                  ),
+                                                            ),
+                                                            Theme(
+                                                              data: ThemeData(
+                                                                checkboxTheme:
+                                                                    CheckboxThemeData(
+                                                                  visualDensity:
+                                                                      VisualDensity
+                                                                          .compact,
+                                                                  materialTapTargetSize:
+                                                                      MaterialTapTargetSize
+                                                                          .shrinkWrap,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            4.0),
+                                                                  ),
+                                                                ),
+                                                                unselectedWidgetColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                              ),
+                                                              child: Checkbox(
+                                                                value: _model
+                                                                            .checkboxValueMap3[
+                                                                        programItem] ??=
+                                                                    programItem
+                                                                        .isPersonalTraining,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  setState(() =>
+                                                                      _model.checkboxValueMap3[
+                                                                              programItem] =
+                                                                          newValue!);
+                                                                  if (newValue!) {
+                                                                    await programItem
+                                                                        .reference
+                                                                        .update(
+                                                                            createProgramsRecordData(
+                                                                      isLive:
+                                                                          true,
+                                                                    ));
+                                                                  } else {
+                                                                    await programItem
+                                                                        .reference
+                                                                        .update(
+                                                                            createProgramsRecordData(
+                                                                      isLive:
+                                                                          false,
+                                                                    ));
+                                                                  }
+                                                                },
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .accent2,
+                                                                checkColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ],
                                                     ),
                                                     Row(
@@ -499,7 +603,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .center,
+                                                              .start,
                                                       children: [
                                                         Column(
                                                           mainAxisSize:
@@ -546,6 +650,25 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                             ),
                                                           ],
                                                         ),
+                                                        if (programItem
+                                                            .isPersonalTraining)
+                                                          SubbedUsersListWidget(
+                                                            key: Key(
+                                                                'Keysyx_${programIndex}_of_${program.length}'),
+                                                            selectedUsers:
+                                                                programItem
+                                                                    .clientIds,
+                                                            userIds: _model
+                                                                .users!
+                                                                .map((e) =>
+                                                                    e.uid)
+                                                                .toList(),
+                                                            displayNames: _model
+                                                                .users!
+                                                                .map((e) => e
+                                                                    .displayName)
+                                                                .toList(),
+                                                          ),
                                                       ],
                                                     ),
                                                   ],

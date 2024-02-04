@@ -796,6 +796,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Daily',
       'th': 'เร็พ',
     },
+    'stn6vrbh': {
+      'en': 'For Client',
+      'th': 'เซ็ต',
+    },
     'k9mbpwal': {
       'en': 'Live Date',
       'th': 'เวลาออกแรง',
@@ -1536,6 +1540,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'fzmc01y9': {
       'en': 'Seconds',
       'th': 'วินาที',
+    },
+  },
+  // subbedUsersList
+  {
+    'zitq3jh9': {
+      'en': 'Option 1',
+      'th': '',
+    },
+    'udiawp38': {
+      'en': 'Please select...',
+      'th': '',
+    },
+    'mqbzm6x3': {
+      'en': 'Search for a client',
+      'th': '',
     },
   },
   // Miscellaneous

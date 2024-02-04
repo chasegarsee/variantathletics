@@ -51,6 +51,16 @@ class ProgramsRecord extends FirestoreRecord {
   String get thumbnailURL => _thumbnailURL ?? '';
   bool hasThumbnailURL() => _thumbnailURL != null;
 
+  // "isPersonalTraining" field.
+  bool? _isPersonalTraining;
+  bool get isPersonalTraining => _isPersonalTraining ?? false;
+  bool hasIsPersonalTraining() => _isPersonalTraining != null;
+
+  // "clientIds" field.
+  List<String>? _clientIds;
+  List<String> get clientIds => _clientIds ?? const [];
+  bool hasClientIds() => _clientIds != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _isLive = snapshotData['isLive'] as bool?;
@@ -62,6 +72,8 @@ class ProgramsRecord extends FirestoreRecord {
     _liveDate = snapshotData['liveDate'] as DateTime?;
     _isDaily = snapshotData['isDaily'] as bool?;
     _thumbnailURL = snapshotData['thumbnailURL'] as String?;
+    _isPersonalTraining = snapshotData['isPersonalTraining'] as bool?;
+    _clientIds = getDataList(snapshotData['clientIds']);
   }
 
   static CollectionReference get collection =>
@@ -105,6 +117,7 @@ Map<String, dynamic> createProgramsRecordData({
   DateTime? liveDate,
   bool? isDaily,
   String? thumbnailURL,
+  bool? isPersonalTraining,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -114,6 +127,7 @@ Map<String, dynamic> createProgramsRecordData({
       'liveDate': liveDate,
       'isDaily': isDaily,
       'thumbnailURL': thumbnailURL,
+      'isPersonalTraining': isPersonalTraining,
     }.withoutNulls,
   );
 
@@ -132,7 +146,9 @@ class ProgramsRecordDocumentEquality implements Equality<ProgramsRecord> {
         listEquality.equals(e1?.weeks, e2?.weeks) &&
         e1?.liveDate == e2?.liveDate &&
         e1?.isDaily == e2?.isDaily &&
-        e1?.thumbnailURL == e2?.thumbnailURL;
+        e1?.thumbnailURL == e2?.thumbnailURL &&
+        e1?.isPersonalTraining == e2?.isPersonalTraining &&
+        listEquality.equals(e1?.clientIds, e2?.clientIds);
   }
 
   @override
@@ -143,7 +159,9 @@ class ProgramsRecordDocumentEquality implements Equality<ProgramsRecord> {
         e?.weeks,
         e?.liveDate,
         e?.isDaily,
-        e?.thumbnailURL
+        e?.thumbnailURL,
+        e?.isPersonalTraining,
+        e?.clientIds
       ]);
 
   @override
