@@ -330,7 +330,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                       weekFormat: true,
                                       weekStartsMonday: true,
                                       initialDate: _model.date,
-                                      rowHeight: 64.0,
+                                      rowHeight: 34.0,
                                       onChange:
                                           (DateTimeRange? newSelectedDate) {
                                         setState(() =>
@@ -338,10 +338,18 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                                 newSelectedDate);
                                       },
                                       titleStyle: FlutterFlowTheme.of(context)
-                                          .headlineSmall,
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Jost',
+                                            fontSize: 14.0,
+                                          ),
                                       dayOfWeekStyle:
                                           FlutterFlowTheme.of(context)
-                                              .labelLarge,
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                fontSize: 14.0,
+                                              ),
                                       dateStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                       selectedDateStyle:
@@ -352,10 +360,15 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                fontSize: 14.0,
                                               ),
                                       inactiveDateStyle:
                                           FlutterFlowTheme.of(context)
-                                              .labelMedium,
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                fontSize: 14.0,
+                                              ),
                                       locale: FFLocalizations.of(context)
                                           .languageCode,
                                     ),
