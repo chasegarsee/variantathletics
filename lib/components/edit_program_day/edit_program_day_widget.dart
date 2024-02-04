@@ -297,7 +297,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  if ((widget.date != null) || !_model.editing)
+                                  if ((widget.date != null) && !_model.editing)
                                     Text(
                                       FFLocalizations.of(context).getText(
                                         'pmlti0yk' /* Date */,
@@ -310,7 +310,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                                 .accent2,
                                           ),
                                     ),
-                                  if ((widget.date != null) || !_model.editing)
+                                  if ((widget.date != null) && !_model.editing)
                                     Text(
                                       dateTimeFormat(
                                         'yMMMd',
@@ -321,7 +321,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
-                                  if ((widget.date != null) || _model.editing)
+                                  if ((widget.date != null) && _model.editing)
                                     FlutterFlowCalendar(
                                       color:
                                           FlutterFlowTheme.of(context).accent2,
@@ -329,7 +329,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                           FlutterFlowTheme.of(context).accent2,
                                       weekFormat: true,
                                       weekStartsMonday: true,
-                                      initialDate: _model.date,
+                                      initialDate: widget.date,
                                       rowHeight: 34.0,
                                       onChange:
                                           (DateTimeRange? newSelectedDate) {
