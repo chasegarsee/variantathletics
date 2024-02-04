@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<void> updateDayName(
-    String programId, int weekIndex, int dayIndex, String name) async {
+Future<void> updateDayName(String programId, int weekIndex, int dayIndex,
+    String name, DateTime? date) async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   try {
@@ -36,6 +36,9 @@ Future<void> updateDayName(
         if (dayIndex >= 0 && dayIndex < days.length) {
           // Update the "name" field of the selected day
           days[dayIndex]['name'] = name;
+          if (date != null) {
+            days[dayIndex]['date'] = date;
+          }
 
           // Update the Firestore document
           await programRef.update({'weeks': weeks});

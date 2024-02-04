@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -50,6 +51,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         _model.name = widget.name!;
+        _model.date = widget.date;
       });
     });
 
@@ -83,7 +85,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
               ),
               child: Container(
                 width: double.infinity,
-                height: 100.0,
+                height: 220.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   borderRadius: BorderRadius.circular(8.0),
@@ -92,7 +94,7 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       if (_model.editing)
                         Align(
@@ -111,11 +113,13 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                 FFAppState().editProgramSelectedWeekIndex,
                                 widget.dayIndex!,
                                 _model.textController.text,
+                                _model.calendarSelectedDay?.end,
                               );
                               setState(() {
                                 _model.editing = !_model.editing;
                                 _model.isLoading = false;
                                 _model.name = _model.textController.text;
+                                _model.date = _model.calendarSelectedDay?.end;
                               });
                             },
                             child: Container(
@@ -160,22 +164,143 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                             ),
                           ),
                         ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+                      Align(
+                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.5,
+                          decoration: BoxDecoration(),
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (!_model.editing)
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  if (!_model.editing)
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'qo627wbu' /* Workout Name */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                              ),
+                                        ),
+                                        Text(
+                                          _model.name,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                ],
+                              ),
+                              if (_model.editing)
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 8.0, 0.0),
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.5,
+                                      child: TextFormField(
+                                        controller: _model.textController,
+                                        focusNode: _model.textFieldFocusNode,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'dh4u7a0b' /* Workout Name */,
+                                          ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                              ),
+                                          alignLabelWithHint: true,
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                              ),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        validator: _model
+                                            .textControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if ((widget.date != null) || !_model.editing)
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'qo627wbu' /* Workout Name */,
+                                        'pmlti0yk' /* Date */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -185,165 +310,104 @@ class _EditProgramDayWidgetState extends State<EditProgramDayWidget> {
                                                 .accent2,
                                           ),
                                     ),
+                                  if ((widget.date != null) || !_model.editing)
                                     Text(
-                                      _model.name,
+                                      dateTimeFormat(
+                                        'yMMMd',
+                                        _model.date,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
-                                  ],
-                                ),
-                            ],
-                          ),
-                          if (_model.editing)
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.5,
-                                  child: TextFormField(
-                                    controller: _model.textController,
-                                    focusNode: _model.textFieldFocusNode,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        'dh4u7a0b' /* Workout Name */,
-                                      ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Jost',
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent2,
-                                          ),
-                                      alignLabelWithHint: true,
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Jost',
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent2,
-                                          ),
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
+                                  if ((widget.date != null) || _model.editing)
+                                    FlutterFlowCalendar(
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      iconColor:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      weekFormat: true,
+                                      weekStartsMonday: true,
+                                      initialDate: _model.date,
+                                      rowHeight: 64.0,
+                                      onChange:
+                                          (DateTimeRange? newSelectedDate) {
+                                        setState(() =>
+                                            _model.calendarSelectedDay =
+                                                newSelectedDate);
+                                      },
+                                      titleStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall,
+                                      dayOfWeekStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelLarge,
+                                      dateStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      selectedDateStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Jost',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                      inactiveDateStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelMedium,
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
-                                  ),
-                                ),
+                                ],
                               ),
-                            ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (widget.date != null)
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'pmlti0yk' /* Date */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Jost',
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent2,
-                                      ),
-                                ),
-                              if (widget.date != null)
-                                Text(
-                                  dateTimeFormat(
-                                    'yMMMd',
-                                    widget.date,
-                                    locale: FFLocalizations.of(context)
-                                        .languageCode,
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
                             ],
-                          ),
-                        ],
-                      ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            FFAppState().editProgramSelectedDay = widget.day!;
-                            FFAppState().editProgramSelectedDayIndex =
-                                widget.dayIndex!;
-                          });
-
-                          context.pushNamed(
-                            'editWorkout',
-                            queryParameters: {
-                              'program': serializeParam(
-                                widget.program,
-                                ParamType.Document,
-                              ),
-                            }.withoutNulls,
-                            extra: <String, dynamic>{
-                              'program': widget.program,
-                            },
-                          );
-                        },
-                        child: Container(
-                          width: 75.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Icon(
-                            Icons.keyboard_double_arrow_right_rounded,
-                            color:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? FlutterFlowTheme.of(context).accent1
-                                    : FlutterFlowTheme.of(context).accent2,
-                            size: 36.0,
                           ),
                         ),
                       ),
+                      if (!_model.editing)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              FFAppState().editProgramSelectedDay = widget.day!;
+                              FFAppState().editProgramSelectedDayIndex =
+                                  widget.dayIndex!;
+                            });
+
+                            context.pushNamed(
+                              'editWorkout',
+                              queryParameters: {
+                                'program': serializeParam(
+                                  widget.program,
+                                  ParamType.Document,
+                                ),
+                              }.withoutNulls,
+                              extra: <String, dynamic>{
+                                'program': widget.program,
+                              },
+                            );
+                          },
+                          child: Container(
+                            width: 75.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Icon(
+                              Icons.keyboard_double_arrow_right_rounded,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? FlutterFlowTheme.of(context).accent1
+                                  : FlutterFlowTheme.of(context).accent2,
+                              size: 36.0,
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ),
