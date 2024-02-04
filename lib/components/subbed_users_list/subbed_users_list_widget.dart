@@ -13,9 +13,9 @@ export 'subbed_users_list_model.dart';
 class SubbedUsersListWidget extends StatefulWidget {
   const SubbedUsersListWidget({
     super.key,
-    required this.selectedUsers,
-    required this.userIds,
-    required this.displayNames,
+    this.selectedUsers,
+    this.userIds,
+    this.displayNames,
   });
 
   final List<String>? selectedUsers;
