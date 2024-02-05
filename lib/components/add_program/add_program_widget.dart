@@ -585,6 +585,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                             isDaily: _model.isDailyCheckboxValue,
                             thumbnailURL:
                                 functions.removeToken(_model.uploadedFileUrl),
+                            isPersonalTraining: false,
                           ),
                           ...mapToFirestore(
                             {
@@ -596,6 +597,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                         .convertStringToHyphenatedLowerCase(
                                             _model.textController1.text)!),
                               ),
+                              'clientIds': [currentUserUid],
                             },
                           ),
                         });
@@ -609,6 +611,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                             isDaily: _model.isDailyCheckboxValue,
                             thumbnailURL:
                                 functions.removeToken(_model.uploadedFileUrl),
+                            isPersonalTraining: false,
                           ),
                           ...mapToFirestore(
                             {
@@ -620,6 +623,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                         .convertStringToHyphenatedLowerCase(
                                             _model.textController1.text)!),
                               ),
+                              'clientIds': [currentUserUid],
                             },
                           ),
                         }, programsRecordReference);

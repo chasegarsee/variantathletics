@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,13 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SubbedUsersListModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.selectedUsers = widget.selectedUsers!.toList().cast<String>();
+      });
+    });
   }
 
   @override
@@ -59,7 +67,7 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       multiSelectController: _model.dropDownValueController ??=
           FormFieldController<List<String>>(
               _model.dropDownValue ??= List<String>.from(
-        widget.selectedUsers,
+        _model.selectedUsers,
       )),
       options: List<String>.from(widget.users!.map((e) => e.uid).toList()),
       optionLabels: widget.users!.map((e) => e.displayName).toList(),
@@ -72,7 +80,7 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       searchTextStyle: FlutterFlowTheme.of(context).bodyMedium,
       textStyle: FlutterFlowTheme.of(context).bodyMedium,
       hintText: FFLocalizations.of(context).getText(
-        'udiawp38' /* Please select... */,
+        'udiawp38' /* Select Clients... */,
       ),
       searchHintText: FFLocalizations.of(context).getText(
         'mqbzm6x3' /* Search for a client */,

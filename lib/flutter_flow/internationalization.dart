@@ -1549,7 +1549,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': '',
     },
     'udiawp38': {
-      'en': 'Please select...',
+      'en': 'Select Clients...',
       'th': '',
     },
     'mqbzm6x3': {
