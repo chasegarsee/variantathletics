@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -55,7 +56,15 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       multiSelectController: _model.dropDownValueController ??=
           FormFieldController<List<String>>(
               _model.dropDownValue ??= List<String>.from(
-        widget.selectedUsers,
+        List.generate(
+            random_data.randomInteger(1, 3),
+            (index) => random_data.randomString(
+                  1,
+                  3,
+                  true,
+                  false,
+                  false,
+                )),
       )),
       options: List<String>.from(widget.users!.map((e) => e.uid).toList()),
       optionLabels: widget.users!.map((e) => e.displayName).toList(),
