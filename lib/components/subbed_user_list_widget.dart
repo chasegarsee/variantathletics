@@ -6,32 +6,33 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'subbed_users_list_model.dart';
-export 'subbed_users_list_model.dart';
+import 'subbed_user_list_model.dart';
+export 'subbed_user_list_model.dart';
 
-class SubbedUsersListWidget extends StatefulWidget {
-  const SubbedUsersListWidget({
+class SubbedUserListWidget extends StatefulWidget {
+  const SubbedUserListWidget({
     super.key,
-    required this.selectedUsers,
-    required this.users,
-    required this.program,
+    this.parameter1,
+    this.parameter2,
+    this.parameter3,
+    this.parameter5,
   });
 
-  final List<String>? selectedUsers;
-  final List<UsersRecord>? users;
-  final DocumentReference? program;
+  final List<String>? parameter1;
+  final List<String>? parameter2;
+  final List<String>? parameter3;
+  final DocumentReference? parameter5;
 
   @override
-  State<SubbedUsersListWidget> createState() => _SubbedUsersListWidgetState();
+  State<SubbedUserListWidget> createState() => _SubbedUserListWidgetState();
 }
 
-class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
-  late SubbedUsersListModel _model;
+class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
+  late SubbedUserListModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -42,14 +43,7 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SubbedUsersListModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.selectedUsers = widget.selectedUsers!.toList().cast<String>();
-      });
-    });
+    _model = createModel(context, () => SubbedUserListModel());
   }
 
   @override
@@ -67,27 +61,24 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       multiSelectController: _model.dropDownValueController ??=
           FormFieldController<List<String>>(
               _model.dropDownValue ??= List<String>.from(
-        _model.selectedUsers,
+        widget.parameter3,
       )),
-      options: List<String>.from(widget.users!.map((e) => e.uid).toList()),
-      optionLabels: widget.users!.map((e) => e.displayName).toList(),
-      width: MediaQuery.sizeOf(context).width * 0.45,
+      options: List<String>.from(widget.parameter2!),
+      optionLabels: widget.parameter1!,
+      width: 300.0,
       height: 50.0,
-      searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium.override(
-            fontFamily: 'Jost',
-            color: FlutterFlowTheme.of(context).primaryText,
-          ),
+      searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium,
       searchTextStyle: FlutterFlowTheme.of(context).bodyMedium,
       textStyle: FlutterFlowTheme.of(context).bodyMedium,
       hintText: FFLocalizations.of(context).getText(
-        'udiawp38' /* Select Clients... */,
+        'udiawp38' /* Please select... */,
       ),
       searchHintText: FFLocalizations.of(context).getText(
-        'mqbzm6x3' /* Search for a client */,
+        'my0caze8' /* Search for an item... */,
       ),
       icon: Icon(
         Icons.keyboard_arrow_down_rounded,
-        color: FlutterFlowTheme.of(context).accent2,
+        color: FlutterFlowTheme.of(context).secondaryText,
         size: 24.0,
       ),
       fillColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -102,7 +93,7 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       isMultiSelect: true,
       onMultiSelectChanged: (val) async {
         setState(() => _model.dropDownValue = val);
-        await widget.program!.update({
+        await widget.parameter5!.update({
           ...mapToFirestore(
             {
               'clientIds': _model.dropDownValue,
