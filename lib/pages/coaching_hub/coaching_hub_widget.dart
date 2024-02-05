@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_program/add_program_widget.dart';
-import '/components/subbed_users_list/subbed_users_list_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -716,22 +715,23 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   isOverButton: true,
                                                   isSearchable: true,
                                                   isMultiSelect: true,
-                                                  onMultiSelectChanged: (val) =>
-                                                      setState(() => _model
-                                                              .dropDownValueMap[
-                                                          programItem] = val!),
+                                                  onMultiSelectChanged:
+                                                      (val) async {
+                                                    setState(() => _model
+                                                            .dropDownValueMap[
+                                                        programItem] = val!);
+                                                    await programItem.reference
+                                                        .update({
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'clientIds': _model
+                                                                  .dropDownValueMap[
+                                                              programItem],
+                                                        },
+                                                      ),
+                                                    });
+                                                  },
                                                 ),
-                                                if (programItem
-                                                    .isPersonalTraining)
-                                                  SubbedUsersListWidget(
-                                                    key: Key(
-                                                        'Keysyx_${programIndex}_of_${program.length}'),
-                                                    selectedUsers:
-                                                        programItem.clientIds,
-                                                    users: _model.users!,
-                                                    program:
-                                                        programItem.reference,
-                                                  ),
                                               ].divide(SizedBox(height: 5.0)),
                                             ),
                                           ),
