@@ -67,7 +67,7 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       multiSelectController: _model.dropDownValueController ??=
           FormFieldController<List<String>>(
               _model.dropDownValue ??= List<String>.from(
-        _model.selectedUsers,
+        widget.selectedUsers,
       )),
       options: List<String>.from(widget.users!.map((e) => e.uid).toList()),
       optionLabels: widget.users!.map((e) => e.displayName).toList(),
