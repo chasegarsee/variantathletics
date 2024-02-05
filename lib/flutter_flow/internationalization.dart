@@ -800,10 +800,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'For Clients',
       'th': 'เซ็ต',
     },
-    'k9mbpwal': {
-      'en': 'Live Date',
-      'th': 'เวลาออกแรง',
-    },
     'f1t9l6hs': {
       'en': 'Coaching Hub',
       'th': 'ศูนย์กลางโค้ช',

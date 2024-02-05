@@ -334,22 +334,20 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              1.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 5.0),
-                                                child: Text(
+                                        Expanded(
+                                          child: Container(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
                                                   programItem.name,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -362,142 +360,67 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                 .primaryText,
                                                       ),
                                                 ),
-                                              ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          20.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Flexible(
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
                                                                         10.0,
                                                                         0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'vtqok2xm' /* Live */,
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Jost',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).accent2,
-                                                                          ),
-                                                                    ),
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          Theme(
-                                                                        data:
-                                                                            ThemeData(
-                                                                          checkboxTheme:
-                                                                              CheckboxThemeData(
-                                                                            visualDensity:
-                                                                                VisualDensity.compact,
-                                                                            materialTapTargetSize:
-                                                                                MaterialTapTargetSize.shrinkWrap,
-                                                                            shape:
-                                                                                RoundedRectangleBorder(
-                                                                              borderRadius: BorderRadius.circular(4.0),
-                                                                            ),
-                                                                          ),
-                                                                          unselectedWidgetColor:
-                                                                              FlutterFlowTheme.of(context).error,
-                                                                        ),
-                                                                        child:
-                                                                            Checkbox(
-                                                                          value: _model.checkboxValueMap1[programItem] ??=
-                                                                              programItem.isLive,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            setState(() =>
-                                                                                _model.checkboxValueMap1[programItem] = newValue!);
-                                                                            if (newValue!) {
-                                                                              await programItem.reference.update(createProgramsRecordData(
-                                                                                isLive: true,
-                                                                              ));
-                                                                            } else {
-                                                                              await programItem.reference.update(createProgramsRecordData(
-                                                                                isLive: false,
-                                                                              ));
-                                                                            }
-                                                                          },
-                                                                          activeColor:
-                                                                              FlutterFlowTheme.of(context).accent2,
-                                                                          checkColor:
-                                                                              FlutterFlowTheme.of(context).info,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'd4sspstf' /* Daily */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Jost',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).accent2,
-                                                                        ),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'vtqok2xm' /* Live */,
                                                                   ),
-                                                                  Theme(
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Jost',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent2,
+                                                                      ),
+                                                                ),
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Theme(
                                                                     data:
                                                                         ThemeData(
                                                                       checkboxTheme:
@@ -519,134 +442,136 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                     child:
                                                                         Checkbox(
                                                                       value: _model
-                                                                              .checkboxValueMap2[programItem] ??=
+                                                                              .checkboxValueMap1[programItem] ??=
                                                                           programItem
-                                                                              .isDaily,
-                                                                      onChanged: true
-                                                                          ? null
-                                                                          : (newValue) async {
-                                                                              setState(() => _model.checkboxValueMap2[programItem] = newValue!);
-                                                                            },
+                                                                              .isLive,
+                                                                      onChanged:
+                                                                          (newValue) async {
+                                                                        setState(() =>
+                                                                            _model.checkboxValueMap1[programItem] =
+                                                                                newValue!);
+                                                                        if (newValue!) {
+                                                                          await programItem
+                                                                              .reference
+                                                                              .update(createProgramsRecordData(
+                                                                            isLive:
+                                                                                true,
+                                                                          ));
+                                                                        } else {
+                                                                          await programItem
+                                                                              .reference
+                                                                              .update(createProgramsRecordData(
+                                                                            isLive:
+                                                                                false,
+                                                                          ));
+                                                                        }
+                                                                      },
                                                                       activeColor:
                                                                           FlutterFlowTheme.of(context)
                                                                               .accent2,
-                                                                      checkColor: true
-                                                                          ? programItem.isDaily
-                                                                              ? FlutterFlowTheme.of(context).accent2
-                                                                              : FlutterFlowTheme.of(context).error
-                                                                          : FlutterFlowTheme.of(context).info,
+                                                                      checkColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .info,
                                                                     ),
                                                                   ),
-                                                                ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'd4sspstf' /* Daily */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Jost',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent2,
+                                                                    ),
                                                               ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                              Theme(
+                                                                data: ThemeData(
+                                                                  checkboxTheme:
+                                                                      CheckboxThemeData(
+                                                                    visualDensity:
+                                                                        VisualDensity
+                                                                            .compact,
+                                                                    materialTapTargetSize:
+                                                                        MaterialTapTargetSize
+                                                                            .shrinkWrap,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  unselectedWidgetColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                ),
+                                                                child: Checkbox(
+                                                                  value: _model
+                                                                              .checkboxValueMap2[
+                                                                          programItem] ??=
+                                                                      programItem
+                                                                          .isDaily,
+                                                                  onChanged: true
+                                                                      ? null
+                                                                      : (newValue) async {
+                                                                          setState(() =>
+                                                                              _model.checkboxValueMap2[programItem] = newValue!);
+                                                                        },
+                                                                  activeColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent2,
+                                                                  checkColor: true
+                                                                      ? programItem.isDaily
+                                                                          ? FlutterFlowTheme.of(context).accent2
+                                                                          : FlutterFlowTheme.of(context).error
+                                                                      : FlutterFlowTheme.of(context).info,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
                                                                         10.0,
                                                                         0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'stn6vrbh' /* For Clients */,
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Jost',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).accent2,
-                                                                          ),
-                                                                    ),
-                                                                    Theme(
-                                                                      data:
-                                                                          ThemeData(
-                                                                        checkboxTheme:
-                                                                            CheckboxThemeData(
-                                                                          visualDensity:
-                                                                              VisualDensity.compact,
-                                                                          materialTapTargetSize:
-                                                                              MaterialTapTargetSize.shrinkWrap,
-                                                                          shape:
-                                                                              RoundedRectangleBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(4.0),
-                                                                          ),
-                                                                        ),
-                                                                        unselectedWidgetColor:
-                                                                            FlutterFlowTheme.of(context).error,
-                                                                      ),
-                                                                      child:
-                                                                          Checkbox(
-                                                                        value: _model.checkboxValueMap3[programItem] ??=
-                                                                            programItem.isPersonalTraining,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          setState(() =>
-                                                                              _model.checkboxValueMap3[programItem] = newValue!);
-                                                                          if (newValue!) {
-                                                                            await programItem.reference.update(createProgramsRecordData(
-                                                                              isPersonalTraining: true,
-                                                                            ));
-                                                                          } else {
-                                                                            await programItem.reference.update(createProgramsRecordData(
-                                                                              isPersonalTraining: false,
-                                                                            ));
-                                                                          }
-                                                                        },
-                                                                        activeColor:
-                                                                            FlutterFlowTheme.of(context).accent2,
-                                                                        checkColor:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Column(
+                                                            child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
-                                                                      .max,
+                                                                      .min,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
-                                                                      .start,
+                                                                      .center,
                                                               children: [
                                                                 Text(
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    'k9mbpwal' /* Live Date */,
+                                                                    'stn6vrbh' /* For Clients */,
                                                                   ),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -657,46 +582,83 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                             .accent2,
                                                                       ),
                                                                 ),
-                                                                Text(
-                                                                  dateTimeFormat(
-                                                                    'd/M/y',
-                                                                    programItem
-                                                                        .liveDate!,
-                                                                    locale: FFLocalizations.of(
-                                                                            context)
-                                                                        .languageCode,
+                                                                Theme(
+                                                                  data:
+                                                                      ThemeData(
+                                                                    checkboxTheme:
+                                                                        CheckboxThemeData(
+                                                                      visualDensity:
+                                                                          VisualDensity
+                                                                              .compact,
+                                                                      materialTapTargetSize:
+                                                                          MaterialTapTargetSize
+                                                                              .shrinkWrap,
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    unselectedWidgetColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .error,
                                                                   ),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
+                                                                  child:
+                                                                      Checkbox(
+                                                                    value: _model
+                                                                            .checkboxValueMap3[programItem] ??=
+                                                                        programItem
+                                                                            .isPersonalTraining,
+                                                                    onChanged:
+                                                                        (newValue) async {
+                                                                      setState(() =>
+                                                                          _model.checkboxValueMap3[programItem] =
+                                                                              newValue!);
+                                                                      if (newValue!) {
+                                                                        await programItem
+                                                                            .reference
+                                                                            .update(createProgramsRecordData(
+                                                                          isPersonalTraining:
+                                                                              true,
+                                                                        ));
+                                                                      } else {
+                                                                        await programItem
+                                                                            .reference
+                                                                            .update(createProgramsRecordData(
+                                                                          isPersonalTraining:
+                                                                              false,
+                                                                        ));
+                                                                      }
+                                                                    },
+                                                                    activeColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .accent2,
+                                                                    checkColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
-                                                            if (programItem
-                                                                .isPersonalTraining)
-                                                              SubbedUsersListWidget(
-                                                                key: Key(
-                                                                    'Keysyx_${programIndex}_of_${program.length}'),
-                                                                selectedUsers:
-                                                                    programItem
-                                                                        .clientIds,
-                                                                users: _model
-                                                                    .users!,
-                                                                program:
-                                                                    programItem
-                                                                        .reference,
-                                                              ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            ],
+                                                if (programItem
+                                                    .isPersonalTraining)
+                                                  SubbedUsersListWidget(
+                                                    key: Key(
+                                                        'Keysyx_${programIndex}_of_${program.length}'),
+                                                    selectedUsers:
+                                                        programItem.clientIds,
+                                                    users: _model.users!,
+                                                    program:
+                                                        programItem.reference,
+                                                  ),
+                                              ].divide(SizedBox(height: 5.0)),
+                                            ),
                                           ),
                                         ),
                                       ],
