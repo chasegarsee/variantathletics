@@ -10,48 +10,42 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class UserStruct extends FFFirebaseStruct {
   UserStruct({
-    String? coachUid,
-    DateTime? createdTime,
-    String? displayName,
     String? email,
-    bool? isCoach,
+    String? displayName,
+    String? photoUrl,
     String? uid,
-    List<String>? completedWorkouts,
-    String? favoriteCoach,
+    DateTime? createdTime,
+    bool? isCoach,
+    String? phoneNumber,
+    String? coachUid,
+    String? currentProgramId,
     bool? isSubbed,
+    UserDemographicsStruct? demographics,
     String? currentProgram,
     List<WeightHistoryStruct>? weightHistory,
+    MacrosStruct? macros,
+    int? readMessages,
+    String? favoriteCoach,
+    List<String>? completedWorkouts,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _coachUid = coachUid,
-        _createdTime = createdTime,
+  })  : _email = email,
         _displayName = displayName,
-        _email = email,
-        _isCoach = isCoach,
+        _photoUrl = photoUrl,
         _uid = uid,
-        _completedWorkouts = completedWorkouts,
-        _favoriteCoach = favoriteCoach,
+        _createdTime = createdTime,
+        _isCoach = isCoach,
+        _phoneNumber = phoneNumber,
+        _coachUid = coachUid,
+        _currentProgramId = currentProgramId,
         _isSubbed = isSubbed,
+        _demographics = demographics,
         _currentProgram = currentProgram,
         _weightHistory = weightHistory,
+        _macros = macros,
+        _readMessages = readMessages,
+        _favoriteCoach = favoriteCoach,
+        _completedWorkouts = completedWorkouts,
         super(firestoreUtilData);
-
-  // "coachUid" field.
-  String? _coachUid;
-  String get coachUid => _coachUid ?? '';
-  set coachUid(String? val) => _coachUid = val;
-  bool hasCoachUid() => _coachUid != null;
-
-  // "created_time" field.
-  DateTime? _createdTime;
-  DateTime? get createdTime => _createdTime;
-  set createdTime(DateTime? val) => _createdTime = val;
-  bool hasCreatedTime() => _createdTime != null;
-
-  // "display_name" field.
-  String? _displayName;
-  String get displayName => _displayName ?? '';
-  set displayName(String? val) => _displayName = val;
-  bool hasDisplayName() => _displayName != null;
 
   // "email" field.
   String? _email;
@@ -59,11 +53,17 @@ class UserStruct extends FFFirebaseStruct {
   set email(String? val) => _email = val;
   bool hasEmail() => _email != null;
 
-  // "isCoach" field.
-  bool? _isCoach;
-  bool get isCoach => _isCoach ?? false;
-  set isCoach(bool? val) => _isCoach = val;
-  bool hasIsCoach() => _isCoach != null;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  set displayName(String? val) => _displayName = val;
+  bool hasDisplayName() => _displayName != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  set photoUrl(String? val) => _photoUrl = val;
+  bool hasPhotoUrl() => _photoUrl != null;
 
   // "uid" field.
   String? _uid;
@@ -71,25 +71,50 @@ class UserStruct extends FFFirebaseStruct {
   set uid(String? val) => _uid = val;
   bool hasUid() => _uid != null;
 
-  // "completedWorkouts" field.
-  List<String>? _completedWorkouts;
-  List<String> get completedWorkouts => _completedWorkouts ?? const [];
-  set completedWorkouts(List<String>? val) => _completedWorkouts = val;
-  void updateCompletedWorkouts(Function(List<String>) updateFn) =>
-      updateFn(_completedWorkouts ??= []);
-  bool hasCompletedWorkouts() => _completedWorkouts != null;
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  set createdTime(DateTime? val) => _createdTime = val;
+  bool hasCreatedTime() => _createdTime != null;
 
-  // "favoriteCoach" field.
-  String? _favoriteCoach;
-  String get favoriteCoach => _favoriteCoach ?? '';
-  set favoriteCoach(String? val) => _favoriteCoach = val;
-  bool hasFavoriteCoach() => _favoriteCoach != null;
+  // "isCoach" field.
+  bool? _isCoach;
+  bool get isCoach => _isCoach ?? false;
+  set isCoach(bool? val) => _isCoach = val;
+  bool hasIsCoach() => _isCoach != null;
+
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  set phoneNumber(String? val) => _phoneNumber = val;
+  bool hasPhoneNumber() => _phoneNumber != null;
+
+  // "coachUid" field.
+  String? _coachUid;
+  String get coachUid => _coachUid ?? '';
+  set coachUid(String? val) => _coachUid = val;
+  bool hasCoachUid() => _coachUid != null;
+
+  // "currentProgramId" field.
+  String? _currentProgramId;
+  String get currentProgramId => _currentProgramId ?? '';
+  set currentProgramId(String? val) => _currentProgramId = val;
+  bool hasCurrentProgramId() => _currentProgramId != null;
 
   // "isSubbed" field.
   bool? _isSubbed;
   bool get isSubbed => _isSubbed ?? false;
   set isSubbed(bool? val) => _isSubbed = val;
   bool hasIsSubbed() => _isSubbed != null;
+
+  // "demographics" field.
+  UserDemographicsStruct? _demographics;
+  UserDemographicsStruct get demographics =>
+      _demographics ?? UserDemographicsStruct();
+  set demographics(UserDemographicsStruct? val) => _demographics = val;
+  void updateDemographics(Function(UserDemographicsStruct) updateFn) =>
+      updateFn(_demographics ??= UserDemographicsStruct());
+  bool hasDemographics() => _demographics != null;
 
   // "currentProgram" field.
   String? _currentProgram;
@@ -105,78 +130,127 @@ class UserStruct extends FFFirebaseStruct {
       updateFn(_weightHistory ??= []);
   bool hasWeightHistory() => _weightHistory != null;
 
+  // "macros" field.
+  MacrosStruct? _macros;
+  MacrosStruct get macros => _macros ?? MacrosStruct();
+  set macros(MacrosStruct? val) => _macros = val;
+  void updateMacros(Function(MacrosStruct) updateFn) =>
+      updateFn(_macros ??= MacrosStruct());
+  bool hasMacros() => _macros != null;
+
+  // "readMessages" field.
+  int? _readMessages;
+  int get readMessages => _readMessages ?? 0;
+  set readMessages(int? val) => _readMessages = val;
+  void incrementReadMessages(int amount) =>
+      _readMessages = readMessages + amount;
+  bool hasReadMessages() => _readMessages != null;
+
+  // "favoriteCoach" field.
+  String? _favoriteCoach;
+  String get favoriteCoach => _favoriteCoach ?? '';
+  set favoriteCoach(String? val) => _favoriteCoach = val;
+  bool hasFavoriteCoach() => _favoriteCoach != null;
+
+  // "completedWorkouts" field.
+  List<String>? _completedWorkouts;
+  List<String> get completedWorkouts => _completedWorkouts ?? const [];
+  set completedWorkouts(List<String>? val) => _completedWorkouts = val;
+  void updateCompletedWorkouts(Function(List<String>) updateFn) =>
+      updateFn(_completedWorkouts ??= []);
+  bool hasCompletedWorkouts() => _completedWorkouts != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
-        coachUid: data['coachUid'] as String?,
-        createdTime: data['created_time'] as DateTime?,
-        displayName: data['display_name'] as String?,
         email: data['email'] as String?,
-        isCoach: data['isCoach'] as bool?,
+        displayName: data['display_name'] as String?,
+        photoUrl: data['photo_url'] as String?,
         uid: data['uid'] as String?,
-        completedWorkouts: getDataList(data['completedWorkouts']),
-        favoriteCoach: data['favoriteCoach'] as String?,
+        createdTime: data['created_time'] as DateTime?,
+        isCoach: data['isCoach'] as bool?,
+        phoneNumber: data['phone_number'] as String?,
+        coachUid: data['coachUid'] as String?,
+        currentProgramId: data['currentProgramId'] as String?,
         isSubbed: data['isSubbed'] as bool?,
+        demographics: UserDemographicsStruct.maybeFromMap(data['demographics']),
         currentProgram: data['currentProgram'] as String?,
         weightHistory: getStructList(
           data['weightHistory'],
           WeightHistoryStruct.fromMap,
         ),
+        macros: MacrosStruct.maybeFromMap(data['macros']),
+        readMessages: castToType<int>(data['readMessages']),
+        favoriteCoach: data['favoriteCoach'] as String?,
+        completedWorkouts: getDataList(data['completedWorkouts']),
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
       data is Map ? UserStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
-        'coachUid': _coachUid,
-        'created_time': _createdTime,
-        'display_name': _displayName,
         'email': _email,
-        'isCoach': _isCoach,
+        'display_name': _displayName,
+        'photo_url': _photoUrl,
         'uid': _uid,
-        'completedWorkouts': _completedWorkouts,
-        'favoriteCoach': _favoriteCoach,
+        'created_time': _createdTime,
+        'isCoach': _isCoach,
+        'phone_number': _phoneNumber,
+        'coachUid': _coachUid,
+        'currentProgramId': _currentProgramId,
         'isSubbed': _isSubbed,
+        'demographics': _demographics?.toMap(),
         'currentProgram': _currentProgram,
         'weightHistory': _weightHistory?.map((e) => e.toMap()).toList(),
+        'macros': _macros?.toMap(),
+        'readMessages': _readMessages,
+        'favoriteCoach': _favoriteCoach,
+        'completedWorkouts': _completedWorkouts,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'coachUid': serializeParam(
-          _coachUid,
+        'email': serializeParam(
+          _email,
+          ParamType.String,
+        ),
+        'display_name': serializeParam(
+          _displayName,
+          ParamType.String,
+        ),
+        'photo_url': serializeParam(
+          _photoUrl,
+          ParamType.String,
+        ),
+        'uid': serializeParam(
+          _uid,
           ParamType.String,
         ),
         'created_time': serializeParam(
           _createdTime,
           ParamType.DateTime,
         ),
-        'display_name': serializeParam(
-          _displayName,
-          ParamType.String,
-        ),
-        'email': serializeParam(
-          _email,
-          ParamType.String,
-        ),
         'isCoach': serializeParam(
           _isCoach,
           ParamType.bool,
         ),
-        'uid': serializeParam(
-          _uid,
+        'phone_number': serializeParam(
+          _phoneNumber,
           ParamType.String,
         ),
-        'completedWorkouts': serializeParam(
-          _completedWorkouts,
+        'coachUid': serializeParam(
+          _coachUid,
           ParamType.String,
-          true,
         ),
-        'favoriteCoach': serializeParam(
-          _favoriteCoach,
+        'currentProgramId': serializeParam(
+          _currentProgramId,
           ParamType.String,
         ),
         'isSubbed': serializeParam(
           _isSubbed,
           ParamType.bool,
+        ),
+        'demographics': serializeParam(
+          _demographics,
+          ParamType.DataStruct,
         ),
         'currentProgram': serializeParam(
           _currentProgram,
@@ -187,12 +261,44 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.DataStruct,
           true,
         ),
+        'macros': serializeParam(
+          _macros,
+          ParamType.DataStruct,
+        ),
+        'readMessages': serializeParam(
+          _readMessages,
+          ParamType.int,
+        ),
+        'favoriteCoach': serializeParam(
+          _favoriteCoach,
+          ParamType.String,
+        ),
+        'completedWorkouts': serializeParam(
+          _completedWorkouts,
+          ParamType.String,
+          true,
+        ),
       }.withoutNulls;
 
   static UserStruct fromSerializableMap(Map<String, dynamic> data) =>
       UserStruct(
-        coachUid: deserializeParam(
-          data['coachUid'],
+        email: deserializeParam(
+          data['email'],
+          ParamType.String,
+          false,
+        ),
+        displayName: deserializeParam(
+          data['display_name'],
+          ParamType.String,
+          false,
+        ),
+        photoUrl: deserializeParam(
+          data['photo_url'],
+          ParamType.String,
+          false,
+        ),
+        uid: deserializeParam(
+          data['uid'],
           ParamType.String,
           false,
         ),
@@ -201,33 +307,23 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
-        displayName: deserializeParam(
-          data['display_name'],
-          ParamType.String,
-          false,
-        ),
-        email: deserializeParam(
-          data['email'],
-          ParamType.String,
-          false,
-        ),
         isCoach: deserializeParam(
           data['isCoach'],
           ParamType.bool,
           false,
         ),
-        uid: deserializeParam(
-          data['uid'],
+        phoneNumber: deserializeParam(
+          data['phone_number'],
           ParamType.String,
           false,
         ),
-        completedWorkouts: deserializeParam<String>(
-          data['completedWorkouts'],
+        coachUid: deserializeParam(
+          data['coachUid'],
           ParamType.String,
-          true,
+          false,
         ),
-        favoriteCoach: deserializeParam(
-          data['favoriteCoach'],
+        currentProgramId: deserializeParam(
+          data['currentProgramId'],
           ParamType.String,
           false,
         ),
@@ -235,6 +331,12 @@ class UserStruct extends FFFirebaseStruct {
           data['isSubbed'],
           ParamType.bool,
           false,
+        ),
+        demographics: deserializeStructParam(
+          data['demographics'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: UserDemographicsStruct.fromSerializableMap,
         ),
         currentProgram: deserializeParam(
           data['currentProgram'],
@@ -247,6 +349,27 @@ class UserStruct extends FFFirebaseStruct {
           true,
           structBuilder: WeightHistoryStruct.fromSerializableMap,
         ),
+        macros: deserializeStructParam(
+          data['macros'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: MacrosStruct.fromSerializableMap,
+        ),
+        readMessages: deserializeParam(
+          data['readMessages'],
+          ParamType.int,
+          false,
+        ),
+        favoriteCoach: deserializeParam(
+          data['favoriteCoach'],
+          ParamType.String,
+          false,
+        ),
+        completedWorkouts: deserializeParam<String>(
+          data['completedWorkouts'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -256,60 +379,85 @@ class UserStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     const listEquality = ListEquality();
     return other is UserStruct &&
-        coachUid == other.coachUid &&
-        createdTime == other.createdTime &&
-        displayName == other.displayName &&
         email == other.email &&
-        isCoach == other.isCoach &&
+        displayName == other.displayName &&
+        photoUrl == other.photoUrl &&
         uid == other.uid &&
-        listEquality.equals(completedWorkouts, other.completedWorkouts) &&
-        favoriteCoach == other.favoriteCoach &&
+        createdTime == other.createdTime &&
+        isCoach == other.isCoach &&
+        phoneNumber == other.phoneNumber &&
+        coachUid == other.coachUid &&
+        currentProgramId == other.currentProgramId &&
         isSubbed == other.isSubbed &&
+        demographics == other.demographics &&
         currentProgram == other.currentProgram &&
-        listEquality.equals(weightHistory, other.weightHistory);
+        listEquality.equals(weightHistory, other.weightHistory) &&
+        macros == other.macros &&
+        readMessages == other.readMessages &&
+        favoriteCoach == other.favoriteCoach &&
+        listEquality.equals(completedWorkouts, other.completedWorkouts);
   }
 
   @override
   int get hashCode => const ListEquality().hash([
-        coachUid,
-        createdTime,
-        displayName,
         email,
-        isCoach,
+        displayName,
+        photoUrl,
         uid,
-        completedWorkouts,
-        favoriteCoach,
+        createdTime,
+        isCoach,
+        phoneNumber,
+        coachUid,
+        currentProgramId,
         isSubbed,
+        demographics,
         currentProgram,
-        weightHistory
+        weightHistory,
+        macros,
+        readMessages,
+        favoriteCoach,
+        completedWorkouts
       ]);
 }
 
 UserStruct createUserStruct({
-  String? coachUid,
-  DateTime? createdTime,
-  String? displayName,
   String? email,
-  bool? isCoach,
+  String? displayName,
+  String? photoUrl,
   String? uid,
-  String? favoriteCoach,
+  DateTime? createdTime,
+  bool? isCoach,
+  String? phoneNumber,
+  String? coachUid,
+  String? currentProgramId,
   bool? isSubbed,
+  UserDemographicsStruct? demographics,
   String? currentProgram,
+  MacrosStruct? macros,
+  int? readMessages,
+  String? favoriteCoach,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
   bool delete = false,
 }) =>
     UserStruct(
-      coachUid: coachUid,
-      createdTime: createdTime,
-      displayName: displayName,
       email: email,
-      isCoach: isCoach,
+      displayName: displayName,
+      photoUrl: photoUrl,
       uid: uid,
-      favoriteCoach: favoriteCoach,
+      createdTime: createdTime,
+      isCoach: isCoach,
+      phoneNumber: phoneNumber,
+      coachUid: coachUid,
+      currentProgramId: currentProgramId,
       isSubbed: isSubbed,
+      demographics:
+          demographics ?? (clearUnsetFields ? UserDemographicsStruct() : null),
       currentProgram: currentProgram,
+      macros: macros ?? (clearUnsetFields ? MacrosStruct() : null),
+      readMessages: readMessages,
+      favoriteCoach: favoriteCoach,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -363,6 +511,22 @@ Map<String, dynamic> getUserFirestoreData(
     return {};
   }
   final firestoreData = mapToFirestore(user.toMap());
+
+  // Handle nested data for "demographics" field.
+  addUserDemographicsStructData(
+    firestoreData,
+    user.hasDemographics() ? user.demographics : null,
+    'demographics',
+    forFieldValue,
+  );
+
+  // Handle nested data for "macros" field.
+  addMacrosStructData(
+    firestoreData,
+    user.hasMacros() ? user.macros : null,
+    'macros',
+    forFieldValue,
+  );
 
   // Add any Firestore field values
   user.firestoreUtilData.fieldValues.forEach((k, v) => firestoreData[k] = v);

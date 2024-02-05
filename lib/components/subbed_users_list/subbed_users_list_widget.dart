@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,13 +15,11 @@ class SubbedUsersListWidget extends StatefulWidget {
   const SubbedUsersListWidget({
     super.key,
     this.selectedUsers,
-    this.userIds,
-    this.displayNames,
+    this.users,
   });
 
   final List<String>? selectedUsers;
-  final List<String>? userIds;
-  final List<String>? displayNames;
+  final List<UsersRecord>? users;
 
   @override
   State<SubbedUsersListWidget> createState() => _SubbedUsersListWidgetState();
@@ -58,8 +57,8 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
               _model.dropDownValue ??= List<String>.from(
         widget.selectedUsers,
       )),
-      options: List<String>.from(widget.userIds!),
-      optionLabels: widget.displayNames!,
+      options: List<String>.from(widget.users!.map((e) => e.uid).toList()),
+      optionLabels: widget.users!.map((e) => e.displayName).toList(),
       width: MediaQuery.sizeOf(context).width * 0.35,
       height: 50.0,
       searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium.override(

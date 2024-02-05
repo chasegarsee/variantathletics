@@ -658,16 +658,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                             selectedUsers:
                                                                 programItem
                                                                     .clientIds,
-                                                            userIds: _model
-                                                                .users
-                                                                ?.map((e) =>
-                                                                    e.uid)
-                                                                .toList(),
-                                                            displayNames: _model
-                                                                .users
-                                                                ?.map((e) => e
-                                                                    .displayName)
-                                                                .toList(),
+                                                            users: _model.users,
                                                           ),
                                                       ],
                                                     ),

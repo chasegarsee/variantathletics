@@ -20,6 +20,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class CoachingHubModel extends FlutterFlowModel<CoachingHubWidget> {
+  ///  Local state fields for this page.
+
+  List<UserStruct> somethingUsers = [];
+  void addToSomethingUsers(UserStruct item) => somethingUsers.add(item);
+  void removeFromSomethingUsers(UserStruct item) => somethingUsers.remove(item);
+  void removeAtIndexFromSomethingUsers(int index) =>
+      somethingUsers.removeAt(index);
+  void insertAtIndexInSomethingUsers(int index, UserStruct item) =>
+      somethingUsers.insert(index, item);
+  void updateSomethingUsersAtIndex(int index, Function(UserStruct) updateFn) =>
+      somethingUsers[index] = updateFn(somethingUsers[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
