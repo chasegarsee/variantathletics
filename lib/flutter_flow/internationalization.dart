@@ -797,7 +797,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'เร็พ',
     },
     'stn6vrbh': {
-      'en': 'For Client',
+      'en': 'For Clients',
       'th': 'เซ็ต',
     },
     'k9mbpwal': {

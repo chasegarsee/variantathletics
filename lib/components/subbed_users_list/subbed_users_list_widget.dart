@@ -1,9 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,10 +19,12 @@ class SubbedUsersListWidget extends StatefulWidget {
     super.key,
     required this.selectedUsers,
     required this.users,
+    required this.program,
   });
 
   final List<String>? selectedUsers;
   final List<UsersRecord>? users;
+  final DocumentReference? program;
 
   @override
   State<SubbedUsersListWidget> createState() => _SubbedUsersListWidgetState();
@@ -68,7 +72,7 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       )),
       options: List<String>.from(widget.users!.map((e) => e.uid).toList()),
       optionLabels: widget.users!.map((e) => e.displayName).toList(),
-      width: MediaQuery.sizeOf(context).width * 0.35,
+      width: MediaQuery.sizeOf(context).width * 0.45,
       height: 50.0,
       searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium.override(
             fontFamily: 'Jost',
@@ -97,7 +101,16 @@ class _SubbedUsersListWidgetState extends State<SubbedUsersListWidget> {
       isOverButton: true,
       isSearchable: true,
       isMultiSelect: true,
-      onMultiSelectChanged: (val) => setState(() => _model.dropDownValue = val),
+      onMultiSelectChanged: (val) async {
+        setState(() => _model.dropDownValue = val);
+        await widget.program!.update({
+          ...mapToFirestore(
+            {
+              'clientIds': _model.dropDownValue,
+            },
+          ),
+        });
+      },
     );
   }
 }
