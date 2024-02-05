@@ -800,6 +800,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'For Clients',
       'th': 'เซ็ต',
     },
+    'zitq3jh9': {
+      'en': 'Option 1',
+      'th': '',
+    },
+    'udiawp38': {
+      'en': 'Please select...',
+      'th': '',
+    },
+    'my0caze8': {
+      'en': 'Search for an item...',
+      'th': '',
+    },
     'f1t9l6hs': {
       'en': 'Coaching Hub',
       'th': 'ศูนย์กลางโค้ช',
@@ -1540,11 +1552,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // subbedUsersList
   {
-    'zitq3jh9': {
+    'zyan8r54': {
       'en': 'Option 1',
       'th': '',
     },
-    'udiawp38': {
+    'hjtz91ju': {
       'en': 'Select Clients...',
       'th': '',
     },

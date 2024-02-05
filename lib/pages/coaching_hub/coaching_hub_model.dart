@@ -3,10 +3,12 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_program/add_program_widget.dart';
 import '/components/subbed_users_list/subbed_users_list_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'coaching_hub_widget.dart' show CoachingHubWidget;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -48,6 +50,10 @@ class CoachingHubModel extends FlutterFlowModel<CoachingHubWidget> {
       .where((e) => e.value)
       .map((e) => e.key)
       .toList();
+
+  // State field(s) for DropDown widget.
+  Map<ProgramsRecord?, ProgramsRecord?> dropDownValueMap = {};
+  FormFieldController<List<String>>? dropDownValueController;
 
   /// Initialization and disposal methods.
 

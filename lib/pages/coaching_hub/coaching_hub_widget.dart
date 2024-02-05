@@ -3,10 +3,12 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_program/add_program_widget.dart';
 import '/components/subbed_users_list/subbed_users_list_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -645,6 +647,79 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                       ),
                                                     ),
                                                   ],
+                                                ),
+                                                FlutterFlowDropDown<String>(
+                                                  multiSelectController: _model
+                                                          .dropDownValueController ??=
+                                                      FormFieldController<
+                                                              List<String>>(
+                                                          _model.dropDownValueMap[
+                                                                  programItem] ??=
+                                                              List<String>.from(
+                                                    programItem.clientIds,
+                                                  )),
+                                                  options: List<String>.from(
+                                                      _model.users!
+                                                          .map((e) => e.uid)
+                                                          .toList()),
+                                                  optionLabels: _model.users!
+                                                      .map((e) => e.displayName)
+                                                      .toList(),
+                                                  width: 300.0,
+                                                  height: 50.0,
+                                                  searchHintTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  searchTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium,
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'udiawp38' /* Please select... */,
+                                                  ),
+                                                  searchHintText:
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                    'my0caze8' /* Search for an item... */,
+                                                  ),
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 4.0, 16.0, 4.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: true,
+                                                  isSearchable: true,
+                                                  isMultiSelect: true,
+                                                  onMultiSelectChanged: (val) =>
+                                                      setState(() => _model
+                                                              .dropDownValueMap[
+                                                          programItem] = val!),
                                                 ),
                                                 if (programItem
                                                     .isPersonalTraining)
