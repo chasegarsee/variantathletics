@@ -40,10 +40,15 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.users = await queryUsersRecordOnce(
-        queryBuilder: (usersRecord) => usersRecord.where(
-          'isSubbed',
-          isEqualTo: true,
-        ),
+        queryBuilder: (usersRecord) => usersRecord
+            .where(
+              'isSubbed',
+              isEqualTo: true,
+            )
+            .where(
+              'display_name',
+              isNotEqualTo: null,
+            ),
       );
     });
   }
