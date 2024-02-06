@@ -7,25 +7,12 @@ import '/flutter_flow/form_field_controller.dart';
 import 'subbed_user_list_widget.dart' show SubbedUserListWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SubbedUserListModel extends FlutterFlowModel<SubbedUserListWidget> {
-  ///  Local state fields for this component.
-
-  List<String> programUserIds = ['9Xk2DLPU5KPMOsBj3vYltrignAt1'];
-  void addToProgramUserIds(String item) => programUserIds.add(item);
-  void removeFromProgramUserIds(String item) => programUserIds.remove(item);
-  void removeAtIndexFromProgramUserIds(int index) =>
-      programUserIds.removeAt(index);
-  void insertAtIndexInProgramUserIds(int index, String item) =>
-      programUserIds.insert(index, item);
-  void updateProgramUserIdsAtIndex(int index, Function(String) updateFn) =>
-      programUserIds[index] = updateFn(programUserIds[index]);
-
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for DropDown widget.

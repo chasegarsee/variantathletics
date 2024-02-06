@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,13 +44,6 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SubbedUserListModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.programUserIds = widget.programUserIds!.toList().cast<String>();
-      });
-    });
   }
 
   @override
@@ -69,7 +61,7 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
       multiSelectController: _model.dropDownValueController ??=
           FormFieldController<List<String>>(
               _model.dropDownValue ??= List<String>.from(
-        _model.programUserIds,
+        widget.programUserIds,
       )),
       options: List<String>.from(widget.userIds!),
       optionLabels: widget.displayNames!,
