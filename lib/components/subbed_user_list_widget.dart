@@ -62,14 +62,12 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
           widget.programUserIds != null && (widget.programUserIds)!.isNotEmpty,
       child: FlutterFlowDropDown<String>(
         multiSelectController: _model.dropDownValueController ??=
-            FormFieldController<List<String>>(
-                _model.dropDownValue ??= List<String>.from(
-          widget.programUserIds,
-        )),
+            FormFieldController<List<String>>(null),
         options: List<String>.from(widget.userIds!),
         optionLabels: widget.displayNames!,
         width: 300.0,
         height: 50.0,
+        maxHeight: 200.0,
         searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium,
         searchTextStyle: FlutterFlowTheme.of(context).bodyMedium,
         textStyle: FlutterFlowTheme.of(context).bodyMedium,
