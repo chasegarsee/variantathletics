@@ -650,9 +650,10 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              if (_model.customValueMap[
-                                                      programItem] ??
-                                                  true)
+                                              if (programItem.custom ||
+                                                  (programItem
+                                                          .clientIds.length >=
+                                                      1))
                                                 wrapWithModel(
                                                   model: _model
                                                       .subbedUserListModels
