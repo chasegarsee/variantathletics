@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,16 +17,16 @@ export 'subbed_user_list_model.dart';
 class SubbedUserListWidget extends StatefulWidget {
   const SubbedUserListWidget({
     super.key,
-    this.parameter1,
-    this.parameter2,
-    this.parameter3,
-    this.parameter5,
+    required this.displayNames,
+    required this.userIds,
+    required this.programUserIds,
+    required this.programId,
   });
 
-  final List<String>? parameter1;
-  final List<String>? parameter2;
-  final List<String>? parameter3;
-  final DocumentReference? parameter5;
+  final List<String>? displayNames;
+  final List<String>? userIds;
+  final List<String>? programUserIds;
+  final DocumentReference? programId;
 
   @override
   State<SubbedUserListWidget> createState() => _SubbedUserListWidgetState();
@@ -44,6 +45,13 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SubbedUserListModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.programUserIds = widget.programUserIds!.toList().cast<String>();
+      });
+    });
   }
 
   @override
@@ -61,10 +69,10 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
       multiSelectController: _model.dropDownValueController ??=
           FormFieldController<List<String>>(
               _model.dropDownValue ??= List<String>.from(
-        widget.parameter3,
+        _model.programUserIds,
       )),
-      options: List<String>.from(widget.parameter2!),
-      optionLabels: widget.parameter1!,
+      options: List<String>.from(widget.userIds!),
+      optionLabels: widget.displayNames!,
       width: 300.0,
       height: 50.0,
       searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -93,7 +101,7 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
       isMultiSelect: true,
       onMultiSelectChanged: (val) async {
         setState(() => _model.dropDownValue = val);
-        await widget.parameter5!.update({
+        await widget.programId!.update({
           ...mapToFirestore(
             {
               'clientIds': _model.dropDownValue,

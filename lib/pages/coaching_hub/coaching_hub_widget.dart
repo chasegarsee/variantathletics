@@ -663,16 +663,15 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   key: Key(
                                                     'Key8e6_${programItem.id}',
                                                   ),
-                                                  parameter1: _model.users
-                                                      ?.map(
-                                                          (e) => e.displayName)
+                                                  displayNames: _model.users!
+                                                      .map((e) => e.displayName)
                                                       .toList(),
-                                                  parameter2: _model.users
-                                                      ?.map((e) => e.uid)
+                                                  userIds: _model.users!
+                                                      .map((e) => e.uid)
                                                       .toList(),
-                                                  parameter3:
+                                                  programUserIds:
                                                       programItem.clientIds,
-                                                  parameter5:
+                                                  programId:
                                                       programItem.reference,
                                                 ),
                                               ),
