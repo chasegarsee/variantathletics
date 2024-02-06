@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 class SubbedUserListModel extends FlutterFlowModel<SubbedUserListWidget> {
   ///  Local state fields for this component.
 
-  List<String> programUserIds = [];
+  List<String> programUserIds = ['9Xk2DLPU5KPMOsBj3vYltrignAt1'];
   void addToProgramUserIds(String item) => programUserIds.add(item);
   void removeFromProgramUserIds(String item) => programUserIds.remove(item);
   void removeAtIndexFromProgramUserIds(int index) =>

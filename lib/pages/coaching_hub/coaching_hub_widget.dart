@@ -196,7 +196,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                 ),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 150.0,
+                                  height: 250.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -674,6 +674,34 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   programId:
                                                       programItem.reference,
                                                 ),
+                                              ),
+                                              Builder(
+                                                builder: (context) {
+                                                  final clients = programItem
+                                                      .clientIds
+                                                      .toList();
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: List.generate(
+                                                        clients.length,
+                                                        (clientsIndex) {
+                                                      final clientsItem =
+                                                          clients[clientsIndex];
+                                                      return Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '8r90fdou' /* Hello World */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      );
+                                                    }),
+                                                  );
+                                                },
                                               ),
                                             ].divide(SizedBox(height: 5.0)),
                                           ),
