@@ -689,11 +689,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                       final clientsItem =
                                                           clients[clientsIndex];
                                                       return Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '8r90fdou' /* Hello World */,
-                                                        ),
+                                                        clientsItem,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
