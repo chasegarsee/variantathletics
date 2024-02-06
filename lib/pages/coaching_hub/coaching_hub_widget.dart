@@ -653,7 +653,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                               if (programItem.custom ||
                                                   (programItem
                                                           .clientIds.length >=
-                                                      1))
+                                                      2))
                                                 wrapWithModel(
                                                   model: _model
                                                       .subbedUserListModels
