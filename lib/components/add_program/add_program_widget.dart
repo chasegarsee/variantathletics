@@ -585,7 +585,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                             isDaily: _model.isDailyCheckboxValue,
                             thumbnailURL:
                                 functions.removeToken(_model.uploadedFileUrl),
-                            isPersonalTraining: false,
+                            custom: false,
                           ),
                           ...mapToFirestore(
                             {
@@ -611,7 +611,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                             isDaily: _model.isDailyCheckboxValue,
                             thumbnailURL:
                                 functions.removeToken(_model.uploadedFileUrl),
-                            isPersonalTraining: false,
+                            custom: false,
                           ),
                           ...mapToFirestore(
                             {

@@ -25,29 +25,23 @@ class CoachingHubModel extends FlutterFlowModel<CoachingHubWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in coachingHub widget.
   List<UsersRecord>? users;
-  // State field(s) for Checkbox widget.
+  // State field(s) for live widget.
 
-  Map<ProgramsRecord, bool> checkboxValueMap1 = {};
-  List<ProgramsRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
-      .where((e) => e.value)
-      .map((e) => e.key)
-      .toList();
+  Map<ProgramsRecord, bool> liveValueMap = {};
+  List<ProgramsRecord> get liveCheckedItems =>
+      liveValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
-  // State field(s) for Checkbox widget.
+  // State field(s) for daily widget.
 
-  Map<ProgramsRecord, bool> checkboxValueMap2 = {};
-  List<ProgramsRecord> get checkboxCheckedItems2 => checkboxValueMap2.entries
-      .where((e) => e.value)
-      .map((e) => e.key)
-      .toList();
+  Map<ProgramsRecord, bool> dailyValueMap = {};
+  List<ProgramsRecord> get dailyCheckedItems =>
+      dailyValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
-  // State field(s) for Checkbox widget.
+  // State field(s) for custom widget.
 
-  Map<ProgramsRecord, bool> checkboxValueMap3 = {};
-  List<ProgramsRecord> get checkboxCheckedItems3 => checkboxValueMap3.entries
-      .where((e) => e.value)
-      .map((e) => e.key)
-      .toList();
+  Map<ProgramsRecord, bool> customValueMap = {};
+  List<ProgramsRecord> get customCheckedItems =>
+      customValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
   // Models for subbedUserList dynamic component.
   late FlutterFlowDynamicModels<SubbedUserListModel> subbedUserListModels;

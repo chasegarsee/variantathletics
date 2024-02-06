@@ -196,7 +196,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                 ),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 250.0,
+                                  height: 150.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -435,13 +435,13 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                   child:
                                                                       Checkbox(
                                                                     value: _model
-                                                                            .checkboxValueMap1[programItem] ??=
+                                                                            .liveValueMap[programItem] ??=
                                                                         programItem
                                                                             .isLive,
                                                                     onChanged:
                                                                         (newValue) async {
                                                                       setState(() =>
-                                                                          _model.checkboxValueMap1[programItem] =
+                                                                          _model.liveValueMap[programItem] =
                                                                               newValue!);
                                                                       if (newValue!) {
                                                                         await programItem
@@ -516,7 +516,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                               ),
                                                               child: Checkbox(
                                                                 value: _model
-                                                                            .checkboxValueMap2[
+                                                                            .dailyValueMap[
                                                                         programItem] ??=
                                                                     programItem
                                                                         .isDaily,
@@ -524,7 +524,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                     ? null
                                                                     : (newValue) async {
                                                                         setState(() =>
-                                                                            _model.checkboxValueMap2[programItem] =
+                                                                            _model.dailyValueMap[programItem] =
                                                                                 newValue!);
                                                                       },
                                                                 activeColor:
@@ -568,7 +568,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'stn6vrbh' /* For Clients */,
+                                                                  'stn6vrbh' /* Custom */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -605,21 +605,21 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                 ),
                                                                 child: Checkbox(
                                                                   value: _model
-                                                                              .checkboxValueMap3[
+                                                                              .customValueMap[
                                                                           programItem] ??=
                                                                       programItem
-                                                                          .isPersonalTraining,
+                                                                          .custom,
                                                                   onChanged:
                                                                       (newValue) async {
                                                                     setState(() =>
-                                                                        _model.checkboxValueMap3[programItem] =
+                                                                        _model.customValueMap[programItem] =
                                                                             newValue!);
                                                                     if (newValue!) {
                                                                       await programItem
                                                                           .reference
                                                                           .update(
                                                                               createProgramsRecordData(
-                                                                        isPersonalTraining:
+                                                                        custom:
                                                                             true,
                                                                       ));
                                                                     } else {
@@ -627,7 +627,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                           .reference
                                                                           .update(
                                                                               createProgramsRecordData(
-                                                                        isPersonalTraining:
+                                                                        custom:
                                                                             false,
                                                                       ));
                                                                     }
@@ -650,55 +650,35 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              wrapWithModel(
-                                                model: _model
-                                                    .subbedUserListModels
-                                                    .getModel(
-                                                  programItem.id,
-                                                  programIndex,
-                                                ),
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: SubbedUserListWidget(
-                                                  key: Key(
-                                                    'Key8e6_${programItem.id}',
+                                              if (_model.customValueMap[
+                                                      programItem] ??
+                                                  true)
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .subbedUserListModels
+                                                      .getModel(
+                                                    programItem.id,
+                                                    programIndex,
                                                   ),
-                                                  displayNames: _model.users!
-                                                      .map((e) => e.displayName)
-                                                      .toList(),
-                                                  userIds: _model.users!
-                                                      .map((e) => e.uid)
-                                                      .toList(),
-                                                  programUserIds:
-                                                      programItem.clientIds,
-                                                  programId:
-                                                      programItem.reference,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child: SubbedUserListWidget(
+                                                    key: Key(
+                                                      'Key8e6_${programItem.id}',
+                                                    ),
+                                                    displayNames: _model.users!
+                                                        .map((e) =>
+                                                            e.displayName)
+                                                        .toList(),
+                                                    userIds: _model.users!
+                                                        .map((e) => e.uid)
+                                                        .toList(),
+                                                    programUserIds:
+                                                        programItem.clientIds,
+                                                    programId:
+                                                        programItem.reference,
+                                                  ),
                                                 ),
-                                              ),
-                                              Builder(
-                                                builder: (context) {
-                                                  final clients = programItem
-                                                      .clientIds
-                                                      .toList();
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: List.generate(
-                                                        clients.length,
-                                                        (clientsIndex) {
-                                                      final clientsItem =
-                                                          clients[clientsIndex];
-                                                      return Text(
-                                                        clientsItem,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      );
-                                                    }),
-                                                  );
-                                                },
-                                              ),
                                             ].divide(SizedBox(height: 5.0)),
                                           ),
                                         ),
