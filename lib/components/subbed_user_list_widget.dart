@@ -57,50 +57,54 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FlutterFlowDropDown<String>(
-      multiSelectController: _model.dropDownValueController ??=
-          FormFieldController<List<String>>(
-              _model.dropDownValue ??= List<String>.from(
-        widget.programUserIds,
-      )),
-      options: List<String>.from(widget.userIds!),
-      optionLabels: widget.displayNames!,
-      width: 300.0,
-      height: 50.0,
-      searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium,
-      searchTextStyle: FlutterFlowTheme.of(context).bodyMedium,
-      textStyle: FlutterFlowTheme.of(context).bodyMedium,
-      hintText: FFLocalizations.of(context).getText(
-        'udiawp38' /* Please select... */,
+    return Visibility(
+      visible:
+          widget.programUserIds != null && (widget.programUserIds)!.isNotEmpty,
+      child: FlutterFlowDropDown<String>(
+        multiSelectController: _model.dropDownValueController ??=
+            FormFieldController<List<String>>(
+                _model.dropDownValue ??= List<String>.from(
+          widget.programUserIds,
+        )),
+        options: List<String>.from(widget.userIds!),
+        optionLabels: widget.displayNames!,
+        width: 300.0,
+        height: 50.0,
+        searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium,
+        searchTextStyle: FlutterFlowTheme.of(context).bodyMedium,
+        textStyle: FlutterFlowTheme.of(context).bodyMedium,
+        hintText: FFLocalizations.of(context).getText(
+          'udiawp38' /* Please select... */,
+        ),
+        searchHintText: FFLocalizations.of(context).getText(
+          'my0caze8' /* Search for an item... */,
+        ),
+        icon: Icon(
+          Icons.keyboard_arrow_down_rounded,
+          color: FlutterFlowTheme.of(context).secondaryText,
+          size: 24.0,
+        ),
+        fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+        elevation: 2.0,
+        borderColor: FlutterFlowTheme.of(context).alternate,
+        borderWidth: 2.0,
+        borderRadius: 8.0,
+        margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+        hidesUnderline: true,
+        isOverButton: true,
+        isSearchable: true,
+        isMultiSelect: true,
+        onMultiSelectChanged: (val) async {
+          setState(() => _model.dropDownValue = val);
+          await widget.programId!.update({
+            ...mapToFirestore(
+              {
+                'clientIds': _model.dropDownValue,
+              },
+            ),
+          });
+        },
       ),
-      searchHintText: FFLocalizations.of(context).getText(
-        'my0caze8' /* Search for an item... */,
-      ),
-      icon: Icon(
-        Icons.keyboard_arrow_down_rounded,
-        color: FlutterFlowTheme.of(context).secondaryText,
-        size: 24.0,
-      ),
-      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-      elevation: 2.0,
-      borderColor: FlutterFlowTheme.of(context).alternate,
-      borderWidth: 2.0,
-      borderRadius: 8.0,
-      margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
-      hidesUnderline: true,
-      isOverButton: true,
-      isSearchable: true,
-      isMultiSelect: true,
-      onMultiSelectChanged: (val) async {
-        setState(() => _model.dropDownValue = val);
-        await widget.programId!.update({
-          ...mapToFirestore(
-            {
-              'clientIds': _model.dropDownValue,
-            },
-          ),
-        });
-      },
     );
   }
 }
