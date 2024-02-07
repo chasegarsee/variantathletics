@@ -196,7 +196,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                 ),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 250.0,
+                                  height: 150.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -532,12 +532,14 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                             context)
                                                                         .accent2,
                                                                 checkColor: true
-                                                                    ? programItem
-                                                                            .isDaily
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .accent2
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .error
+                                                                    ? valueOrDefault<
+                                                                        Color>(
+                                                                        programItem.isDaily
+                                                                            ? FlutterFlowTheme.of(context).accent2
+                                                                            : FlutterFlowTheme.of(context).error,
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .accent2,
+                                                                      )
                                                                     : FlutterFlowTheme.of(
                                                                             context)
                                                                         .info,
@@ -680,30 +682,6 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                         programItem.reference,
                                                   ),
                                                 ),
-                                              Builder(
-                                                builder: (context) {
-                                                  final clients = programItem
-                                                      .clientIds
-                                                      .toList();
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: List.generate(
-                                                        clients.length,
-                                                        (clientsIndex) {
-                                                      final clientsItem =
-                                                          clients[clientsIndex];
-                                                      return Text(
-                                                        clientsItem,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      );
-                                                    }),
-                                                  );
-                                                },
-                                              ),
                                             ].divide(SizedBox(height: 5.0)),
                                           ),
                                         ),

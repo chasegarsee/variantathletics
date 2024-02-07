@@ -64,12 +64,13 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
               _model.dropDownValue ??= List<String>.from(
         functions.stringListNullSafetyCheck(widget.programUserIds!.toList()),
       )),
-      options: List<String>.from(widget.userIds!),
+      options: List<String>.from(
+          functions.stringListNullSafetyCheck(widget.userIds!.toList())),
       optionLabels:
           functions.stringListNullSafetyCheck(widget.displayNames!.toList()),
       width: 300.0,
       height: 50.0,
-      maxHeight: 200.0,
+      maxHeight: 250.0,
       searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium,
       searchTextStyle: FlutterFlowTheme.of(context).bodyMedium,
       textStyle: FlutterFlowTheme.of(context).bodyMedium,
