@@ -497,3 +497,15 @@ List<double> splitLatLng(LatLng latLng) {
 List<DaysStruct> reverseList(List<DaysStruct> days) {
   return days.reversed.toList();
 }
+
+List<String> clientIdNullSafety(List<String> clientIds) {
+  if (clientIds == null) {
+    return []; // Return an empty list if input is null
+  } else {
+    return clientIds
+        .where((element) => element != null)
+        .map((e) => e!)
+        .toList();
+    // Filter out null elements and convert to non-nullable strings
+  }
+}
