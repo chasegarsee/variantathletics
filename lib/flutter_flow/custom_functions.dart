@@ -499,13 +499,5 @@ List<DaysStruct> reverseList(List<DaysStruct> days) {
 }
 
 List<String> stringListNullSafetyCheck(List<String> stringList) {
-  if (stringList == null) {
-    return []; // Return an empty list if input is null
-  } else {
-    return stringList
-        .where((element) => element != null)
-        .map((e) => e!)
-        .toList();
-    // Filter out null elements and convert to non-nullable strings
-  }
+  return stringList ?? [];
 }
