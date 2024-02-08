@@ -498,8 +498,8 @@ List<DaysStruct> reverseList(List<DaysStruct> days) {
   return days.reversed.toList();
 }
 
-List<String> stringListNullSafetyCheck(List<String> stringList) {
-  return stringList ?? [];
+List<String>? stringListNullSafetyCheck(List<String> stringList) {
+  return stringList != null ? stringList : [];
 }
 
 bool nullCheck(List<String>? stringList) {

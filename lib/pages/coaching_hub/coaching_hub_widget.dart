@@ -674,18 +674,18 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                             _model.users!
                                                                 .map((e) => e
                                                                     .displayName)
-                                                                .toList()),
+                                                                .toList())!,
                                                     userIds: functions
                                                         .stringListNullSafetyCheck(
                                                             _model.users!
                                                                 .map((e) =>
                                                                     e.uid)
-                                                                .toList()),
+                                                                .toList())!,
                                                     programUserIds: functions
                                                         .stringListNullSafetyCheck(
                                                             programItem
                                                                 .clientIds
-                                                                .toList()),
+                                                                .toList())!,
                                                     programId:
                                                         programItem.reference,
                                                   ),

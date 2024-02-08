@@ -69,9 +69,9 @@ class _SubbedUserListWidgetState extends State<SubbedUserListWidget> {
           functions.stringListNullSafetyCheck(widget.programUserIds!.toList()),
         )),
         options: List<String>.from(
-            functions.stringListNullSafetyCheck(widget.userIds!.toList())),
+            functions.stringListNullSafetyCheck(widget.userIds!.toList())!),
         optionLabels:
-            functions.stringListNullSafetyCheck(widget.displayNames!.toList()),
+            functions.stringListNullSafetyCheck(widget.displayNames!.toList())!,
         width: 300.0,
         height: 50.0,
         maxHeight: 250.0,
