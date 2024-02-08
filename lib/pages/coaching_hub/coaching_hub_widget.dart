@@ -669,15 +669,23 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                     key: Key(
                                                       'Key8e6_${programItem.id}',
                                                     ),
-                                                    displayNames: _model.users!
-                                                        .map((e) =>
-                                                            e.displayName)
-                                                        .toList(),
-                                                    userIds: _model.users!
-                                                        .map((e) => e.uid)
-                                                        .toList(),
-                                                    programUserIds:
-                                                        programItem.clientIds,
+                                                    displayNames: functions
+                                                        .stringListNullSafetyCheck(
+                                                            _model.users!
+                                                                .map((e) => e
+                                                                    .displayName)
+                                                                .toList()),
+                                                    userIds: functions
+                                                        .stringListNullSafetyCheck(
+                                                            _model.users!
+                                                                .map((e) =>
+                                                                    e.uid)
+                                                                .toList()),
+                                                    programUserIds: functions
+                                                        .stringListNullSafetyCheck(
+                                                            programItem
+                                                                .clientIds
+                                                                .toList()),
                                                     programId:
                                                         programItem.reference,
                                                   ),
