@@ -1538,21 +1538,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'th': 'วินาที',
     },
   },
-  // subbedUserList
-  {
-    'zitq3jh9': {
-      'en': 'Option 1',
-      'th': '',
-    },
-    'udiawp38': {
-      'en': 'Please select...',
-      'th': '',
-    },
-    'my0caze8': {
-      'en': 'Search for an item...',
-      'th': '',
-    },
-  },
   // Miscellaneous
   {
     '0akax9ls': {

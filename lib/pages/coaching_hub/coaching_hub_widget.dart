@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_program/add_program_widget.dart';
-import '/components/subbed_user_list_widget.dart';
+import '/components/custom_program_client_list/custom_program_client_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -652,44 +652,18 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              if (programItem.custom ||
-                                                  (programItem
-                                                          .clientIds.length >=
-                                                      2))
-                                                wrapWithModel(
-                                                  model: _model
-                                                      .subbedUserListModels
-                                                      .getModel(
-                                                    programItem.id,
-                                                    programIndex,
-                                                  ),
-                                                  updateCallback: () =>
-                                                      setState(() {}),
-                                                  child: SubbedUserListWidget(
-                                                    key: Key(
-                                                      'Key8e6_${programItem.id}',
-                                                    ),
-                                                    displayNames: functions
-                                                        .stringListNullSafetyCheck(
-                                                            _model.users!
-                                                                .map((e) => e
-                                                                    .displayName)
-                                                                .toList())!,
-                                                    userIds: functions
-                                                        .stringListNullSafetyCheck(
-                                                            _model.users!
-                                                                .map((e) =>
-                                                                    e.uid)
-                                                                .toList())!,
-                                                    programUserIds: functions
-                                                        .stringListNullSafetyCheck(
-                                                            programItem
-                                                                .clientIds
-                                                                .toList())!,
-                                                    programId:
-                                                        programItem.reference,
-                                                  ),
+                                              Expanded(
+                                                child:
+                                                    CustomProgramClientListWidget(
+                                                  key: Key(
+                                                      'Key3xc_${programIndex}_of_${program.length}'),
+                                                  programUserList:
+                                                      programItem.clientIds,
+                                                  programRef:
+                                                      programItem.reference,
+                                                  usersList: _model.users!,
                                                 ),
+                                              ),
                                             ].divide(SizedBox(height: 5.0)),
                                           ),
                                         ),

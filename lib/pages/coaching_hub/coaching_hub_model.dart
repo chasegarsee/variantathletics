@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_program/add_program_widget.dart';
-import '/components/subbed_user_list_widget.dart';
+import '/components/custom_program_client_list/custom_program_client_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -43,19 +43,12 @@ class CoachingHubModel extends FlutterFlowModel<CoachingHubWidget> {
   List<ProgramsRecord> get customCheckedItems =>
       customValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
-  // Models for subbedUserList dynamic component.
-  late FlutterFlowDynamicModels<SubbedUserListModel> subbedUserListModels;
-
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    subbedUserListModels =
-        FlutterFlowDynamicModels(() => SubbedUserListModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
-    subbedUserListModels.dispose();
   }
 
   /// Action blocks are added here.
