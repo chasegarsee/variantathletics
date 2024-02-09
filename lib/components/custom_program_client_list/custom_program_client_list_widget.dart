@@ -55,69 +55,155 @@ class _CustomProgramClientListWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Builder(
-      builder: (context) {
-        final user = widget.userList!.toList();
-        return SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: List.generate(user.length, (userIndex) {
-              final userItem = user[userIndex];
-              return Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Theme(
-                    data: ThemeData(
-                      checkboxTheme: CheckboxThemeData(
-                        visualDensity: VisualDensity.compact,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4.0),
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: Builder(
+            builder: (context) {
+              final user = widget.userList!
+                  .where((e) => !widget.programUserList!.contains(e.uid))
+                  .toList();
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(user.length, (userIndex) {
+                    final userItem = user[userIndex];
+                    return Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Theme(
+                          data: ThemeData(
+                            checkboxTheme: CheckboxThemeData(
+                              visualDensity: VisualDensity.compact,
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                            ),
+                            unselectedWidgetColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                          ),
+                          child: Checkbox(
+                            value: _model.checkboxValueMap1[userItem] ??=
+                                widget.programUserList!.contains(userItem.uid),
+                            onChanged: (newValue) async {
+                              setState(() => _model
+                                  .checkboxValueMap1[userItem] = newValue!);
+                              if (newValue!) {
+                                await widget.programRef!.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'clientIds':
+                                          FieldValue.arrayUnion([userItem.uid]),
+                                    },
+                                  ),
+                                });
+                              } else {
+                                await widget.programRef!.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'clientIds': FieldValue.arrayRemove(
+                                          [userItem.uid]),
+                                    },
+                                  ),
+                                });
+                              }
+                            },
+                            activeColor: FlutterFlowTheme.of(context).accent2,
+                            checkColor: FlutterFlowTheme.of(context).info,
+                          ),
                         ),
-                      ),
-                      unselectedWidgetColor:
-                          FlutterFlowTheme.of(context).primaryText,
-                    ),
-                    child: Checkbox(
-                      value: _model.checkboxValueMap[userItem] ??=
-                          widget.programUserList!.contains(userItem.uid),
-                      onChanged: (newValue) async {
-                        setState(() =>
-                            _model.checkboxValueMap[userItem] = newValue!);
-                        if (newValue!) {
-                          await widget.programRef!.update({
-                            ...mapToFirestore(
-                              {
-                                'clientIds':
-                                    FieldValue.arrayUnion([userItem.uid]),
-                              },
-                            ),
-                          });
-                        } else {
-                          await widget.programRef!.update({
-                            ...mapToFirestore(
-                              {
-                                'clientIds':
-                                    FieldValue.arrayRemove([userItem.uid]),
-                              },
-                            ),
-                          });
-                        }
-                      },
-                      activeColor: FlutterFlowTheme.of(context).accent2,
-                      checkColor: FlutterFlowTheme.of(context).info,
-                    ),
-                  ),
-                  Text(
-                    userItem.displayName,
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                  ),
-                ],
+                        Text(
+                          userItem.displayName,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    );
+                  }),
+                ),
               );
-            }),
+            },
           ),
-        );
-      },
+        ),
+        SizedBox(
+          height: 100.0,
+          child: VerticalDivider(
+            thickness: 1.0,
+            color: FlutterFlowTheme.of(context).accent4,
+          ),
+        ),
+        Expanded(
+          child: Builder(
+            builder: (context) {
+              final user = widget.userList!
+                  .where((e) => widget.programUserList!.contains(e.uid))
+                  .toList();
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(user.length, (userIndex) {
+                    final userItem = user[userIndex];
+                    return Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Theme(
+                          data: ThemeData(
+                            checkboxTheme: CheckboxThemeData(
+                              visualDensity: VisualDensity.compact,
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                            ),
+                            unselectedWidgetColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                          ),
+                          child: Checkbox(
+                            value: _model.checkboxValueMap2[userItem] ??=
+                                widget.programUserList!.contains(userItem.uid),
+                            onChanged: (newValue) async {
+                              setState(() => _model
+                                  .checkboxValueMap2[userItem] = newValue!);
+                              if (newValue!) {
+                                await widget.programRef!.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'clientIds':
+                                          FieldValue.arrayUnion([userItem.uid]),
+                                    },
+                                  ),
+                                });
+                              } else {
+                                await widget.programRef!.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'clientIds': FieldValue.arrayRemove(
+                                          [userItem.uid]),
+                                    },
+                                  ),
+                                });
+                              }
+                            },
+                            activeColor: FlutterFlowTheme.of(context).accent2,
+                            checkColor: FlutterFlowTheme.of(context).info,
+                          ),
+                        ),
+                        Text(
+                          userItem.displayName,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    );
+                  }),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

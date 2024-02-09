@@ -17,9 +17,19 @@ class CustomProgramClientListModel
 
   // State field(s) for Checkbox widget.
 
-  Map<UsersRecord, bool> checkboxValueMap = {};
-  List<UsersRecord> get checkboxCheckedItems =>
-      checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
+  Map<UsersRecord, bool> checkboxValueMap1 = {};
+  List<UsersRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
+
+  // State field(s) for Checkbox widget.
+
+  Map<UsersRecord, bool> checkboxValueMap2 = {};
+  List<UsersRecord> get checkboxCheckedItems2 => checkboxValueMap2.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
 
   /// Initialization and disposal methods.
 

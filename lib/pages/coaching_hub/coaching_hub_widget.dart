@@ -652,23 +652,32 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              if (_model.customValueMap[
-                                                      programItem]! &&
-                                                  (_model.users != null &&
-                                                      (_model.users)!
-                                                          .isNotEmpty))
-                                                Expanded(
-                                                  child:
-                                                      CustomProgramClientListWidget(
-                                                    key: Key(
-                                                        'Key3xc_${programIndex}_of_${program.length}'),
-                                                    programUserList:
-                                                        programItem.clientIds,
-                                                    programRef:
-                                                        programItem.reference,
-                                                    userList: _model.users!,
+                                              Expanded(
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 3.0,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(),
+                                                    child: Visibility(
+                                                      visible:
+                                                          _model.customValueMap[
+                                                                  programItem] ??
+                                                              true,
+                                                      child:
+                                                          CustomProgramClientListWidget(
+                                                        key: Key(
+                                                            'Key3xc_${programIndex}_of_${program.length}'),
+                                                        programUserList:
+                                                            programItem
+                                                                .clientIds,
+                                                        programRef: programItem
+                                                            .reference,
+                                                        userList: _model.users!,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
+                                              ),
                                             ].divide(SizedBox(height: 5.0)),
                                           ),
                                         ),
