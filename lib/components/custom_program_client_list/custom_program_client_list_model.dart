@@ -8,29 +8,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class CustomProgramClientListModel
     extends FlutterFlowModel<CustomProgramClientListWidget> {
-  ///  State fields for stateful widgets in this component.
-
-  // State field(s) for Checkbox widget.
-
-  Map<UsersRecord, bool> checkboxValueMap1 = {};
-  List<UsersRecord> get checkboxCheckedItems1 => checkboxValueMap1.entries
-      .where((e) => e.value)
-      .map((e) => e.key)
-      .toList();
-
-  // State field(s) for Checkbox widget.
-
-  Map<UsersRecord, bool> checkboxValueMap2 = {};
-  List<UsersRecord> get checkboxCheckedItems2 => checkboxValueMap2.entries
-      .where((e) => e.value)
-      .map((e) => e.key)
-      .toList();
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

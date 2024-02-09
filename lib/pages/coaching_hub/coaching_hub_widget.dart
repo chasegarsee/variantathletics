@@ -193,7 +193,7 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                   0.0, 5.0, 0.0, 5.0),
                               child: Material(
                                 color: Colors.transparent,
-                                elevation: 3.0,
+                                elevation: 5.0,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
@@ -254,8 +254,12 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(8.0),
+                                              bottomRight: Radius.circular(8.0),
+                                              topLeft: Radius.circular(8.0),
+                                              topRight: Radius.circular(8.0),
+                                            ),
                                           ),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -293,8 +297,14 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                               );
                                             },
                                             child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft:
+                                                    Radius.circular(8.0),
+                                                bottomRight:
+                                                    Radius.circular(0.0),
+                                                topLeft: Radius.circular(8.0),
+                                                topRight: Radius.circular(8.0),
+                                              ),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
                                                     Duration(milliseconds: 500),
@@ -535,14 +545,9 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                             context)
                                                                         .accent2,
                                                                 checkColor: true
-                                                                    ? valueOrDefault<
-                                                                        Color>(
-                                                                        programItem.isDaily
-                                                                            ? FlutterFlowTheme.of(context).accent2
-                                                                            : FlutterFlowTheme.of(context).error,
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .accent2,
-                                                                      )
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info
                                                                     : FlutterFlowTheme.of(
                                                                             context)
                                                                         .info,
@@ -660,7 +665,11 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   color: Colors.transparent,
                                                   elevation: 3.0,
                                                   child: Container(
-                                                    decoration: BoxDecoration(),
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
                                                     child: Visibility(
                                                       visible:
                                                           programItem.custom &&

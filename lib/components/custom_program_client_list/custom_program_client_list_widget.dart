@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'custom_program_client_list_model.dart';
@@ -72,38 +73,29 @@ class _CustomProgramClientListWidgetState
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Theme(
-                          data: ThemeData(
-                            checkboxTheme: CheckboxThemeData(
-                              visualDensity: VisualDensity.compact,
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4.0),
-                              ),
-                            ),
-                            unselectedWidgetColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                          ),
-                          child: Checkbox(
-                            value: _model.checkboxValueMap1[userItem] ??=
-                                !widget.programUserList!.contains(userItem.uid),
-                            onChanged: (newValue) async {
-                              setState(() => _model
-                                  .checkboxValueMap1[userItem] = newValue!);
-                              if (newValue!) {
-                                await widget.programRef!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'clientIds':
-                                          FieldValue.arrayUnion([userItem.uid]),
-                                    },
-                                  ),
-                                });
-                              }
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 2.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await widget.programRef!.update({
+                                ...mapToFirestore(
+                                  {
+                                    'clientIds':
+                                        FieldValue.arrayUnion([userItem.uid]),
+                                  },
+                                ),
+                              });
                             },
-                            activeColor: FlutterFlowTheme.of(context).accent2,
-                            checkColor: FlutterFlowTheme.of(context).info,
+                            child: Icon(
+                              Icons.check_box_outline_blank_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                         Text(
@@ -118,12 +110,10 @@ class _CustomProgramClientListWidgetState
             },
           ),
         ),
-        SizedBox(
-          height: 100.0,
-          child: VerticalDivider(
-            thickness: 1.0,
-            color: FlutterFlowTheme.of(context).accent4,
-          ),
+        FaIcon(
+          FontAwesomeIcons.arrowsAltH,
+          color: FlutterFlowTheme.of(context).secondaryText,
+          size: 24.0,
         ),
         Expanded(
           child: Builder(
@@ -139,39 +129,29 @@ class _CustomProgramClientListWidgetState
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Theme(
-                          data: ThemeData(
-                            checkboxTheme: CheckboxThemeData(
-                              visualDensity: VisualDensity.compact,
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4.0),
-                              ),
-                            ),
-                            unselectedWidgetColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                          ),
-                          child: Checkbox(
-                            value: _model.checkboxValueMap2[userItem] ??=
-                                widget.programUserList!.contains(userItem.uid),
-                            onChanged: (newValue) async {
-                              setState(() => _model
-                                  .checkboxValueMap2[userItem] = newValue!);
-
-                              if (!newValue!) {
-                                await widget.programRef!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'clientIds': FieldValue.arrayRemove(
-                                          [userItem.uid]),
-                                    },
-                                  ),
-                                });
-                              }
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 2.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await widget.programRef!.update({
+                                ...mapToFirestore(
+                                  {
+                                    'clientIds':
+                                        FieldValue.arrayRemove([userItem.uid]),
+                                  },
+                                ),
+                              });
                             },
-                            activeColor: FlutterFlowTheme.of(context).accent2,
-                            checkColor: FlutterFlowTheme.of(context).info,
+                            child: Icon(
+                              Icons.check_box_rounded,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                         Text(
