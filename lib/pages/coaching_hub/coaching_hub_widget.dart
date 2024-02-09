@@ -652,18 +652,23 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              Expanded(
-                                                child:
-                                                    CustomProgramClientListWidget(
-                                                  key: Key(
-                                                      'Key3xc_${programIndex}_of_${program.length}'),
-                                                  programUserList:
-                                                      programItem.clientIds,
-                                                  programRef:
-                                                      programItem.reference,
-                                                  usersList: _model.users!,
+                                              if (_model.customValueMap[
+                                                      programItem]! &&
+                                                  (_model.users != null &&
+                                                      (_model.users)!
+                                                          .isNotEmpty))
+                                                Expanded(
+                                                  child:
+                                                      CustomProgramClientListWidget(
+                                                    key: Key(
+                                                        'Key3xc_${programIndex}_of_${program.length}'),
+                                                    programUserList:
+                                                        programItem.clientIds,
+                                                    programRef:
+                                                        programItem.reference,
+                                                    userList: _model.users!,
+                                                  ),
                                                 ),
-                                              ),
                                             ].divide(SizedBox(height: 5.0)),
                                           ),
                                         ),

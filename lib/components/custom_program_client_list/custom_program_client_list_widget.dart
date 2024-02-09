@@ -16,12 +16,12 @@ class CustomProgramClientListWidget extends StatefulWidget {
     super.key,
     required this.programUserList,
     required this.programRef,
-    List<UsersRecord>? usersList,
+    required this.userList,
   });
 
   final List<String>? programUserList;
   final DocumentReference? programRef;
-  final List<UsersRecord>? usersList;
+  final List<UsersRecord>? userList;
 
   @override
   State<CustomProgramClientListWidget> createState() =>
@@ -57,7 +57,7 @@ class _CustomProgramClientListWidgetState
 
     return Builder(
       builder: (context) {
-        final user = widget.usersList!.toList();
+        final user = widget.userList!.toList();
         return SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
