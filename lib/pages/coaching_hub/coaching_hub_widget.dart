@@ -674,7 +674,10 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                                 .clientIds,
                                                         programRef: programItem
                                                             .reference,
-                                                        userList: _model.users!,
+                                                        userList: functions
+                                                            .stringListNullSafetyCheck(
+                                                                _model.users
+                                                                    ?.toList()),
                                                       ),
                                                     ),
                                                   ),

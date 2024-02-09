@@ -86,7 +86,8 @@ class _CustomProgramClientListWidgetState
                                 FlutterFlowTheme.of(context).primaryText,
                           ),
                           child: Checkbox(
-                            value: _model.checkboxValueMap1[userItem] ??= false,
+                            value: _model.checkboxValueMap1[userItem] ??=
+                                !widget.programUserList!.contains(userItem.uid),
                             onChanged: (newValue) async {
                               setState(() => _model
                                   .checkboxValueMap1[userItem] = newValue!);
@@ -96,15 +97,6 @@ class _CustomProgramClientListWidgetState
                                     {
                                       'clientIds':
                                           FieldValue.arrayUnion([userItem.uid]),
-                                    },
-                                  ),
-                                });
-                              } else {
-                                await widget.programRef!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'clientIds': FieldValue.arrayRemove(
-                                          [userItem.uid]),
                                     },
                                   ),
                                 });
@@ -161,20 +153,13 @@ class _CustomProgramClientListWidgetState
                                 FlutterFlowTheme.of(context).primaryText,
                           ),
                           child: Checkbox(
-                            value: _model.checkboxValueMap2[userItem] ??= true,
+                            value: _model.checkboxValueMap2[userItem] ??=
+                                widget.programUserList!.contains(userItem.uid),
                             onChanged: (newValue) async {
                               setState(() => _model
                                   .checkboxValueMap2[userItem] = newValue!);
-                              if (newValue!) {
-                                await widget.programRef!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'clientIds':
-                                          FieldValue.arrayUnion([userItem.uid]),
-                                    },
-                                  ),
-                                });
-                              } else {
+
+                              if (!newValue!) {
                                 await widget.programRef!.update({
                                   ...mapToFirestore(
                                     {
