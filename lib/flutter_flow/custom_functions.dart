@@ -499,7 +499,7 @@ List<DaysStruct> reverseList(List<DaysStruct> days) {
 }
 
 List<String>? stringListNullSafetyCheck(List<String> stringList) {
-  return stringList != null ? stringList : [];
+  return stringList ?? [];
 }
 
 bool nullCheck(List<String>? stringList) {

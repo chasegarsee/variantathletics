@@ -86,8 +86,7 @@ class _CustomProgramClientListWidgetState
                                 FlutterFlowTheme.of(context).primaryText,
                           ),
                           child: Checkbox(
-                            value: _model.checkboxValueMap1[userItem] ??=
-                                widget.programUserList!.contains(userItem.uid),
+                            value: _model.checkboxValueMap1[userItem] ??= false,
                             onChanged: (newValue) async {
                               setState(() => _model
                                   .checkboxValueMap1[userItem] = newValue!);
@@ -162,8 +161,7 @@ class _CustomProgramClientListWidgetState
                                 FlutterFlowTheme.of(context).primaryText,
                           ),
                           child: Checkbox(
-                            value: _model.checkboxValueMap2[userItem] ??=
-                                widget.programUserList!.contains(userItem.uid),
+                            value: _model.checkboxValueMap2[userItem] ??= true,
                             onChanged: (newValue) async {
                               setState(() => _model
                                   .checkboxValueMap2[userItem] = newValue!);

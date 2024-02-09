@@ -50,6 +50,9 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
               isNotEqualTo: null,
             ),
       );
+      setState(() {
+        _model.isLoading = false;
+      });
     });
   }
 
@@ -660,9 +663,8 @@ class _CoachingHubWidgetState extends State<CoachingHubWidget> {
                                                     decoration: BoxDecoration(),
                                                     child: Visibility(
                                                       visible:
-                                                          _model.customValueMap[
-                                                                  programItem] ??
-                                                              true,
+                                                          programItem.custom &&
+                                                              !_model.isLoading,
                                                       child:
                                                           CustomProgramClientListWidget(
                                                         key: Key(
